@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Page.master.cs" Inherits="TALENTS.Page" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>TALENTS </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+
+    <!-- CSS FILES -->
+    <%--<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">--%>
+    <%--<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">--%>
+    <%--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light|Shadows+Into+Light+Two|Roboto" rel="stylesheet" type="text/css" />--%>
+    <%--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" id="iconLink" runat="server"/>--%>
+    <%--<link href="Content/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/CSS/bootstrap-icons.css" rel="stylesheet">
+    <link href="Content/CSS/owl.carousel.min.css" rel="stylesheet">--%>
+    <%--<link href="Content/CSS/tooplate-moso-interior.css" rel="stylesheet">--%>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="Content/CSS/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/linearicons.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/style.css" type="text/css">
+
+    <link rel="stylesheet" href="Content/CSS/select2.css" />
+    <link rel="stylesheet" href="Content/CSS/select2-bootstrap.css" />
+
+    <asp:ContentPlaceHolder ID="HeaderPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="Dashboard.aspx"><h2 class="text-white">TALENTS</h2></a>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="main-menu mobile-menu" style="float: right; margin-right:15px">
+                                <ul>
+                                    <li><a href="Dashboard.aspx">Home</a></li>
+                                    <li><a href="Login.aspx">LogIn</a></li>
+                                    <li><a href="Register.aspx">Register</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- JAVASCRIPT FILES -->
+    <%--<script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>--%>
+    <%--<script src="Scripts/click-scroll.js"></script>--%>
+    <%--<script src="Scripts/jquery.backstretch.min.js"></script>
+    <script src="Scripts/owl.carousel.min.js"></script>
+    <script src="Scripts/custom.js"></script>--%>
+
+    <!-- Js Plugins -->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="Scripts/jquery-ui.min.js"></script>
+    <script src="Scripts/jquery.nice-select.min.js"></script>
+    <script src="Scripts/jquery.slicknav.js"></script>
+    <script src="Scripts/owl.carousel.min.js"></script>
+    <script src="Scripts/main.js"></script>
+
+    <script src="Scripts/select2.js"></script>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-logo">
+                        <a href="#"><h2 class="text-white">TALENTS</h2></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-50">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h5>Location</h5>
+                        <div class="widget-text">
+                            <i class="lnr lnr-map-marker"></i>
+                            <p>1525 Boring Lane, <br />Los Angeles, CA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h5>Reception</h5>
+                        <div class="widget-text">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <p>+1 (603)535-4592</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h5>Shuttle Service</h5>
+                        <div class="widget-text">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <p>+1 (603)535-4592</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h5>Restaurant</h5>
+                        <div class="widget-text">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <p>+1 (603)535-4592</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="copyright-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                <div class="privacy-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Photo Requests</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <asp:ContentPlaceHolder ID="FooterPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

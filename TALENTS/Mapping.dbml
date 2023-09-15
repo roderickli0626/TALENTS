@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TALENTS_dev" Class="MappingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.BreastSize" Member="BreastSizes">
+    <Type Name="BreastSize">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="BreastSize_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="BreastSizeId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="Cities">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="City_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="CityResidenceId" Type="UserInfo" />
+      <Association Name="City_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="CityResidenceId" Type="ModBiography" />
+      <Association Name="City_ModTour" Member="ModTours" ThisKey="Id" OtherKey="CityId" Type="ModTour" />
+      <Association Name="City_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="CityId" Type="ModWorkingCityAlloc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DressSize" Member="DressSizes">
+    <Type Name="DressSize">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="DressSize_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="DressSizeId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Duration" Member="Durations">
+    <Type Name="Duration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Duration_ModIncallRate" Member="ModIncallRates" ThisKey="Id" OtherKey="DurationId" Type="ModIncallRate" />
+      <Association Name="Duration_ModOutcallRate" Member="ModOutcallRates" ThisKey="Id" OtherKey="DurationId" Type="ModOutcallRate" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ethnicity" Member="Ethnicities">
+    <Type Name="Ethnicity">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Ethnicity_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="EthnicityId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Eyes" Member="Eyes">
+    <Type Name="Eye">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Eye_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="EyeId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HairColor" Member="HairColors">
+    <Type Name="HairColor">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HairColor_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="HairColorId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HairLength" Member="HairLengths">
+    <Type Name="HairLength">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HairLength_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="HairLenghId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IncallPlace" Member="IncallPlaces">
+    <Type Name="IncallPlace">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="IncallPlace_ModIncallPlace" Member="ModIncallPlaces" ThisKey="Id" OtherKey="IncallPlaceId" Type="ModIncallPlace" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstructionChat" Member="InstructionChats">
+    <Type Name="InstructionChat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="InstructionChat_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="InstructionChatId" Type="ModContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Language" Member="Languages">
+    <Type Name="Language">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Language_ModLanguageAlloc" Member="ModLanguageAllocs" ThisKey="Id" OtherKey="LanguageId" Type="ModLanguageAlloc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nationality" Member="Nationalities">
+    <Type Name="Nationality">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Nationality_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="NationalityId" Type="UserInfo" />
+      <Association Name="Nationality_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="NationalityId" Type="ModBiography" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutcallPlace" Member="OutcallPlaces">
+    <Type Name="OutcallPlace">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="OutcallPlace_ModOutcallPlace" Member="ModOutcallPlaces" ThisKey="Id" OtherKey="OutcallPlaceId" Type="ModOutcallPlace" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhotoGroup" Member="PhotoGroups">
+    <Type Name="PhotoGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="PhotoGroup_ModPhoto" Member="ModPhotos" ThisKey="Id" OtherKey="GroupId" Type="ModPhoto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Service" Member="Services">
+    <Type Name="Service">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Service_ModService" Member="ModServices" ThisKey="Id" OtherKey="ServiceId" Type="ModService" />
+      <Association Name="ServiceGroup_Service" Member="ServiceGroup" ThisKey="GroupId" OtherKey="Id" Type="ServiceGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SkillLevel" Member="SkillLevels">
+    <Type Name="SkillLevel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="SkillLevel_ModLanguageAlloc" Member="ModLanguageAllocs" ThisKey="Id" OtherKey="SkillId" Type="ModLanguageAlloc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocialChat" Member="SocialChats">
+    <Type Name="SocialChat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="SocialChat_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="SocialChatId" Type="ModContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WorkDays" Member="WorkDays">
+    <Type Name="WorkDay">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="WorkDay_ModWorkDayHour" Member="ModWorkDayHours" ThisKey="Id" OtherKey="DayId" Type="ModWorkDayHour" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WorkHours" Member="WorkHours">
+    <Type Name="WorkHour">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="WorkHour_ModWorkDayHour" Member="ModWorkDayHours" ThisKey="Id" OtherKey="SHourId" Type="ModWorkDayHour" />
+      <Association Name="WorkHour_ModWorkDayHour1" Member="ModWorkDayHours1" ThisKey="Id" OtherKey="EHourId" Type="ModWorkDayHour" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserInfo" Member="UserInfos">
+    <Type Name="UserInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CAP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CityResidenceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NationalityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Society" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VatNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LicenceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="City_UserInfo" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
+      <Association Name="Nationality_UserInfo" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
+      <Association Name="Model_UserInfo" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModBiography" Member="ModBiographies">
+    <Type Name="ModBiography">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Slogan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EthnicityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NationalityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityResidenceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HairColorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HairLenghId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EyeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DressSizeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Shoes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bust" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Waist" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Haunch" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BreastSizeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Seno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Smoker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tattoos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Drinker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Piercing" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Peculiarities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AboutMe" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="BreastSize_ModBiography" Member="BreastSize" ThisKey="BreastSizeId" OtherKey="Id" Type="BreastSize" IsForeignKey="true" />
+      <Association Name="DressSize_ModBiography" Member="DressSize" ThisKey="DressSizeId" OtherKey="Id" Type="DressSize" IsForeignKey="true" />
+      <Association Name="Ethnicity_ModBiography" Member="Ethnicity" ThisKey="EthnicityId" OtherKey="Id" Type="Ethnicity" IsForeignKey="true" />
+      <Association Name="Eye_ModBiography" Member="Eye" ThisKey="EyeId" OtherKey="Id" Type="Eye" IsForeignKey="true" />
+      <Association Name="HairColor_ModBiography" Member="HairColor" ThisKey="HairColorId" OtherKey="Id" Type="HairColor" IsForeignKey="true" />
+      <Association Name="HairLength_ModBiography" Member="HairLength" ThisKey="HairLenghId" OtherKey="Id" Type="HairLength" IsForeignKey="true" />
+      <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
+      <Association Name="Nationality_ModBiography" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
+      <Association Name="Model_ModBiography" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModContacts" Member="ModContacts">
+    <Type Name="ModContact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SocialChatId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionChatId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AddressCiv" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="InstructionChat_ModContact" Member="InstructionChat" ThisKey="InstructionChatId" OtherKey="Id" Type="InstructionChat" IsForeignKey="true" />
+      <Association Name="SocialChat_ModContact" Member="SocialChat" ThisKey="SocialChatId" OtherKey="Id" Type="SocialChat" IsForeignKey="true" />
+      <Association Name="Model_ModContact" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Models" Member="Models">
+    <Type Name="Model">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsModel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Model_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="UserId" Type="UserInfo" />
+      <Association Name="Model_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="ModelId" Type="ModBiography" />
+      <Association Name="Model_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="ModelId" Type="ModContact" />
+      <Association Name="Model_ModIncallPlace" Member="ModIncallPlaces" ThisKey="Id" OtherKey="ModelId" Type="ModIncallPlace" />
+      <Association Name="Model_ModLanguageAlloc" Member="ModLanguageAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModLanguageAlloc" />
+      <Association Name="Model_ModNaturalPhoto" Member="ModNaturalPhotos" ThisKey="Id" OtherKey="ModelId" Type="ModNaturalPhoto" />
+      <Association Name="Model_ModOutcallPlace" Member="ModOutcallPlaces" ThisKey="Id" OtherKey="ModelId" Type="ModOutcallPlace" />
+      <Association Name="Model_ModPhoto" Member="ModPhotos" ThisKey="Id" OtherKey="ModelId" Type="ModPhoto" />
+      <Association Name="Model_ModService" Member="ModServices" ThisKey="Id" OtherKey="ModelId" Type="ModService" />
+      <Association Name="Model_ModTour" Member="ModTours" ThisKey="Id" OtherKey="ModelId" Type="ModTour" />
+      <Association Name="Model_ModVideo" Member="ModVideos" ThisKey="Id" OtherKey="ModelId" Type="ModVideo" />
+      <Association Name="Model_ModWorkDayHour" Member="ModWorkDayHours" ThisKey="Id" OtherKey="ModelId" Type="ModWorkDayHour" />
+      <Association Name="Model_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModWorkingCityAlloc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModIncallPlace" Member="ModIncallPlaces">
+    <Type Name="ModIncallPlace">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IncallPlaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ModIncallPlace_ModIncallRate" Member="ModIncallRates" ThisKey="Id" OtherKey="ModIncallPlaceId" Type="ModIncallRate" />
+      <Association Name="IncallPlace_ModIncallPlace" Member="IncallPlace" ThisKey="IncallPlaceId" OtherKey="Id" Type="IncallPlace" IsForeignKey="true" />
+      <Association Name="Model_ModIncallPlace" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModIncallRate" Member="ModIncallRates">
+    <Type Name="ModIncallRate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModIncallPlaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DurationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Duration_ModIncallRate" Member="Duration" ThisKey="DurationId" OtherKey="Id" Type="Duration" IsForeignKey="true" />
+      <Association Name="ModIncallPlace_ModIncallRate" Member="ModIncallPlace" ThisKey="ModIncallPlaceId" OtherKey="Id" Type="ModIncallPlace" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModLanguageAlloc" Member="ModLanguageAllocs">
+    <Type Name="ModLanguageAlloc">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SkillId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Language_ModLanguageAlloc" Member="Language" ThisKey="LanguageId" OtherKey="Id" Type="Language" IsForeignKey="true" />
+      <Association Name="Model_ModLanguageAlloc" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SkillLevel_ModLanguageAlloc" Member="SkillLevel" ThisKey="SkillId" OtherKey="Id" Type="SkillLevel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModNaturalPhoto" Member="ModNaturalPhotos">
+    <Type Name="ModNaturalPhoto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Model_ModNaturalPhoto" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModOutcallPlace" Member="ModOutcallPlaces">
+    <Type Name="ModOutcallPlace">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OutcallPlaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ModOutcallPlace_ModOutcallRate" Member="ModOutcallRates" ThisKey="Id" OtherKey="ModOutcallPlaceId" Type="ModOutcallRate" />
+      <Association Name="Model_ModOutcallPlace" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="OutcallPlace_ModOutcallPlace" Member="OutcallPlace" ThisKey="OutcallPlaceId" OtherKey="Id" Type="OutcallPlace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModOutcallRate" Member="ModOutcallRates">
+    <Type Name="ModOutcallRate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModOutcallPlaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DurationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Duration_ModOutcallRate" Member="Duration" ThisKey="DurationId" OtherKey="Id" Type="Duration" IsForeignKey="true" />
+      <Association Name="ModOutcallPlace_ModOutcallRate" Member="ModOutcallPlace" ThisKey="ModOutcallPlaceId" OtherKey="Id" Type="ModOutcallPlace" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModPhoto" Member="ModPhotos">
+    <Type Name="ModPhoto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Model_ModPhoto" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PhotoGroup_ModPhoto" Member="PhotoGroup" ThisKey="GroupId" OtherKey="Id" Type="PhotoGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModServices" Member="ModServices">
+    <Type Name="ModService">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Model_ModService" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Service_ModService" Member="Service" ThisKey="ServiceId" OtherKey="Id" Type="Service" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModTour" Member="ModTours">
+    <Type Name="ModTour">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateFrom" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="City_ModTour" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Model_ModTour" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModVideos" Member="ModVideos">
+    <Type Name="ModVideo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Video" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Model_ModVideo" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModWorkDayHour" Member="ModWorkDayHours">
+    <Type Name="ModWorkDayHour">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DayId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SHourId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EHourId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Model_ModWorkDayHour" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="WorkDay_ModWorkDayHour" Member="WorkDay" ThisKey="DayId" OtherKey="Id" Type="WorkDay" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="WorkHour_ModWorkDayHour" Member="WorkHour" ThisKey="SHourId" OtherKey="Id" Type="WorkHour" IsForeignKey="true" />
+      <Association Name="WorkHour_ModWorkDayHour1" Member="WorkHour1" ThisKey="EHourId" OtherKey="Id" Type="WorkHour" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModWorkingCityAlloc" Member="ModWorkingCityAllocs">
+    <Type Name="ModWorkingCityAlloc">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="City_ModWorkingCityAlloc" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Model_ModWorkingCityAlloc" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
+    <Type Name="ServiceGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ServiceGroup_Service" Member="Services" ThisKey="Id" OtherKey="GroupId" Type="Service" />
+    </Type>
+  </Table>
+</Database>
