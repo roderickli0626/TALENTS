@@ -22,6 +22,10 @@
             box-shadow: none !important;
             border: none;
         }
+
+        #select2-ComboCity-container {
+            text-align: center
+        }
         
     </style>
 </asp:Content>
@@ -38,95 +42,27 @@
                                     <span class="input-group-text">City</span>
                                 </div>
                                 <div class="form-control pt-0 pb-0 pr-0">
-                                    <asp:DropDownList runat="server" ID="CityList" CssClass="custom-select" ClientIDMode="Static"></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="ComboCity" CssClass="custom-select" ClientIDMode="Static"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-2 text-right">
-                                <button type="button" class="btn btn-block btn-dark btn-lg text-white">Search</button>
+                                <asp:Button runat="server" ID="BtnSearch" Text="Search" CssClass="btn btn-block btn-dark btn-lg text-white" OnClick="BtnSearch_Click" />
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/1.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
+                            <asp:Repeater runat="server" ID="ModelPhotoRepeater">
+                                <ItemTemplate>
+                                    <div class="col-lg-4 col-12 text-center p-3">
+                                        <a href="DashboardDetail.aspx?modelId=<%#Eval("Id") %>" class="img-title">
+                                            <image src="Upload/Photos/<%#Eval("Image") %>"></image>
+                                            <div>
+                                                <h3 class="text-white pt-3"><%#Eval("Name") %></h3>
+                                                <h5 class="text-white"><%#Eval("CityResidence") %></h5>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/2.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/3.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/4.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/5.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/6.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/7.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/8.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-12 text-center p-3">
-                                <a href="#" class="img-title">
-                                    <image src="Content/Images/9.jpg"></image>
-                                    <div>
-                                        <h3 class="text-white pt-3">Model Name</h3>
-                                        <h5 class="text-white">City</h5>
-                                    </div>
-                                </a>
-                            </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </div>
                     </div>
                 </form>
@@ -137,6 +73,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script>
-        $("#CityList").select2({ theme: 'bootstrap' }); 
+        $("#ComboCity").select2({ theme: 'bootstrap' }); 
     </script>
 </asp:Content>
