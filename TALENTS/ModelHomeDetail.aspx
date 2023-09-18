@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Page.Master" AutoEventWireup="true" CodeBehind="DashboardDetail.aspx.cs" Inherits="TALENTS.DashboardDetail" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ModelPage.Master" AutoEventWireup="true" CodeBehind="ModelHomeDetail.aspx.cs" Inherits="TALENTS.ModelHomeDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/baguetteBox.min.css" />
     <link rel="stylesheet" href="Content/CSS/grid-gallery.css">

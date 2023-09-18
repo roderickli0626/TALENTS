@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Page.master.cs" Inherits="TALENTS.Page" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminPage.master.cs" Inherits="TALENTS.AdminPage" %>
 
 <!DOCTYPE html>
 
@@ -10,17 +10,6 @@
 
     <meta name="description" content="">
     <meta name="author" content="Tooplate">
-
-    <!-- CSS FILES -->
-    <%--<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">--%>
-    <%--<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;400;600;700&display=swap" rel="stylesheet">--%>
-    <%--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light|Shadows+Into+Light+Two|Roboto" rel="stylesheet" type="text/css" />--%>
-    <%--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" id="iconLink" runat="server"/>--%>
-    <%--<link href="Content/CSS/bootstrap.min.css" rel="stylesheet">
-    <link href="Content/CSS/bootstrap-icons.css" rel="stylesheet">
-    <link href="Content/CSS/owl.carousel.min.css" rel="stylesheet">--%>
-    <%--<link href="Content/CSS/tooplate-moso-interior.css" rel="stylesheet">--%>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap"
@@ -59,9 +48,15 @@
                         <div class="col-xl-12">
                             <nav class="main-menu mobile-menu" style="float: right; margin-right: 15px">
                                 <ul>
-                                    <li><a href="Dashboard.aspx">Home</a></li>
-                                    <li><a href="Login.aspx">LogIn</a></li>
-                                    <li><a href="Register.aspx">Register</a></li>
+                                    <li><a href="AdminHome.aspx">Models</a></li>
+                                    <li><a href="#">Users</a></li>
+                                    <li><a href="#" runat="server" id="liAdmins">Admins</a></li>
+                                    <li><a href="#"><i class="fa fa-user-circle text-bg-light"></i></a>
+                                        <ul class="drop-menu">
+                                            <li><a href="#" runat="server" id="username">UserName</a></li>
+                                            <li><a href="Login.aspx">LogOut</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -73,14 +68,6 @@
     </header>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
     </asp:ContentPlaceHolder>
-
-    <!-- JAVASCRIPT FILES -->
-    <%--<script src="Scripts/jquery.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>--%>
-    <%--<script src="Scripts/click-scroll.js"></script>--%>
-    <%--<script src="Scripts/jquery.backstretch.min.js"></script>
-    <script src="Scripts/owl.carousel.min.js"></script>
-    <script src="Scripts/custom.js"></script>--%>
 
     <!-- Js Plugins -->
     <script src="Scripts/jquery-3.3.1.min.js"></script>
@@ -112,9 +99,11 @@
                         <h5>Location</h5>
                         <div class="widget-text">
                             <i class="lnr lnr-map-marker"></i>
-                            <p>1525 Boring Lane,
+                            <p>
+                                1525 Boring Lane,
                                 <br />
-                                Los Angeles, CA</p>
+                                Los Angeles, CA
+                            </p>
                         </div>
                     </div>
                 </div>
