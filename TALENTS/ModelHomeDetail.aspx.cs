@@ -27,8 +27,6 @@ namespace TALENTS
         {
             ModelCheck modelInfo = new ModelController().GetDashboardModelInfo(modelId);
 
-            ModelName.InnerText = modelInfo.Name;
-
             ModelSurname.InnerText = modelInfo.Name;
             ModelAge.InnerText = modelInfo.Age.ToString();
             ModelHeight.InnerText = modelInfo.Height.ToString();
@@ -36,8 +34,10 @@ namespace TALENTS
             ModelEth.InnerText = modelInfo.Nationality;
             ModelResid.InnerText = modelInfo.CityResidence;
 
-            DefaultPhotoRepeater.DataSource = modelInfo.ImageList;
-            DefaultPhotoRepeater.DataBind();
+            DefaultPhotoRepeater1.DataSource = modelInfo.ImageList;
+            DefaultPhotoRepeater1.DataBind();
+            DefaultPhotoRepeater2.DataSource = modelInfo.ImageList;
+            DefaultPhotoRepeater2.DataBind();
         }
     }
 }

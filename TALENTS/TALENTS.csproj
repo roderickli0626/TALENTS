@@ -124,33 +124,42 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CSS\admin-custom.css" />
     <Content Include="Content\CSS\all.min.css" />
+    <Content Include="Content\CSS\aos.css" />
     <Content Include="Content\CSS\baguetteBox.min.css" />
     <Content Include="Content\CSS\bootstrap-datepicker3.css" />
     <Content Include="Content\CSS\bootstrap-icons.css" />
     <Content Include="Content\CSS\bootstrap-multiselect.css" />
     <Content Include="Content\CSS\bootstrap-timepicker.min.css" />
     <Content Include="Content\CSS\bootstrap.css" />
+    <Content Include="Content\CSS\bootstrap.min%281%29.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\core.min.css" />
     <Content Include="Content\CSS\datatables.css" />
     <Content Include="Content\CSS\default.css" />
+    <Content Include="Content\CSS\fa.min.css" />
+    <Content Include="Content\CSS\fancybox.min.css" />
     <Content Include="Content\CSS\flaticon.css" />
     <Content Include="Content\CSS\font-awesome.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
     <Content Include="Content\CSS\grid-gallery.css" />
     <Content Include="Content\CSS\host-custom.css" />
     <Content Include="Content\CSS\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\CSS\jquery-ui.css" />
     <Content Include="Content\CSS\jquery-ui.min.css" />
+    <Content Include="Content\CSS\jquery.scrollbar.css" />
     <Content Include="Content\CSS\linearicons.css" />
     <Content Include="Content\CSS\magnific-popup.css" />
     <Content Include="Content\CSS\nice-select.css" />
     <Content Include="Content\CSS\owl.carousel.min.css" />
+    <Content Include="Content\CSS\owl.theme.default.min.css" />
     <Content Include="Content\CSS\pnotify.custom.css" />
     <Content Include="Content\CSS\select2-bootstrap.css" />
     <Content Include="Content\CSS\select2.css" />
     <Content Include="Content\CSS\slicknav.min.css" />
     <Content Include="Content\CSS\staff-custom.css" />
+    <Content Include="Content\CSS\style%281%29.css" />
     <Content Include="Content\CSS\style.css" />
+    <Content Include="Content\CSS\swiper.min.css" />
     <Content Include="Content\CSS\theme-custom.css" />
     <Content Include="Content\CSS\theme.css" />
     <Content Include="Content\CSS\tooplate-moso-interior.css" />
@@ -219,6 +228,9 @@
       <DependentUpon>Mapping.dbml</DependentUpon>
     </None>
     <Content Include="ModelPage.Master" />
+    <Content Include="Scripts\analytics.js" />
+    <Content Include="Scripts\aos.js" />
+    <Content Include="Scripts\application.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\click-scroll.js" />
     <Content Include="Scripts\core.min.js" />
@@ -243,6 +255,7 @@
     <Content Include="Scripts\jquery.nice-select.min.js" />
     <Content Include="Scripts\jquery.slicknav.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.js" />
+    <Content Include="Scripts\main%281%29.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
@@ -498,6 +511,14 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="UserPage.Master" />
+    <Content Include="Scripts\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\jquery.fancybox.min.js" />
+    <Content Include="Scripts\jquery.scrollbar.js" />
+    <Content Include="Scripts\products.js" />
+    <Content Include="Scripts\s.js" />
+    <Content Include="Scripts\swiper.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

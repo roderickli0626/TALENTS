@@ -24,15 +24,6 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ModelName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelName;
-
-        /// <summary>
         /// ModelSurname control.
         /// </summary>
         /// <remarks>
@@ -87,12 +78,21 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelResid;
 
         /// <summary>
-        /// DefaultPhotoRepeater control.
+        /// DefaultPhotoRepeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater DefaultPhotoRepeater;
+        protected global::System.Web.UI.WebControls.Repeater DefaultPhotoRepeater1;
+
+        /// <summary>
+        /// DefaultPhotoRepeater2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater DefaultPhotoRepeater2;
     }
 }
