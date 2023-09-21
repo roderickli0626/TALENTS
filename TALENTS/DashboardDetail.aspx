@@ -1,112 +1,190 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Page.Master" AutoEventWireup="true" CodeBehind="DashboardDetail.aspx.cs" Inherits="TALENTS.DashboardDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
-    <link rel="stylesheet" href="Content/CSS/baguetteBox.min.css" />
-    <link rel="stylesheet" href="Content/CSS/grid-gallery.css">
-    <link rel="stylesheet" href="Content/CSS/magnific-popup.css">
-    <link rel="stylesheet" href="Content/CSS/jquery-ui.css">
-    <link rel="stylesheet" href="Content/CSS/owl.carousel.min.css">
-    <link rel="stylesheet" href="Content/CSS/owl.theme.default.min.css">
-    <link rel="stylesheet" href="Content/CSS/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="Content/CSS/flaticon.css">
-    <link rel="stylesheet" href="Content/CSS/aos.css">
-    <link rel="stylesheet" href="Content/CSS/jquery.scrollbar.css">
-    <link rel="stylesheet" href="Content/CSS/fancybox.min.css">
-    <link rel="stylesheet" href="Content/CSS/swiper.min.css">
-    <link rel="stylesheet" href="Content/CSS/style(1).css">
-    <link rel="stylesheet" href="Content/CSS/style.css">
+    <link rel="stylesheet" href="Content/CSS/swiper-bundle.min.css">
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #000;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: cover;
+        }
+
+        .gallery-top {
+            height: 80%;
+            width: 30%;
+        }
+
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+            width: 200px;
+            float: left;
+        }
+
+            .gallery-thumbs .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .gallery-thumbs .swiper-slide-thumb-active {
+                opacity: 1;
+            }
+
+        .img-thumb {
+            width: 126px !important;
+            height: 126px !important;
+            margin-right: 0px !important;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-family: Dosis;
+            letter-spacing: 3.5px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-family: Dosis;
+            font-style: italic;
+        }
+
+        h2 {
+            font-family: Dosis;
+            font-size: 28px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="hero-slider">
         <div class="slider-item">
-            <div class="set-bg" style="padding-top: 180px; background-color: gray;">
+            <div class="set-bg" style="padding-top: 110px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
-                    <section class="gallery-block grid-gallery pt-0">
-                        <div class="site-wrap" style="position: relative;">
-                            <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto mb-5" style="background-color: #353535; width: 300px; position: absolute; bottom: 100px; left: 100px;">
-                                <div class="col-12 pb-2">
-                                    <h4 class="d-inline">Name: </h4>
-                                    <h4 runat="server" id="ModelSurname" class="d-inline float-right"></h4>
+                    
+                        <div class="site-wrap" style="position: relative;height:1000px;">
+                            <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
+                                <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
+                                <div class="col-12 pl-0">
+                                    <h4 class="d-inline">Citta: </h4>
+                                    <h4 runat="server" id="ModelResid" class="d-inline"></h4>
                                 </div>
-                                <div class="col-12 pb-2">
-                                    <h4 class="d-inline">Age: </h4>
-                                    <h4 runat="server" id="ModelAge" class="d-inline float-right"></h4>
+                                <div class="col-12 pb-2 pl-0">
+                                    <h4 class="d-inline">Nazione: </h4>
+                                    <h4 runat="server" id="ModelEth" class="d-inline"></h4>
                                 </div>
-                                <div class="col-12 pb-2">
-                                    <h4 class="d-inline">Height: </h4>
-                                    <h4 runat="server" id="ModelHeight" class="d-inline float-right"></h4>
+                                <div class="col-12 pb-2 pl-0">
+                                    <h4 class="d-inline">Altezza: </h4>
+                                    <h4 runat="server" id="ModelHeight" class="d-inline"></h4>
                                 </div>
-                                <div class="col-12 pb-2">
-                                    <h4 class="d-inline">Weight: </h4>
-                                    <h4 runat="server" id="ModelWeight" class="d-inline float-right"></h4>
+                                <div class="col-12 pb-2 pl-0">
+                                    <h4 class="d-inline">Taglia: </h4>
+                                    <h4 runat="server" id="ModelWeight" class="d-inline"></h4>
                                 </div>
-                                <div class="col-12 pb-2">
-                                    <h4 class="d-inline">Nationality: </h4>
-                                    <h4 runat="server" id="ModelEth" class="d-inline float-right"></h4>
+                                <div class="col-12 pb-2 pl-0">
+                                    <h4 class="d-inline">Occhi: </h4>
+                                    <h4 runat="server" id="ModelEye" class="d-inline"></h4>
                                 </div>
-                                <div class="col-12">
-                                    <h4 class="d-inline">Residence: </h4>
-                                    <h4 runat="server" id="ModelResid" class="d-inline float-right"></h4>
+                                <div class="col-12 pb-2 pl-0">
+                                    <h4 class="d-inline">Capelli: </h4>
+                                    <h4 runat="server" id="ModelHairColor" class="d-inline"></h4>
                                 </div>
                             </div>
-                            <div class="swiper-container gallery-top swiper-container-fade swiper-container-initialized swiper-container-horizontal"
-                                style="width: 50%;">
-                                <div class="swiper-wrapper" style="transition-duration: 300ms;">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
                                     <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
-                                    <ItemTemplate>
-                                        <div class="swiper-slide cover"
-                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot;); width: 960px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 300ms;">
-                                        </div>
-                                    </ItemTemplate>
+                                        <ItemTemplate>
+                                            <div class="swiper-slide"
+                                                style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                            </div>
+                                        </ItemTemplate>
                                     </asp:Repeater>
-                                    <div class="swiper-button-next swiper-button-white" tabindex="0" role="button" aria-label="Next slide"
-                                        aria-disabled="false">
-                                    </div>
-                                    <div class="swiper-button-prev swiper-button-white" tabindex="0" role="button" aria-label="Previous slide"
-                                        aria-disabled="false">
-                                    </div>
-                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                 </div>
                             </div>
-                            <div class="swiper-container gallery-thumbs swiper-container-initialized swiper-container-horizontal swiper-container-free-mode swiper-container-thumbs">
-                                <div class="swiper-wrapper" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px); justify-content: center;">
+                            <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white" style="width: 120px; position: absolute; bottom: 20%; right: 30px; text-align:center;">
+                                <div class="swiper-button-next swiper-button-white text-white"></div>
+                                <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
+                                    <i class="fa fa-pause"></i>
+                                </button>
+                                <div class="swiper-button-prev swiper-button-white text-white"></div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
+                                <div class="swiper-wrapper">
                                     <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
-                                    <ItemTemplate>
-                                        <div class="swiper-slide cover swiper-slide-visible swiper-slide-active"
-                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot;); width: 183px; margin-right: 10px;">
-                                        </div>
-                                    </ItemTemplate>
+                                        <ItemTemplate>
+                                            <div class="swiper-slide img-thumb"
+                                                style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                            </div>
+                                        </ItemTemplate>
                                     </asp:Repeater>
                                 </div>
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                             </div>
                         </div>
-                    </section>
+                    
                 </form>
             </div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/baguetteBox.min.js"></script>
+    <script src="Scripts/swiper-bundle.min.js"></script>
     <script>
-        baguetteBox.run('.grid-gallery', { animation: 'slideIn' });
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            loop: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 1000,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+            autoplay:
+            {
+                deply: 5000,
+            },
+            loop: true,
+        });
+
+        // Stop autoplay when stop button is clicked
+        var stopButton = document.querySelector('#BtnSwaperPause');
+        stopButton.addEventListener('click', function (e) {
+            if (galleryTop.autoplay.running) {
+                galleryTop.autoplay.stop();
+                stopButton.innerHTML = '<i class="fa fa-play"></i>';
+            } else {
+                galleryTop.autoplay.start();
+                stopButton.innerHTML = '<i class="fa fa-pause"></i>';
+            }
+            e.preventDefault();
+        });
     </script>
-
-    <script async="true" type="text/javascript" src="Scripts/analytics.js"></script>
-    <script src="Scripts/jquery-3.3.1.min.js"></script>
-    <script src="Scripts/jquery-migrate-3.0.1.min.js"></script>
-    <script src="Scripts/jquery-ui.js"></script>
-    <script src="Scripts/popper.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/owl.carousel.min.js"></script>
-
-    <script src="Scripts/jquery.countdown.min.js"></script>
-    <script src="Scripts/jquery.magnific-popup.min.js"></script>
-    <script src="Scripts/bootstrap-datepicker.min.js"></script>
-    <script src="Scripts/aos.js"></script>
-    <script src="Scripts/jquery.fancybox.min.js"></script>
-    <script src="Scripts/swiper.min.js"></script>
-    <script src="Scripts/jquery.scrollbar.js"></script>
-    <script src="Scripts/main(1).js"></script>
 </asp:Content>

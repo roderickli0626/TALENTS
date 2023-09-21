@@ -30,11 +30,28 @@
 
     <link rel="stylesheet" href="Content/CSS/select2.css" />
     <link rel="stylesheet" href="Content/CSS/select2-bootstrap.css" />
+    <style>
+        @font-face {
+            font-family:"Dosis";
+            src: url(Content/fonts/Dosis-VariableFont_wght.ttf) format('truetype')
+        }
+
+        h2 {
+            font-family:Dosis;
+            letter-spacing: 2.5px;
+            font-size: 28px;
+        }
+
+        h5 {
+            font-family: Dosis;
+            letter-spacing: 2.5px;
+        }
+    </style>
 
     <asp:ContentPlaceHolder ID="HeaderPlaceHolder" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="font-family:Dosis">
     <header class="header-section">
         <div class="container-fluid">
             <div class="inner-header">

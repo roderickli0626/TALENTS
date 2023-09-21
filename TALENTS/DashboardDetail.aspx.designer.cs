@@ -33,13 +33,22 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelSurname;
 
         /// <summary>
-        /// ModelAge control.
+        /// ModelResid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelAge;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelResid;
+
+        /// <summary>
+        /// ModelEth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEth;
 
         /// <summary>
         /// ModelHeight control.
@@ -60,22 +69,22 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelWeight;
 
         /// <summary>
-        /// ModelEth control.
+        /// ModelEye control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEth;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEye;
 
         /// <summary>
-        /// ModelResid control.
+        /// ModelHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelResid;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelHairColor;
 
         /// <summary>
         /// DefaultPhotoRepeater1 control.

@@ -131,7 +131,6 @@
     <Content Include="Content\CSS\bootstrap-multiselect.css" />
     <Content Include="Content\CSS\bootstrap-timepicker.min.css" />
     <Content Include="Content\CSS\bootstrap.css" />
-    <Content Include="Content\CSS\bootstrap.min%281%29.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\core.min.css" />
     <Content Include="Content\CSS\datatables.css" />
@@ -157,8 +156,8 @@
     <Content Include="Content\CSS\select2.css" />
     <Content Include="Content\CSS\slicknav.min.css" />
     <Content Include="Content\CSS\staff-custom.css" />
-    <Content Include="Content\CSS\style%281%29.css" />
     <Content Include="Content\CSS\style.css" />
+    <Content Include="Content\CSS\swiper-bundle.min.css" />
     <Content Include="Content\CSS\swiper.min.css" />
     <Content Include="Content\CSS\theme-custom.css" />
     <Content Include="Content\CSS\theme.css" />
@@ -224,6 +223,14 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="AdminPage.Master" />
+    <Content Include="Content\fonts\Dosis-VariableFont_wght.ttf" />
+    <Content Include="Content\fonts\Dosis-Bold.ttf" />
+    <Content Include="Content\fonts\Dosis-ExtraBold.ttf" />
+    <Content Include="Content\fonts\Dosis-ExtraLight.ttf" />
+    <Content Include="Content\fonts\Dosis-Light.ttf" />
+    <Content Include="Content\fonts\Dosis-Medium.ttf" />
+    <Content Include="Content\fonts\Dosis-Regular.ttf" />
+    <Content Include="Content\fonts\Dosis-SemiBold.ttf" />
     <None Include="Mapping.dbml.layout">
       <DependentUpon>Mapping.dbml</DependentUpon>
     </None>
@@ -255,7 +262,6 @@
     <Content Include="Scripts\jquery.nice-select.min.js" />
     <Content Include="Scripts\jquery.slicknav.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.js" />
-    <Content Include="Scripts\main%281%29.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
@@ -264,6 +270,7 @@
     <Content Include="Scripts\pnotify.custom.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\swiper-bundle.min.js" />
     <Content Include="Scripts\theme.custom.js" />
     <Content Include="Scripts\theme.init.js" />
     <Content Include="Scripts\theme.js" />
@@ -290,6 +297,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Upload\Photos\1.jpg" />
     <Content Include="Upload\Photos\20.jpg" />
     <Content Include="Upload\Photos\19.jpg" />
     <Content Include="Upload\Photos\18.jpg" />
@@ -300,7 +308,6 @@
     <Content Include="Upload\Photos\13.jpg" />
     <Content Include="Upload\Photos\12.jpg" />
     <Content Include="Upload\Photos\11.jpg" />
-    <Content Include="Upload\Photos\1.jpg" />
     <Content Include="Upload\Photos\10.jpg" />
     <Content Include="Upload\Photos\2.jpg" />
     <Content Include="Upload\Photos\3.jpg" />

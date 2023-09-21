@@ -22,6 +22,8 @@ namespace TALENTS.Models
             Weight = biography.Weight ?? 0;
             Age = biography.Age ?? 0;
             Nationality = biography.Nationality.Description;
+            Eye = biography.Eye.Description;
+            HairColor = biography.HairColor.Description;
         }
 
         public int Id
@@ -50,6 +52,14 @@ namespace TALENTS.Models
             get; set;
         }
         public string Nationality
+        {
+            get; set;
+        }
+        public string Eye
+        {
+            get; set;
+        }
+        public string HairColor
         {
             get; set;
         }

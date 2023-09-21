@@ -28,11 +28,12 @@ namespace TALENTS
             ModelCheck modelInfo = new ModelController().GetDashboardModelInfo(modelId);
 
             ModelSurname.InnerText = modelInfo.Name;
-            ModelAge.InnerText = modelInfo.Age.ToString();
             ModelHeight.InnerText = modelInfo.Height.ToString();
             ModelWeight.InnerText = modelInfo.Weight.ToString();
             ModelEth.InnerText = modelInfo.Nationality;
             ModelResid.InnerText = modelInfo.CityResidence;
+            ModelEye.InnerText = modelInfo.Eye;
+            ModelHairColor.InnerText = modelInfo.HairColor;
 
             DefaultPhotoRepeater1.DataSource = modelInfo.ImageList;
             DefaultPhotoRepeater1.DataBind();
