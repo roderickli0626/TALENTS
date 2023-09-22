@@ -11,9 +11,9 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="City_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="CityResidenceId" Type="UserInfo" />
-      <Association Name="City_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="CityResidenceId" Type="ModBiography" />
       <Association Name="City_ModTour" Member="ModTours" ThisKey="Id" OtherKey="CityId" Type="ModTour" />
       <Association Name="City_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="CityId" Type="ModWorkingCityAlloc" />
+      <Association Name="City_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="CityResidenceId" Type="ModBiography" />
     </Type>
   </Table>
   <Table Name="dbo.DressSize" Member="DressSizes">
@@ -165,46 +165,6 @@
       <Association Name="Model_UserInfo" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ModBiography" Member="ModBiographies">
-    <Type Name="ModBiography">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Slogan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Sex" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="EthnicityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NationalityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CityResidenceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="HairColorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="HairLenghId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EyeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DressSizeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Shoes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bust" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Waist" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Haunch" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BreastSizeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Seno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Smoker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Tattoos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Drinker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Piercing" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Peculiarities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AboutMe" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="BreastSize_ModBiography" Member="BreastSize" ThisKey="BreastSizeId" OtherKey="Id" Type="BreastSize" IsForeignKey="true" />
-      <Association Name="DressSize_ModBiography" Member="DressSize" ThisKey="DressSizeId" OtherKey="Id" Type="DressSize" IsForeignKey="true" />
-      <Association Name="Ethnicity_ModBiography" Member="Ethnicity" ThisKey="EthnicityId" OtherKey="Id" Type="Ethnicity" IsForeignKey="true" />
-      <Association Name="Eye_ModBiography" Member="Eye" ThisKey="EyeId" OtherKey="Id" Type="Eye" IsForeignKey="true" />
-      <Association Name="HairColor_ModBiography" Member="HairColor" ThisKey="HairColorId" OtherKey="Id" Type="HairColor" IsForeignKey="true" />
-      <Association Name="HairLength_ModBiography" Member="HairLength" ThisKey="HairLenghId" OtherKey="Id" Type="HairLength" IsForeignKey="true" />
-      <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
-      <Association Name="Nationality_ModBiography" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
-      <Association Name="Model_ModBiography" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ModContacts" Member="ModContacts">
     <Type Name="ModContact">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -230,7 +190,6 @@
       <Column Name="IsUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Model_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="UserId" Type="UserInfo" />
-      <Association Name="Model_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="ModelId" Type="ModBiography" />
       <Association Name="Model_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="ModelId" Type="ModContact" />
       <Association Name="Model_ModIncallPlace" Member="ModIncallPlaces" ThisKey="Id" OtherKey="ModelId" Type="ModIncallPlace" />
       <Association Name="Model_ModLanguageAlloc" Member="ModLanguageAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModLanguageAlloc" />
@@ -242,6 +201,7 @@
       <Association Name="Model_ModVideo" Member="ModVideos" ThisKey="Id" OtherKey="ModelId" Type="ModVideo" />
       <Association Name="Model_ModWorkDayHour" Member="ModWorkDayHours" ThisKey="Id" OtherKey="ModelId" Type="ModWorkDayHour" />
       <Association Name="Model_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModWorkingCityAlloc" />
+      <Association Name="Model_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="ModelId" Type="ModBiography" />
     </Type>
   </Table>
   <Table Name="dbo.ModIncallPlace" Member="ModIncallPlaces">
@@ -372,6 +332,46 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="ServiceGroup_Service" Member="Services" ThisKey="Id" OtherKey="GroupId" Type="Service" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModBiography" Member="ModBiographies">
+    <Type Name="ModBiography">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Slogan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EthnicityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NationalityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityResidenceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HairColorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HairLenghId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EyeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DressSizeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Shoes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bust" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Waist" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Haunch" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BreastSizeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Seno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Smoker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tattoos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Drinker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Piercing" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Peculiarities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AboutMe" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="BreastSize_ModBiography" Member="BreastSize" ThisKey="BreastSizeId" OtherKey="Id" Type="BreastSize" IsForeignKey="true" />
+      <Association Name="DressSize_ModBiography" Member="DressSize" ThisKey="DressSizeId" OtherKey="Id" Type="DressSize" IsForeignKey="true" />
+      <Association Name="Ethnicity_ModBiography" Member="Ethnicity" ThisKey="EthnicityId" OtherKey="Id" Type="Ethnicity" IsForeignKey="true" />
+      <Association Name="Eye_ModBiography" Member="Eye" ThisKey="EyeId" OtherKey="Id" Type="Eye" IsForeignKey="true" />
+      <Association Name="HairColor_ModBiography" Member="HairColor" ThisKey="HairColorId" OtherKey="Id" Type="HairColor" IsForeignKey="true" />
+      <Association Name="HairLength_ModBiography" Member="HairLength" ThisKey="HairLenghId" OtherKey="Id" Type="HairLength" IsForeignKey="true" />
+      <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
+      <Association Name="Model_ModBiography" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Nationality_ModBiography" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

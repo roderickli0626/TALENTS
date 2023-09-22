@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Antlr.Runtime.Tree;
+using Microsoft.Ajax.Utilities;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using TALENTS.DAO;
 using TALENTS.Models;
@@ -44,6 +48,91 @@ namespace TALENTS.Controller
             int defaultPhotoGroupID = new PhotoGroupDAO().FindAll().OrderBy(p => p.Id).FirstOrDefault().Id;
             modelCheck.ImageList = modPhotoDao.FindByModelAndGroup(modelId, defaultPhotoGroupID).ToList();
             return modelCheck;
+        }
+
+        public bool SaveModelBio(int modelId, string name, string slogan, int? age, string sex, int? ethId, int? nationId, int? resId, int? hairColorId, int? hairLengId, int? eyeId,
+                double? height, double? weight, int? dressId, int? shoes, string bust, string waist, string haunch, int? breastId, string smoker, string tattoos, string drinker, string piercing, string peculiarities)
+        {
+            bool result = false;
+            ModBiography modBiography = biographyDao.FindByModelId(modelId);
+            if (modBiography == null) 
+            {
+                modBiography = new ModBiography();
+                modBiography.ModelId = modelId;
+                modBiography.Name = name;
+                modBiography.Age = age;
+                modBiography.Sex = sex;
+                modBiography.Slogan = slogan;
+                modBiography.EthnicityId = ethId;
+                modBiography.NationalityId = nationId;
+                modBiography.CityResidenceId = resId;
+                modBiography.HairColorId = hairColorId;
+                modBiography.HairLenghId = hairLengId;
+                modBiography.EyeId = eyeId;
+                modBiography.Height = height;
+                modBiography.Weight = weight;
+                modBiography.DressSizeId = dressId;
+                modBiography.Shoes = shoes;
+                modBiography.Bust = bust;
+                modBiography.Waist = waist;
+                modBiography.Haunch = haunch;
+                modBiography.BreastSizeId = breastId;
+                modBiography.Drinker = drinker;
+                modBiography.Smoker = smoker;
+                modBiography.Piercing = piercing;
+                modBiography.Peculiarities = peculiarities;
+                modBiography.Tattoos = tattoos;
+
+                result = biographyDao.Insert(modBiography);
+            }
+            else
+            {
+                modBiography.Name = name;
+                modBiography.Age = age;
+                modBiography.Sex = sex;
+                modBiography.Slogan = slogan;
+                modBiography.EthnicityId = ethId;
+                modBiography.NationalityId = nationId;
+                modBiography.CityResidenceId = resId;
+                modBiography.HairColorId = hairColorId;
+                modBiography.HairLenghId = hairLengId;
+                modBiography.EyeId = eyeId;
+                modBiography.Height = height;
+                modBiography.Weight = weight;
+                modBiography.DressSizeId = dressId;
+                modBiography.Shoes = shoes;
+                modBiography.Bust = bust;
+                modBiography.Waist = waist;
+                modBiography.Haunch = haunch;
+                modBiography.BreastSizeId = breastId;
+                modBiography.Drinker = drinker;
+                modBiography.Smoker = smoker;
+                modBiography.Piercing = piercing;
+                modBiography.Peculiarities = peculiarities;
+                modBiography.Tattoos = tattoos;
+
+                result = biographyDao.Update(modBiography);
+            }
+            return result;
+        }
+
+        public bool SaveAboutMe(int modelId, string aboutMe)
+        {
+            bool result = false;
+            ModBiography modBiography =  biographyDao.FindByModelId(modelId);
+            if (modBiography == null)
+            {
+                modBiography = new ModBiography();
+                modBiography.ModelId = modelId;
+                modBiography.AboutMe = aboutMe;
+                result = biographyDao.Insert(modBiography);
+            }
+            else
+            {
+                modBiography.AboutMe = aboutMe;
+                result = biographyDao.Update(modBiography);
+            }
+            return result;
         }
     }
 }

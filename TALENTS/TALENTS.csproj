@@ -161,6 +161,7 @@
     <Content Include="Content\CSS\swiper.min.css" />
     <Content Include="Content\CSS\theme-custom.css" />
     <Content Include="Content\CSS\theme.css" />
+    <Content Include="Content\CSS\toastr.min.css" />
     <Content Include="Content\CSS\tooplate-moso-interior.css" />
     <Content Include="Content\fonts\Flaticon.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -178,6 +179,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ModelHome.aspx" />
     <Content Include="ModelHomeDetail.aspx" />
+    <Content Include="ModelInformation.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\baguetteBox.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -274,6 +276,7 @@
     <Content Include="Scripts\theme.custom.js" />
     <Content Include="Scripts\theme.init.js" />
     <Content Include="Scripts\theme.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\util.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -445,6 +448,13 @@
     </Compile>
     <Compile Include="ModelHomeDetail.aspx.designer.cs">
       <DependentUpon>ModelHomeDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelInformation.aspx.cs">
+      <DependentUpon>ModelInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModelInformation.aspx.designer.cs">
+      <DependentUpon>ModelInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModelPage.Master.cs">
       <DependentUpon>ModelPage.Master</DependentUpon>

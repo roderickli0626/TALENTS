@@ -90,9 +90,6 @@ namespace TALENTS
     partial void InsertUserInfo(UserInfo instance);
     partial void UpdateUserInfo(UserInfo instance);
     partial void DeleteUserInfo(UserInfo instance);
-    partial void InsertModBiography(ModBiography instance);
-    partial void UpdateModBiography(ModBiography instance);
-    partial void DeleteModBiography(ModBiography instance);
     partial void InsertModContact(ModContact instance);
     partial void UpdateModContact(ModContact instance);
     partial void DeleteModContact(ModContact instance);
@@ -138,6 +135,9 @@ namespace TALENTS
     partial void InsertServiceGroup(ServiceGroup instance);
     partial void UpdateServiceGroup(ServiceGroup instance);
     partial void DeleteServiceGroup(ServiceGroup instance);
+    partial void InsertModBiography(ModBiography instance);
+    partial void UpdateModBiography(ModBiography instance);
+    partial void DeleteModBiography(ModBiography instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -324,14 +324,6 @@ namespace TALENTS
 			}
 		}
 		
-		public System.Data.Linq.Table<ModBiography> ModBiographies
-		{
-			get
-			{
-				return this.GetTable<ModBiography>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ModContact> ModContacts
 		{
 			get
@@ -449,6 +441,14 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<ServiceGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ModBiography> ModBiographies
+		{
+			get
+			{
+				return this.GetTable<ModBiography>();
 			}
 		}
 	}
@@ -579,11 +579,11 @@ namespace TALENTS
 		
 		private EntitySet<UserInfo> _UserInfos;
 		
-		private EntitySet<ModBiography> _ModBiographies;
-		
 		private EntitySet<ModTour> _ModTours;
 		
 		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
+		
+		private EntitySet<ModBiography> _ModBiographies;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -598,9 +598,9 @@ namespace TALENTS
 		public City()
 		{
 			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
-			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
 			this._ModTours = new EntitySet<ModTour>(new Action<ModTour>(this.attach_ModTours), new Action<ModTour>(this.detach_ModTours));
 			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
+			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
 			OnCreated();
 		}
 		
@@ -657,19 +657,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="CityResidenceId")]
-		public EntitySet<ModBiography> ModBiographies
-		{
-			get
-			{
-				return this._ModBiographies;
-			}
-			set
-			{
-				this._ModBiographies.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModTour", Storage="_ModTours", ThisKey="Id", OtherKey="CityId")]
 		public EntitySet<ModTour> ModTours
 		{
@@ -693,6 +680,19 @@ namespace TALENTS
 			set
 			{
 				this._ModWorkingCityAllocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="CityResidenceId")]
+		public EntitySet<ModBiography> ModBiographies
+		{
+			get
+			{
+				return this._ModBiographies;
+			}
+			set
+			{
+				this._ModBiographies.Assign(value);
 			}
 		}
 		
@@ -728,18 +728,6 @@ namespace TALENTS
 			entity.City = null;
 		}
 		
-		private void attach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = this;
-		}
-		
-		private void detach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = null;
-		}
-		
 		private void attach_ModTours(ModTour entity)
 		{
 			this.SendPropertyChanging();
@@ -759,6 +747,18 @@ namespace TALENTS
 		}
 		
 		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = null;
+		}
+		
+		private void attach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = this;
+		}
+		
+		private void detach_ModBiographies(ModBiography entity)
 		{
 			this.SendPropertyChanging();
 			entity.City = null;
@@ -3445,1061 +3445,6 @@ namespace TALENTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModBiography")]
-	public partial class ModBiography : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _ModelId;
-		
-		private string _Name;
-		
-		private string _Slogan;
-		
-		private System.Nullable<int> _Age;
-		
-		private string _Sex;
-		
-		private int _EthnicityId;
-		
-		private int _NationalityId;
-		
-		private int _CityResidenceId;
-		
-		private int _HairColorId;
-		
-		private int _HairLenghId;
-		
-		private int _EyeId;
-		
-		private System.Nullable<double> _Height;
-		
-		private System.Nullable<double> _Weight;
-		
-		private int _DressSizeId;
-		
-		private System.Nullable<int> _Shoes;
-		
-		private string _Bust;
-		
-		private string _Waist;
-		
-		private string _Haunch;
-		
-		private int _BreastSizeId;
-		
-		private string _Seno;
-		
-		private string _Smoker;
-		
-		private string _Tattoos;
-		
-		private string _Drinker;
-		
-		private string _Piercing;
-		
-		private string _Peculiarities;
-		
-		private string _AboutMe;
-		
-		private EntityRef<BreastSize> _BreastSize;
-		
-		private EntityRef<DressSize> _DressSize;
-		
-		private EntityRef<Ethnicity> _Ethnicity;
-		
-		private EntityRef<Eye> _Eye;
-		
-		private EntityRef<HairColor> _HairColor;
-		
-		private EntityRef<HairLength> _HairLength;
-		
-		private EntityRef<City> _City;
-		
-		private EntityRef<Nationality> _Nationality;
-		
-		private EntityRef<Model> _Model;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnModelIdChanging(int value);
-    partial void OnModelIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnSloganChanging(string value);
-    partial void OnSloganChanged();
-    partial void OnAgeChanging(System.Nullable<int> value);
-    partial void OnAgeChanged();
-    partial void OnSexChanging(string value);
-    partial void OnSexChanged();
-    partial void OnEthnicityIdChanging(int value);
-    partial void OnEthnicityIdChanged();
-    partial void OnNationalityIdChanging(int value);
-    partial void OnNationalityIdChanged();
-    partial void OnCityResidenceIdChanging(int value);
-    partial void OnCityResidenceIdChanged();
-    partial void OnHairColorIdChanging(int value);
-    partial void OnHairColorIdChanged();
-    partial void OnHairLenghIdChanging(int value);
-    partial void OnHairLenghIdChanged();
-    partial void OnEyeIdChanging(int value);
-    partial void OnEyeIdChanged();
-    partial void OnHeightChanging(System.Nullable<double> value);
-    partial void OnHeightChanged();
-    partial void OnWeightChanging(System.Nullable<double> value);
-    partial void OnWeightChanged();
-    partial void OnDressSizeIdChanging(int value);
-    partial void OnDressSizeIdChanged();
-    partial void OnShoesChanging(System.Nullable<int> value);
-    partial void OnShoesChanged();
-    partial void OnBustChanging(string value);
-    partial void OnBustChanged();
-    partial void OnWaistChanging(string value);
-    partial void OnWaistChanged();
-    partial void OnHaunchChanging(string value);
-    partial void OnHaunchChanged();
-    partial void OnBreastSizeIdChanging(int value);
-    partial void OnBreastSizeIdChanged();
-    partial void OnSenoChanging(string value);
-    partial void OnSenoChanged();
-    partial void OnSmokerChanging(string value);
-    partial void OnSmokerChanged();
-    partial void OnTattoosChanging(string value);
-    partial void OnTattoosChanged();
-    partial void OnDrinkerChanging(string value);
-    partial void OnDrinkerChanged();
-    partial void OnPiercingChanging(string value);
-    partial void OnPiercingChanged();
-    partial void OnPeculiaritiesChanging(string value);
-    partial void OnPeculiaritiesChanged();
-    partial void OnAboutMeChanging(string value);
-    partial void OnAboutMeChanged();
-    #endregion
-		
-		public ModBiography()
-		{
-			this._BreastSize = default(EntityRef<BreastSize>);
-			this._DressSize = default(EntityRef<DressSize>);
-			this._Ethnicity = default(EntityRef<Ethnicity>);
-			this._Eye = default(EntityRef<Eye>);
-			this._HairColor = default(EntityRef<HairColor>);
-			this._HairLength = default(EntityRef<HairLength>);
-			this._City = default(EntityRef<City>);
-			this._Nationality = default(EntityRef<Nationality>);
-			this._Model = default(EntityRef<Model>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int NOT NULL")]
-		public int ModelId
-		{
-			get
-			{
-				return this._ModelId;
-			}
-			set
-			{
-				if ((this._ModelId != value))
-				{
-					if (this._Model.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnModelIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModelId = value;
-					this.SendPropertyChanged("ModelId");
-					this.OnModelIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Slogan", DbType="VarChar(50)")]
-		public string Slogan
-		{
-			get
-			{
-				return this._Slogan;
-			}
-			set
-			{
-				if ((this._Slogan != value))
-				{
-					this.OnSloganChanging(value);
-					this.SendPropertyChanging();
-					this._Slogan = value;
-					this.SendPropertyChanged("Slogan");
-					this.OnSloganChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
-		public System.Nullable<int> Age
-		{
-			get
-			{
-				return this._Age;
-			}
-			set
-			{
-				if ((this._Age != value))
-				{
-					this.OnAgeChanging(value);
-					this.SendPropertyChanging();
-					this._Age = value;
-					this.SendPropertyChanged("Age");
-					this.OnAgeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sex", DbType="VarChar(50)")]
-		public string Sex
-		{
-			get
-			{
-				return this._Sex;
-			}
-			set
-			{
-				if ((this._Sex != value))
-				{
-					this.OnSexChanging(value);
-					this.SendPropertyChanging();
-					this._Sex = value;
-					this.SendPropertyChanged("Sex");
-					this.OnSexChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EthnicityId", DbType="Int NOT NULL")]
-		public int EthnicityId
-		{
-			get
-			{
-				return this._EthnicityId;
-			}
-			set
-			{
-				if ((this._EthnicityId != value))
-				{
-					if (this._Ethnicity.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEthnicityIdChanging(value);
-					this.SendPropertyChanging();
-					this._EthnicityId = value;
-					this.SendPropertyChanged("EthnicityId");
-					this.OnEthnicityIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalityId", DbType="Int NOT NULL")]
-		public int NationalityId
-		{
-			get
-			{
-				return this._NationalityId;
-			}
-			set
-			{
-				if ((this._NationalityId != value))
-				{
-					if (this._Nationality.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnNationalityIdChanging(value);
-					this.SendPropertyChanging();
-					this._NationalityId = value;
-					this.SendPropertyChanged("NationalityId");
-					this.OnNationalityIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityResidenceId", DbType="Int NOT NULL")]
-		public int CityResidenceId
-		{
-			get
-			{
-				return this._CityResidenceId;
-			}
-			set
-			{
-				if ((this._CityResidenceId != value))
-				{
-					if (this._City.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCityResidenceIdChanging(value);
-					this.SendPropertyChanging();
-					this._CityResidenceId = value;
-					this.SendPropertyChanged("CityResidenceId");
-					this.OnCityResidenceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HairColorId", DbType="Int NOT NULL")]
-		public int HairColorId
-		{
-			get
-			{
-				return this._HairColorId;
-			}
-			set
-			{
-				if ((this._HairColorId != value))
-				{
-					if (this._HairColor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnHairColorIdChanging(value);
-					this.SendPropertyChanging();
-					this._HairColorId = value;
-					this.SendPropertyChanged("HairColorId");
-					this.OnHairColorIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HairLenghId", DbType="Int NOT NULL")]
-		public int HairLenghId
-		{
-			get
-			{
-				return this._HairLenghId;
-			}
-			set
-			{
-				if ((this._HairLenghId != value))
-				{
-					if (this._HairLength.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnHairLenghIdChanging(value);
-					this.SendPropertyChanging();
-					this._HairLenghId = value;
-					this.SendPropertyChanged("HairLenghId");
-					this.OnHairLenghIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EyeId", DbType="Int NOT NULL")]
-		public int EyeId
-		{
-			get
-			{
-				return this._EyeId;
-			}
-			set
-			{
-				if ((this._EyeId != value))
-				{
-					if (this._Eye.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEyeIdChanging(value);
-					this.SendPropertyChanging();
-					this._EyeId = value;
-					this.SendPropertyChanged("EyeId");
-					this.OnEyeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Height", DbType="Float")]
-		public System.Nullable<double> Height
-		{
-			get
-			{
-				return this._Height;
-			}
-			set
-			{
-				if ((this._Height != value))
-				{
-					this.OnHeightChanging(value);
-					this.SendPropertyChanging();
-					this._Height = value;
-					this.SendPropertyChanged("Height");
-					this.OnHeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float")]
-		public System.Nullable<double> Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this.OnWeightChanging(value);
-					this.SendPropertyChanging();
-					this._Weight = value;
-					this.SendPropertyChanged("Weight");
-					this.OnWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DressSizeId", DbType="Int NOT NULL")]
-		public int DressSizeId
-		{
-			get
-			{
-				return this._DressSizeId;
-			}
-			set
-			{
-				if ((this._DressSizeId != value))
-				{
-					if (this._DressSize.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnDressSizeIdChanging(value);
-					this.SendPropertyChanging();
-					this._DressSizeId = value;
-					this.SendPropertyChanged("DressSizeId");
-					this.OnDressSizeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Shoes", DbType="Int")]
-		public System.Nullable<int> Shoes
-		{
-			get
-			{
-				return this._Shoes;
-			}
-			set
-			{
-				if ((this._Shoes != value))
-				{
-					this.OnShoesChanging(value);
-					this.SendPropertyChanging();
-					this._Shoes = value;
-					this.SendPropertyChanged("Shoes");
-					this.OnShoesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bust", DbType="VarChar(50)")]
-		public string Bust
-		{
-			get
-			{
-				return this._Bust;
-			}
-			set
-			{
-				if ((this._Bust != value))
-				{
-					this.OnBustChanging(value);
-					this.SendPropertyChanging();
-					this._Bust = value;
-					this.SendPropertyChanged("Bust");
-					this.OnBustChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Waist", DbType="VarChar(50)")]
-		public string Waist
-		{
-			get
-			{
-				return this._Waist;
-			}
-			set
-			{
-				if ((this._Waist != value))
-				{
-					this.OnWaistChanging(value);
-					this.SendPropertyChanging();
-					this._Waist = value;
-					this.SendPropertyChanged("Waist");
-					this.OnWaistChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Haunch", DbType="VarChar(50)")]
-		public string Haunch
-		{
-			get
-			{
-				return this._Haunch;
-			}
-			set
-			{
-				if ((this._Haunch != value))
-				{
-					this.OnHaunchChanging(value);
-					this.SendPropertyChanging();
-					this._Haunch = value;
-					this.SendPropertyChanged("Haunch");
-					this.OnHaunchChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BreastSizeId", DbType="Int NOT NULL")]
-		public int BreastSizeId
-		{
-			get
-			{
-				return this._BreastSizeId;
-			}
-			set
-			{
-				if ((this._BreastSizeId != value))
-				{
-					if (this._BreastSize.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnBreastSizeIdChanging(value);
-					this.SendPropertyChanging();
-					this._BreastSizeId = value;
-					this.SendPropertyChanged("BreastSizeId");
-					this.OnBreastSizeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seno", DbType="VarChar(50)")]
-		public string Seno
-		{
-			get
-			{
-				return this._Seno;
-			}
-			set
-			{
-				if ((this._Seno != value))
-				{
-					this.OnSenoChanging(value);
-					this.SendPropertyChanging();
-					this._Seno = value;
-					this.SendPropertyChanged("Seno");
-					this.OnSenoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Smoker", DbType="VarChar(50)")]
-		public string Smoker
-		{
-			get
-			{
-				return this._Smoker;
-			}
-			set
-			{
-				if ((this._Smoker != value))
-				{
-					this.OnSmokerChanging(value);
-					this.SendPropertyChanging();
-					this._Smoker = value;
-					this.SendPropertyChanged("Smoker");
-					this.OnSmokerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tattoos", DbType="VarChar(50)")]
-		public string Tattoos
-		{
-			get
-			{
-				return this._Tattoos;
-			}
-			set
-			{
-				if ((this._Tattoos != value))
-				{
-					this.OnTattoosChanging(value);
-					this.SendPropertyChanging();
-					this._Tattoos = value;
-					this.SendPropertyChanged("Tattoos");
-					this.OnTattoosChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Drinker", DbType="VarChar(50)")]
-		public string Drinker
-		{
-			get
-			{
-				return this._Drinker;
-			}
-			set
-			{
-				if ((this._Drinker != value))
-				{
-					this.OnDrinkerChanging(value);
-					this.SendPropertyChanging();
-					this._Drinker = value;
-					this.SendPropertyChanged("Drinker");
-					this.OnDrinkerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Piercing", DbType="VarChar(50)")]
-		public string Piercing
-		{
-			get
-			{
-				return this._Piercing;
-			}
-			set
-			{
-				if ((this._Piercing != value))
-				{
-					this.OnPiercingChanging(value);
-					this.SendPropertyChanging();
-					this._Piercing = value;
-					this.SendPropertyChanged("Piercing");
-					this.OnPiercingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Peculiarities", DbType="VarChar(50)")]
-		public string Peculiarities
-		{
-			get
-			{
-				return this._Peculiarities;
-			}
-			set
-			{
-				if ((this._Peculiarities != value))
-				{
-					this.OnPeculiaritiesChanging(value);
-					this.SendPropertyChanging();
-					this._Peculiarities = value;
-					this.SendPropertyChanged("Peculiarities");
-					this.OnPeculiaritiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AboutMe", DbType="VarChar(MAX)")]
-		public string AboutMe
-		{
-			get
-			{
-				return this._AboutMe;
-			}
-			set
-			{
-				if ((this._AboutMe != value))
-				{
-					this.OnAboutMeChanging(value);
-					this.SendPropertyChanging();
-					this._AboutMe = value;
-					this.SendPropertyChanged("AboutMe");
-					this.OnAboutMeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BreastSize_ModBiography", Storage="_BreastSize", ThisKey="BreastSizeId", OtherKey="Id", IsForeignKey=true)]
-		public BreastSize BreastSize
-		{
-			get
-			{
-				return this._BreastSize.Entity;
-			}
-			set
-			{
-				BreastSize previousValue = this._BreastSize.Entity;
-				if (((previousValue != value) 
-							|| (this._BreastSize.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BreastSize.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._BreastSize.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._BreastSizeId = value.Id;
-					}
-					else
-					{
-						this._BreastSizeId = default(int);
-					}
-					this.SendPropertyChanged("BreastSize");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DressSize_ModBiography", Storage="_DressSize", ThisKey="DressSizeId", OtherKey="Id", IsForeignKey=true)]
-		public DressSize DressSize
-		{
-			get
-			{
-				return this._DressSize.Entity;
-			}
-			set
-			{
-				DressSize previousValue = this._DressSize.Entity;
-				if (((previousValue != value) 
-							|| (this._DressSize.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DressSize.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._DressSize.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._DressSizeId = value.Id;
-					}
-					else
-					{
-						this._DressSizeId = default(int);
-					}
-					this.SendPropertyChanged("DressSize");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ethnicity_ModBiography", Storage="_Ethnicity", ThisKey="EthnicityId", OtherKey="Id", IsForeignKey=true)]
-		public Ethnicity Ethnicity
-		{
-			get
-			{
-				return this._Ethnicity.Entity;
-			}
-			set
-			{
-				Ethnicity previousValue = this._Ethnicity.Entity;
-				if (((previousValue != value) 
-							|| (this._Ethnicity.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ethnicity.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._Ethnicity.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._EthnicityId = value.Id;
-					}
-					else
-					{
-						this._EthnicityId = default(int);
-					}
-					this.SendPropertyChanged("Ethnicity");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Eye_ModBiography", Storage="_Eye", ThisKey="EyeId", OtherKey="Id", IsForeignKey=true)]
-		public Eye Eye
-		{
-			get
-			{
-				return this._Eye.Entity;
-			}
-			set
-			{
-				Eye previousValue = this._Eye.Entity;
-				if (((previousValue != value) 
-							|| (this._Eye.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Eye.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._Eye.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._EyeId = value.Id;
-					}
-					else
-					{
-						this._EyeId = default(int);
-					}
-					this.SendPropertyChanged("Eye");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HairColor_ModBiography", Storage="_HairColor", ThisKey="HairColorId", OtherKey="Id", IsForeignKey=true)]
-		public HairColor HairColor
-		{
-			get
-			{
-				return this._HairColor.Entity;
-			}
-			set
-			{
-				HairColor previousValue = this._HairColor.Entity;
-				if (((previousValue != value) 
-							|| (this._HairColor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HairColor.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._HairColor.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._HairColorId = value.Id;
-					}
-					else
-					{
-						this._HairColorId = default(int);
-					}
-					this.SendPropertyChanged("HairColor");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HairLength_ModBiography", Storage="_HairLength", ThisKey="HairLenghId", OtherKey="Id", IsForeignKey=true)]
-		public HairLength HairLength
-		{
-			get
-			{
-				return this._HairLength.Entity;
-			}
-			set
-			{
-				HairLength previousValue = this._HairLength.Entity;
-				if (((previousValue != value) 
-							|| (this._HairLength.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HairLength.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._HairLength.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._HairLenghId = value.Id;
-					}
-					else
-					{
-						this._HairLenghId = default(int);
-					}
-					this.SendPropertyChanged("HairLength");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
-		public City City
-		{
-			get
-			{
-				return this._City.Entity;
-			}
-			set
-			{
-				City previousValue = this._City.Entity;
-				if (((previousValue != value) 
-							|| (this._City.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._City.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._City.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._CityResidenceId = value.Id;
-					}
-					else
-					{
-						this._CityResidenceId = default(int);
-					}
-					this.SendPropertyChanged("City");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_ModBiography", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
-		public Nationality Nationality
-		{
-			get
-			{
-				return this._Nationality.Entity;
-			}
-			set
-			{
-				Nationality previousValue = this._Nationality.Entity;
-				if (((previousValue != value) 
-							|| (this._Nationality.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Nationality.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._Nationality.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._NationalityId = value.Id;
-					}
-					else
-					{
-						this._NationalityId = default(int);
-					}
-					this.SendPropertyChanged("Nationality");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModContacts")]
 	public partial class ModContact : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4875,8 +3820,6 @@ namespace TALENTS
 		
 		private EntitySet<UserInfo> _UserInfos;
 		
-		private EntitySet<ModBiography> _ModBiographies;
-		
 		private EntitySet<ModContact> _ModContacts;
 		
 		private EntitySet<ModIncallPlace> _ModIncallPlaces;
@@ -4898,6 +3841,8 @@ namespace TALENTS
 		private EntitySet<ModWorkDayHour> _ModWorkDayHours;
 		
 		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
+		
+		private EntitySet<ModBiography> _ModBiographies;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4922,7 +3867,6 @@ namespace TALENTS
 		public Model()
 		{
 			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
-			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
 			this._ModContacts = new EntitySet<ModContact>(new Action<ModContact>(this.attach_ModContacts), new Action<ModContact>(this.detach_ModContacts));
 			this._ModIncallPlaces = new EntitySet<ModIncallPlace>(new Action<ModIncallPlace>(this.attach_ModIncallPlaces), new Action<ModIncallPlace>(this.detach_ModIncallPlaces));
 			this._ModLanguageAllocs = new EntitySet<ModLanguageAlloc>(new Action<ModLanguageAlloc>(this.attach_ModLanguageAllocs), new Action<ModLanguageAlloc>(this.detach_ModLanguageAllocs));
@@ -4934,6 +3878,7 @@ namespace TALENTS
 			this._ModVideos = new EntitySet<ModVideo>(new Action<ModVideo>(this.attach_ModVideos), new Action<ModVideo>(this.detach_ModVideos));
 			this._ModWorkDayHours = new EntitySet<ModWorkDayHour>(new Action<ModWorkDayHour>(this.attach_ModWorkDayHours), new Action<ModWorkDayHour>(this.detach_ModWorkDayHours));
 			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
+			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
 			OnCreated();
 		}
 		
@@ -5090,19 +4035,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModBiography> ModBiographies
-		{
-			get
-			{
-				return this._ModBiographies;
-			}
-			set
-			{
-				this._ModBiographies.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_ModContacts", ThisKey="Id", OtherKey="ModelId")]
 		public EntitySet<ModContact> ModContacts
 		{
@@ -5246,6 +4178,19 @@ namespace TALENTS
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModBiography> ModBiographies
+		{
+			get
+			{
+				return this._ModBiographies;
+			}
+			set
+			{
+				this._ModBiographies.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5273,18 +4218,6 @@ namespace TALENTS
 		}
 		
 		private void detach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModBiographies(ModBiography entity)
 		{
 			this.SendPropertyChanging();
 			entity.Model = null;
@@ -5417,6 +4350,18 @@ namespace TALENTS
 		}
 		
 		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModBiographies(ModBiography entity)
 		{
 			this.SendPropertyChanging();
 			entity.Model = null;
@@ -8223,6 +7168,1061 @@ namespace TALENTS
 		{
 			this.SendPropertyChanging();
 			entity.ServiceGroup = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModBiography")]
+	public partial class ModBiography : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _ModelId;
+		
+		private string _Name;
+		
+		private string _Slogan;
+		
+		private System.Nullable<int> _Age;
+		
+		private string _Sex;
+		
+		private System.Nullable<int> _EthnicityId;
+		
+		private System.Nullable<int> _NationalityId;
+		
+		private System.Nullable<int> _CityResidenceId;
+		
+		private System.Nullable<int> _HairColorId;
+		
+		private System.Nullable<int> _HairLenghId;
+		
+		private System.Nullable<int> _EyeId;
+		
+		private System.Nullable<double> _Height;
+		
+		private System.Nullable<double> _Weight;
+		
+		private System.Nullable<int> _DressSizeId;
+		
+		private System.Nullable<int> _Shoes;
+		
+		private string _Bust;
+		
+		private string _Waist;
+		
+		private string _Haunch;
+		
+		private System.Nullable<int> _BreastSizeId;
+		
+		private string _Seno;
+		
+		private string _Smoker;
+		
+		private string _Tattoos;
+		
+		private string _Drinker;
+		
+		private string _Piercing;
+		
+		private string _Peculiarities;
+		
+		private string _AboutMe;
+		
+		private EntityRef<BreastSize> _BreastSize;
+		
+		private EntityRef<DressSize> _DressSize;
+		
+		private EntityRef<Ethnicity> _Ethnicity;
+		
+		private EntityRef<Eye> _Eye;
+		
+		private EntityRef<HairColor> _HairColor;
+		
+		private EntityRef<HairLength> _HairLength;
+		
+		private EntityRef<City> _City;
+		
+		private EntityRef<Model> _Model;
+		
+		private EntityRef<Nationality> _Nationality;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnModelIdChanging(int value);
+    partial void OnModelIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSloganChanging(string value);
+    partial void OnSloganChanged();
+    partial void OnAgeChanging(System.Nullable<int> value);
+    partial void OnAgeChanged();
+    partial void OnSexChanging(string value);
+    partial void OnSexChanged();
+    partial void OnEthnicityIdChanging(System.Nullable<int> value);
+    partial void OnEthnicityIdChanged();
+    partial void OnNationalityIdChanging(System.Nullable<int> value);
+    partial void OnNationalityIdChanged();
+    partial void OnCityResidenceIdChanging(System.Nullable<int> value);
+    partial void OnCityResidenceIdChanged();
+    partial void OnHairColorIdChanging(System.Nullable<int> value);
+    partial void OnHairColorIdChanged();
+    partial void OnHairLenghIdChanging(System.Nullable<int> value);
+    partial void OnHairLenghIdChanged();
+    partial void OnEyeIdChanging(System.Nullable<int> value);
+    partial void OnEyeIdChanged();
+    partial void OnHeightChanging(System.Nullable<double> value);
+    partial void OnHeightChanged();
+    partial void OnWeightChanging(System.Nullable<double> value);
+    partial void OnWeightChanged();
+    partial void OnDressSizeIdChanging(System.Nullable<int> value);
+    partial void OnDressSizeIdChanged();
+    partial void OnShoesChanging(System.Nullable<int> value);
+    partial void OnShoesChanged();
+    partial void OnBustChanging(string value);
+    partial void OnBustChanged();
+    partial void OnWaistChanging(string value);
+    partial void OnWaistChanged();
+    partial void OnHaunchChanging(string value);
+    partial void OnHaunchChanged();
+    partial void OnBreastSizeIdChanging(System.Nullable<int> value);
+    partial void OnBreastSizeIdChanged();
+    partial void OnSenoChanging(string value);
+    partial void OnSenoChanged();
+    partial void OnSmokerChanging(string value);
+    partial void OnSmokerChanged();
+    partial void OnTattoosChanging(string value);
+    partial void OnTattoosChanged();
+    partial void OnDrinkerChanging(string value);
+    partial void OnDrinkerChanged();
+    partial void OnPiercingChanging(string value);
+    partial void OnPiercingChanged();
+    partial void OnPeculiaritiesChanging(string value);
+    partial void OnPeculiaritiesChanged();
+    partial void OnAboutMeChanging(string value);
+    partial void OnAboutMeChanged();
+    #endregion
+		
+		public ModBiography()
+		{
+			this._BreastSize = default(EntityRef<BreastSize>);
+			this._DressSize = default(EntityRef<DressSize>);
+			this._Ethnicity = default(EntityRef<Ethnicity>);
+			this._Eye = default(EntityRef<Eye>);
+			this._HairColor = default(EntityRef<HairColor>);
+			this._HairLength = default(EntityRef<HairLength>);
+			this._City = default(EntityRef<City>);
+			this._Model = default(EntityRef<Model>);
+			this._Nationality = default(EntityRef<Nationality>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int NOT NULL")]
+		public int ModelId
+		{
+			get
+			{
+				return this._ModelId;
+			}
+			set
+			{
+				if ((this._ModelId != value))
+				{
+					if (this._Model.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnModelIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModelId = value;
+					this.SendPropertyChanged("ModelId");
+					this.OnModelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Slogan", DbType="VarChar(50)")]
+		public string Slogan
+		{
+			get
+			{
+				return this._Slogan;
+			}
+			set
+			{
+				if ((this._Slogan != value))
+				{
+					this.OnSloganChanging(value);
+					this.SendPropertyChanging();
+					this._Slogan = value;
+					this.SendPropertyChanged("Slogan");
+					this.OnSloganChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
+		public System.Nullable<int> Age
+		{
+			get
+			{
+				return this._Age;
+			}
+			set
+			{
+				if ((this._Age != value))
+				{
+					this.OnAgeChanging(value);
+					this.SendPropertyChanging();
+					this._Age = value;
+					this.SendPropertyChanged("Age");
+					this.OnAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sex", DbType="VarChar(50)")]
+		public string Sex
+		{
+			get
+			{
+				return this._Sex;
+			}
+			set
+			{
+				if ((this._Sex != value))
+				{
+					this.OnSexChanging(value);
+					this.SendPropertyChanging();
+					this._Sex = value;
+					this.SendPropertyChanged("Sex");
+					this.OnSexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EthnicityId", DbType="Int")]
+		public System.Nullable<int> EthnicityId
+		{
+			get
+			{
+				return this._EthnicityId;
+			}
+			set
+			{
+				if ((this._EthnicityId != value))
+				{
+					if (this._Ethnicity.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEthnicityIdChanging(value);
+					this.SendPropertyChanging();
+					this._EthnicityId = value;
+					this.SendPropertyChanged("EthnicityId");
+					this.OnEthnicityIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalityId", DbType="Int")]
+		public System.Nullable<int> NationalityId
+		{
+			get
+			{
+				return this._NationalityId;
+			}
+			set
+			{
+				if ((this._NationalityId != value))
+				{
+					if (this._Nationality.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnNationalityIdChanging(value);
+					this.SendPropertyChanging();
+					this._NationalityId = value;
+					this.SendPropertyChanged("NationalityId");
+					this.OnNationalityIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityResidenceId", DbType="Int")]
+		public System.Nullable<int> CityResidenceId
+		{
+			get
+			{
+				return this._CityResidenceId;
+			}
+			set
+			{
+				if ((this._CityResidenceId != value))
+				{
+					if (this._City.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCityResidenceIdChanging(value);
+					this.SendPropertyChanging();
+					this._CityResidenceId = value;
+					this.SendPropertyChanged("CityResidenceId");
+					this.OnCityResidenceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HairColorId", DbType="Int")]
+		public System.Nullable<int> HairColorId
+		{
+			get
+			{
+				return this._HairColorId;
+			}
+			set
+			{
+				if ((this._HairColorId != value))
+				{
+					if (this._HairColor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnHairColorIdChanging(value);
+					this.SendPropertyChanging();
+					this._HairColorId = value;
+					this.SendPropertyChanged("HairColorId");
+					this.OnHairColorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HairLenghId", DbType="Int")]
+		public System.Nullable<int> HairLenghId
+		{
+			get
+			{
+				return this._HairLenghId;
+			}
+			set
+			{
+				if ((this._HairLenghId != value))
+				{
+					if (this._HairLength.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnHairLenghIdChanging(value);
+					this.SendPropertyChanging();
+					this._HairLenghId = value;
+					this.SendPropertyChanged("HairLenghId");
+					this.OnHairLenghIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EyeId", DbType="Int")]
+		public System.Nullable<int> EyeId
+		{
+			get
+			{
+				return this._EyeId;
+			}
+			set
+			{
+				if ((this._EyeId != value))
+				{
+					if (this._Eye.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEyeIdChanging(value);
+					this.SendPropertyChanging();
+					this._EyeId = value;
+					this.SendPropertyChanged("EyeId");
+					this.OnEyeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Height", DbType="Float")]
+		public System.Nullable<double> Height
+		{
+			get
+			{
+				return this._Height;
+			}
+			set
+			{
+				if ((this._Height != value))
+				{
+					this.OnHeightChanging(value);
+					this.SendPropertyChanging();
+					this._Height = value;
+					this.SendPropertyChanged("Height");
+					this.OnHeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float")]
+		public System.Nullable<double> Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this.OnWeightChanging(value);
+					this.SendPropertyChanging();
+					this._Weight = value;
+					this.SendPropertyChanged("Weight");
+					this.OnWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DressSizeId", DbType="Int")]
+		public System.Nullable<int> DressSizeId
+		{
+			get
+			{
+				return this._DressSizeId;
+			}
+			set
+			{
+				if ((this._DressSizeId != value))
+				{
+					if (this._DressSize.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDressSizeIdChanging(value);
+					this.SendPropertyChanging();
+					this._DressSizeId = value;
+					this.SendPropertyChanged("DressSizeId");
+					this.OnDressSizeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Shoes", DbType="Int")]
+		public System.Nullable<int> Shoes
+		{
+			get
+			{
+				return this._Shoes;
+			}
+			set
+			{
+				if ((this._Shoes != value))
+				{
+					this.OnShoesChanging(value);
+					this.SendPropertyChanging();
+					this._Shoes = value;
+					this.SendPropertyChanged("Shoes");
+					this.OnShoesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bust", DbType="VarChar(50)")]
+		public string Bust
+		{
+			get
+			{
+				return this._Bust;
+			}
+			set
+			{
+				if ((this._Bust != value))
+				{
+					this.OnBustChanging(value);
+					this.SendPropertyChanging();
+					this._Bust = value;
+					this.SendPropertyChanged("Bust");
+					this.OnBustChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Waist", DbType="VarChar(50)")]
+		public string Waist
+		{
+			get
+			{
+				return this._Waist;
+			}
+			set
+			{
+				if ((this._Waist != value))
+				{
+					this.OnWaistChanging(value);
+					this.SendPropertyChanging();
+					this._Waist = value;
+					this.SendPropertyChanged("Waist");
+					this.OnWaistChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Haunch", DbType="VarChar(50)")]
+		public string Haunch
+		{
+			get
+			{
+				return this._Haunch;
+			}
+			set
+			{
+				if ((this._Haunch != value))
+				{
+					this.OnHaunchChanging(value);
+					this.SendPropertyChanging();
+					this._Haunch = value;
+					this.SendPropertyChanged("Haunch");
+					this.OnHaunchChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BreastSizeId", DbType="Int")]
+		public System.Nullable<int> BreastSizeId
+		{
+			get
+			{
+				return this._BreastSizeId;
+			}
+			set
+			{
+				if ((this._BreastSizeId != value))
+				{
+					if (this._BreastSize.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBreastSizeIdChanging(value);
+					this.SendPropertyChanging();
+					this._BreastSizeId = value;
+					this.SendPropertyChanged("BreastSizeId");
+					this.OnBreastSizeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seno", DbType="VarChar(50)")]
+		public string Seno
+		{
+			get
+			{
+				return this._Seno;
+			}
+			set
+			{
+				if ((this._Seno != value))
+				{
+					this.OnSenoChanging(value);
+					this.SendPropertyChanging();
+					this._Seno = value;
+					this.SendPropertyChanged("Seno");
+					this.OnSenoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Smoker", DbType="VarChar(50)")]
+		public string Smoker
+		{
+			get
+			{
+				return this._Smoker;
+			}
+			set
+			{
+				if ((this._Smoker != value))
+				{
+					this.OnSmokerChanging(value);
+					this.SendPropertyChanging();
+					this._Smoker = value;
+					this.SendPropertyChanged("Smoker");
+					this.OnSmokerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tattoos", DbType="VarChar(50)")]
+		public string Tattoos
+		{
+			get
+			{
+				return this._Tattoos;
+			}
+			set
+			{
+				if ((this._Tattoos != value))
+				{
+					this.OnTattoosChanging(value);
+					this.SendPropertyChanging();
+					this._Tattoos = value;
+					this.SendPropertyChanged("Tattoos");
+					this.OnTattoosChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Drinker", DbType="VarChar(50)")]
+		public string Drinker
+		{
+			get
+			{
+				return this._Drinker;
+			}
+			set
+			{
+				if ((this._Drinker != value))
+				{
+					this.OnDrinkerChanging(value);
+					this.SendPropertyChanging();
+					this._Drinker = value;
+					this.SendPropertyChanged("Drinker");
+					this.OnDrinkerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Piercing", DbType="VarChar(50)")]
+		public string Piercing
+		{
+			get
+			{
+				return this._Piercing;
+			}
+			set
+			{
+				if ((this._Piercing != value))
+				{
+					this.OnPiercingChanging(value);
+					this.SendPropertyChanging();
+					this._Piercing = value;
+					this.SendPropertyChanged("Piercing");
+					this.OnPiercingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Peculiarities", DbType="VarChar(50)")]
+		public string Peculiarities
+		{
+			get
+			{
+				return this._Peculiarities;
+			}
+			set
+			{
+				if ((this._Peculiarities != value))
+				{
+					this.OnPeculiaritiesChanging(value);
+					this.SendPropertyChanging();
+					this._Peculiarities = value;
+					this.SendPropertyChanged("Peculiarities");
+					this.OnPeculiaritiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AboutMe", DbType="VarChar(MAX)")]
+		public string AboutMe
+		{
+			get
+			{
+				return this._AboutMe;
+			}
+			set
+			{
+				if ((this._AboutMe != value))
+				{
+					this.OnAboutMeChanging(value);
+					this.SendPropertyChanging();
+					this._AboutMe = value;
+					this.SendPropertyChanged("AboutMe");
+					this.OnAboutMeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BreastSize_ModBiography", Storage="_BreastSize", ThisKey="BreastSizeId", OtherKey="Id", IsForeignKey=true)]
+		public BreastSize BreastSize
+		{
+			get
+			{
+				return this._BreastSize.Entity;
+			}
+			set
+			{
+				BreastSize previousValue = this._BreastSize.Entity;
+				if (((previousValue != value) 
+							|| (this._BreastSize.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BreastSize.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._BreastSize.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._BreastSizeId = value.Id;
+					}
+					else
+					{
+						this._BreastSizeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("BreastSize");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DressSize_ModBiography", Storage="_DressSize", ThisKey="DressSizeId", OtherKey="Id", IsForeignKey=true)]
+		public DressSize DressSize
+		{
+			get
+			{
+				return this._DressSize.Entity;
+			}
+			set
+			{
+				DressSize previousValue = this._DressSize.Entity;
+				if (((previousValue != value) 
+							|| (this._DressSize.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DressSize.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._DressSize.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._DressSizeId = value.Id;
+					}
+					else
+					{
+						this._DressSizeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DressSize");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ethnicity_ModBiography", Storage="_Ethnicity", ThisKey="EthnicityId", OtherKey="Id", IsForeignKey=true)]
+		public Ethnicity Ethnicity
+		{
+			get
+			{
+				return this._Ethnicity.Entity;
+			}
+			set
+			{
+				Ethnicity previousValue = this._Ethnicity.Entity;
+				if (((previousValue != value) 
+							|| (this._Ethnicity.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ethnicity.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._Ethnicity.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._EthnicityId = value.Id;
+					}
+					else
+					{
+						this._EthnicityId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Ethnicity");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Eye_ModBiography", Storage="_Eye", ThisKey="EyeId", OtherKey="Id", IsForeignKey=true)]
+		public Eye Eye
+		{
+			get
+			{
+				return this._Eye.Entity;
+			}
+			set
+			{
+				Eye previousValue = this._Eye.Entity;
+				if (((previousValue != value) 
+							|| (this._Eye.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Eye.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._Eye.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._EyeId = value.Id;
+					}
+					else
+					{
+						this._EyeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Eye");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HairColor_ModBiography", Storage="_HairColor", ThisKey="HairColorId", OtherKey="Id", IsForeignKey=true)]
+		public HairColor HairColor
+		{
+			get
+			{
+				return this._HairColor.Entity;
+			}
+			set
+			{
+				HairColor previousValue = this._HairColor.Entity;
+				if (((previousValue != value) 
+							|| (this._HairColor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HairColor.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._HairColor.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._HairColorId = value.Id;
+					}
+					else
+					{
+						this._HairColorId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("HairColor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HairLength_ModBiography", Storage="_HairLength", ThisKey="HairLenghId", OtherKey="Id", IsForeignKey=true)]
+		public HairLength HairLength
+		{
+			get
+			{
+				return this._HairLength.Entity;
+			}
+			set
+			{
+				HairLength previousValue = this._HairLength.Entity;
+				if (((previousValue != value) 
+							|| (this._HairLength.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HairLength.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._HairLength.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._HairLenghId = value.Id;
+					}
+					else
+					{
+						this._HairLenghId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("HairLength");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
+		public City City
+		{
+			get
+			{
+				return this._City.Entity;
+			}
+			set
+			{
+				City previousValue = this._City.Entity;
+				if (((previousValue != value) 
+							|| (this._City.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._City.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._City.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._CityResidenceId = value.Id;
+					}
+					else
+					{
+						this._CityResidenceId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("City");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_ModBiography", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
+		public Nationality Nationality
+		{
+			get
+			{
+				return this._Nationality.Entity;
+			}
+			set
+			{
+				Nationality previousValue = this._Nationality.Entity;
+				if (((previousValue != value) 
+							|| (this._Nationality.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Nationality.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._Nationality.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._NationalityId = value.Id;
+					}
+					else
+					{
+						this._NationalityId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Nationality");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

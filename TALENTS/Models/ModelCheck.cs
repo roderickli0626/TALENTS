@@ -17,13 +17,13 @@ namespace TALENTS.Models
             if (biography == null) return;
             Id = biography.ModelId;
             Name = biography.Name;
-            CityResidence = biography.City.Description;
+            CityResidence = biography.City?.Description ?? "";
             Height = biography.Height ?? 0;
             Weight = biography.Weight ?? 0;
             Age = biography.Age ?? 0;
-            Nationality = biography.Nationality.Description;
-            Eye = biography.Eye.Description;
-            HairColor = biography.HairColor.Description;
+            Nationality = biography.Nationality?.Description ?? "";
+            Eye = biography.Eye?.Description ?? "";
+            HairColor = biography.HairColor?.Description ?? "";
         }
 
         public int Id
