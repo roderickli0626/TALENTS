@@ -1,6 +1,8 @@
 ﻿using Antlr.Runtime.Tree;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -8,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TALENTS.Controller;
 using TALENTS.DAO;
+using TALENTS.Models;
 using TALENTS.Util;
 
 namespace TALENTS
@@ -30,9 +33,12 @@ namespace TALENTS
             {
                 ModelName.InnerText = model.Username;
                 LoadBioInfo();
+                LoadAboutMe();
+                LoadLanguage();
+                LoadService();
             }
         }
-
+        // Bio Tab
         private void LoadBioInfo()
         {
             //Load Sex
@@ -114,7 +120,6 @@ namespace TALENTS
             ControlUtil.SelectValue(ComboPiercing, modBiography.Piercing);
             ControlUtil.SelectValue(ComboSmoker, modBiography.Smoker);
         }
-
         protected void BtnBio_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -148,7 +153,7 @@ namespace TALENTS
             string piercing = ComboPiercing.SelectedValue;
             string peculiarities = TxtPeculiarities.Text;
 
-            success = modelController.SaveModelBio(model.Id, name, slogan, age, sex, ethnicityId, nationId, resId, hairColorId, hairLengId, eyeId, 
+            success = modelController.SaveModelBio(model.Id, name, slogan, age, sex, ethnicityId, nationId, resId, hairColorId, hairLengId, eyeId,
                 height, weight, dressId, shoes, bust, waist, haunch, breastId, smoker, tattoos, drinker, piercing, peculiarities);
             if (!success)
             {
@@ -159,7 +164,13 @@ namespace TALENTS
 
             SuccessAlarm.Visible = true;
         }
-
+        // About Me Tab
+        private void LoadAboutMe()
+        {
+            ModBiography modBiography = new ModelBiographyDAO().FindByModelId(model.Id);
+            if (modBiography == null) { return; }
+            TxtItaly.InnerText = modBiography.AboutMe;
+        }
         protected void BtnAbout_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -179,6 +190,118 @@ namespace TALENTS
             }
             SuccessAlarmAbout.Visible = true;
         }
+        // Language Tab
+        private void LoadLanguage()
+        {
+            // Load Language
+            List<Language> languages = new LanguageDAO().FindAll();
+            ControlUtil.DataBind(ComboLang, languages, "Id", "Description", "0", "[Unassigned]");
+            // Load Level
+            List<SkillLevel> levels = new SkillLevelDAO().FindAll();
+            ControlUtil.DataBind(ComboLevel, levels, "Id", "Description", "0", "[Unassigned]");
+            // Load Model Languages
+            List<ModLanguageCheck> modLanguages = new LanguageController().FindByModel(model.Id);
+            LanguageRepeater.DataSource = modLanguages;
+            LanguageRepeater.DataBind();
+        }
+        protected void BtnLang_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? lanId = ControlUtil.GetSelectedValue(ComboLang);
+            int? levelId = ControlUtil.GetSelectedValue(ComboLevel);
+            if (lanId == null || levelId == null)
+            {
+                SuccessAlarmLang.Visible = false;
+                ServerValidatorLang1.IsValid = false;
+                return;
+            }
+            success = new LanguageController().SaveModLang(model.Id, lanId, levelId);
+            if (!success)
+            {
+                SuccessAlarmLang.Visible = false;
+                ServerValidatorLang2.IsValid = false;
+                return;
+            }
+            SuccessAlarmLang.Visible = true;
+            LoadLanguage();
+        }
+        protected void LanguageRepeater_ItemCreated(object sender, RepeaterItemEventArgs e)
+        {
+            ScriptManager scriptMan = ScriptManager.GetCurrent(this);
+            LinkButton btn = e.Item.FindControl("DeleteButton") as LinkButton;
+            if (btn != null)
+            {
+                btn.Click += LangDelete_Click;
+                scriptMan.RegisterAsyncPostBackControl(btn);
+            }
+        }
+        protected void LangDelete_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(((LinkButton)sender).CommandArgument.ToString());
+            bool result = new ModLanguageDAO().Delete(id);
+            if (result)
+            {
+                LoadLanguage();
+            }
+        }
+        // Service Tab
+        private void LoadService()
+        {
+            // Load Service Group
+            List<ServiceGroup> serviceGroups = new ServiceGroupDAO().FindAll();
+            ControlUtil.DataBind(ComboServiceGroup, serviceGroups, "Id", "Description", "0", "[Unassigned]");
+            // Load Model Services
+            List<ModServiceCheck> modServiceChecks = new ServiceController().FindByModel(model.Id);
+            RepeaterModServices.DataSource = modServiceChecks;
+            RepeaterModServices.DataBind();
+        }
+        protected void RepeaterModServices_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModServiceDAO().Delete(id);
+                if (result) LoadService();
+            }
+        }
+        protected void RepeaterModServices_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            ScriptManager scriptMan = ScriptManager.GetCurrent(this);
+            LinkButton btn = e.Item.FindControl("DeleteButton") as LinkButton;
+            if (btn != null)
+            {
+                scriptMan.RegisterAsyncPostBackControl(btn);
+            }
+        }
+        protected void ComboServiceGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Load Serivces
+            int groupId = ControlUtil.GetSelectedValue(ComboServiceGroup) ?? 0;
+            List<Service> services = new ServiceDAO().FindByGroup(groupId);
+            ControlUtil.DataBind(ComboService, services, "Id", "Description", "0", "[Unassigned]");
+        }
+        protected void BtnService_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? serviceId = ControlUtil.GetSelectedValue(ComboService);
+            if (serviceId == null)
+            {
+                SuccessAlarmService.Visible = false;
+                servervalidatorService1.IsValid = false;
+                return;
+            }
+            double? amount = ParseUtil.TryParseDouble(TxtServiceAmount.Text);
+            success = new ServiceController().SaveService(model.Id, serviceId, amount);
+            if (!success)
+            {
+                SuccessAlarmService.Visible = false;
+                servervalidatorService2.IsValid = false;
+                return;
+            }
+            SuccessAlarmService.Visible = true;
+            LoadService();
+        }
+        // WorkCity Tab
 
     }
 }

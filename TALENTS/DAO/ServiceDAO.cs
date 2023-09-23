@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 
 namespace TALENTS.DAO
@@ -14,6 +15,11 @@ namespace TALENTS.DAO
         {
             Table<Service> table = GetContext().Services;
             return table.ToList();
+        }
+        public List<Service> FindByGroup(int groupId)
+        {
+            Table<Service> table = GetContext().Services;
+            return table.Where(s => s.GroupId == groupId).ToList();
         }
         public bool Insert(Service serv)
         {

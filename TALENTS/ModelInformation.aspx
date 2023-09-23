@@ -279,8 +279,8 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;"  id="v-pills-about" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <asp:ScriptManager ID="ScriptManagerAbout" runat="server"></asp:ScriptManager>
-                                    <asp:UpdatePanel runat="server" ID="UpdatePanelAbout" ClientIDMode="Static">
+                                    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelAbout" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">ABOUT ME</h2>
@@ -318,8 +318,167 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-language" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-language" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelLang" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">LANGUAGE</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmLang" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary2" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorLang1" runat="server" ErrorMessage="Please select Language and Level." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorLang2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-5">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboLang">Language</label>
+                                                            <asp:DropDownList runat="server" ID="ComboLang" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboLevel">Level</label>
+                                                            <asp:DropDownList runat="server" ID="ComboLevel" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:Button runat="server" ID="BtnLang" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnLang_Click"/>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <asp:Repeater ID="LanguageRepeater" runat="server" ClientIDMode="Static" OnItemCreated="LanguageRepeater_ItemCreated">
+                                                    <HeaderTemplate>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No</th>
+                                                                        <th>Language</th>
+                                                                        <th>Level</th>
+                                                                        <th>Azioni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                            <td><%# Eval("Language")%></td>
+                                                            <td><%# Eval("Level")%></td>
+                                                            <td>
+                                                                <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                    CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        </tbody>
+                                                        </table>
+                                                        </div>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="LanguageRepeater" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-service" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelService" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">SERVICES</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmService" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary3" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="servervalidatorService1" runat="server" ErrorMessage="Please select Service." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="servervalidatorService2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-4">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboServiceGroup">Groups</label>
+                                                            <asp:DropDownList runat="server" ID="ComboServiceGroup" ClientIDMode="Static" CssClass="custom-select" style="width:100%" AutoPostBack="true" 
+                                                                OnSelectedIndexChanged="ComboServiceGroup_SelectedIndexChanged"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboService">Services</label>
+                                                            <asp:DropDownList runat="server" ID="ComboService" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtServiceAmount" PlaceHolder="Amount" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:Button runat="server" ID="BtnService" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnService_Click"/>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <asp:Repeater ID="RepeaterModServices" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModServices_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                    <HeaderTemplate>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No</th>
+                                                                        <th>Group Name</th>
+                                                                        <th>Service</th>
+                                                                        <th>Amount (/h)</th>
+                                                                        <th>Azioni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                            <td><%# Eval("Group")%></td>
+                                                            <td><%# Eval("Service")%></td>
+                                                            <td><%# Eval("Amount")%></td>
+                                                            <td>
+                                                                <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                    CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        </tbody>
+                                                        </table>
+                                                        </div>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModServices" />
+                                            <asp:AsyncPostBackTrigger ControlID="ComboServiceGroup" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-workcity" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-workhours" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-rates" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
@@ -341,6 +500,7 @@
     <script src="Scripts/core.min.js"></script>
     <script src="Scripts/toastr.min.js"></script>
     <script>
+        // Biography Tab
         BioSelect2Setting();
         function BioSelect2Setting() {
             $("#ComboSex").select2({ theme: 'bootstrap' });
@@ -357,9 +517,79 @@
             $("#ComboTattoos").select2({ theme: 'bootstrap' });
             $("#ComboPiercing").select2({ theme: 'bootstrap' });
         };
+        // Language Tab
+        LanSelectSetting();
+        function LanSelectSetting() {
+            $("#ComboLevel").select2({ theme: 'bootstrap' });
+            $("#ComboLang").select2({ theme: 'bootstrap' });
+        }
+        // Service Tab
+        ServiceSelectSetting();
+        function ServiceSelectSetting() {
+            $("#ComboServiceGroup").select2({ theme: 'bootstrap' });
+            $("#ComboService").select2({ theme: 'bootstrap' });
+        }
     </script>
 
     <script>
+        Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(pageLoadedHandler);
+
+        function pageLoadedHandler(sender, args) {
+            // This function will be called after each UpdatePanel postback
+            var updatedPanels = args.get_panelsUpdated();
+
+            for (var i = 0; i < updatedPanels.length; i++) {
+                var updatePanelID = updatedPanels[i].id;
+
+                // About Me Tab
+                if (updatePanelID === "UpdatePanelAbout") {
+                    // Handle the toggle event for the About Me UpdatePanel
+                    $('#TxtItaly').keyup(function () {
+                        var characterCount = $('#TxtItaly').val().length,
+                            current = $('#italCurrent'),
+                            maximum = $('#italMaximum'),
+                            theCount = $('#the-ital-count');
+
+                        current.text(characterCount);
+
+                        /*This isn't entirely necessary, just playin around*/
+                        if (characterCount < 170) {
+                            current.css('color', '#666');
+                        }
+                        if (characterCount > 170 && characterCount < 290) {
+                            current.css('color', '#6d5555');
+                        }
+                        if (characterCount > 290 && characterCount < 500) {
+                            current.css('color', '#793535');
+                        }
+                        if (characterCount > 500 && characterCount < 620) {
+                            current.css('color', '#841c1c');
+                        }
+                        if (characterCount > 620 && characterCount < 739) {
+                            current.css('color', '#8f0001');
+                        }
+
+                        if (characterCount >= 740) {
+                            maximum.css('color', '#8f0001');
+                            current.css('color', '#8f0001');
+                            theCount.css('font-weight', 'bold');
+                        } else {
+                            maximum.css('color', '#666');
+                            theCount.css('font-weight', 'normal');
+                        }
+                    });
+                }
+                // Language Tab
+                if (updatePanelID === "UpdatePanelLang") {
+                    LanSelectSetting();
+                }
+                // Service Tab
+                if (updatePanelID === "UpdatePanelService") {
+                    ServiceSelectSetting();
+                }
+            }
+        };
+        // About Me Tab
         $('#TxtItaly').keyup(function () {
             var characterCount = $('#TxtItaly').val().length,
                 current = $('#italCurrent'),

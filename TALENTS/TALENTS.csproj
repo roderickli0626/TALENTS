@@ -359,8 +359,10 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\CryptoController.cs" />
+    <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ModelController.cs" />
+    <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
     <Compile Include="DAO\BasicDAO.cs" />
     <Compile Include="DAO\BreastSizeDAO.cs" />
@@ -464,6 +466,8 @@
       <DependentUpon>ModelPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelCheck.cs" />
+    <Compile Include="Models\ModLanguageCheck.cs" />
+    <Compile Include="Models\ModServiceCheck.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>
