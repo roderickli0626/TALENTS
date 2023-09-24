@@ -479,8 +479,185 @@
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-workcity" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-workhours" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-workcity" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelWorkCity" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">WORK CITIES</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkCity" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary4" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity1" runat="server" ErrorMessage="Please select Work City." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity3" runat="server" ErrorMessage="Please select Incall Place." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity4" runat="server" ErrorMessage="Please select Outcall Place." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Work Cities</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-8">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboWorkCity">Work_City</label>
+                                                            <asp:DropDownList runat="server" ID="ComboWorkCity" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <asp:Button runat="server" ID="BtnWorkCity" Text="+ Add Work City" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkCity_Click"/>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModWorkCity_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                    <HeaderTemplate>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No</th>
+                                                                        <th>Work City</th>
+                                                                        <th>Azioni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                            <td><%# Eval("WorkCity")%></td>
+                                                            <td>
+                                                                <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                    CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        </tbody>
+                                                        </table>
+                                                        </div>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Incall/Outcall Places</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6" style="border-right: 1px solid lightblue;">
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <div class="mb-4">
+                                                                <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                                    <label class="form-label" for="ComboIncall">Incall</label>
+                                                                    <asp:DropDownList runat="server" ID="ComboIncall" ClientIDMode="Static" CssClass="custom-select" Style="width: 100%"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <asp:Button runat="server" ID="BtnIncall" Text="+ Incall" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnIncall_Click"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <asp:Repeater ID="RepeaterModIncall" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModIncall_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                            <HeaderTemplate>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>No</th>
+                                                                                <th>Incall Place</th>
+                                                                                <th>Azioni</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                                    <td><%# Eval("IncallPlace")%></td>
+                                                                    <td>
+                                                                        <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                            CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                            <i class="fa fa-trash style="font-size:25px""></i>
+                                                                        </asp:LinkButton>
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </tbody>
+                                                                </table>
+                                                                </div>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <div class="mb-4">
+                                                                <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                                    <label class="form-label" for="ComboOutcall">Outcall</label>
+                                                                    <asp:DropDownList runat="server" ID="ComboOutcall" ClientIDMode="Static" CssClass="custom-select" Style="width: 100%"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <asp:Button runat="server" ID="BtnOutcall" Text="+ Outcall" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnOutcall_Click" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <asp:Repeater ID="RepeaterModOutcall" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModOutcall_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                            <HeaderTemplate>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>No</th>
+                                                                                <th>Outcall Place</th>
+                                                                                <th>Azioni</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                                    <td><%# Eval("OutcallPlace")%></td>
+                                                                    <td>
+                                                                        <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                            CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                            <i class="fa fa-trash style="font-size:25px""></i>
+                                                                        </asp:LinkButton>
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </tbody>
+                                                                </table>
+                                                                </div>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModWorkCity" />
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModIncall" />
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModOutcall" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnOutcall" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnIncall" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-workhours" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-rates" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
@@ -528,6 +705,13 @@
         function ServiceSelectSetting() {
             $("#ComboServiceGroup").select2({ theme: 'bootstrap' });
             $("#ComboService").select2({ theme: 'bootstrap' });
+        }
+        // Work City Tab
+        WorkCitySeletSetting();
+        function WorkCitySeletSetting() {
+            $("#ComboWorkCity").select2({ theme: 'bootstrap' });
+            $("#ComboIncall").select2({ theme: 'bootstrap' });
+            $("#ComboOutcall").select2({ theme: 'bootstrap' });
         }
     </script>
 
@@ -586,6 +770,10 @@
                 // Service Tab
                 if (updatePanelID === "UpdatePanelService") {
                     ServiceSelectSetting();
+                }
+                // Work City Tab
+                if (updatePanelID === "UpdatePanelWorkCity") {
+                    WorkCitySeletSetting();
                 }
             }
         };

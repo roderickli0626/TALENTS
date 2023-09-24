@@ -36,6 +36,7 @@ namespace TALENTS
                 LoadAboutMe();
                 LoadLanguage();
                 LoadService();
+                LoadWorkCities();
             }
         }
         // Bio Tab
@@ -301,7 +302,120 @@ namespace TALENTS
             SuccessAlarmService.Visible = true;
             LoadService();
         }
-        // WorkCity Tab
+        // WorkCity Tab / work_city
+        private void LoadWorkCities()
+        {
+            // Load Work Cities
+            List<City> cities = new CityDAO().FindAll();
+            ControlUtil.DataBind(ComboWorkCity, cities, "Id", "Description", "0", "[Unassigned]");
+            // Load Model Work Cities
+            List<ModWorkCityCheck> modWorkCityChecks = new CityController().FindByModel(model.Id);
+            RepeaterModWorkCity.DataSource = modWorkCityChecks;
+            RepeaterModWorkCity.DataBind();
+            // Load Incall / Outcall Places
+            List<IncallPlace> incallPlaces = new IncallPlaceDAO().FindAll();
+            ControlUtil.DataBind(ComboIncall, incallPlaces, "Id", "Description", "0", "[Unassigned]");
+            List<OutcallPlace> outcallPlaces = new OutcallPlaceDAO().FindAll();
+            ControlUtil.DataBind(ComboOutcall, outcallPlaces, "Id", "Description", "0", "[Unassigned]");
+            // Load Model Incall / Outcall Places
+            List<ModIncallCheck> modIncallChecks = new InOutCallPlaceController().FindIncallPlaceByModel(model.Id);
+            List<ModOutcallCheck> modOutcallChecks = new InOutCallPlaceController().FindOutcallPlaceByModel(model.Id);
+            RepeaterModIncall.DataSource = modIncallChecks;
+            RepeaterModIncall.DataBind();
+            RepeaterModOutcall.DataSource = modOutcallChecks;
+            RepeaterModOutcall.DataBind();
+        }
+        protected void BtnWorkCity_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? workcityId = ControlUtil.GetSelectedValue(ComboWorkCity);
+            if (workcityId == null)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                ServerValidatorWorkCity1.IsValid = false;
+                return;
+            }
+            success = new CityController().SaveWorkCity(model.Id, workcityId);
+            if (!success)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                servervalidatorService2.IsValid = false;
+                return;
+            }
+            SuccessAlarmWorkCity.Visible = true;
+            LoadWorkCities();
+        }
 
+        protected void RepeaterModWorkCity_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModWorkCityDAO().Delete(id);
+                if (result) LoadWorkCities();
+            }
+        }
+
+        protected void BtnIncall_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? incallId = ControlUtil.GetSelectedValue(ComboIncall);
+            if (incallId == null)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                ServerValidatorWorkCity3.IsValid = false;
+                return;
+            }
+            success = new InOutCallPlaceController().SaveModIncall(model.Id, incallId);
+            if (!success)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                servervalidatorService2.IsValid = false;
+                return;
+            }
+            SuccessAlarmWorkCity.Visible = true;
+            LoadWorkCities();
+        }
+
+        protected void RepeaterModIncall_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModIncallPlaceDAO().Delete(id);
+                if (result) LoadWorkCities();
+            }
+        }
+
+        protected void BtnOutcall_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? outcallId = ControlUtil.GetSelectedValue(ComboOutcall);
+            if (outcallId == null)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                ServerValidatorWorkCity4.IsValid = false;
+                return;
+            }
+            success = new InOutCallPlaceController().SaveModOutcall(model.Id, outcallId);
+            if (!success)
+            {
+                SuccessAlarmWorkCity.Visible = false;
+                servervalidatorService2.IsValid = false;
+                return;
+            }
+            SuccessAlarmWorkCity.Visible = true;
+            LoadWorkCities();
+        }
+
+        protected void RepeaterModOutcall_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModOutcallPlaceDAO().Delete(id);
+                if (result) LoadWorkCities();
+            }
+        }
     }
 }
