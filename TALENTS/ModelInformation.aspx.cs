@@ -39,6 +39,7 @@ namespace TALENTS
                 LoadWorkCities();
                 LoadWorkDayHour();
                 LoadModRate();
+                LoadContactInfo();
             }
         }
         // Bio Tab
@@ -561,6 +562,41 @@ namespace TALENTS
                 bool result = new ModOutcallRateDAO().Delete(id);
                 if (result) LoadModRate();
             }
+        }
+        // Contact Tab
+        private void LoadContactInfo()
+        {
+            List<SocialChat> chatList = new SocialChatDAO().FindAll();
+            List<InstructionChat> instructionsList = new InstructionChatDAO().FindAll();
+            ControlUtil.DataBind(ComboSocialChat, chatList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboInstructionChat, instructionsList, "Id", "Description", "0", "[Unassigned]");
+            ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
+            if (modContact == null) return;
+            ControlUtil.SelectValue(ComboSocialChat, modContact.SocialChatId);
+            ControlUtil.SelectValue(ComboInstructionChat, modContact.InstructionChatId);
+            TxtEmail.Text = modContact.Email;
+            TxtMobilePhone.Text = modContact.MobilePhone;
+            TxtAddress.Text = modContact.Address;
+            TxtAddressCiv.Text = modContact.AddressCiv;
+        }
+        protected void BtnContact_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? socialId = ControlUtil.GetSelectedValue(ComboSocialChat);
+            int? instructionId = ControlUtil.GetSelectedValue(ComboInstructionChat);
+            string email = TxtEmail.Text;
+            string mobilePhone = TxtMobilePhone.Text;
+            string address = TxtAddress.Text;
+            string addressCiv = TxtAddressCiv.Text;
+            success = new ContactController().SaveContact(model.Id, socialId, instructionId, email, mobilePhone, address, addressCiv);
+            if (!success)
+            {
+                SuccessAlarmContact.Visible = false;
+                ServerValidatorContact.IsValid = false;
+                return;
+            }
+            SuccessAlarmContact.Visible = true;
+            LoadContactInfo();
         }
     }
 }

@@ -35,6 +35,12 @@ namespace TALENTS.DAO
             GetContext().SubmitChanges();
             return true;
         }
+        public IQueryable<PhotoGroup> Search()
+        {
+            IQueryable<PhotoGroup> table = GetContext().PhotoGroups;
+
+            return table;
+        }
 
     }
 }

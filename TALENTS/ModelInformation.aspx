@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
-    <link rel="stylesheet" href="Content/CSS/toastr.min.css" type="text/css">
+    <link rel="stylesheet" href="Content/CSS/datatables.css" />
     <style>
         .nav-link.active {
             background-color: white !important;
@@ -32,6 +32,73 @@
         #select2-ComboCity-container {
             text-align: center
         }
+    </style>
+    <style>
+        .preview-images-zone {
+    width: 100%;
+    border: 1px solid #ddd;
+    min-height: 180px;
+    /* display: flex; */
+    padding: 5px 5px 0px 5px;
+    position: relative;
+    overflow:auto;
+}
+.preview-images-zone > .preview-image:first-child {
+    height: 80px;
+    width: 80px;
+    position: relative;
+    margin-right: 5px;
+}
+.preview-images-zone > .preview-image {
+    height: 80px;
+    width: 80px;
+    position: relative;
+    margin-right: 5px;
+    float: left;
+    margin-bottom: 5px;
+}
+.preview-images-zone > .preview-image > .image-zone {
+    width: 100%;
+    height: 100%;
+}
+.preview-images-zone > .preview-image > .image-zone > img {
+    width: 100%;
+    height: 100%;
+}
+.preview-images-zone > .preview-image > .tools-edit-image {
+    position: absolute;
+    z-index: 100;
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+}
+.preview-images-zone > .preview-image > .image-cancel {
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+    z-index: 100;
+}
+.preview-image:hover > .image-zone {
+    cursor: move;
+    opacity: .5;
+}
+.preview-image:hover > .tools-edit-image,
+.preview-image:hover > .image-cancel {
+    display: block;
+}
+.ui-sortable-helper {
+    width: 90px !important;
+    height: 90px !important;
+}
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -898,9 +965,83 @@
                                     </asp:UpdatePanel>
                                 </div>
                                 <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelContact" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">CONTACTS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmContact" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary7" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <%--<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select Language and Level." Display="None"></asp:CustomValidator>--%>
+                                                <asp:CustomValidator ID="ServerValidatorContact" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboSocialChat">Social_Chat</label>
+                                                            <asp:DropDownList runat="server" ID="ComboSocialChat" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboInstructionChat">Instruction_Chat</label>
+                                                            <asp:DropDownList runat="server" ID="ComboInstructionChat" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtMobilePhone" PlaceHolder="Mobile Phone" CssClass="form-control form-control-lg" TextMode="Phone"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtAddress" PlaceHolder="Address" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtAddressCiv" PlaceHolder="AddressCiv" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-12">
+                                                    <asp:Button runat="server" ID="BtnContact" Text="SAVE CONTACT INFORMATION" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnContact_Click"/>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                        </Triggers>
+                                    </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <div class="row">
+                                        <h2 class="mb-4 text-left col-6">PHOTO GALLERY</h2>
+                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmPhoto" visible="false">Save Successed.</p>
+                                    </div>
+                                    <div class="row" style="width: 800px;">
+                                        <table class="table text-left" id="photo-table">
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-videos" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-naturalphoto" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-tour" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
@@ -915,7 +1056,149 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script src="Scripts/core.min.js"></script>
-    <script src="Scripts/toastr.min.js"></script>
+    <script src="Scripts/jquery.dataTables.js"></script>
+    <script src="Scripts/datatables.js"></script>
+    <script>
+        $(function () {
+            var datatable = $('#photo-table').dataTable({
+                "serverSide": true,
+                "ajax": 'DataService.asmx/FindPhotos',
+                "dom": '<"table-responsive"t>',
+                "autoWidth": false,
+                "pageLength": 20,
+                "processing": true,
+                "ordering": false,
+                "columns": [{
+                    "render": function (data, type, row, meta) {
+                        var photoContentDetail = "";
+                        var images = row.Images;
+                        var num = 1;
+                        images.forEach(function (image) {
+                            var html = '<div class="preview-image preview-show-' + num + '">' +
+                                '<div class="image-cancel" data-no="' + num + '" data-id="' + image.ImageId + '">x</div>' +
+                                '<div class="image-zone"><img id="pro-img-' + num + '" src="Upload/Photos/' + image.ImageName + '"></div>' +
+                                '</div>';
+
+                            photoContentDetail += html;
+                            num = num + 1;
+                        })
+                        
+                        var photoContent = '<div class="card" style="border-left:3px solid lightgreen;">\
+                                                <div class="card-header" >\
+                                                    <a class="card-link" style="font-size:20px;" data-toggle="collapse" href="#collapse' + row.Id + '">\
+                                                        ' + row.Title + '\
+                                                    </a>\
+                                                    <span class="badge badge-dark float-end">' + row.Length +' photos</span>\
+                                                </div >\
+                                                <div id="collapse' + row.Id + '" class="collapse show" data-parent="">\
+                                                    <div class="card-body">' +
+                                                        '<div class="container">\
+                                                            <fieldset class="form-group text-center">\
+                                                                <button class="btnUpload btn btn-success"><i class="fa fa-upload"></i> Upload Photo</button>\
+                                                                <input type="file" class="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>\
+                                                            </fieldset>\
+                                                            <div class="preview-images-zone">' + 
+                                                                photoContentDetail
+                                                            + '</div>\
+                                                        </div >\
+                                                    </div>\
+                                                </div>\
+                                            </div>';
+                        return photoContent;
+                    }
+                }],
+            });
+
+            datatable.on('change', '.pro-image', readImage);
+            function readImage() {
+                if (window.File && window.FileList && window.FileReader) {
+                    var data = new FormData(); // To Save Photo to DB
+                    var files = event.target.files; //FileList object
+                    var output = $(this).parent().next();
+                    var groupId = datatable.fnGetData($(this).closest('tr')).Id;
+                    data.append('groupId', groupId); // To Save Photo to DB
+                    var num = output[0].childElementCount;
+                    for (let i = 0; i < files.length; i++) {
+                        var file = files[i];
+                        if (!file.type.match('image')) continue;
+                        data.append('files', file); // To Save Photo to DB
+
+                        var picReader = new FileReader();
+
+                        picReader.addEventListener('load', function (event) {
+                            var picFile = event.target;
+                            var html = '<div class="preview-image preview-show-' + num + '">' +
+                                '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                                '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                                '</div>';
+
+                            output.append(html);
+                            num = num + 1;
+                        });
+
+                        picReader.readAsDataURL(file);
+                    }
+
+                    // TODO Save Image to DB
+                    $.ajax({
+                        type: "POST",
+                        url: 'DataService.asmx/SavePhoto',
+                        data: data,
+                        contentType: false,
+                        //contentType: 'multipart/form-data',
+                        processData: false,
+                        success: function () {
+                            onSuccess({ success: true });
+                        },
+                        error: function () {
+                            onSuccess({ success: false });
+                        }
+                    });
+                    ///////
+
+                    $("#pro-image").val('');
+                    return false;
+                } else {
+                    console.log('Browser not support');
+                    return false;
+                }
+            }
+
+            datatable.on('click', '.btnUpload', function (e) {
+                $(this).next().click();
+                return false;
+            });
+
+            datatable.on('click', '.image-cancel', function (e) {
+                if (!confirm("Click OK per cancellare.")) return;
+                $(this).parent().remove();
+
+                // TODO: Remove from DB. Need Ajax request
+                var imageId = $(this).data('id');
+                $.ajax({
+                    type: "POST",
+                    url: 'DataService.asmx/DeletePhoto',
+                    data: {
+                        id: imageId
+                    },
+                    success: function () {
+                        onSuccess({ success: true });
+                    },
+                    error: function() {
+                        onSuccess({ success: false });
+                    }
+                });
+            });
+
+            var onSuccess = function (data) {
+                if (data.success) {
+                    datatable.fnDraw();
+                } else {
+                    alert("Failed!");
+                }
+            };
+        });
+    </script>
     <script>
         // Biography Tab
         BioSelect2Setting();
@@ -967,6 +1250,12 @@
             $("#ComboModOutcallPlace").select2({ theme: 'bootstrap' });
             $("#ComboDuration").select2({ theme: 'bootstrap' });
             $("#ComboDuration1").select2({ theme: 'bootstrap' });
+        }
+        // Contact Tab
+        ContactSelectSetting();
+        function ContactSelectSetting() {
+            $("#ComboInstructionChat").select2({ theme: 'bootstrap' });
+            $("#ComboSocialChat").select2({ theme: 'bootstrap' });
         }
     </script>
 
@@ -1037,6 +1326,10 @@
                 // Rate Tab
                 if (updatePanelID === "UpdatePanelRates") {
                     RateSelectSetting();
+                }
+                // Contact Tab
+                if (updatePanelID === "UpdatePanelContact") {
+                    ContactSelectSetting();
                 }
             }
         };

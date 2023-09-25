@@ -90,9 +90,6 @@ namespace TALENTS
     partial void InsertUserInfo(UserInfo instance);
     partial void UpdateUserInfo(UserInfo instance);
     partial void DeleteUserInfo(UserInfo instance);
-    partial void InsertModContact(ModContact instance);
-    partial void UpdateModContact(ModContact instance);
-    partial void DeleteModContact(ModContact instance);
     partial void InsertModel(Model instance);
     partial void UpdateModel(Model instance);
     partial void DeleteModel(Model instance);
@@ -138,6 +135,9 @@ namespace TALENTS
     partial void InsertModBiography(ModBiography instance);
     partial void UpdateModBiography(ModBiography instance);
     partial void DeleteModBiography(ModBiography instance);
+    partial void InsertModContact(ModContact instance);
+    partial void UpdateModContact(ModContact instance);
+    partial void DeleteModContact(ModContact instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -324,14 +324,6 @@ namespace TALENTS
 			}
 		}
 		
-		public System.Data.Linq.Table<ModContact> ModContacts
-		{
-			get
-			{
-				return this.GetTable<ModContact>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Model> Models
 		{
 			get
@@ -449,6 +441,14 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<ModBiography>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ModContact> ModContacts
+		{
+			get
+			{
+				return this.GetTable<ModContact>();
 			}
 		}
 	}
@@ -3445,359 +3445,6 @@ namespace TALENTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModContacts")]
-	public partial class ModContact : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _ModelId;
-		
-		private int _SocialChatId;
-		
-		private int _InstructionChatId;
-		
-		private string _Email;
-		
-		private string _MobilePhone;
-		
-		private string _Address;
-		
-		private string _AddressCiv;
-		
-		private EntityRef<InstructionChat> _InstructionChat;
-		
-		private EntityRef<SocialChat> _SocialChat;
-		
-		private EntityRef<Model> _Model;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnModelIdChanging(int value);
-    partial void OnModelIdChanged();
-    partial void OnSocialChatIdChanging(int value);
-    partial void OnSocialChatIdChanged();
-    partial void OnInstructionChatIdChanging(int value);
-    partial void OnInstructionChatIdChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnMobilePhoneChanging(string value);
-    partial void OnMobilePhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnAddressCivChanging(string value);
-    partial void OnAddressCivChanged();
-    #endregion
-		
-		public ModContact()
-		{
-			this._InstructionChat = default(EntityRef<InstructionChat>);
-			this._SocialChat = default(EntityRef<SocialChat>);
-			this._Model = default(EntityRef<Model>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int NOT NULL")]
-		public int ModelId
-		{
-			get
-			{
-				return this._ModelId;
-			}
-			set
-			{
-				if ((this._ModelId != value))
-				{
-					if (this._Model.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnModelIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModelId = value;
-					this.SendPropertyChanged("ModelId");
-					this.OnModelIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialChatId", DbType="Int NOT NULL")]
-		public int SocialChatId
-		{
-			get
-			{
-				return this._SocialChatId;
-			}
-			set
-			{
-				if ((this._SocialChatId != value))
-				{
-					if (this._SocialChat.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSocialChatIdChanging(value);
-					this.SendPropertyChanging();
-					this._SocialChatId = value;
-					this.SendPropertyChanged("SocialChatId");
-					this.OnSocialChatIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstructionChatId", DbType="Int NOT NULL")]
-		public int InstructionChatId
-		{
-			get
-			{
-				return this._InstructionChatId;
-			}
-			set
-			{
-				if ((this._InstructionChatId != value))
-				{
-					if (this._InstructionChat.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInstructionChatIdChanging(value);
-					this.SendPropertyChanging();
-					this._InstructionChatId = value;
-					this.SendPropertyChanged("InstructionChatId");
-					this.OnInstructionChatIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(MAX)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="VarChar(50)")]
-		public string MobilePhone
-		{
-			get
-			{
-				return this._MobilePhone;
-			}
-			set
-			{
-				if ((this._MobilePhone != value))
-				{
-					this.OnMobilePhoneChanging(value);
-					this.SendPropertyChanging();
-					this._MobilePhone = value;
-					this.SendPropertyChanged("MobilePhone");
-					this.OnMobilePhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressCiv", DbType="VarChar(MAX)")]
-		public string AddressCiv
-		{
-			get
-			{
-				return this._AddressCiv;
-			}
-			set
-			{
-				if ((this._AddressCiv != value))
-				{
-					this.OnAddressCivChanging(value);
-					this.SendPropertyChanging();
-					this._AddressCiv = value;
-					this.SendPropertyChanged("AddressCiv");
-					this.OnAddressCivChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InstructionChat_ModContact", Storage="_InstructionChat", ThisKey="InstructionChatId", OtherKey="Id", IsForeignKey=true)]
-		public InstructionChat InstructionChat
-		{
-			get
-			{
-				return this._InstructionChat.Entity;
-			}
-			set
-			{
-				InstructionChat previousValue = this._InstructionChat.Entity;
-				if (((previousValue != value) 
-							|| (this._InstructionChat.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InstructionChat.Entity = null;
-						previousValue.ModContacts.Remove(this);
-					}
-					this._InstructionChat.Entity = value;
-					if ((value != null))
-					{
-						value.ModContacts.Add(this);
-						this._InstructionChatId = value.Id;
-					}
-					else
-					{
-						this._InstructionChatId = default(int);
-					}
-					this.SendPropertyChanged("InstructionChat");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SocialChat_ModContact", Storage="_SocialChat", ThisKey="SocialChatId", OtherKey="Id", IsForeignKey=true)]
-		public SocialChat SocialChat
-		{
-			get
-			{
-				return this._SocialChat.Entity;
-			}
-			set
-			{
-				SocialChat previousValue = this._SocialChat.Entity;
-				if (((previousValue != value) 
-							|| (this._SocialChat.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SocialChat.Entity = null;
-						previousValue.ModContacts.Remove(this);
-					}
-					this._SocialChat.Entity = value;
-					if ((value != null))
-					{
-						value.ModContacts.Add(this);
-						this._SocialChatId = value.Id;
-					}
-					else
-					{
-						this._SocialChatId = default(int);
-					}
-					this.SendPropertyChanged("SocialChat");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModContacts.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModContacts.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Models")]
 	public partial class Model : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3820,8 +3467,6 @@ namespace TALENTS
 		
 		private EntitySet<UserInfo> _UserInfos;
 		
-		private EntitySet<ModContact> _ModContacts;
-		
 		private EntitySet<ModIncallPlace> _ModIncallPlaces;
 		
 		private EntitySet<ModLanguageAlloc> _ModLanguageAllocs;
@@ -3843,6 +3488,8 @@ namespace TALENTS
 		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
 		
 		private EntitySet<ModBiography> _ModBiographies;
+		
+		private EntitySet<ModContact> _ModContacts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3867,7 +3514,6 @@ namespace TALENTS
 		public Model()
 		{
 			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
-			this._ModContacts = new EntitySet<ModContact>(new Action<ModContact>(this.attach_ModContacts), new Action<ModContact>(this.detach_ModContacts));
 			this._ModIncallPlaces = new EntitySet<ModIncallPlace>(new Action<ModIncallPlace>(this.attach_ModIncallPlaces), new Action<ModIncallPlace>(this.detach_ModIncallPlaces));
 			this._ModLanguageAllocs = new EntitySet<ModLanguageAlloc>(new Action<ModLanguageAlloc>(this.attach_ModLanguageAllocs), new Action<ModLanguageAlloc>(this.detach_ModLanguageAllocs));
 			this._ModNaturalPhotos = new EntitySet<ModNaturalPhoto>(new Action<ModNaturalPhoto>(this.attach_ModNaturalPhotos), new Action<ModNaturalPhoto>(this.detach_ModNaturalPhotos));
@@ -3879,6 +3525,7 @@ namespace TALENTS
 			this._ModWorkDayHours = new EntitySet<ModWorkDayHour>(new Action<ModWorkDayHour>(this.attach_ModWorkDayHours), new Action<ModWorkDayHour>(this.detach_ModWorkDayHours));
 			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
 			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
+			this._ModContacts = new EntitySet<ModContact>(new Action<ModContact>(this.attach_ModContacts), new Action<ModContact>(this.detach_ModContacts));
 			OnCreated();
 		}
 		
@@ -4035,19 +3682,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_ModContacts", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModContact> ModContacts
-		{
-			get
-			{
-				return this._ModContacts;
-			}
-			set
-			{
-				this._ModContacts.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModIncallPlace", Storage="_ModIncallPlaces", ThisKey="Id", OtherKey="ModelId")]
 		public EntitySet<ModIncallPlace> ModIncallPlaces
 		{
@@ -4191,6 +3825,19 @@ namespace TALENTS
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_ModContacts", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModContact> ModContacts
+		{
+			get
+			{
+				return this._ModContacts;
+			}
+			set
+			{
+				this._ModContacts.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -4218,18 +3865,6 @@ namespace TALENTS
 		}
 		
 		private void detach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModContacts(ModContact entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModContacts(ModContact entity)
 		{
 			this.SendPropertyChanging();
 			entity.Model = null;
@@ -4362,6 +3997,18 @@ namespace TALENTS
 		}
 		
 		private void detach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModContacts(ModContact entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModContacts(ModContact entity)
 		{
 			this.SendPropertyChanging();
 			entity.Model = null;
@@ -8201,6 +7848,359 @@ namespace TALENTS
 						this._NationalityId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Nationality");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModContacts")]
+	public partial class ModContact : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _ModelId;
+		
+		private System.Nullable<int> _SocialChatId;
+		
+		private System.Nullable<int> _InstructionChatId;
+		
+		private string _Email;
+		
+		private string _MobilePhone;
+		
+		private string _Address;
+		
+		private string _AddressCiv;
+		
+		private EntityRef<InstructionChat> _InstructionChat;
+		
+		private EntityRef<Model> _Model;
+		
+		private EntityRef<SocialChat> _SocialChat;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnModelIdChanging(int value);
+    partial void OnModelIdChanged();
+    partial void OnSocialChatIdChanging(System.Nullable<int> value);
+    partial void OnSocialChatIdChanged();
+    partial void OnInstructionChatIdChanging(System.Nullable<int> value);
+    partial void OnInstructionChatIdChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnMobilePhoneChanging(string value);
+    partial void OnMobilePhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnAddressCivChanging(string value);
+    partial void OnAddressCivChanged();
+    #endregion
+		
+		public ModContact()
+		{
+			this._InstructionChat = default(EntityRef<InstructionChat>);
+			this._Model = default(EntityRef<Model>);
+			this._SocialChat = default(EntityRef<SocialChat>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int NOT NULL")]
+		public int ModelId
+		{
+			get
+			{
+				return this._ModelId;
+			}
+			set
+			{
+				if ((this._ModelId != value))
+				{
+					if (this._Model.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnModelIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModelId = value;
+					this.SendPropertyChanged("ModelId");
+					this.OnModelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialChatId", DbType="Int")]
+		public System.Nullable<int> SocialChatId
+		{
+			get
+			{
+				return this._SocialChatId;
+			}
+			set
+			{
+				if ((this._SocialChatId != value))
+				{
+					if (this._SocialChat.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSocialChatIdChanging(value);
+					this.SendPropertyChanging();
+					this._SocialChatId = value;
+					this.SendPropertyChanged("SocialChatId");
+					this.OnSocialChatIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstructionChatId", DbType="Int")]
+		public System.Nullable<int> InstructionChatId
+		{
+			get
+			{
+				return this._InstructionChatId;
+			}
+			set
+			{
+				if ((this._InstructionChatId != value))
+				{
+					if (this._InstructionChat.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInstructionChatIdChanging(value);
+					this.SendPropertyChanging();
+					this._InstructionChatId = value;
+					this.SendPropertyChanged("InstructionChatId");
+					this.OnInstructionChatIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(MAX)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="VarChar(50)")]
+		public string MobilePhone
+		{
+			get
+			{
+				return this._MobilePhone;
+			}
+			set
+			{
+				if ((this._MobilePhone != value))
+				{
+					this.OnMobilePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._MobilePhone = value;
+					this.SendPropertyChanged("MobilePhone");
+					this.OnMobilePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressCiv", DbType="VarChar(MAX)")]
+		public string AddressCiv
+		{
+			get
+			{
+				return this._AddressCiv;
+			}
+			set
+			{
+				if ((this._AddressCiv != value))
+				{
+					this.OnAddressCivChanging(value);
+					this.SendPropertyChanging();
+					this._AddressCiv = value;
+					this.SendPropertyChanged("AddressCiv");
+					this.OnAddressCivChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="InstructionChat_ModContact", Storage="_InstructionChat", ThisKey="InstructionChatId", OtherKey="Id", IsForeignKey=true)]
+		public InstructionChat InstructionChat
+		{
+			get
+			{
+				return this._InstructionChat.Entity;
+			}
+			set
+			{
+				InstructionChat previousValue = this._InstructionChat.Entity;
+				if (((previousValue != value) 
+							|| (this._InstructionChat.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InstructionChat.Entity = null;
+						previousValue.ModContacts.Remove(this);
+					}
+					this._InstructionChat.Entity = value;
+					if ((value != null))
+					{
+						value.ModContacts.Add(this);
+						this._InstructionChatId = value.Id;
+					}
+					else
+					{
+						this._InstructionChatId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("InstructionChat");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModContacts.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModContacts.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SocialChat_ModContact", Storage="_SocialChat", ThisKey="SocialChatId", OtherKey="Id", IsForeignKey=true)]
+		public SocialChat SocialChat
+		{
+			get
+			{
+				return this._SocialChat.Entity;
+			}
+			set
+			{
+				SocialChat previousValue = this._SocialChat.Entity;
+				if (((previousValue != value) 
+							|| (this._SocialChat.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SocialChat.Entity = null;
+						previousValue.ModContacts.Remove(this);
+					}
+					this._SocialChat.Entity = value;
+					if ((value != null))
+					{
+						value.ModContacts.Add(this);
+						this._SocialChatId = value.Id;
+					}
+					else
+					{
+						this._SocialChatId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("SocialChat");
 				}
 			}
 		}

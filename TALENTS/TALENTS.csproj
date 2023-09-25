@@ -173,6 +173,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="DashboardDetail.aspx" />
+    <Content Include="DataService.asmx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -263,6 +264,7 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.nice-select.min.js" />
     <Content Include="Scripts\jquery.slicknav.js" />
+    <Content Include="Scripts\jquery.slim.min.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -359,11 +361,13 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\CityController.cs" />
+    <Compile Include="Controller\ContactController.cs" />
     <Compile Include="Controller\CryptoController.cs" />
     <Compile Include="Controller\InOutCallPlaceController.cs" />
     <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ModelController.cs" />
+    <Compile Include="Controller\PhotoController.cs" />
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
     <Compile Include="Controller\WorkDayHourController.cs" />
@@ -418,6 +422,10 @@
     <Compile Include="DashboardDetail.aspx.designer.cs">
       <DependentUpon>DashboardDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataService.asmx.cs">
+      <DependentUpon>DataService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -468,15 +476,18 @@
     <Compile Include="ModelPage.Master.designer.cs">
       <DependentUpon>ModelPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\JSDataTable.cs" />
     <Compile Include="Models\ModelCheck.cs" />
     <Compile Include="Models\ModIncallCheck.cs" />
     <Compile Include="Models\ModIncallRateCheck.cs" />
     <Compile Include="Models\ModLanguageCheck.cs" />
     <Compile Include="Models\ModOutcallCheck.cs" />
     <Compile Include="Models\ModOutcallRateCheck.cs" />
+    <Compile Include="Models\ModPhotoCheck.cs" />
     <Compile Include="Models\ModServiceCheck.cs" />
     <Compile Include="Models\ModWorkCityCheck.cs" />
     <Compile Include="Models\ModWorkDayHourCheck.cs" />
+    <Compile Include="Models\ProcResult.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>

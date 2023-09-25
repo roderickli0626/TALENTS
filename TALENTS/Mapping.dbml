@@ -165,21 +165,6 @@
       <Association Name="Model_UserInfo" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ModContacts" Member="ModContacts">
-    <Type Name="ModContact">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SocialChatId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InstructionChatId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="AddressCiv" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="InstructionChat_ModContact" Member="InstructionChat" ThisKey="InstructionChatId" OtherKey="Id" Type="InstructionChat" IsForeignKey="true" />
-      <Association Name="SocialChat_ModContact" Member="SocialChat" ThisKey="SocialChatId" OtherKey="Id" Type="SocialChat" IsForeignKey="true" />
-      <Association Name="Model_ModContact" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Models" Member="Models">
     <Type Name="Model">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -190,7 +175,6 @@
       <Column Name="IsUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Model_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="UserId" Type="UserInfo" />
-      <Association Name="Model_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="ModelId" Type="ModContact" />
       <Association Name="Model_ModIncallPlace" Member="ModIncallPlaces" ThisKey="Id" OtherKey="ModelId" Type="ModIncallPlace" />
       <Association Name="Model_ModLanguageAlloc" Member="ModLanguageAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModLanguageAlloc" />
       <Association Name="Model_ModNaturalPhoto" Member="ModNaturalPhotos" ThisKey="Id" OtherKey="ModelId" Type="ModNaturalPhoto" />
@@ -202,6 +186,7 @@
       <Association Name="Model_ModWorkDayHour" Member="ModWorkDayHours" ThisKey="Id" OtherKey="ModelId" Type="ModWorkDayHour" />
       <Association Name="Model_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="ModelId" Type="ModWorkingCityAlloc" />
       <Association Name="Model_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="ModelId" Type="ModBiography" />
+      <Association Name="Model_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="ModelId" Type="ModContact" />
     </Type>
   </Table>
   <Table Name="dbo.ModIncallPlace" Member="ModIncallPlaces">
@@ -372,6 +357,21 @@
       <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
       <Association Name="Model_ModBiography" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Nationality_ModBiography" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModContacts" Member="ModContacts">
+    <Type Name="ModContact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SocialChatId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InstructionChatId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AddressCiv" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="InstructionChat_ModContact" Member="InstructionChat" ThisKey="InstructionChatId" OtherKey="Id" Type="InstructionChat" IsForeignKey="true" />
+      <Association Name="Model_ModContact" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SocialChat_ModContact" Member="SocialChat" ThisKey="SocialChatId" OtherKey="Id" Type="SocialChat" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
