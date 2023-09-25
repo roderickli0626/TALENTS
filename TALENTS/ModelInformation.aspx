@@ -656,10 +656,250 @@
                                     </asp:UpdatePanel>
                                 </div>
                                 <div class="tab-pane fade fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-workhours" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelWorkDayHours" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">WORKING HOURS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkHours" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary5" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorWorkHours1" runat="server" ErrorMessage="Please select Work Day and Hours." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkHours2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-4">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboWorkDay">Work_Day</label>
+                                                            <asp:DropDownList runat="server" ID="ComboWorkDay" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboSHour">Start_Time</label>
+                                                            <asp:DropDownList runat="server" ID="ComboSHour" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboEHour">End_Time</label>
+                                                            <asp:DropDownList runat="server" ID="ComboEHour" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:Button runat="server" ID="BtnWorkHour" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkHour_Click"/>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <asp:Repeater ID="RepeaterModWorkHour" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModWorkHour_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                    <HeaderTemplate>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No</th>
+                                                                        <th>Work Day</th>
+                                                                        <th>Work Start Time</th>
+                                                                        <th>Work End Time</th>
+                                                                        <th>Azioni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                            <td><%# Eval("WorkDay")%></td>
+                                                            <td><%# Eval("WorkSHour")%></td>
+                                                            <td><%# Eval("WorkEHour")%></td>
+                                                            <td>
+                                                                <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                    CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        </tbody>
+                                                        </table>
+                                                        </div>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModWorkHour" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-rates" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelRates" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">RATES</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmRate" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary6" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorRate1" runat="server" ErrorMessage="Please select Incall Rate." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorRate2" runat="server" ErrorMessage="Please select Outcall Rate." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorRate3" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-5">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboModIncallPlace">Incall_Place</label>
+                                                            <asp:DropDownList runat="server" ID="ComboModIncallPlace" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboDuration">Duration</label>
+                                                            <asp:DropDownList runat="server" ID="ComboDuration" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtIncallRate" PlaceHolder="Incall Rate" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:Button runat="server" ID="BtnIncallRate" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnIncallRate_Click"/>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3" style="width: 800px;">
+                                                <div class="col-5">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboModOutcallPlace">Outcall_Place</label>
+                                                            <asp:DropDownList runat="server" ID="ComboModOutcallPlace" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboDuration1">Duration</label>
+                                                            <asp:DropDownList runat="server" ID="ComboDuration1" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtOutcallRate" PlaceHolder="Outcall Rate" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:Button runat="server" ID="BtnOutcallRate" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnOutcallRate_Click"/>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6" style="border-right: 1px solid lightblue;">
+                                                    <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModIncallRate_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                        <HeaderTemplate>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>No</th>
+                                                                            <th>Incall Place</th>
+                                                                            <th>Duration</th>
+                                                                            <th>Rate</th>
+                                                                            <th>Azioni</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <tr>
+                                                                <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                                <td><%# Eval("IncallPlace")%></td>
+                                                                <td><%# Eval("Duration")%></td>
+                                                                <td><%# Eval("Rate")%></td>
+                                                                <td>
+                                                                    <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                        CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                                </td>
+                                                            </tr>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                   
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                                <div class="col-6">
+                                                    <asp:Repeater ID="RepeaterModOutcallRate" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModOutcallRate_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                        <HeaderTemplate>
+                                                            <div class="table-responsive">
+                                                                <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>No</th>
+                                                                            <th>Outcall Place</th>
+                                                                            <th>Duration</th>
+                                                                            <th>Rate</th>
+                                                                            <th>Azioni</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <tr>
+                                                                <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                                <td><%# Eval("OutcallPlace")%></td>
+                                                                <td><%# Eval("Duration")%></td>
+                                                                <td><%# Eval("Rate")%></td>
+                                                                <td>
+                                                                    <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                        CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                </asp:LinkButton>
+                                                                </td>
+                                                            </tr>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                   
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModIncallRate" />
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModOutcallRate" />
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModOutcall" />
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterModIncall" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnOutcall" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnIncall" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-rates" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-videos" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-naturalphoto" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
@@ -712,6 +952,21 @@
             $("#ComboWorkCity").select2({ theme: 'bootstrap' });
             $("#ComboIncall").select2({ theme: 'bootstrap' });
             $("#ComboOutcall").select2({ theme: 'bootstrap' });
+        }
+        // Work Day/Hour Tab
+        WorkDayHourSelectSetting();
+        function WorkDayHourSelectSetting() {
+            $("#ComboWorkDay").select2({ theme: 'bootstrap' });
+            $("#ComboSHour").select2({ theme: 'bootstrap' });
+            $("#ComboEHour").select2({ theme: 'bootstrap' });
+        }
+        // Rate Tab
+        RateSelectSetting();
+        function RateSelectSetting() {
+            $("#ComboModIncallPlace").select2({ theme: 'bootstrap' });
+            $("#ComboModOutcallPlace").select2({ theme: 'bootstrap' });
+            $("#ComboDuration").select2({ theme: 'bootstrap' });
+            $("#ComboDuration1").select2({ theme: 'bootstrap' });
         }
     </script>
 
@@ -774,6 +1029,14 @@
                 // Work City Tab
                 if (updatePanelID === "UpdatePanelWorkCity") {
                     WorkCitySeletSetting();
+                }
+                // Work Day/Hour Tab
+                if (updatePanelID === "UpdatePanelWorkDayHours") {
+                    WorkDayHourSelectSetting();
+                }
+                // Rate Tab
+                if (updatePanelID === "UpdatePanelRates") {
+                    RateSelectSetting();
                 }
             }
         };

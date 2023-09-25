@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Net.Configuration;
+using System.Security.Policy;
 using System.Web;
 
 namespace TALENTS.DAO
@@ -13,6 +15,12 @@ namespace TALENTS.DAO
         public List<ModIncallRate> FindByModInPlace(int incallPlaceId)
         {
             IEnumerable<ModIncallRate> table = GetContext().ModIncallRates.Where(m => m.ModIncallPlaceId == incallPlaceId);
+            return table.ToList();
+        }
+
+        public List<ModIncallRate> FindByModel(int modelId)
+        {
+            IEnumerable<ModIncallRate> table = GetContext().ModIncallRates.Where(m => m.ModIncallPlace.ModelId == modelId);
             return table.ToList();
         }
         public bool Insert(ModIncallRate modIn)

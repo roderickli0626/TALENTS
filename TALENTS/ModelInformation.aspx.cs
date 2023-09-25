@@ -37,6 +37,8 @@ namespace TALENTS
                 LoadLanguage();
                 LoadService();
                 LoadWorkCities();
+                LoadWorkDayHour();
+                LoadModRate();
             }
         }
         // Bio Tab
@@ -355,7 +357,7 @@ namespace TALENTS
                 if (result) LoadWorkCities();
             }
         }
-
+        // WorkCity Tab / IncallPlace
         protected void BtnIncall_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -375,6 +377,7 @@ namespace TALENTS
             }
             SuccessAlarmWorkCity.Visible = true;
             LoadWorkCities();
+            LoadModRate();
         }
 
         protected void RepeaterModIncall_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -383,10 +386,14 @@ namespace TALENTS
             {
                 int id = int.Parse(e.CommandArgument.ToString());
                 bool result = new ModIncallPlaceDAO().Delete(id);
-                if (result) LoadWorkCities();
+                if (result)
+                {
+                    LoadWorkCities();
+                    LoadModRate();
+                }
             }
         }
-
+        // WorkCity Tab / OutcallPlace
         protected void BtnOutcall_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -406,6 +413,7 @@ namespace TALENTS
             }
             SuccessAlarmWorkCity.Visible = true;
             LoadWorkCities();
+            LoadModRate();
         }
 
         protected void RepeaterModOutcall_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -414,7 +422,144 @@ namespace TALENTS
             {
                 int id = int.Parse(e.CommandArgument.ToString());
                 bool result = new ModOutcallPlaceDAO().Delete(id);
-                if (result) LoadWorkCities();
+                if (result)
+                {
+                    LoadWorkCities();
+                    LoadModRate();
+                }
+            }
+        }
+        // WorkHours Tab
+        private void LoadWorkDayHour()
+        {
+            // Load Work Day/Hours
+            List<WorkDay> workDays = new WorkDayDAO().FindAll();
+            ControlUtil.DataBind(ComboWorkDay, workDays, "Id", "Description", "0", "[Unassigned]");
+            List<WorkHour> workHours = new WorkHourDAO().FindAll();
+            ControlUtil.DataBind(ComboSHour, workHours, "Id", "Description", "0", "");
+            ControlUtil.DataBind(ComboEHour, workHours, "Id", "Description", "0", "");
+            // Load Mod Work Day/Hours
+            List<ModWorkDayHourCheck> modWorkDayHourChecks = new WorkDayHourController().FindByModel(model.Id);
+            RepeaterModWorkHour.DataSource = modWorkDayHourChecks;
+            RepeaterModWorkHour.DataBind();
+        }
+        protected void BtnWorkHour_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? dayId = ControlUtil.GetSelectedValue(ComboWorkDay);
+            int? ehourId = ControlUtil.GetSelectedValue(ComboEHour);
+            int? shourId = ControlUtil.GetSelectedValue(ComboSHour);
+            if (dayId == null || ehourId == null || shourId == null)
+            {
+                SuccessAlarmWorkHours.Visible = false;
+                ServerValidatorWorkHours1.IsValid = false;
+                return;
+            }
+            success = new WorkDayHourController().SaveModWorkDayHour(model.Id, dayId, shourId, ehourId);
+            if (!success)
+            {
+                SuccessAlarmWorkHours.Visible = false;
+                ServerValidatorWorkHours2.IsValid = false;
+                return;
+            }
+            SuccessAlarmWorkHours.Visible = true;
+            LoadWorkDayHour();
+
+        }
+        protected void RepeaterModWorkHour_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModWorkDayHourDAO().Delete(id);
+                if (result) LoadWorkDayHour();
+            }
+        }
+        // Rate Tab
+        private void LoadModRate()
+        {
+            // Load Mod IncallPlace
+            List<ModIncallCheck> modIncallChecks = new InOutCallPlaceController().FindIncallPlaceByModel(model.Id);
+            ControlUtil.DataBind(ComboModIncallPlace, modIncallChecks, "Id", "IncallPlace", "0", "[Unassigned]");
+            // Load Mod OutcallPlace
+            List<ModOutcallCheck> modOutcallChecks = new InOutCallPlaceController().FindOutcallPlaceByModel(model.Id);
+            ControlUtil.DataBind(ComboModOutcallPlace, modOutcallChecks, "Id", "OutcallPlace", "0", "[Unassigned]");
+            // Load Duration
+            List<Duration> durations = new DurationDAO().FindAll();
+            ControlUtil.DataBind(ComboDuration, durations, "Id", "Description", "0", "");
+            ControlUtil.DataBind(ComboDuration1, durations, "Id", "Description", "0", "");
+            // Load Mod IncallPlaceRate
+            List<ModIncallRateCheck> modIncallRateChecks = new InOutCallPlaceController().FindIncallRateByModel(model.Id);
+            RepeaterModIncallRate.DataSource = modIncallRateChecks;
+            RepeaterModIncallRate.DataBind();
+            // Load Mod OutcallPlaceRate
+            List<ModOutcallRateCheck> modOutcallRateChecks = new InOutCallPlaceController().FindOutcallRateByModel(model.Id);
+            RepeaterModOutcallRate.DataSource = modOutcallRateChecks;
+            RepeaterModOutcallRate.DataBind();
+        }
+        protected void BtnIncallRate_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? modIncallPlaceId = ControlUtil.GetSelectedValue(ComboModIncallPlace);
+            int? durationId = ControlUtil.GetSelectedValue(ComboDuration);
+            double? rate = ParseUtil.TryParseDouble(TxtIncallRate.Text);
+            if (modIncallPlaceId == null || durationId == null || rate == null)
+            {
+                SuccessAlarmRate.Visible = false;
+                ServerValidatorRate1.IsValid = false;
+                return;
+            }
+            success = new InOutCallPlaceController().SaveModIncallRate(modIncallPlaceId, durationId, rate);
+            if (!success)
+            {
+                SuccessAlarmRate.Visible = false;
+                ServerValidatorRate3.IsValid = false;
+                return;
+            }
+            SuccessAlarmRate.Visible = true;
+            LoadModRate();
+        }
+
+        protected void BtnOutcallRate_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? modOutcallPlaceId = ControlUtil.GetSelectedValue(ComboModOutcallPlace);
+            int? durationId = ControlUtil.GetSelectedValue(ComboDuration1);
+            double? rate = ParseUtil.TryParseDouble(TxtOutcallRate.Text);
+            if (modOutcallPlaceId == null || durationId == null || rate == null)
+            {
+                SuccessAlarmRate.Visible = false;
+                ServerValidatorRate2.IsValid = false;
+                return;
+            }
+            success = new InOutCallPlaceController().SaveModOutcallRate(modOutcallPlaceId, durationId, rate);
+            if (!success)
+            {
+                SuccessAlarmRate.Visible = false;
+                ServerValidatorRate3.IsValid = false;
+                return;
+            }
+            SuccessAlarmRate.Visible = true;
+            LoadModRate();
+        }
+
+        protected void RepeaterModIncallRate_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModIncallRateDAO().Delete(id);
+                if (result) LoadModRate();
+            }
+        }
+
+        protected void RepeaterModOutcallRate_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModOutcallRateDAO().Delete(id);
+                if (result) LoadModRate();
             }
         }
     }
