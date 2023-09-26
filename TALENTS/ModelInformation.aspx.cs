@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -28,7 +29,6 @@ namespace TALENTS
                 Response.Redirect("~/Login.aspx");
                 return;
             }
-            
             if (!IsPostBack)
             {
                 ModelName.InnerText = model.Username;
@@ -40,6 +40,8 @@ namespace TALENTS
                 LoadWorkDayHour();
                 LoadModRate();
                 LoadContactInfo();
+                LoadVideos();
+                LoadNaturalPhotos();
             }
         }
         // Bio Tab
@@ -597,6 +599,50 @@ namespace TALENTS
             }
             SuccessAlarmContact.Visible = true;
             LoadContactInfo();
+        }
+        // Video Tab
+        private void LoadVideos()
+        {
+            List<ModVideo> videos = new ModVideoDAO().FindByModel(model.Id);
+            RepeaterVideo.DataSource = videos;
+            RepeaterVideo.DataBind();
+        }
+        
+        protected void RepeaterVideo_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModVideoDAO().Delete(id);
+                if (result) LoadVideos();
+            }
+        }
+
+        protected void BtnReload_Click(object sender, EventArgs e)
+        {
+            LoadVideos();
+        }
+
+        // Natural Photo Tab
+        private void LoadNaturalPhotos()
+        {
+            List<ModNaturalPhoto> naturalPhotos = new ModNaturalPhotoDAO().FindByModel(model.Id);
+            RepeaterNautralPhoto.DataSource = naturalPhotos;
+            RepeaterNautralPhoto.DataBind();
+        }
+        protected void BtnReloadNatural_Click(object sender, EventArgs e)
+        {
+            LoadNaturalPhotos();
+        }
+
+        protected void RepeaterNautralPhoto_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModNaturalPhotoDAO().Delete(id);
+                if (result) LoadNaturalPhotos();
+            }
         }
     }
 }

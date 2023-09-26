@@ -244,6 +244,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\click-scroll.js" />
     <Content Include="Scripts\core.min.js" />
+    <Content Include="Scripts\custom-photo.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -545,6 +546,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\NaturalPhotos\" />
     <Folder Include="Upload\Videos\" />
   </ItemGroup>
   <ItemGroup>

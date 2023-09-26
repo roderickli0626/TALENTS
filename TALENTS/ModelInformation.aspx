@@ -44,14 +44,14 @@
     overflow:auto;
 }
 .preview-images-zone > .preview-image:first-child {
-    height: 80px;
-    width: 80px;
+    height: 87px;
+    width: 87px;
     position: relative;
     margin-right: 5px;
 }
 .preview-images-zone > .preview-image {
-    height: 80px;
-    width: 80px;
+    height: 87px;
+    width: 87px;
     position: relative;
     margin-right: 5px;
     float: left;
@@ -106,6 +106,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row" style="background-color: gray">
                         <div class="col-3 p-lg-5" style="background-color: rgb(0,0,0,.5); padding-left: 80px;">
                             <h2 runat="server" id="ModelName" class="text-white text-center pb-5">Model Information</h2>
@@ -346,7 +347,6 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;"  id="v-pills-about" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelAbout" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
@@ -443,7 +443,7 @@
                                                             <td>
                                                                 <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
                                                                     CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
-                                                                    <i class="fa fa-trash style="font-size:25px""></i>
+                                                                    <i class="fa fa-trash" style="font-size:25px"></i>
                                                                 </asp:LinkButton>
                                                             </td>
                                                         </tr>
@@ -1042,8 +1042,103 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-videos" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-naturalphoto" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-videos" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelVideos" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">VIDEOS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmVideo" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row" style="width: 800px;">
+                                                <div class="card-body">
+                                                    <div class="container">
+                                                        <fieldset class="form-group text-center">
+                                                            <%--<asp:Button runat="server" ID="BtnUploadVideo" CssClass="btn btn-success" Text="<i class='fa fa-upload'></i>Upload Video" OnClick="BtnUploadVideo_Click" OnClientClick="$('#FileUpload').click();"></asp:Button>--%>
+                                                            <button id="BtnUploadVideo" class="btn btn-success"><i class='fa fa-upload'></i> Upload Video</button>
+                                                            <%--<asp:FileUpload runat="server" ID="FileUpload" ClientIDMode="Static" CssClass="form-control" style="display: none;" />--%>
+                                                            <input type="file" id="fileUpload" style="display: none;" class="form-control" multiple>
+                                                            <asp:Button runat="server" ID="BtnReload" ClientIDMode="Static" style="display:none;" OnClick="BtnReload_Click" />
+                                                        </fieldset>
+                                                        <asp:Repeater ID="RepeaterVideo" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterVideo_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                            <HeaderTemplate>
+                                                                <div class="preview-images-zone">
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <div class="preview-image" style="height:165px; width:165px;">
+                                                                    <asp:LinkButton ID="DeleteButton" runat="server" CssClass="image-cancel" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                            CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                        <i class="fa fa-close" style="font-size:25px"></i>
+                                                                    </asp:LinkButton>
+                                                                    
+                                                                    <div class="image-zone">
+                                                                        <video style="width:165px; height:165px;" controls>
+                                                                            <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/mp4">
+                                                                            <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/ogg">
+                                                                        </video>
+                                                                    </div>
+                                                                </div>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </div>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterVideo" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-naturalphoto" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelNaturalPhoto" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <asp:Button runat="server" ID="BtnReloadNatural" style="display:none" OnClick="BtnReloadNatural_Click" />
+                                                <h2 class="mb-4 text-left col-6">NATURAL PHOTOS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmNaturalPhoto" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row" style="width: 800px;">
+                                                <div class="card-body">
+                                                    <div class="container">
+                                                        <fieldset class="form-group text-center">
+                                                            <%--<asp:Button runat="server" ID="BtnUploadVideo" CssClass="btn btn-success" Text="<i class='fa fa-upload'></i>Upload Video" OnClick="BtnUploadVideo_Click" OnClientClick="$('#FileUpload').click();"></asp:Button>--%>
+                                                            <button id="BtnUploadNaturalPhoto" class="btn btn-success"><i class='fa fa-upload'></i> Upload Natural Photo</button>
+                                                            <%--<asp:FileUpload runat="server" ID="FileUpload" ClientIDMode="Static" CssClass="form-control" style="display: none;" />--%>
+                                                            <input type="file" id="fileUploadNatural" style="display: none;" class="form-control" multiple>
+                                                        </fieldset>
+                                                        <asp:Repeater ID="RepeaterNautralPhoto" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterNautralPhoto_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                            <HeaderTemplate>
+                                                                <div class="preview-images-zone">
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <div class="preview-image" style="height:147px; width:147px;">
+                                                                    <asp:LinkButton ID="DeleteButton" runat="server" CssClass="image-cancel" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                            CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                        <i class="fa fa-close" style="font-size:25px"></i>
+                                                                    </asp:LinkButton>
+                                                                    
+                                                                    <div class="image-zone">
+                                                                        <img src="<%#"/Upload/NaturalPhotos/" + Eval("Image")%>" />
+                                                                    </div>
+                                                                </div>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </div>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterNautralPhoto" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-tour" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                                 <div class="tab-pane fade" id="v-pills-setting" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                             </div>
@@ -1058,147 +1153,107 @@
     <script src="Scripts/core.min.js"></script>
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
+    <script src="Scripts/custom-photo.js"></script>
     <script>
-        $(function () {
-            var datatable = $('#photo-table').dataTable({
-                "serverSide": true,
-                "ajax": 'DataService.asmx/FindPhotos',
-                "dom": '<"table-responsive"t>',
-                "autoWidth": false,
-                "pageLength": 20,
-                "processing": true,
-                "ordering": false,
-                "columns": [{
-                    "render": function (data, type, row, meta) {
-                        var photoContentDetail = "";
-                        var images = row.Images;
-                        var num = 1;
-                        images.forEach(function (image) {
-                            var html = '<div class="preview-image preview-show-' + num + '">' +
-                                '<div class="image-cancel" data-no="' + num + '" data-id="' + image.ImageId + '">x</div>' +
-                                '<div class="image-zone"><img id="pro-img-' + num + '" src="Upload/Photos/' + image.ImageName + '"></div>' +
-                                '</div>';
+        // Natural Photo Upload
+        $("#BtnUploadNaturalPhoto").click(function () {
+            $("#fileUploadNatural").click();
+            return false;
+        });
+        $("#fileUploadNatural").on('change', readNaturalPhoto);
 
-                            photoContentDetail += html;
-                            num = num + 1;
-                        })
-                        
-                        var photoContent = '<div class="card" style="border-left:3px solid lightgreen;">\
-                                                <div class="card-header" >\
-                                                    <a class="card-link" style="font-size:20px;" data-toggle="collapse" href="#collapse' + row.Id + '">\
-                                                        ' + row.Title + '\
-                                                    </a>\
-                                                    <span class="badge badge-dark float-end">' + row.Length +' photos</span>\
-                                                </div >\
-                                                <div id="collapse' + row.Id + '" class="collapse show" data-parent="">\
-                                                    <div class="card-body">' +
-                                                        '<div class="container">\
-                                                            <fieldset class="form-group text-center">\
-                                                                <button class="btnUpload btn btn-success"><i class="fa fa-upload"></i> Upload Photo</button>\
-                                                                <input type="file" class="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>\
-                                                            </fieldset>\
-                                                            <div class="preview-images-zone">' + 
-                                                                photoContentDetail
-                                                            + '</div>\
-                                                        </div >\
-                                                    </div>\
-                                                </div>\
-                                            </div>';
-                        return photoContent;
-                    }
-                }],
-            });
-
-            datatable.on('change', '.pro-image', readImage);
-            function readImage() {
-                if (window.File && window.FileList && window.FileReader) {
-                    var data = new FormData(); // To Save Photo to DB
-                    var files = event.target.files; //FileList object
-                    var output = $(this).parent().next();
-                    var groupId = datatable.fnGetData($(this).closest('tr')).Id;
-                    data.append('groupId', groupId); // To Save Photo to DB
-                    var num = output[0].childElementCount;
-                    for (let i = 0; i < files.length; i++) {
-                        var file = files[i];
-                        if (!file.type.match('image')) continue;
-                        data.append('files', file); // To Save Photo to DB
-
-                        var picReader = new FileReader();
-
-                        picReader.addEventListener('load', function (event) {
-                            var picFile = event.target;
-                            var html = '<div class="preview-image preview-show-' + num + '">' +
-                                '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                                '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                                '</div>';
-
-                            output.append(html);
-                            num = num + 1;
-                        });
-
-                        picReader.readAsDataURL(file);
-                    }
-
-                    // TODO Save Image to DB
-                    $.ajax({
-                        type: "POST",
-                        url: 'DataService.asmx/SavePhoto',
-                        data: data,
-                        contentType: false,
-                        //contentType: 'multipart/form-data',
-                        processData: false,
-                        success: function () {
-                            onSuccess({ success: true });
-                        },
-                        error: function () {
-                            onSuccess({ success: false });
-                        }
-                    });
-                    ///////
-
-                    $("#pro-image").val('');
-                    return false;
-                } else {
-                    console.log('Browser not support');
-                    return false;
+        function readNaturalPhoto() {
+            if (window.File && window.FileList && window.FileReader) {
+                var data = new FormData(); // To Save Photo to DB
+                var files = event.target.files; //FileList object
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image')) continue;
+                    data.append('files', file); // To Save Photo to DB
                 }
-            }
 
-            datatable.on('click', '.btnUpload', function (e) {
-                $(this).next().click();
-                return false;
-            });
-
-            datatable.on('click', '.image-cancel', function (e) {
-                if (!confirm("Click OK per cancellare.")) return;
-                $(this).parent().remove();
-
-                // TODO: Remove from DB. Need Ajax request
-                var imageId = $(this).data('id');
+                // TODO Save Image to DB
                 $.ajax({
                     type: "POST",
-                    url: 'DataService.asmx/DeletePhoto',
-                    data: {
-                        id: imageId
+                    url: 'DataService.asmx/SaveNaturalPhotos',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        onSuccess1({ success: true });
                     },
+                    error: function () {
+                        onSuccess1({ success: false });
+                    }
+                });
+                ///////
+                return true;
+            } else {
+                console.log('Browser not support');
+                return false;
+            }
+        };
+
+        var onSuccess1 = function (data) {
+            if (data.success) {
+                //$("#BtnReloadNatural").click();
+                $("#<%= BtnReloadNatural.ClientID %>").click();
+            } else {
+                alert("Failed!");
+            }
+        };
+    </script>
+
+    <script>
+        // Video Upload
+        $("#BtnUploadVideo").click(function () {
+            $("#fileUpload").click();
+            return false;
+        });
+        $("#fileUpload").on('change', readVideo);
+
+        function readVideo() {
+            if (window.File && window.FileList && window.FileReader) {
+                var data = new FormData(); // To Save Video to DB
+                var files = event.target.files; //FileList object
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('video')) continue;
+                    data.append('files', file); // To Save Video to DB
+                }
+
+                // TODO Save Video to DB
+                $.ajax({
+                    type: "POST",
+                    url: 'DataService.asmx/SaveVideo',
+                    data: data,
+                    contentType: false,
+                    processData: false,
                     success: function () {
                         onSuccess({ success: true });
                     },
-                    error: function() {
+                    error: function () {
                         onSuccess({ success: false });
                     }
                 });
-            });
+                ///////
+                $("#BtnReload").click();
+                return true;
+            } else {
+                console.log('Browser not support');
+                return false;
+            }
+        };
 
-            var onSuccess = function (data) {
-                if (data.success) {
-                    datatable.fnDraw();
-                } else {
-                    alert("Failed!");
-                }
-            };
-        });
+        var onSuccess = function (data) {
+            if (data.success) {
+                $("#BtnReload").click();
+            } else {
+                alert("Failed!");
+            }
+        };
     </script>
+
     <script>
         // Biography Tab
         BioSelect2Setting();
@@ -1330,6 +1385,22 @@
                 // Contact Tab
                 if (updatePanelID === "UpdatePanelContact") {
                     ContactSelectSetting();
+                }
+                // Video Tab
+                if (updatePanelID === "UpdatePanelVideos") {
+                    $("#BtnUploadVideo").click(function () {
+                        $("#fileUpload").click();
+                        return false;
+                    });
+                    $("#fileUpload").on('change', readVideo);
+                }
+                // Natural Photo Tab
+                if (updatePanelID === "UpdatePanelNaturalPhoto") {
+                    $("#BtnUploadNaturalPhoto").click(function () {
+                        $("#fileUploadNatural").click();
+                        return false;
+                    });
+                    $("#fileUploadNatural").on('change', readNaturalPhoto);
                 }
             }
         };

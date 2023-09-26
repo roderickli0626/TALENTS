@@ -96,6 +96,88 @@ namespace TALENTS
             ResponseProc(success, "");
         }
 
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void SaveVideo()
+        {
+            HttpResponse Response = Context.Response;
+            ProcResult result = new ProcResult();
+            Response.ContentType = "application/json; charset=utf-8";
+
+            Model model = loginSystem.GetCurrentUserAccount();
+            if (model == null || !loginSystem.IsModelLoggedIn())
+            {
+                Response.Write(serializer.Serialize(result));
+                return;
+            }
+
+            try
+            {
+                // Access the FormData object sent in the AJAX request
+                HttpFileCollection files = HttpContext.Current.Request.Files;
+                // Save each file to a specific location on the server
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFile file = files[i];
+                    string fileName = Path.GetFileName(file.FileName);
+                    string filePath = Server.MapPath("~/Upload/Videos/") + fileName;
+                    file.SaveAs(filePath);
+
+                    ModVideo modVideo = new ModVideo();
+                    modVideo.ModelId = model.Id;
+                    modVideo.Video = fileName;
+                    result.success = new ModVideoDAO().Insert(modVideo);
+                }
+
+                Response.Write(serializer.Serialize(result));
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void SaveNaturalPhotos()
+        {
+            HttpResponse Response = Context.Response;
+            ProcResult result = new ProcResult();
+            Response.ContentType = "application/json; charset=utf-8";
+
+            Model model = loginSystem.GetCurrentUserAccount();
+            if (model == null || !loginSystem.IsModelLoggedIn())
+            {
+                Response.Write(serializer.Serialize(result));
+                return;
+            }
+
+            try
+            {
+                // Access the FormData object sent in the AJAX request
+                HttpFileCollection files = HttpContext.Current.Request.Files;
+                // Save each file to a specific location on the server
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFile file = files[i];
+                    string fileName = Path.GetFileName(file.FileName);
+                    string filePath = Server.MapPath("~/Upload/NaturalPhotos/") + fileName;
+                    file.SaveAs(filePath);
+
+                    ModNaturalPhoto modNaturalPhoto = new ModNaturalPhoto();
+                    modNaturalPhoto.ModelId = model.Id;
+                    modNaturalPhoto.Image = fileName;
+                    result.success = new ModNaturalPhotoDAO().Insert(modNaturalPhoto);
+                }
+
+                Response.Write(serializer.Serialize(result));
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
         protected void ResponseJson(Object result)
         {
             HttpResponse Response = Context.Response;
