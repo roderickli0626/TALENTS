@@ -42,6 +42,7 @@ namespace TALENTS
                 LoadContactInfo();
                 LoadVideos();
                 LoadNaturalPhotos();
+                LoadTours();
             }
         }
         // Bio Tab
@@ -643,6 +644,65 @@ namespace TALENTS
                 bool result = new ModNaturalPhotoDAO().Delete(id);
                 if (result) LoadNaturalPhotos();
             }
+        }
+        // Tour Tab
+        private void LoadTours()
+        {
+            List<City> cities = new CityDAO().FindAll();
+            ControlUtil.DataBind(ComboTourCity, cities, "Id", "Description", "0", "[Unassigned]");
+
+            List<ModTourCheck> modTours = new TourController().FindByModel(model.Id);
+            RepeaterTour.DataSource = modTours;
+            RepeaterTour.DataBind();
+        }
+        protected void RepeaterTour_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                int id = int.Parse(e.CommandArgument.ToString());
+                bool result = new ModTourDAO().Delete(id);
+                if (result) LoadTours();
+            }
+        }
+
+        protected void BtnTour_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            int? cityId = ControlUtil.GetSelectedValue(ComboTourCity);
+            DateTime? sdate = ParseUtil.TryParseDate(TxtSDate.Text, "dd/MM/yyyy HH:mm");
+            DateTime? edate = ParseUtil.TryParseDate(TxtEDate.Text, "dd/MM/yyyy HH:mm");
+            if (cityId == null)
+            {
+                SuccessAlarmTour.Visible = false;
+                ServerValidatorTour1.IsValid = false;
+                return;
+            }
+            if (sdate == null || edate == null)
+            {
+                SuccessAlarmTour.Visible = false;
+                ServerValidatorTour2.IsValid = false;
+                return;
+            }
+            string tourEmail = TxtTourEmail.Text;
+            string tourPhone = TxtTourPhone.Text;
+
+            success = new TourController().SaveTour(model.Id, cityId, sdate, edate, tourEmail, tourPhone);
+
+            if (!success)
+            {
+                SuccessAlarmTour.Visible = false;
+                ServerValidatorTour3.IsValid = false;
+                return;
+            }
+            SuccessAlarmTour.Visible = true;
+            LoadTours();
+            return;          
+
+        }
+
+        protected void BtnSetting_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

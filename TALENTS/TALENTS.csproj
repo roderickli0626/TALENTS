@@ -140,6 +140,7 @@
     <Content Include="Content\CSS\flaticon.css" />
     <Content Include="Content\CSS\font-awesome.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
+    <Content Include="Content\CSS\gijgo.min.css" />
     <Content Include="Content\CSS\grid-gallery.css" />
     <Content Include="Content\CSS\host-custom.css" />
     <Content Include="Content\CSS\jquery-ui-1.10.4.custom.css" />
@@ -234,6 +235,8 @@
     <Content Include="Content\fonts\Dosis-Medium.ttf" />
     <Content Include="Content\fonts\Dosis-Regular.ttf" />
     <Content Include="Content\fonts\Dosis-SemiBold.ttf" />
+    <Content Include="Content\fonts\gijgo-material.ttf" />
+    <Content Include="Content\fonts\gijgo-material.woff" />
     <None Include="Mapping.dbml.layout">
       <DependentUpon>Mapping.dbml</DependentUpon>
     </None>
@@ -247,6 +250,7 @@
     <Content Include="Scripts\custom-photo.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\gijgo.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -371,6 +375,7 @@
     <Compile Include="Controller\PhotoController.cs" />
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
+    <Compile Include="Controller\TourController.cs" />
     <Compile Include="Controller\WorkDayHourController.cs" />
     <Compile Include="DAO\BasicDAO.cs" />
     <Compile Include="DAO\BreastSizeDAO.cs" />
@@ -486,6 +491,7 @@
     <Compile Include="Models\ModOutcallRateCheck.cs" />
     <Compile Include="Models\ModPhotoCheck.cs" />
     <Compile Include="Models\ModServiceCheck.cs" />
+    <Compile Include="Models\ModTourCheck.cs" />
     <Compile Include="Models\ModWorkCityCheck.cs" />
     <Compile Include="Models\ModWorkDayHourCheck.cs" />
     <Compile Include="Models\ProcResult.cs" />

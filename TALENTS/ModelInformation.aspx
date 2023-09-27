@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
+    <link rel="stylesheet" href="Content/CSS/gijgo.min.css" />
     <style>
         .nav-link.active {
             background-color: white !important;
@@ -31,6 +32,11 @@
 
         #select2-ComboCity-container {
             text-align: center
+        }
+
+        .custom-control-input:checked~.custom-control-label::before {
+            border-color: #14a44d;
+            background-color: #14a44d;
         }
     </style>
     <style>
@@ -1139,8 +1145,175 @@
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-tour" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-setting" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-tour" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelTour" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">TOURS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmTour" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary8" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorTour1" runat="server" ErrorMessage="Please select City." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorTour2" runat="server" ErrorMessage="Please select Start/End Date." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorTour3" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Visita Citta</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                            <label class="form-label" for="ComboTourCity">Scegli_Citta<span class="text-danger">*</span></label>
+                                                            <asp:DropDownList runat="server" ID="ComboTourCity" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Periodo<span class="text-danger">*</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtSDate" ClientIDMode="Static" PlaceHolder="Start Date/Time" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtEDate" ClientIDMode="Static" PlaceHolder="End Date/Time" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Contatti</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtTourPhone" PlaceHolder="Numero di Telefono" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TxtTourEmail" PlaceHolder="Indirizzo e-mail" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row" style="width: 800px;">
+                                                <asp:Repeater ID="RepeaterTour" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterTour_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
+                                                    <HeaderTemplate>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No</th>
+                                                                        <th>City</th>
+                                                                        <th>From</th>
+                                                                        <th>To</th>
+                                                                        <th>Phone</th>
+                                                                        <th>Email</th>
+                                                                        <th>Azioni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                            <td><%# Eval("City")%></td>
+                                                            <td><%# Eval("From")%></td>
+                                                            <td><%# Eval("To")%></td>
+                                                            <td><%# Eval("Phone")%></td>
+                                                            <td><%# Eval("Email")%></td>
+                                                            <td>
+                                                                <asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" OnClientClick="return confirm('Click OK per cancellare.');"
+                                                                    CommandName="Delete" CommandArgument='<%#Eval("Id") %>'>
+                                                                    <i class="fa fa-trash" style="font-size:25px"></i>
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        </tbody>
+                                                        </table>
+                                                        </div>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col-12">
+                                                    <asp:Button runat="server" ID="BtnTour" Text="SAVE TOUR" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnTour_Click" />
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterTour" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-setting" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelSetting" ClientIDMode="Static" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <h2 class="mb-4 text-left col-6">SETTINGS</h2>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmSetting" visible="false">Save Successed.</p>
+                                            </div>
+                                            <hr class="text-primary mb-4" />
+                                            <div class="row m-xs">
+                                                <asp:ValidationSummary ID="ValidationSummary9" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
+                                                <asp:CustomValidator ID="ServerValidatorSetting" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Stato del Profilo</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-12">
+                                                    <div class="mb-4">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" id="switch1">
+                                                            <label class="custom-control-label" for="switch1">Lo Stato del tuo Profilo: Attivo</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Cambia Password <span class="text-danger">*</span></h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TextBox5" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la password attuale" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-4">
+                                                        <asp:TextBox runat="server" ID="TextBox2" TextMode="Password" ClientIDMode="Static" PlaceHolder="Conferma la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="text-primary mb-4 mt-0" />
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col-12">
+                                                    <asp:Button runat="server" ID="BtnSetting" Text="SAVE SETTINGS" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnSetting_Click" />
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="RepeaterTour" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1153,6 +1326,7 @@
     <script src="Scripts/core.min.js"></script>
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
+    <script src="Scripts/gijgo.min.js"></script>
     <script src="Scripts/custom-photo.js"></script>
     <script>
         // Natural Photo Upload
@@ -1312,6 +1486,25 @@
             $("#ComboInstructionChat").select2({ theme: 'bootstrap' });
             $("#ComboSocialChat").select2({ theme: 'bootstrap' });
         }
+        // Tour Tab
+        TourSelectSetting();
+        function TourSelectSetting() {
+            $("#ComboTourCity").select2({ theme: 'bootstrap' });
+
+            $("#TxtSDate").datetimepicker({
+                uiLibrary: 'bootstrap4',
+                modal: false,
+                footer: true,
+                format: "dd/mm/yyyy HH:MM"
+            });
+
+            $("#TxtEDate").datetimepicker({
+                uiLibrary: 'bootstrap4',
+                modal: false,
+                footer: true,
+                format: "dd/mm/yyyy HH:MM"
+            });
+        }
     </script>
 
     <script>
@@ -1401,6 +1594,10 @@
                         return false;
                     });
                     $("#fileUploadNatural").on('change', readNaturalPhoto);
+                }
+                // Tour Tab
+                if (updatePanelID === "UpdatePanelTour") {
+                    TourSelectSetting();
                 }
             }
         };
