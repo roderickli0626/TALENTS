@@ -330,6 +330,7 @@
     <Content Include="Upload\Photos\9.jpg" />
     <Content Include="UserHome.aspx" />
     <Content Include="UserHomeDetail.aspx" />
+    <Content Include="UserInformation.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -540,6 +541,13 @@
     </Compile>
     <Compile Include="UserHomeDetail.aspx.designer.cs">
       <DependentUpon>UserHomeDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInformation.aspx.cs">
+      <DependentUpon>UserInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInformation.aspx.designer.cs">
+      <DependentUpon>UserInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.Master.cs">
       <DependentUpon>UserPage.Master</DependentUpon>

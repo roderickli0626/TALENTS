@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
+using System.Web.UI;
 using TALENTS.DAO;
 using TALENTS.Models;
 
@@ -131,6 +132,54 @@ namespace TALENTS.Controller
             {
                 modBiography.AboutMe = aboutMe;
                 result = biographyDao.Update(modBiography);
+            }
+            return result;
+        }
+
+        public bool SaveUserInfo(int userId, string name, string surname, string address, string CAP, int? nationId, int? resId, DateTime birthDay,
+            string society, string vat, string licenze, string mobile, string phone, string website, string email, string note)
+        {
+            bool result = false;
+            UserInfo userInfo = new UserInfoDAO().FindAll().Where(u => u.UserId == userId).FirstOrDefault();
+            if (userInfo == null)
+            {
+                userInfo = new UserInfo();
+                userInfo.UserId = userId;
+                userInfo.Name = name;
+                userInfo.Surname = surname;
+                userInfo.Address = address;
+                userInfo.CAP = CAP;
+                userInfo.NationalityId = nationId;
+                userInfo.CityResidenceId = resId;
+                userInfo.DateOfBirth = birthDay;
+                userInfo.Society = society;
+                userInfo.VatNumber = vat;
+                userInfo.Email = email;
+                userInfo.Phone = phone;
+                userInfo.Website = website;
+                userInfo.Mobile = mobile;
+                userInfo.LicenceNumber = licenze;
+                userInfo.Note = note;
+                result = new UserInfoDAO().Insert(userInfo);
+            }
+            else
+            {
+                userInfo.Name = name;
+                userInfo.Surname = surname;
+                userInfo.Address = address;
+                userInfo.CAP = CAP;
+                userInfo.NationalityId = nationId;
+                userInfo.CityResidenceId = resId;
+                userInfo.DateOfBirth = birthDay;
+                userInfo.Society = society;
+                userInfo.VatNumber = vat;
+                userInfo.Email = email;
+                userInfo.Phone = phone;
+                userInfo.Website = website;
+                userInfo.Mobile = mobile;
+                userInfo.LicenceNumber = licenze;
+                userInfo.Note = note;
+                result = new UserInfoDAO().Update(userInfo);
             }
             return result;
         }

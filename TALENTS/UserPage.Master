@@ -66,9 +66,9 @@
                             <nav class="main-menu mobile-menu" style="float: right; margin-right: 15px">
                                 <ul>
                                     <li><a href="UserHome.aspx">Home</a></li>
-                                    <li><a href="#">Information</a></li>
+                                    <li><a href="UserInformation.aspx">Information</a></li>
                                     <li><a href="#">Contact</a></li>
-                                    <li><a href="#"><i class="fa fa-user-circle text-bg-light"></i></a>
+                                    <li><a href="#"><i class="fa fa-user-circle"></i></a>
                                         <ul class="drop-menu">
                                             <li><a href="#" runat="server" id="username">UserName</a></li>
                                             <li><a href="Login.aspx">LogOut</a></li>
