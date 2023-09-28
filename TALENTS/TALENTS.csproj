@@ -105,6 +105,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AdminHome.aspx" />
+    <Content Include="AdminModelInformation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -248,6 +249,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\click-scroll.js" />
     <Content Include="Scripts\core.min.js" />
+    <Content Include="Scripts\custom-photo-admin.js" />
     <Content Include="Scripts\custom-photo.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datatables.js" />
@@ -343,6 +345,13 @@
     </Compile>
     <Compile Include="AdminHome.aspx.designer.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModelInformation.aspx.cs">
+      <DependentUpon>AdminModelInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModelInformation.aspx.designer.cs">
+      <DependentUpon>AdminModelInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPage.Master.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>

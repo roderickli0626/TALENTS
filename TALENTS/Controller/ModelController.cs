@@ -183,5 +183,37 @@ namespace TALENTS.Controller
             }
             return result;
         }
+
+        public SearchResult SearchModels(int start, int length, string search)
+        {
+            SearchResult result = new SearchResult();
+            IEnumerable<Model> list = modelDao.FindAllModels().Where(m => m.Email.Contains(search) || m.Username.Contains(search));
+            result.TotalCount = list.Count();
+            list = list.Skip(start).Take(length);
+
+            List<object> checks = new List<object>();
+            foreach (Model md in list)
+            {
+                ModBiography modBiography = biographyDao.FindByModelId(md.Id);
+                ModelCheck modelCheck = new ModelCheck(modBiography);
+                if (modBiography == null) modelCheck.Id = md.Id;
+                List<ModPhoto> photoList = modPhotoDao.FindByModel(md.Id);
+                if (photoList.Count() == 0) modelCheck.Image = "Default.jpg";
+                else modelCheck.Image = photoList.FirstOrDefault().Image;
+                checks.Add(modelCheck);
+            }
+            result.ResultList = checks;
+
+            return result;
+        }
+
+        public bool DeleteModel(int id)
+        {
+            Model item = modelDao.FindById(id);
+            if (item == null) return false;
+
+            return modelDao.Delete(id);
+        }
+
     }
 }

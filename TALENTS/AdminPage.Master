@@ -66,9 +66,9 @@
                             <nav class="main-menu mobile-menu" style="float: right; margin-right: 15px">
                                 <ul>
                                     <li><a href="AdminHome.aspx">Models</a></li>
-                                    <li><a href="#">Users</a></li>
-                                    <li><a href="#" runat="server" id="liAdmins">Admins</a></li>
-                                    <li><a href="#"><i class="fa fa-user-circle text-bg-light"></i></a>
+                                    <li><a href="AdminUser.aspx">Users</a></li>
+                                    <li><a href="AdminAdmin.aspx" runat="server" id="liAdmins">Admins</a></li>
+                                    <li><a href="#"><i class="fa fa-user-circle"></i></a>
                                         <ul class="drop-menu">
                                             <li><a href="#" runat="server" id="username">UserName</a></li>
                                             <li><a href="Login.aspx">LogOut</a></li>

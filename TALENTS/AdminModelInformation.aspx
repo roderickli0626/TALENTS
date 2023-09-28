@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ModelPage.Master" AutoEventWireup="true" CodeBehind="ModelInformation.aspx.cs" Inherits="TALENTS.ModelInformation" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminModelInformation.aspx.cs" Inherits="TALENTS.AdminModelInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
@@ -128,6 +127,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfModelID" runat="server" ClientIDMode="Static" />
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row" style="background-color: gray">
                         <div class="col-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 80px; transition: 1s;">
@@ -1346,7 +1346,7 @@
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
     <script src="Scripts/gijgo.min.js"></script>
-    <script src="Scripts/custom-photo.js"></script>
+    <script src="Scripts/custom-photo-admin.js"></script>
     <script>
         $("#hideMenu").click(function () {
             if ($(".menu").hasClass('left-menu')) {
@@ -1355,8 +1355,7 @@
                 $(".nav-link").removeClass("left-menu-item");
                 $(".menu-subitem").removeClass("d-none");
             }
-            else
-            {
+            else {
                 $("#ModelName").addClass("d-none");
                 $(".menu").addClass('left-menu');
                 $(".nav-link").addClass("left-menu-item");
@@ -1377,6 +1376,7 @@
             if (window.File && window.FileList && window.FileReader) {
                 var data = new FormData(); // To Save Photo to DB
                 var files = event.target.files; //FileList object
+                data.append('modelId', $("#HfModelID").val());
                 for (let i = 0; i < files.length; i++) {
                     var file = files[i];
                     if (!file.type.match('image')) continue;
@@ -1386,7 +1386,7 @@
                 // TODO Save Image to DB
                 $.ajax({
                     type: "POST",
-                    url: 'DataService.asmx/SaveNaturalPhotos',
+                    url: 'DataService.asmx/AdminSaveNaturalPhotos',
                     data: data,
                     contentType: false,
                     processData: false,
@@ -1427,6 +1427,7 @@
             if (window.File && window.FileList && window.FileReader) {
                 var data = new FormData(); // To Save Video to DB
                 var files = event.target.files; //FileList object
+                data.append('modelId', $("#HfModelID").val());
                 for (let i = 0; i < files.length; i++) {
                     var file = files[i];
                     if (!file.type.match('video')) continue;
@@ -1436,7 +1437,7 @@
                 // TODO Save Video to DB
                 $.ajax({
                     type: "POST",
-                    url: 'DataService.asmx/SaveVideo',
+                    url: 'DataService.asmx/AdminSaveVideo',
                     data: data,
                     contentType: false,
                     processData: false,

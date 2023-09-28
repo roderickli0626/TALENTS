@@ -17,6 +17,7 @@ namespace TALENTS.Models
             if (biography == null) return;
             Id = biography.ModelId;
             Name = biography.Name;
+            Email = biography.Model.Email;
             CityResidence = biography.City?.Description ?? "";
             Height = biography.Height ?? 0;
             Weight = biography.Weight ?? 0;
@@ -32,6 +33,10 @@ namespace TALENTS.Models
         }
 
         public string Name
+        {
+            get; set;
+        }
+        public string Email
         {
             get; set;
         }
