@@ -133,6 +133,7 @@
     <Content Include="Content\CSS\bootstrap.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\core.min.css" />
+    <Content Include="Content\CSS\custom-user-model-details.css" />
     <Content Include="Content\CSS\datatables.css" />
     <Content Include="Content\CSS\default.css" />
     <Content Include="Content\CSS\fa.min.css" />
@@ -328,6 +329,7 @@
     <Content Include="Upload\Photos\8.jpg" />
     <Content Include="Upload\Photos\9.jpg" />
     <Content Include="UserHome.aspx" />
+    <Content Include="UserHomeDetail.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -531,6 +533,13 @@
     </Compile>
     <Compile Include="UserHome.aspx.designer.cs">
       <DependentUpon>UserHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserHomeDetail.aspx.cs">
+      <DependentUpon>UserHomeDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserHomeDetail.aspx.designer.cs">
+      <DependentUpon>UserHomeDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.Master.cs">
       <DependentUpon>UserPage.Master</DependentUpon>

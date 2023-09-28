@@ -431,7 +431,7 @@
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                <thead>
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
                                                                         <th>Language</th>
@@ -513,7 +513,7 @@
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                <thead>
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
                                                                         <th>Group Name</th>
@@ -588,7 +588,7 @@
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                <thead>
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
                                                                         <th>Work City</th>
@@ -640,7 +640,7 @@
                                                             <HeaderTemplate>
                                                                 <div class="table-responsive">
                                                                     <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                        <thead>
+                                                                        <thead class="thead-dark">
                                                                             <tr>
                                                                                 <th>No</th>
                                                                                 <th>Incall Place</th>
@@ -688,7 +688,7 @@
                                                             <HeaderTemplate>
                                                                 <div class="table-responsive">
                                                                     <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                        <thead>
+                                                                        <thead class="thead-dark">
                                                                             <tr>
                                                                                 <th>No</th>
                                                                                 <th>Outcall Place</th>
@@ -776,7 +776,7 @@
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                <thead>
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
                                                                         <th>Work Day</th>
@@ -887,7 +887,7 @@
                                                         <HeaderTemplate>
                                                             <div class="table-responsive">
                                                                 <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                    <thead>
+                                                                    <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>No</th>
                                                                             <th>Incall Place</th>
@@ -925,7 +925,7 @@
                                                         <HeaderTemplate>
                                                             <div class="table-responsive">
                                                                 <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                    <thead>
+                                                                    <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>No</th>
                                                                             <th>Outcall Place</th>
@@ -1208,7 +1208,7 @@
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
-                                                                <thead>
+                                                                <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
                                                                         <th>City</th>

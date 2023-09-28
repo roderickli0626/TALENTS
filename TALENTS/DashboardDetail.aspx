@@ -27,12 +27,12 @@
 
         .swiper-slide {
             background-size: cover;
-            background-position: cover;
+            background-position: center;
         }
 
         .gallery-top {
             height: 80%;
-            width: 30%;
+            width: 45%;
         }
 
         .gallery-thumbs {
