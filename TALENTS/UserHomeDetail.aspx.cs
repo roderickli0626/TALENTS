@@ -44,7 +44,7 @@ namespace TALENTS
         {
             // Biography Tab
             ModBiography modBiography = new ModelBiographyDAO().FindByModelId(modelId);
-            if (modBiography == null ) { return; }
+            if (modBiography == null) { return; }
             ModelName.InnerText = modBiography.Name;
             ModelSlogan.InnerText = modBiography.Slogan;
             ModelAge.InnerText = modBiography.Age.ToString();

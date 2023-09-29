@@ -155,6 +155,7 @@
     <Content Include="Content\CSS\owl.carousel.min.css" />
     <Content Include="Content\CSS\owl.theme.default.min.css" />
     <Content Include="Content\CSS\pnotify.custom.css" />
+    <Content Include="Content\CSS\scroll-tab.css" />
     <Content Include="Content\CSS\select2-bootstrap.css" />
     <Content Include="Content\CSS\select2.css" />
     <Content Include="Content\CSS\slicknav.min.css" />
@@ -254,6 +255,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\gijgo.min.js" />
+    <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -281,6 +283,7 @@
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\pnotify.custom.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\scroll-tab.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\swiper-bundle.min.js" />
     <Content Include="Scripts\theme.custom.js" />

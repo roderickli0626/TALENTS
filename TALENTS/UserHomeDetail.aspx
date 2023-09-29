@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/swiper-bundle.min.css">
-    <link rel="stylesheet" href="Content/CSS/custom-user-model-details.css">
+    <link rel="stylesheet" href="Content/CSS/scroll-tab.css">
+    <%--<link rel="stylesheet" href="Content/CSS/custom-user-model-details.css">--%>
     <style>
         html,
         body {
@@ -74,6 +75,7 @@
             font-size: 18px;
             font-family: Dosis;
             font-style: italic;
+            color: white;
         }
 
         h2 {
@@ -83,71 +85,102 @@
     </style>
     <style>
         .preview-images-zone {
-    width: 100%;
-    border: 1px solid #ddd;
-    min-height: 180px;
-    /* display: flex; */
-    padding: 5px 5px 0px 5px;
-    position: relative;
-    overflow:auto;
-}
-.preview-images-zone > .preview-image:first-child {
-    height: 87px;
-    width: 87px;
-    position: relative;
-    margin-right: 5px;
-}
-.preview-images-zone > .preview-image {
-    height: 87px;
-    width: 87px;
-    position: relative;
-    margin-right: 5px;
-    float: left;
-    margin-bottom: 5px;
-}
-.preview-images-zone > .preview-image > .image-zone {
-    width: 100%;
-    height: 100%;
-}
-.preview-images-zone > .preview-image > .image-zone > img {
-    width: 100%;
-    height: 100%;
-}
-.preview-images-zone > .preview-image > .tools-edit-image {
-    position: absolute;
-    z-index: 100;
-    color: #fff;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-    display: none;
-}
-.preview-images-zone > .preview-image > .image-cancel {
-    font-size: 18px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-    display: none;
-    z-index: 100;
-}
-.preview-image:hover > .image-zone {
-    cursor: move;
-    opacity: .5;
-}
-.preview-image:hover > .tools-edit-image,
-.preview-image:hover > .image-cancel {
-    display: block;
-}
-.ui-sortable-helper {
-    width: 90px !important;
-    height: 90px !important;
-}
+            /*width: 100%;*/
+            border: 1px solid #ddd;
+            min-height: 180px;
+            /* display: flex; */
+            padding: 5px 5px 0px 5px;
+            position: relative;
+            overflow: auto;
+        }
 
+            .preview-images-zone > .preview-image:first-child {
+                height: 87px;
+                width: 87px;
+                position: relative;
+                margin-right: 5px;
+            }
+
+            .preview-images-zone > .preview-image {
+                height: 87px;
+                width: 87px;
+                position: relative;
+                margin-right: 5px;
+                float: left;
+                margin-bottom: 5px;
+            }
+
+                .preview-images-zone > .preview-image > .image-zone {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                    .preview-images-zone > .preview-image > .image-zone > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .preview-images-zone > .preview-image > .tools-edit-image {
+                    position: absolute;
+                    z-index: 100;
+                    color: #fff;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: none;
+                }
+
+                .preview-images-zone > .preview-image > .image-cancel {
+                    font-size: 18px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    display: none;
+                    z-index: 100;
+                }
+
+        .preview-image:hover > .image-zone {
+            cursor: move;
+            opacity: .5;
+        }
+
+        .preview-image:hover > .tools-edit-image,
+        .preview-image:hover > .image-cancel {
+            display: block;
+        }
+
+        .ui-sortable-helper {
+            width: 90px !important;
+            height: 90px !important;
+        }
     </style>
+
+    <style>
+        .scrtabs-tabs-fixed-container {
+            background-color: rgb(0,0,0,0.3);
+        }
+
+        .nav-item > .nav-link {
+            color: white;
+        }
+
+        .scrtabs-tab-scroll-arrow > span {
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+
+        .tab-content {
+            background-color: rgb(0,0,0,0.6);
+            border-radius: 5px;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="hero-slider">
@@ -156,7 +189,7 @@
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <div class="row">
                         <div class="col-6">
-                            <div class="site-wrap" style="position: relative; height: 1100px;">
+                            <div class="site-wrap" style="position: relative; height: 1100px; overflow: hidden">
                                 <div class="swiper-container gallery-top">
                                     <div class="swiper-wrapper">
                                         <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
@@ -171,7 +204,7 @@
                                 <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white" style="width: 120px; position: absolute; bottom: 20%; right: 30px; text-align: center;">
                                     <div class="swiper-button-next swiper-button-white text-white"></div>
                                     <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
-                                        <i class="fa fa-play"></i>
+                                        <i class="fa fa-pause"></i>
                                     </button>
                                     <div class="swiper-button-prev swiper-button-white text-white"></div>
                                 </div>
@@ -189,27 +222,28 @@
                             </div>
                         </div>
                         <div class="col-6 p-lg-5">
-                            <div class="row pr-5 pt-5">
-                                <div class="col-xs-12">
-                                    <nav>
-                                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" id="nav-bio-tab" data-toggle="tab" href="#nav-bio" role="tab" aria-controls="nav-bio" aria-selected="true">Biography</a>
-                                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About Me</a>
-                                            <a class="nav-item nav-link" id="nav-language-tab" data-toggle="tab" href="#nav-language" role="tab" aria-controls="nav-language" aria-selected="false">Language</a>
-                                            <a class="nav-item nav-link" id="nav-service-tab" data-toggle="tab" href="#nav-service" role="tab" aria-controls="nav-service" aria-selected="false">Service</a>
-                                            <a class="nav-item nav-link" id="nav-workcity-tab" data-toggle="tab" href="#nav-workcity" role="tab" aria-controls="nav-workcity" aria-selected="false">Work City</a>
-                                            <a class="nav-item nav-link" id="nav-workhours-tab" data-toggle="tab" href="#nav-workhours" role="tab" aria-controls="nav-workhours" aria-selected="false">Work Hours</a>
-                                            <a class="nav-item nav-link" id="nav-rates-tab" data-toggle="tab" href="#nav-rates" role="tab" aria-controls="nav-rates" aria-selected="false">Rates</a>
-                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                                            <a class="nav-item nav-link" id="nav-photo-tab" data-toggle="tab" href="#nav-photo" role="tab" aria-controls="nav-photo" aria-selected="false">Photos</a>
-                                            <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false">Videos</a>
-                                            <a class="nav-item nav-link" id="nav-naturalphoto-tab" data-toggle="tab" href="#nav-naturalphoto" role="tab" aria-controls="nav-naturalphoto" aria-selected="false">Natural Photos</a>
-                                            <a class="nav-item nav-link" id="nav-tour-tab" data-toggle="tab" href="#nav-tour" role="tab" aria-controls="nav-tour" aria-selected="false">Tour</a>
-                                        </div>
-                                    </nav>
-                                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                        <div class="tab-pane fade show active p-lg-4" id="nav-bio" role="tabpanel" aria-labelledby="nav-bio-tab">
-                                            <div class="row pl-lg-5 pb-3">
+                            <div class="p-lg-5" style="width: 700px;">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist" style="display: none">
+                                    <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab2" role="tab" data-toggle="tab">About Me</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Work City</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Work Hours</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Rates</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contacts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Videos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Natural Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab14" role="tab" data-toggle="tab">Tour</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content" style="display: none">
+                                    <div role="tabpanel" class="tab-pane fade show active" id="tab1">
+                                        <div class="align-items-center pt-lg-5 ">
+                                            <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-4 pb-2 pl-0">
                                                     <h4 class="d-inline">Name: </h4>
                                                     <h4 runat="server" id="ModelName" class="d-inline"></h4>
@@ -318,17 +352,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                            <div class="row pl-lg-5 pb-3">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab2">
+                                        <div class="pt-lg-5 ">
+                                            <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-12 pb-2 pl-0">
                                                     <h4 runat="server" id="ModelAbout" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-language" role="tabpanel" aria-labelledby="nav-language-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab4">
+                                        <div class="d-flex pt-lg-5 ">
                                             <asp:Repeater ID="LanguageRepeater" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
-                                                    <div class="table-responsive">
+                                                    <div class="table-responsive ">
                                                         <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
@@ -350,13 +388,16 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-service" role="tabpanel" aria-labelledby="nav-service-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab5">
+                                        <div class="d-flex pt-lg-5 ">
                                             <asp:Repeater ID="RepeaterModServices" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
-                                                    <div class="table-responsive">
+                                                    <div class="table-responsive ">
                                                         <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
@@ -380,10 +421,13 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-workcity" role="tabpanel" aria-labelledby="nav-workcity-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab6">
+                                        <div class="d-flex pt-lg-5 flex-column ">
                                             <h4 class="mb-3">Work Cities: </h4>
                                             <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
@@ -407,6 +451,7 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                             <h4 class="mb-3">Incall Places: </h4>
@@ -432,6 +477,7 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                             <h4 class="mb-3">Outcall Places: </h4>
@@ -457,13 +503,16 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-workhours" role="tabpanel" aria-labelledby="nav-workhours-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab7">
+                                        <div class="d-flex pt-lg-5 ">
                                             <asp:Repeater ID="RepeaterModWorkHour" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
-                                                    <div class="table-responsive">
+                                                    <div class="table-responsive ">
                                                         <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
@@ -487,10 +536,13 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-rates" role="tabpanel" aria-labelledby="nav-rates-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab8">
+                                        <div class="d-flex pt-lg-5 flex-column ">
                                             <h4 class="mb-3">Incall Rates: </h4>
                                             <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
@@ -518,6 +570,7 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                             <h4 class="mb-3">Outcall Rates: </h4>
@@ -547,11 +600,14 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <div class="row pl-lg-5 pb-3">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab10">
+                                        <div class="pt-lg-5">
+                                            <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-6 pb-2 pl-0">
                                                     <h4 class="d-inline">Social Chat: </h4>
                                                     <h4 runat="server" id="ModelSocialChat" class="d-inline"></h4>
@@ -582,7 +638,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-photo" role="tabpanel" aria-labelledby="nav-photo-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab11">
+                                        <div class="d-flex pt-lg-5 ">
                                             <div class="card-body">
                                                 <div class="container">
                                                     <asp:Repeater ID="RepeaterPhotos" runat="server" ClientIDMode="Static">
@@ -590,7 +648,7 @@
                                                             <div class="preview-images-zone">
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <div class="preview-image" style="height: 155px; width: 155px;">
+                                                            <div class="preview-image" style="height: 130px; width: 130px;">
                                                                 <div class="image-zone">
                                                                     <img src="<%#"/Upload/Photos/" + Eval("Image")%>" />
                                                                 </div>
@@ -598,12 +656,15 @@
                                                         </ItemTemplate>
                                                         <FooterTemplate>
                                                             </div>
+                                                       
                                                         </FooterTemplate>
                                                     </asp:Repeater>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab12">
+                                        <div class="d-flex pt-lg-5 ">
                                             <div class="card-body">
                                                 <div class="container">
                                                     <asp:Repeater ID="RepeaterVideo" runat="server" ClientIDMode="Static">
@@ -613,7 +674,7 @@
                                                         <ItemTemplate>
                                                             <div class="preview-image" style="height: 155px; width: 155px;">
                                                                 <div class="image-zone">
-                                                                    <video style="width: 155px; height: 155px;" controls>
+                                                                    <video style="width: 130px; height: 130px;" controls>
                                                                         <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/mp4">
                                                                         <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/ogg">
                                                                     </video>
@@ -628,7 +689,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-naturalphoto" role="tabpanel" aria-labelledby="nav-naturalphoto-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab13">
+                                        <div class="d-flex pt-lg-5 ">
                                             <div class="card-body">
                                                 <div class="container">
                                                     <asp:Repeater ID="RepeaterNautralPhoto" runat="server" ClientIDMode="Static">
@@ -636,7 +699,7 @@
                                                             <div class="preview-images-zone">
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <div class="preview-image" style="height: 155px; width: 155px;">
+                                                            <div class="preview-image" style="height: 130px; width: 130px;">
                                                                 <div class="image-zone">
                                                                     <img src="<%#"/Upload/NaturalPhotos/" + Eval("Image")%>" />
                                                                 </div>
@@ -644,15 +707,18 @@
                                                         </ItemTemplate>
                                                         <FooterTemplate>
                                                             </div>
+                                                       
                                                         </FooterTemplate>
                                                     </asp:Repeater>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-lg-4" id="nav-tour" role="tabpanel" aria-labelledby="nav-tour-tab">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab14">
+                                        <div class="d-flex pt-lg-5 ">
                                             <asp:Repeater ID="RepeaterTour" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
-                                                    <div class="table-responsive">
+                                                    <div class="table-responsive ">
                                                         <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
@@ -680,6 +746,7 @@
                                                     </tbody>
                                                     </table>
                                                     </div>
+                                               
                                                 </FooterTemplate>
                                             </asp:Repeater>
                                         </div>
@@ -695,6 +762,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script src="Scripts/swiper-bundle.min.js"></script>
+    <script src="Scripts/scroll-tab.js"></script>
     <script>
         var galleryThumbs = new Swiper('.gallery-thumbs', {
             spaceBetween: 10,
@@ -719,7 +787,6 @@
             },
             loop: true,
         });
-        galleryTop.autoplay.stop();
         // Stop autoplay when stop button is clicked
         var stopButton = document.querySelector('#BtnSwaperPause');
         stopButton.addEventListener('click', function (e) {

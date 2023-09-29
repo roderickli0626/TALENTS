@@ -130,7 +130,7 @@
                     <asp:HiddenField ID="HfModelID" runat="server" ClientIDMode="Static" />
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row" style="background-color: gray">
-                        <div class="col-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 80px; transition: 1s;">
+                        <div class="col-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 80px;">
                             <div class="text-right me-2">
                                 <a href="#" id="hideMenu" class="ms-auto"><i class="fa fa-bars text-white" style="font-size:22px;"></i></a>
                             </div>
