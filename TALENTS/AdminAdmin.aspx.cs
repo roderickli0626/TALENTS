@@ -5,25 +5,27 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.WebSockets;
 using TALENTS.Controller;
 using TALENTS.Util;
 
 namespace TALENTS
 {
-    public partial class AdminUser : System.Web.UI.Page
+    public partial class AdminAdmin : System.Web.UI.Page
     {
         LoginController loginSystem = new LoginController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Model model = loginSystem.GetCurrentUserAccount();
-            if (!loginSystem.IsSuperAdminLoggedIn() && (model == null || !loginSystem.IsAdminLoggedIn()))
+            if (!loginSystem.IsSuperAdminLoggedIn())
             {
                 Response.Redirect("~/Login.aspx");
                 return;
             }
         }
 
-        protected void BtnSaveUser_Click(object sender, EventArgs e)
+        protected void BtnSaveAdmin_Click(object sender, EventArgs e)
         {
             string name = TxtUsername.Text;
             string password = TxtPassword.Text;
@@ -44,14 +46,14 @@ namespace TALENTS
                 return;
             }
 
-            SaveUser(name, email, pass, false, true);
+            SaveAdmin(name, email, pass);
         }
 
-        public void SaveUser(string name, string email, EncryptedPass pass, bool IsModel, bool IsUser)
+        public void SaveAdmin(string name, string email, EncryptedPass pass)
         {
             if (!IsValid) { return; }
 
-            bool success = loginSystem.RegisterModel(name, email, pass, IsModel, IsUser);
+            bool success = new ModelController().SaveAdmin(name, email, pass);
             if (success)
             {
                 Page.Response.Redirect(Page.Request.Url.ToString(), true);
@@ -63,12 +65,12 @@ namespace TALENTS
             }
         }
 
-        protected void BtnUpdateUser_Click(object sender, EventArgs e)
+        protected void BtnUpdateAdmin_Click(object sender, EventArgs e)
         {
             if (!IsValid) { return; }
 
-            int? userId = ParseUtil.TryParseInt(HfUserID.Value);
-            if (userId == null)
+            int? adminId = ParseUtil.TryParseInt(HfAdminID.Value);
+            if (adminId == null)
             {
                 ServerValidator.IsValid = false;
                 return;
@@ -93,7 +95,7 @@ namespace TALENTS
                 return;
             }
 
-            bool success = new ModelController().UpdateUser(userId, name, email, pass);
+            bool success = new ModelController().UpdateAdmin(adminId, name, email, pass);
             if (success)
             {
                 Page.Response.Redirect(Page.Request.Url.ToString(), true);

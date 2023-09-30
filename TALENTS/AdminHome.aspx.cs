@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TALENTS.Controller;
+using TALENTS.Util;
 
 namespace TALENTS
 {
@@ -52,6 +53,48 @@ namespace TALENTS
             if (!IsValid) { return; }
 
             bool success = loginSystem.RegisterModel(name, email, pass, IsModel, IsUser);
+            if (success)
+            {
+                Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            }
+            else
+            {
+                ServerValidator.IsValid = false;
+                return;
+            }
+        }
+
+        protected void BtnUpdateModel_Click(object sender, EventArgs e)
+        {
+            if (!IsValid) { return; }
+
+            int? modelId = ParseUtil.TryParseInt(HfModelID.Value);
+            if (modelId == null)
+            {
+                ServerValidator.IsValid = false;
+                return;
+            }
+
+            string name = TxtUsername.Text;
+            string password = TxtPassword.Text;
+            string email = TxtEmail.Text;
+            string repeatPW = TxtPasswordRepeat.Text;
+
+            EncryptedPass pass = new EncryptedPass() { Encrypted = new CryptoController().EncryptStringAES(password), UnEncrypted = password };
+
+            if (password != repeatPW)
+            {
+                PasswordValidator.IsValid = false;
+                return;
+            }
+            string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            if (!Regex.IsMatch(email, emailPattern))
+            {
+                EmailValidator.IsValid = false;
+                return;
+            }
+
+            bool success = new ModelController().UpdateModel(modelId, name, email, pass);
             if (success)
             {
                 Page.Response.Redirect(Page.Request.Url.ToString(), true);

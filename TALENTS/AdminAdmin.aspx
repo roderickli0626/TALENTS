@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminHome.aspx.cs" Inherits="TALENTS.AdminHome" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminAdmin.aspx.cs" Inherits="TALENTS.AdminAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
     <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
@@ -33,18 +33,18 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
-                    <asp:HiddenField ID="HfModelID" runat="server" ClientIDMode="Static" />
+                    <asp:HiddenField ID="HfAdminID" runat="server" ClientIDMode="Static" />
                     <div class="row" style="background-color: gray">
                         <div class="col-12 bg-gray text-center">
                             <div class="d-flex justify-content-center">
                                 <div class="bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-language" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                     <div class="row justify-content-center">
-                                        <h2 class="mb-4">MODELS</h2>
+                                        <h2 class="mb-4">ADMINS</h2>
                                     </div>
                                     <hr class="text-primary mb-4" />
                                     <div class="row" style="width: 1000px;">
                                         <div class="col-3">
-                                            <button id="BtnAdd" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#myModal">+ ADD MODEL</button>
+                                            <button id="BtnAdd" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#myModal">+ ADD ADMIN</button>
                                         </div>
                                         <div class="offset-5 col-4">
                                             <div class="mb-4">
@@ -53,11 +53,10 @@
                                         </div>
                                     </div>
                                     <div class="row" style="width: 1000px;">
-                                        <table class="table table-bordered table-striped text-center" id="model-table">
+                                        <table class="table table-bordered table-striped text-center" id="admin-table">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Photo</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>State</th>
@@ -79,13 +78,13 @@
                             <div class="modal-content text-white" style="background-color: #353535;">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h2 class="modal-title">ADD MODEL</h2>
+                                    <h2 class="modal-title">ADD ADMIN</h2>
                                 </div>
 
                                 <!-- Modal body -->
                                 <div class="modal-body p-lg-5">
-                                    <asp:ScriptManager ID="ScriptManagerModal" runat="server"></asp:ScriptManager>
-                                    <asp:UpdatePanel runat="server" ID="UpdatePanelModal" ClientIDMode="Static">
+                                    <asp:ScriptManager ID="ScriptManagerUser" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelUser" ClientIDMode="Static">
                                         <ContentTemplate>
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left bg-gradient" ClientIDMode="Static" />
                                             <asp:RequiredFieldValidator ID="ReqValEmail" runat="server" ErrorMessage="Inserire un indirizzo Email." CssClass="text-bg-danger" ControlToValidate="TxtEmail" Display="None"></asp:RequiredFieldValidator>
@@ -110,16 +109,16 @@
                                             </div>
                                         </ContentTemplate>
                                         <Triggers>
-                                            <asp:AsyncPostBackTrigger ControlID="BtnSaveModel" />
-                                            <asp:AsyncPostBackTrigger ControlID="BtnUpdateModel" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnSaveAdmin" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnUpdateAdmin" />
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="BtnSaveModel" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveModel_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateModel" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Update" OnClick="BtnUpdateModel_Click" />
+                                    <asp:Button runat="server" ID="BtnSaveAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveAdmin_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success d-none" Text="Update" OnClick="BtnUpdateAdmin_Click"/>
                                     <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-white"/>
                                 </div>
                             </div>
@@ -140,13 +139,14 @@
             return false;
         });
         $("#BtnClose").click(function () {
-            $("#BtnSaveModel").removeClass('d-none');
-            $("#BtnUpdateModel").addClass('d-none');
+
+            $("#BtnSaveAdmin").removeClass('d-none');
+            $("#BtnUpdateAdmin").addClass('d-none');
             $("#TxtUsername").val("");
             $("#TxtEmail").val("");
             $("#TxtPassword").val("");
             $("#TxtPasswordRepeat").val("");
-            $(".modal-title").text("ADD MODEL");
+            $(".modal-title").text("ADD ADMIN");
 
             $("#myModal").modal('hide');
             return false;
@@ -154,9 +154,9 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            var datatable = $('#model-table').dataTable({
+            var datatable = $('#admin-table').dataTable({
                 "serverSide": true,
-                "ajax": 'DataService.asmx/FindModels',
+                "ajax": 'DataService.asmx/FindAdmins',
                 "dom": '<"table-responsive"t>pr',
                 "autoWidth": false,
                 "pageLength": 20,
@@ -166,11 +166,6 @@
                     "data": "Id",
                     "render": function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                }, {
-                    "data": "Image",
-                    "render": function (data, type, row, meta) {
-                        return '<image src="Upload/Photos/' + data + '" style="height: 100px;width:100px;" />';
                     }
                 }, {
                     "data": "Name",
@@ -184,7 +179,7 @@
                 }, {
                     "data": null,
                     "render": function (data, type, row, meta) {
-                        return '<a href="#" class="btn-delete me-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit me-4"><i class="fa fa-edit" style="font-size:25px"></i></a>' + '<a href="AdminModelInformation.aspx?id=' + row.Id + '"><i class="fa fa-address-card" style="font-size:25px"></i></a>';
+                        return '<a href="#" class="btn-delete me-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit"><i class="fa fa-edit" style="font-size:25px"></i></a>';
                     }
                 }],
 
@@ -203,14 +198,14 @@
                 var row = datatable.fnGetData($(this).closest('tr'));
 
                 $("#myModal").modal('show');
-                $("#BtnSaveModel").addClass('d-none');
-                $("#BtnUpdateModel").removeClass('d-none');
+                $("#BtnSaveAdmin").addClass('d-none');
+                $("#BtnUpdateAdmin").removeClass('d-none');
 
                 $("#TxtUsername").val(row.Name);
                 $("#TxtEmail").val(row.Email);
-                $(".modal-title").text("UPDATE MODEL");
+                $(".modal-title").text("UPDATE ADMIN");
 
-                $("#HfModelID").val(row.Id);
+                $("#HfAdminID").val(row.Id);
             });
 
             datatable.on('click', '.btn-delete', function (e) {
@@ -223,7 +218,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: 'DataService.asmx/AdminDeleteModel',
+                    url: 'DataService.asmx/AdminDeleteAdmin',
                     data: {
                         id: row.Id
                     },

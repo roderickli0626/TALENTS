@@ -11,7 +11,7 @@ namespace TALENTS
 {
 
 
-    public partial class AdminHome
+    public partial class AdminAdmin
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// HfModelID control.
+        /// HfAdminID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HfModelID;
+        protected global::System.Web.UI.WebControls.HiddenField HfAdminID;
 
         /// <summary>
         /// TxtSearch control.
@@ -42,22 +42,22 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.TextBox TxtSearch;
 
         /// <summary>
-        /// ScriptManagerModal control.
+        /// ScriptManagerUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManagerModal;
+        protected global::System.Web.UI.ScriptManager ScriptManagerUser;
 
         /// <summary>
-        /// UpdatePanelModal control.
+        /// UpdatePanelUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelModal;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelUser;
 
         /// <summary>
         /// ValSummary control.
@@ -150,22 +150,22 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.TextBox TxtPasswordRepeat;
 
         /// <summary>
-        /// BtnSaveModel control.
+        /// BtnSaveAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSaveModel;
+        protected global::System.Web.UI.WebControls.Button BtnSaveAdmin;
 
         /// <summary>
-        /// BtnUpdateModel control.
+        /// BtnUpdateAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUpdateModel;
+        protected global::System.Web.UI.WebControls.Button BtnUpdateAdmin;
 
         /// <summary>
         /// BtnClose control.

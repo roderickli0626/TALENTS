@@ -236,5 +236,90 @@ namespace TALENTS.Controller
             return result;
         }
 
+        public SearchResult SearchAdmins(int start, int length, string search)
+        {
+            SearchResult result = new SearchResult();
+            IEnumerable<Model> list = modelDao.FindAllAdmins().Where(m => m.Email.Contains(search) || m.Username.Contains(search));
+            result.TotalCount = list.Count();
+            list = list.Skip(start).Take(length);
+
+            List<object> checks = new List<object>();
+            foreach (Model md in list)
+            {
+                ModelCheck modelCheck = new ModelCheck();
+                modelCheck.Id = md.Id;
+                modelCheck.Email = md.Email;
+                modelCheck.Name = md.Username;
+                checks.Add(modelCheck);
+            }
+            result.ResultList = checks;
+
+            return result;
+        }
+
+        public bool SaveAdmin(string name, string email, EncryptedPass pass)
+        {
+            Model model = modelDao.FindByEmail(email);
+            if (model != null)
+            {
+                return false;
+            }
+            Model registerModel = new Model();
+            registerModel.Username = name;
+            registerModel.Email = email;
+            registerModel.Password = pass.Encrypted;
+            registerModel.IsAdmin = true;
+
+            return modelDao.Insert(registerModel);
+        }
+
+        public bool UpdateAdmin(int? adminId, string name, string email, EncryptedPass pass)
+        {
+            Model admin = modelDao.FindById(adminId ?? 0);
+            if (admin == null)
+            {
+                return false;
+            }
+
+            admin.Username = name;
+            admin.Email = email;
+            admin.Password = pass.Encrypted;
+            admin.IsAdmin = true;
+
+            return modelDao.Update(admin);
+        }
+
+        public bool UpdateUser(int? userId, string name, string email, EncryptedPass pass)
+        {
+            Model user = modelDao.FindById(userId ?? 0);
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.Username = name;
+            user.Email = email;
+            user.Password = pass.Encrypted;
+            user.IsAdmin = true;
+
+            return modelDao.Update(user);
+        }
+
+        public bool UpdateModel(int? modelId, string name, string email, EncryptedPass pass)
+        {
+            Model model = modelDao.FindById(modelId ?? 0);
+            if (model == null)
+            {
+                return false;
+            }
+
+            model.Username = name;
+            model.Email = email;
+            model.Password = pass.Encrypted;
+            model.IsAdmin = true;
+
+            return modelDao.Update(model);
+        }
+
     }
 }

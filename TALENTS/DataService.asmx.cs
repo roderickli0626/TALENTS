@@ -401,6 +401,39 @@ namespace TALENTS
 
             ResponseProc(success, "");
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void FindAdmins(int draw, int start, int length, string searchVal)
+        {
+            Model model = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn()) return;
+
+            ModelController modelController = new ModelController();
+            SearchResult searchResult = modelController.SearchAdmins(start, length, searchVal);
+
+            JSDataTable result = new JSDataTable();
+            result.data = (IEnumerable<object>)searchResult.ResultList;
+            result.draw = draw;
+            result.recordsTotal = searchResult.TotalCount;
+            result.recordsFiltered = searchResult.TotalCount;
+
+            ResponseJson(result);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void AdminDeleteAdmin(int id)
+        {
+            //Is Logged in?
+            Model model = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn()) return;
+
+            ModelController modelController = new ModelController();
+            bool success = modelController.DeleteModel(id);
+
+            ResponseProc(success, "");
+        }
         protected void ResponseJson(Object result)
         {
             HttpResponse Response = Context.Response;

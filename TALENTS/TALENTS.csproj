@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AdminAdmin.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminModelInformation.aspx" />
     <Content Include="AdminUser.aspx" />
@@ -344,6 +345,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAdmin.aspx.cs">
+      <DependentUpon>AdminAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAdmin.aspx.designer.cs">
+      <DependentUpon>AdminAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminHome.aspx.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

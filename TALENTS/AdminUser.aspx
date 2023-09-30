@@ -33,6 +33,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfUserID" runat="server" ClientIDMode="Static" />
                     <div class="row" style="background-color: gray">
                         <div class="col-12 bg-gray text-center">
                             <div class="d-flex justify-content-center">
@@ -92,30 +93,32 @@
                                             <asp:CustomValidator ID="EmailValidator" runat="server" ErrorMessage="Email non è corretta." Display="None"></asp:CustomValidator>
                                             <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Questo indirizzo Email è già registrato." Display="None"></asp:CustomValidator>
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtUsername" placeholder="Name" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtUsername" ClientIDMode="Static" placeholder="Name" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtEmail" placeholder="Email" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtEmail" ClientIDMode="Static" placeholder="Email" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtPassword" placeholder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtPassword" ClientIDMode="Static" placeholder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
                                             <div class="form-white">
-                                                <asp:TextBox runat="server" ID="TxtPasswordRepeat" placeholder="Repeat Password" CssClass="form-control form-control-lg" TextMode="Password"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtPasswordRepeat" ClientIDMode="Static" placeholder="Repeat Password" CssClass="form-control form-control-lg" TextMode="Password"></asp:TextBox>
                                             </div>
                                         </ContentTemplate>
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="BtnSaveUser" />
+                                            <asp:AsyncPostBackTrigger ControlID="BtnUpdateUser" />
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="BtnSaveUser" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveUser_Click" />
+                                    <asp:Button runat="server" ID="BtnSaveUser" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveUser_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateUser" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Update" OnClick="BtnUpdateUser_Click" />
                                     <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-white"/>
                                 </div>
                             </div>
@@ -136,6 +139,15 @@
             return false;
         });
         $("#BtnClose").click(function () {
+
+            $("#BtnSaveUser").removeClass('d-none');
+            $("#BtnUpdateUser").addClass('d-none');
+            $("#TxtUsername").val("");
+            $("#TxtEmail").val("");
+            $("#TxtPassword").val("");
+            $("#TxtPasswordRepeat").val("");
+            $(".modal-title").text("ADD USER");
+
             $("#myModal").modal('hide');
             return false;
         });
@@ -167,7 +179,7 @@
                 }, {
                     "data": null,
                     "render": function (data, type, row, meta) {
-                        return '<a href="#" class="btn-delete me-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="AdminUserInformation.aspx?id=' + row.Id + '"><i class="fa fa-edit" style="font-size:25px"></i></a>';
+                        return '<a href="#" class="btn-delete me-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit me-4"><i class="fa fa-edit" style="font-size:25px"></i></a>' + '<a href="AdminUserInformation.aspx?id=' + row.Id + '"><i class="fa fa-address-card" style="font-size:25px"></i></a>';
                     }
                 }],
 
@@ -178,6 +190,22 @@
 
             $('#TxtSearch').on('input', function () {
                 datatable.fnDraw();
+            });
+
+            datatable.on('click', '.btn-edit', function (e) {
+                e.preventDefault();
+
+                var row = datatable.fnGetData($(this).closest('tr'));
+
+                $("#myModal").modal('show');
+                $("#BtnSaveUser").addClass('d-none');
+                $("#BtnUpdateUser").removeClass('d-none');
+
+                $("#TxtUsername").val(row.Name);
+                $("#TxtEmail").val(row.Email);
+                $(".modal-title").text("UPDATE USER");
+
+                $("#HfUserID").val(row.Id);
             });
 
             datatable.on('click', '.btn-delete', function (e) {
