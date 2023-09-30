@@ -300,7 +300,7 @@ namespace TALENTS.Controller
             user.Username = name;
             user.Email = email;
             user.Password = pass.Encrypted;
-            user.IsAdmin = true;
+            user.IsUser = true;
 
             return modelDao.Update(user);
         }
@@ -316,7 +316,7 @@ namespace TALENTS.Controller
             model.Username = name;
             model.Email = email;
             model.Password = pass.Encrypted;
-            model.IsAdmin = true;
+            model.IsModel = true;
 
             return modelDao.Update(model);
         }
