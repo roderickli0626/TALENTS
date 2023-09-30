@@ -38,7 +38,7 @@
 
         .gallery-top {
             height: 80%;
-            width: 65%;
+            width: 45%;
         }
 
         .gallery-thumbs {
@@ -81,6 +81,16 @@
         h2 {
             font-family: Dosis;
             font-size: 28px;
+        }
+
+        .swiper-button-next {
+            position: sticky;
+            float: right;
+        }
+
+        .swiper-button-prev {
+            position: sticky;
+            float: left;
         }
     </style>
     <style>
@@ -187,42 +197,56 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="site-wrap" style="position: relative; height: 1100px; overflow: hidden">
-                                <div class="swiper-container gallery-top">
-                                    <div class="swiper-wrapper">
-                                        <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
-                                            <ItemTemplate>
-                                                <div class="swiper-slide"
-                                                    style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    </div>
-                                </div>
-                                <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white" style="width: 120px; position: absolute; bottom: 20%; right: 30px; text-align: center;">
-                                    <div class="swiper-button-next swiper-button-white text-white"></div>
-                                    <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
-                                        <i class="fa fa-pause"></i>
-                                    </button>
-                                    <div class="swiper-button-prev swiper-button-white text-white"></div>
-                                </div>
-                                <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
-                                    <div class="swiper-wrapper">
-                                        <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
-                                            <ItemTemplate>
-                                                <div class="swiper-slide img-thumb"
-                                                    style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    </div>
-                                </div>
+
+                    <div class="site-wrap" style="position: relative; height: 1000px; overflow: hidden">
+                        <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
+                            <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
+                            <div class="col-12 pl-0">
+                                <h4 class="d-inline">Citta: </h4>
+                                <h4 runat="server" id="ModelResid" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Nazione: </h4>
+                                <h4 runat="server" id="ModelEth" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Altezza: </h4>
+                                <h4 runat="server" id="H1" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Taglia: </h4>
+                                <h4 runat="server" id="H2" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Occhi: </h4>
+                                <h4 runat="server" id="H3" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Capelli: </h4>
+                                <h4 runat="server" id="H4" class="d-inline"></h4>
                             </div>
                         </div>
-                        <div class="col-6 p-lg-5">
-                            <div class="p-lg-5" style="width: 700px;">
+                        <div class="swiper-container gallery-top" style="padding-right: 200px;">
+                            <div class="swiper-wrapper">
+                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide"
+                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                        <div class="pl-2 pr-2 text-white" style="width: auto; position: absolute; bottom: 20%; right: 30px;">
+                            <div style="width: 120px;" class="mx-auto mb-3 text-center">
+                                <div class="swiper-button-next swiper-button-white text-white float-end"></div>
+                                <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
+                                    <i class="fa fa-pause"></i>
+                                </button>
+                                <div class="swiper-button-prev swiper-button-white text-white float-start"></div>
+                            </div>
+
+                            <div class="" style="width: 600px;">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist" style="display: none">
                                     <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
@@ -240,7 +264,7 @@
                                 </ul>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content" style="display: none">
+                                <div class="tab-content" style="display: none; height: 300px; overflow: auto;">
                                     <div role="tabpanel" class="tab-pane fade show active" id="tab1">
                                         <div class="align-items-center pt-lg-5 ">
                                             <div class="row pl-lg-5 pb-3 ">
@@ -386,8 +410,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -419,8 +443,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -449,8 +473,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -475,8 +499,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -501,8 +525,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -534,8 +558,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -568,8 +592,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -598,8 +622,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -744,8 +768,8 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                    </table>
-                                                    </div>
+                                                            </table>
+                                                            </div>
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
@@ -754,7 +778,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
+                            <div class="swiper-wrapper">
+                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide img-thumb"
+                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </form>
             </div>
         </div>
