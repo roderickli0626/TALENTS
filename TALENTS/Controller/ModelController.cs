@@ -215,5 +215,26 @@ namespace TALENTS.Controller
             return modelDao.Delete(id);
         }
 
+        public SearchResult SearchUsers(int start, int length, string search)
+        {
+            SearchResult result = new SearchResult();
+            IEnumerable<Model> list = modelDao.FindAllUsers().Where(m => m.Email.Contains(search) || m.Username.Contains(search));
+            result.TotalCount = list.Count();
+            list = list.Skip(start).Take(length);
+
+            List<object> checks = new List<object>();
+            foreach (Model md in list)
+            {
+                ModelCheck modelCheck = new ModelCheck();
+                modelCheck.Id = md.Id;
+                modelCheck.Email = md.Email;
+                modelCheck.Name = md.Username;
+                checks.Add(modelCheck);
+            }
+            result.ResultList = checks;
+
+            return result;
+        }
+
     }
 }

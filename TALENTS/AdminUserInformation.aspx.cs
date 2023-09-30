@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,25 +11,31 @@ using TALENTS.Util;
 
 namespace TALENTS
 {
-    public partial class UserInformation : System.Web.UI.Page
+    public partial class AdminUserInformation : System.Web.UI.Page
     {
         Model model;
         LoginController loginSystem = new LoginController();
         ModelController modelController = new ModelController();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            model = loginSystem.GetCurrentUserAccount();
-            if (model == null || !loginSystem.IsUserLoggedIn())
+            Model admin = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn() && (admin == null || !loginSystem.IsAdminLoggedIn()))
             {
                 Response.Redirect("~/Login.aspx");
                 return;
+            }
+
+            int modelId = ParseUtil.TryParseInt(Request.Params["id"]) ?? 0;
+            if (modelId != 0)
+            {
+                model = new ModelDAO().FindById(modelId);
             }
             if (!IsPostBack)
             {
                 LoadInfo();
             }
         }
+
         private void LoadInfo()
         {
             //Load Nationality
@@ -84,7 +90,7 @@ namespace TALENTS
             string email = TxtEmail.Text;
             string note = TxtNote.Text;
 
-            success = modelController.SaveUserInfo(model.Id, name, surname, address, CAP, nationId, resId, birthDay, society, 
+            success = modelController.SaveUserInfo(model.Id, name, surname, address, CAP, nationId, resId, birthDay, society,
                 vat, licenze, mobile, phone, website, email, note);
             if (!success)
             {
@@ -94,6 +100,7 @@ namespace TALENTS
             }
 
             SuccessAlarm.Visible = true;
+            Response.Redirect("~/AdminUser.aspx");
         }
     }
 }

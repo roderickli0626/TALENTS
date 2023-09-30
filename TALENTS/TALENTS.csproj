@@ -106,6 +106,8 @@
     <Content Include="About.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminModelInformation.aspx" />
+    <Content Include="AdminUser.aspx" />
+    <Content Include="AdminUserInformation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -362,6 +364,20 @@
     </Compile>
     <Compile Include="AdminPage.Master.designer.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUser.aspx.cs">
+      <DependentUpon>AdminUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUser.aspx.designer.cs">
+      <DependentUpon>AdminUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUserInformation.aspx.cs">
+      <DependentUpon>AdminUserInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserInformation.aspx.designer.cs">
+      <DependentUpon>AdminUserInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
