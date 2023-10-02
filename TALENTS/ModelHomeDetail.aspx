@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/swiper-bundle.min.css">
+    <link rel="stylesheet" href="Content/CSS/scroll-tab.css">
+    <%--<link rel="stylesheet" href="Content/CSS/custom-user-model-details.css">--%>
     <style>
         html,
         body {
@@ -28,6 +30,10 @@
         .swiper-slide {
             background-size: cover;
             background-position: center;
+        }
+
+        .gallery-top .swiper-slide.swiper-slide-active {
+            margin-right: 1050px !important;
         }
 
         .gallery-top {
@@ -69,79 +75,724 @@
             font-size: 18px;
             font-family: Dosis;
             font-style: italic;
+            color: white;
         }
 
         h2 {
             font-family: Dosis;
             font-size: 28px;
         }
+
+        .swiper-button-next {
+            position: sticky;
+            float: right;
+        }
+
+        .swiper-button-prev {
+            position: sticky;
+            float: left;
+        }
     </style>
+    <style>
+        .preview-images-zone {
+            /*width: 100%;*/
+            border: 1px solid #ddd;
+            min-height: 180px;
+            /* display: flex; */
+            padding: 5px 5px 0px 5px;
+            position: relative;
+            overflow: auto;
+        }
+
+            .preview-images-zone > .preview-image:first-child {
+                height: 87px;
+                width: 87px;
+                position: relative;
+                margin-right: 5px;
+            }
+
+            .preview-images-zone > .preview-image {
+                height: 87px;
+                width: 87px;
+                position: relative;
+                margin-right: 5px;
+                float: left;
+                margin-bottom: 5px;
+            }
+
+                .preview-images-zone > .preview-image > .image-zone {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                    .preview-images-zone > .preview-image > .image-zone > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .preview-images-zone > .preview-image > .tools-edit-image {
+                    position: absolute;
+                    z-index: 100;
+                    color: #fff;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: none;
+                }
+
+                .preview-images-zone > .preview-image > .image-cancel {
+                    font-size: 18px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    display: none;
+                    z-index: 100;
+                }
+
+        .preview-image:hover > .image-zone {
+            cursor: move;
+            opacity: .5;
+        }
+
+        .preview-image:hover > .tools-edit-image,
+        .preview-image:hover > .image-cancel {
+            display: block;
+        }
+
+        .ui-sortable-helper {
+            width: 90px !important;
+            height: 90px !important;
+        }
+    </style>
+
+    <style>
+        .scrtabs-tabs-fixed-container {
+            background-color: rgb(0,0,0,0.3);
+        }
+
+        .nav-item > .nav-link {
+            color: white;
+        }
+
+        .scrtabs-tab-scroll-arrow > span {
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+
+        .tab-content {
+            background-color: rgb(0,0,0,0.6);
+            border-radius: 5px;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="hero-slider">
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
-                    
-                        <div class="site-wrap" style="position: relative;height:1000px;">
-                            <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
-                                <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
-                                <div class="col-12 pl-0">
-                                    <h4 class="d-inline">Citta: </h4>
-                                    <h4 runat="server" id="ModelResid" class="d-inline"></h4>
-                                </div>
-                                <div class="col-12 pb-2 pl-0">
-                                    <h4 class="d-inline">Nazione: </h4>
-                                    <h4 runat="server" id="ModelEth" class="d-inline"></h4>
-                                </div>
-                                <div class="col-12 pb-2 pl-0">
-                                    <h4 class="d-inline">Altezza: </h4>
-                                    <h4 runat="server" id="ModelHeight" class="d-inline"></h4>
-                                </div>
-                                <div class="col-12 pb-2 pl-0">
-                                    <h4 class="d-inline">Taglia: </h4>
-                                    <h4 runat="server" id="ModelWeight" class="d-inline"></h4>
-                                </div>
-                                <div class="col-12 pb-2 pl-0">
-                                    <h4 class="d-inline">Occhi: </h4>
-                                    <h4 runat="server" id="ModelEye" class="d-inline"></h4>
-                                </div>
-                                <div class="col-12 pb-2 pl-0">
-                                    <h4 class="d-inline">Capelli: </h4>
-                                    <h4 runat="server" id="ModelHairColor" class="d-inline"></h4>
-                                </div>
+
+                    <div class="site-wrap" style="position: relative; height: 1000px; overflow: hidden">
+                        <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
+                            <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
+                            <div class="col-12 pl-0">
+                                <h4 class="d-inline">Citta: </h4>
+                                <h4 runat="server" id="ModelResid" class="d-inline"></h4>
                             </div>
-                            <div class="swiper-container gallery-top">
-                                <div class="swiper-wrapper">
-                                    <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
-                                        <ItemTemplate>
-                                            <div class="swiper-slide"
-                                                style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
-                                            </div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Nazione: </h4>
+                                <h4 runat="server" id="ModelEth" class="d-inline"></h4>
                             </div>
-                            <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white" style="width: 120px; position: absolute; bottom: 20%; right: 30px; text-align:center;">
-                                <div class="swiper-button-next swiper-button-white text-white"></div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Altezza: </h4>
+                                <h4 runat="server" id="H1" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Taglia: </h4>
+                                <h4 runat="server" id="H2" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Occhi: </h4>
+                                <h4 runat="server" id="H3" class="d-inline"></h4>
+                            </div>
+                            <div class="col-12 pb-2 pl-0">
+                                <h4 class="d-inline">Capelli: </h4>
+                                <h4 runat="server" id="H4" class="d-inline"></h4>
+                            </div>
+                        </div>
+                        <div class="swiper-container gallery-top" style="padding-right: 200px;">
+                            <div class="swiper-wrapper">
+                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide"
+                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                        <div class="pl-2 pr-2 text-white" style="width: auto; position: absolute; bottom: 20%; right: 30px;">
+                            <div style="width: 120px;" class="mx-auto mb-3 text-center">
+                                <div class="swiper-button-next swiper-button-white text-white float-end"></div>
                                 <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
                                     <i class="fa fa-pause"></i>
                                 </button>
-                                <div class="swiper-button-prev swiper-button-white text-white"></div>
+                                <div class="swiper-button-prev swiper-button-white text-white float-start"></div>
                             </div>
-                            <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
-                                <div class="swiper-wrapper">
-                                    <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
-                                        <ItemTemplate>
-                                            <div class="swiper-slide img-thumb"
-                                                style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+
+                            <div class="" style="width: 600px;">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist" style="display: none">
+                                    <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab2" role="tab" data-toggle="tab">About Me</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Language</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Work City</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Work Hours</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Rates</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contacts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Videos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Natural Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab14" role="tab" data-toggle="tab">Tour</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content" style="display: none; height: 300px; overflow: auto;">
+                                    <div role="tabpanel" class="tab-pane fade show active" id="tab1">
+                                        <div class="align-items-center pt-lg-5 ">
+                                            <div class="row pl-lg-5 pb-3 ">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Name: </h4>
+                                                    <h4 runat="server" id="ModelName" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Slogan: </h4>
+                                                    <h4 runat="server" id="ModelSlogan" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Age: </h4>
+                                                    <h4 runat="server" id="ModelAge" class="d-inline"></h4>
+                                                </div>
                                             </div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Sex: </h4>
+                                                    <h4 runat="server" id="ModelSex" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Ethnicity: </h4>
+                                                    <h4 runat="server" id="ModelEthnicity" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Nationality: </h4>
+                                                    <h4 runat="server" id="ModelNationality" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Residence: </h4>
+                                                    <h4 runat="server" id="ModelResidence" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Hair Color: </h4>
+                                                    <h4 runat="server" id="ModelHairColor" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Hair Length: </h4>
+                                                    <h4 runat="server" id="ModelHairLength" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Eye: </h4>
+                                                    <h4 runat="server" id="ModelEye" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Height: </h4>
+                                                    <h4 runat="server" id="ModelHeight" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Weight: </h4>
+                                                    <h4 runat="server" id="ModelWeight" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Dress Size: </h4>
+                                                    <h4 runat="server" id="ModelDress" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Shoes: </h4>
+                                                    <h4 runat="server" id="ModelShoes" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Bust: </h4>
+                                                    <h4 runat="server" id="ModelBust" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Waist: </h4>
+                                                    <h4 runat="server" id="ModelWaist" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Haunch: </h4>
+                                                    <h4 runat="server" id="ModelHaunch" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Breast Size: </h4>
+                                                    <h4 runat="server" id="ModelBreast" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Smoker: </h4>
+                                                    <h4 runat="server" id="ModelSmoker" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Tattoos: </h4>
+                                                    <h4 runat="server" id="ModelTattoos" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Drinker: </h4>
+                                                    <h4 runat="server" id="ModelDrinker" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-4 pb-2 pl-0">
+                                                    <h4 class="d-inline">Piercing: </h4>
+                                                    <h4 runat="server" id="ModelPiercing" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-8 pb-2 pl-0">
+                                                    <h4 class="d-inline">Peculiarities: </h4>
+                                                    <h4 runat="server" id="ModelPeculiarities" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab2">
+                                        <div class="pt-lg-5 ">
+                                            <div class="row pl-lg-5 pb-3 ">
+                                                <div class="col-12 pb-2 pl-0">
+                                                    <h4 runat="server" id="ModelAbout" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab4">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <asp:Repeater ID="LanguageRepeater" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive ">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Language</th>
+                                                                    <th>Level</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("Language")%></td>
+                                                        <td><%# Eval("Level")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab5">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <asp:Repeater ID="RepeaterModServices" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive ">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Group Name</th>
+                                                                    <th>Service</th>
+                                                                    <th>Amount (/h)</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("Group")%></td>
+                                                        <td><%# Eval("Service")%></td>
+                                                        <td><%# Eval("Amount")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab6">
+                                        <div class="d-flex pt-lg-5 flex-column ">
+                                            <h4 class="mb-3">Work Cities: </h4>
+                                            <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Work City</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("WorkCity")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                            <h4 class="mb-3">Incall Places: </h4>
+                                            <asp:Repeater ID="RepeaterModIncall" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Incall Place</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("IncallPlace")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                            <h4 class="mb-3">Outcall Places: </h4>
+                                            <asp:Repeater ID="RepeaterModOutcall" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Outcall Place</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("OutcallPlace")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab7">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <asp:Repeater ID="RepeaterModWorkHour" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive ">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Work Day</th>
+                                                                    <th>Work Start Time</th>
+                                                                    <th>Work End Time</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("WorkDay")%></td>
+                                                        <td><%# Eval("WorkSHour")%></td>
+                                                        <td><%# Eval("WorkEHour")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab8">
+                                        <div class="d-flex pt-lg-5 flex-column ">
+                                            <h4 class="mb-3">Incall Rates: </h4>
+                                            <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Incall Place</th>
+                                                                    <th>Duration</th>
+                                                                    <th>Rate</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("IncallPlace")%></td>
+                                                        <td><%# Eval("Duration")%></td>
+                                                        <td><%# Eval("Rate")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                            <h4 class="mb-3">Outcall Rates: </h4>
+                                            <asp:Repeater ID="RepeaterModOutcallRate" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Outcall Place</th>
+                                                                    <th>Duration</th>
+                                                                    <th>Rate</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("OutcallPlace")%></td>
+                                                        <td><%# Eval("Duration")%></td>
+                                                        <td><%# Eval("Rate")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab10">
+                                        <div class="pt-lg-5">
+                                            <div class="row pl-lg-5 pb-3 ">
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Social Chat: </h4>
+                                                    <h4 runat="server" id="ModelSocialChat" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Instruction Chat: </h4>
+                                                    <h4 runat="server" id="ModelInstructionChat" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Email: </h4>
+                                                    <h4 runat="server" id="ModelEmail" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Mobile Phone: </h4>
+                                                    <h4 runat="server" id="ModelPhone" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row pl-lg-5 pb-3">
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Address: </h4>
+                                                    <h4 runat="server" id="ModelAddress" class="d-inline"></h4>
+                                                </div>
+                                                <div class="col-6 pb-2 pl-0">
+                                                    <h4 class="d-inline">Address Civ: </h4>
+                                                    <h4 runat="server" id="ModelAddressCiv" class="d-inline"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab11">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <asp:Repeater ID="RepeaterPhotos" runat="server" ClientIDMode="Static">
+                                                        <HeaderTemplate>
+                                                            <div class="preview-images-zone">
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <div class="preview-image" style="height: 130px; width: 130px;">
+                                                                <div class="image-zone">
+                                                                    <img src="<%#"/Upload/Photos/" + Eval("Image")%>" />
+                                                                </div>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </div>
+                                                       
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab12">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <asp:Repeater ID="RepeaterVideo" runat="server" ClientIDMode="Static">
+                                                        <HeaderTemplate>
+                                                            <div class="preview-images-zone">
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <div class="preview-image" style="height: 155px; width: 155px;">
+                                                                <div class="image-zone">
+                                                                    <video style="width: 130px; height: 130px;" controls>
+                                                                        <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/mp4">
+                                                                        <source src="<%#"/Upload/Videos/" + Eval("Video")%>" type="video/ogg">
+                                                                    </video>
+                                                                </div>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </div>
+                                                           
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab13">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <asp:Repeater ID="RepeaterNautralPhoto" runat="server" ClientIDMode="Static">
+                                                        <HeaderTemplate>
+                                                            <div class="preview-images-zone">
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <div class="preview-image" style="height: 130px; width: 130px;">
+                                                                <div class="image-zone">
+                                                                    <img src="<%#"/Upload/NaturalPhotos/" + Eval("Image")%>" />
+                                                                </div>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+                                                            </div>
+                                                       
+                                                        </FooterTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab14">
+                                        <div class="d-flex pt-lg-5 ">
+                                            <asp:Repeater ID="RepeaterTour" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive ">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>City</th>
+                                                                    <th>From</th>
+                                                                    <th>To</th>
+                                                                    <th>Phone</th>
+                                                                    <th>Email</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td><%# Eval("City")%></td>
+                                                        <td><%# Eval("From")%></td>
+                                                        <td><%# Eval("To")%></td>
+                                                        <td><%# Eval("Phone")%></td>
+                                                        <td><%# Eval("Email")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                            </table>
+                                                            </div>
+                                               
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    
+                        <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
+                            <div class="swiper-wrapper">
+                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide img-thumb"
+                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </form>
             </div>
         </div>
@@ -149,6 +800,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script src="Scripts/swiper-bundle.min.js"></script>
+    <script src="Scripts/scroll-tab.js"></script>
     <script>
         var galleryThumbs = new Swiper('.gallery-thumbs', {
             spaceBetween: 10,
@@ -173,7 +825,6 @@
             },
             loop: true,
         });
-
         // Stop autoplay when stop button is clicked
         var stopButton = document.querySelector('#BtnSwaperPause');
         stopButton.addEventListener('click', function (e) {
