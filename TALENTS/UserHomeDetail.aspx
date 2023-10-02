@@ -37,7 +37,7 @@
         }
 
         .gallery-top {
-            height: 80%;
+            height: 100%;
             width: 45%;
         }
 
@@ -47,6 +47,8 @@
             padding: 10px 0;
             width: 200px;
             float: left;
+            position: absolute;
+            bottom: 0;
         }
 
             .gallery-thumbs .swiper-slide {
