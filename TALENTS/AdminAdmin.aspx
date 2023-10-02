@@ -73,7 +73,7 @@
                     </div>
 
                     <!-- The Modal -->
-                    <div class="modal" id="myModal">
+                    <div class="modal" id="myModal"  data-backdrop="static" >
                         <div class="modal-dialog">
                             <div class="modal-content text-white" style="background-color: #353535;">
                                 <!-- Modal Header -->

@@ -74,7 +74,7 @@
                     </div>
 
                     <!-- The Modal -->
-                    <div class="modal" id="myModal">
+                    <div class="modal" id="myModal" data-backdrop="static">
                         <div class="modal-dialog">
                             <div class="modal-content text-white" style="background-color: #353535;">
                                 <!-- Modal Header -->
@@ -119,7 +119,7 @@
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <asp:Button runat="server" ID="BtnSaveModel" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveModel_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateModel" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Update" OnClick="BtnUpdateModel_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateModel" ClientIDMode="Static" CssClass="btn btn-lg btn-success d-none" Text="Update" OnClick="BtnUpdateModel_Click" />
                                     <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-white"/>
                                 </div>
                             </div>
