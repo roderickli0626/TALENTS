@@ -67,6 +67,8 @@
                                 <ul>
                                     <li><a href="ModelHome.aspx">Home</a></li>
                                     <li><a href="ModelInformation.aspx">Information</a></li>
+                                    <li><a href="ModelSubscription.aspx">Subscription</a></li>
+                                    <li><a href="ModelNoticeBoard.aspx" runat="server" id="liNotices">Notices</a></li>
                                     <li><a href="#"><i class="fa fa-user-circle"></i></a>
                                         <ul class="drop-menu">
                                             <li><a href="#" runat="server" id="username">UserName</a></li>

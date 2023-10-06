@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TALENTS.Controller;
+using TALENTS.DAO;
 
 namespace TALENTS
 {
@@ -24,6 +25,9 @@ namespace TALENTS
         protected void Page_Load(object sender, EventArgs e)
         {
             string path = HttpContext.Current.Request.Url.AbsolutePath;
+
+            bool result = new SubscriptionMController().AllowUserNoticeBoard(model.Id);
+            liNotices.Visible = result;
 
             username.InnerText = model.Username;
         }
