@@ -1239,31 +1239,58 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.CustomValidator ServerValidatorSetting;
 
         /// <summary>
-        /// TextBox5 control.
+        /// ModActiveTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModActiveTitle;
 
         /// <summary>
-        /// TextBox1 control.
+        /// ModActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModActive;
 
         /// <summary>
-        /// TextBox2 control.
+        /// switch1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox switch1;
+
+        /// <summary>
+        /// TxtOldPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtOldPassword;
+
+        /// <summary>
+        /// TxtNewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNewPassword;
+
+        /// <summary>
+        /// TxtNewPWRepeat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNewPWRepeat;
 
         /// <summary>
         /// BtnSetting control.

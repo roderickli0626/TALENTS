@@ -74,5 +74,17 @@ namespace TALENTS.Models
         }
         public List<ModPhoto> ImageList { get; set; }
 
+        public bool IsPurchased
+        {
+            get;set;
+        }
+        public bool IsActive
+        {
+            get; set;
+        }
+        public string Mark
+        {
+            get; set;
+        }
     }
 }

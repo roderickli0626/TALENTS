@@ -16,10 +16,12 @@ namespace TALENTS.Controller
     public class LoginController
     {
         private ModelDAO modelDao;
+        private ModSettingDAO modSettingDAO;
 
         public LoginController()
         {
             modelDao = new ModelDAO();
+            modSettingDAO = new ModSettingDAO();
         }
 
         public LoginCode LoginAndSaveSession(string email, EncryptedPass pass)
@@ -109,6 +111,15 @@ namespace TALENTS.Controller
             registerModel.Password = pass.Encrypted;
             registerModel.IsModel = IsModel;
             registerModel.IsUser = IsUser;
+
+            if (IsModel)
+            {
+                ModSetting modSetting = new ModSetting();
+                modSetting.ModelId = model.Id;
+                modSetting.IsGreen = false;
+                modSetting.IsAllowed = false;
+                modSettingDAO.Insert(modSetting);
+            }
 
             return modelDao.Insert(registerModel);
         }

@@ -17,12 +17,16 @@ namespace TALENTS.Controller
         ModelDAO modelDao;
         ModelBiographyDAO biographyDao;
         ModPhotoDAO modPhotoDao;
+        ModSettingDAO modSettingDao;
+        SubscriptionMController subscriptionMController;
 
         public ModelController()
         {
             modelDao = new ModelDAO();
             biographyDao = new ModelBiographyDAO();
             modPhotoDao = new ModPhotoDAO();
+            modSettingDao = new ModSettingDAO();
+            subscriptionMController = new SubscriptionMController();
         }
 
         public List<ModelCheck> SearchDashboardModels(int cityId)
@@ -36,9 +40,17 @@ namespace TALENTS.Controller
                 List<ModPhoto> photoList = modPhotoDao.FindByModelAndGroup(modBiography.ModelId, defaultPhotoGroupID);
                 if (photoList.Count() == 0) continue;
                 modelCheck.Image = photoList.FirstOrDefault().Image;
+                modelCheck.IsActive = modSettingDao.FindByModel(modBiography.ModelId)?.IsGreen ?? false;
+                string expireDate = subscriptionMController.SubscriptionExpireDate(modBiography.ModelId);
+                modelCheck.IsPurchased = (expireDate != null);
+                // Mark for Photo
+                if (modelCheck.IsPurchased && modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon\"><span>ACTIVE</span></div>";
+                else if (modelCheck.IsPurchased && !modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon red\"><span>INACTIVE</span></div>";
+                else modelCheck.Mark = "<div class=\"ribbon gray\"><span>DISABLED</span></div>";
+                //
                 modelChecks.Add(modelCheck);
             }
-
+            modelChecks = modelChecks.OrderByDescending(m => m.IsPurchased).OrderByDescending(m => m.IsActive).ToList();
             return modelChecks;
         }
 
@@ -321,5 +333,17 @@ namespace TALENTS.Controller
             return modelDao.Update(model);
         }
 
+        public bool ResetPassword(int modelId, string oldPassword, string newPassword, string newPWRepeat)
+        {
+            Model model = modelDao.FindById(modelId);
+            if (model == null) { return false; }
+            string modelPW = new CryptoController().DecryptStringAES(model.Password);
+            if (modelPW != oldPassword || newPassword != newPWRepeat) return false;
+            else
+            {
+                model.Password = new CryptoController().EncryptStringAES(newPassword);
+                return modelDao.Update(model);
+            }
+        }
     }
 }
