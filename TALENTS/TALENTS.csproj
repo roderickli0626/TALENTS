@@ -197,6 +197,7 @@
     <Content Include="ModelHome.aspx" />
     <Content Include="ModelHomeDetail.aspx" />
     <Content Include="ModelInformation.aspx" />
+    <Content Include="ModelNoticeBoard.aspx" />
     <Content Include="ModelSubscription.aspx" />
     <Content Include="PaymentCancel.aspx" />
     <Content Include="PaymentComplete.aspx" />
@@ -425,6 +426,7 @@
     <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ModelController.cs" />
+    <Compile Include="Controller\NoticeController.cs" />
     <Compile Include="Controller\PhotoController.cs" />
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
@@ -537,6 +539,13 @@
     <Compile Include="ModelInformation.aspx.designer.cs">
       <DependentUpon>ModelInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModelNoticeBoard.aspx.cs">
+      <DependentUpon>ModelNoticeBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModelNoticeBoard.aspx.designer.cs">
+      <DependentUpon>ModelNoticeBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModelPage.Master.cs">
       <DependentUpon>ModelPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,6 +574,7 @@
     <Compile Include="Models\ModWorkDayHourCheck.cs" />
     <Compile Include="Models\ProcResult.cs" />
     <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\UserNoticeCheck.cs" />
     <Compile Include="Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

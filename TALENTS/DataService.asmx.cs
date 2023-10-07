@@ -434,6 +434,25 @@ namespace TALENTS
 
             ResponseProc(success, "");
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void FindNotices(int draw, int start, int length, string searchVal)
+        {
+            Model model = loginSystem.GetCurrentUserAccount();
+            if (model == null || !loginSystem.IsModelLoggedIn()) return;
+
+            NoticeController noticeController = new NoticeController();
+            SearchResult searchResult = noticeController.SearchNotices(start, length, searchVal);
+
+            JSDataTable result = new JSDataTable();
+            result.data = (IEnumerable<object>)searchResult.ResultList;
+            result.draw = draw;
+            result.recordsTotal = searchResult.TotalCount;
+            result.recordsFiltered = searchResult.TotalCount;
+
+            ResponseJson(result);
+        }
         protected void ResponseJson(Object result)
         {
             HttpResponse Response = Context.Response;

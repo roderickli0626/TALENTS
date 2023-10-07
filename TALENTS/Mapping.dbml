@@ -168,8 +168,8 @@
       <Association Name="Model_ModSetting" Member="ModSettings" ThisKey="Id" OtherKey="ModelId" Type="ModSetting" />
       <Association Name="Model_ModSubscription" Member="ModSubscriptions" ThisKey="Id" OtherKey="ModelId" Type="ModSubscription" />
       <Association Name="Model_UserCredit" Member="UserCredits" ThisKey="Id" OtherKey="UserId" Type="UserCredit" />
-      <Association Name="Model_UserNotice" Member="UserNotices" ThisKey="Id" OtherKey="UserId" Type="UserNotice" />
       <Association Name="Model_UserSubscription" Member="UserSubscriptions" ThisKey="Id" OtherKey="ModelId" Type="UserSubscription" />
+      <Association Name="Model_UserNotice" Member="UserNotices" ThisKey="Id" OtherKey="UserId" Type="UserNotice" />
     </Type>
   </Table>
   <Table Name="dbo.ModIncallPlace" Member="ModIncallPlaces">
@@ -442,18 +442,6 @@
       <Association Name="Model_UserCredit" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.UserNotices" Member="UserNotices">
-    <Type Name="UserNotice">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Contact" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ToDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Allowed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Model_UserNotice" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" />
-    </Type>
-  </Table>
   <Table Name="dbo.UserSubscription" Member="UserSubscriptions">
     <Type Name="UserSubscription">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -463,6 +451,19 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="Model_UserSubscription" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="SubscriptionU_UserSubscription" Member="SubscriptionU" ThisKey="SubscriptionId" OtherKey="Id" Type="SubscriptionU" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserNotices" Member="UserNotices">
+    <Type Name="UserNotice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Allowed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Model_UserNotice" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
 </Database>
