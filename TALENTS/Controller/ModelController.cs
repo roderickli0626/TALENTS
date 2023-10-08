@@ -44,9 +44,9 @@ namespace TALENTS.Controller
                 string expireDate = subscriptionMController.SubscriptionExpireDate(modBiography.ModelId);
                 modelCheck.IsPurchased = (expireDate != null);
                 // Mark for Photo
-                if (modelCheck.IsPurchased && modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon\"><span>ACTIVE</span></div>";
-                else if (modelCheck.IsPurchased && !modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon red\"><span>INACTIVE</span></div>";
-                else modelCheck.Mark = "<div class=\"ribbon gray\"><span>DISABLED</span></div>";
+                if (modelCheck.IsPurchased && modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon\"><span>ONLINE</span></div>";
+                else if (modelCheck.IsPurchased && !modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon red\"><span>OFFLINE</span></div>";
+                else modelCheck.Mark = "";
                 //
                 modelChecks.Add(modelCheck);
             }

@@ -201,6 +201,7 @@
     <Content Include="ModelSubscription.aspx" />
     <Content Include="PaymentCancel.aspx" />
     <Content Include="PaymentComplete.aspx" />
+    <Content Include="PaymentCompleteU.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\baguetteBox.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -352,6 +353,7 @@
     <Content Include="UserHome.aspx" />
     <Content Include="UserHomeDetail.aspx" />
     <Content Include="UserInformation.aspx" />
+    <Content Include="UserSubscription.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -431,6 +433,7 @@
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
     <Compile Include="Controller\SubscriptionMController.cs" />
+    <Compile Include="Controller\SubscriptionUController.cs" />
     <Compile Include="Controller\TourController.cs" />
     <Compile Include="Controller\WorkDayHourController.cs" />
     <Compile Include="DAO\BasicDAO.cs" />
@@ -596,6 +599,13 @@
     <Compile Include="PaymentComplete.aspx.designer.cs">
       <DependentUpon>PaymentComplete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PaymentCompleteU.aspx.cs">
+      <DependentUpon>PaymentCompleteU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentCompleteU.aspx.designer.cs">
+      <DependentUpon>PaymentCompleteU.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Payment\Paypal\Parameter.cs" />
     <Compile Include="Payment\Paypal\PaymentConfiguration.cs" />
     <Compile Include="Payment\Paypal\PaymentDetails.cs" />
@@ -649,6 +659,13 @@
     </Compile>
     <Compile Include="UserPage.Master.designer.cs">
       <DependentUpon>UserPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserSubscription.aspx.cs">
+      <DependentUpon>UserSubscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserSubscription.aspx.designer.cs">
+      <DependentUpon>UserSubscription.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DateUtil.cs" />

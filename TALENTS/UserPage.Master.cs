@@ -11,12 +11,12 @@ namespace TALENTS
 {
     public partial class UserPage : System.Web.UI.MasterPage
     {
-        private Model model;
+        private Model user;
         private LoginController loginSystem = new LoginController();
         protected void Page_Init(object sender, EventArgs e)
         {
-            model = loginSystem.GetCurrentUserAccount();
-            if (model == null || !loginSystem.IsUserLoggedIn())
+            user = loginSystem.GetCurrentUserAccount();
+            if (user == null || !loginSystem.IsUserLoggedIn())
             {
                 Response.Redirect("~/Login.aspx");
                 return;
@@ -26,7 +26,10 @@ namespace TALENTS
         {
             string path = HttpContext.Current.Request.Url.AbsolutePath;
 
-            username.InnerText = model.Username;
+            string result = new SubscriptionUController().SubscriptionExpireDate(user.Id);
+            liNotices.Visible = (result != null);
+
+            username.InnerText = user.Username;
         }
     }
 }

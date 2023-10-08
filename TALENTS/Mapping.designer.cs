@@ -156,12 +156,12 @@ namespace TALENTS
     partial void InsertUserCredit(UserCredit instance);
     partial void UpdateUserCredit(UserCredit instance);
     partial void DeleteUserCredit(UserCredit instance);
-    partial void InsertUserSubscription(UserSubscription instance);
-    partial void UpdateUserSubscription(UserSubscription instance);
-    partial void DeleteUserSubscription(UserSubscription instance);
     partial void InsertUserNotice(UserNotice instance);
     partial void UpdateUserNotice(UserNotice instance);
     partial void DeleteUserNotice(UserNotice instance);
+    partial void InsertUserSubscription(UserSubscription instance);
+    partial void UpdateUserSubscription(UserSubscription instance);
+    partial void DeleteUserSubscription(UserSubscription instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -524,19 +524,19 @@ namespace TALENTS
 			}
 		}
 		
-		public System.Data.Linq.Table<UserSubscription> UserSubscriptions
-		{
-			get
-			{
-				return this.GetTable<UserSubscription>();
-			}
-		}
-		
 		public System.Data.Linq.Table<UserNotice> UserNotices
 		{
 			get
 			{
 				return this.GetTable<UserNotice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserSubscription> UserSubscriptions
+		{
+			get
+			{
+				return this.GetTable<UserSubscription>();
 			}
 		}
 	}
@@ -3020,9 +3020,9 @@ namespace TALENTS
 		
 		private EntitySet<UserCredit> _UserCredits;
 		
-		private EntitySet<UserSubscription> _UserSubscriptions;
-		
 		private EntitySet<UserNotice> _UserNotices;
+		
+		private EntitySet<UserSubscription> _UserSubscriptions;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3064,8 +3064,8 @@ namespace TALENTS
 			this._ModSettings = new EntitySet<ModSetting>(new Action<ModSetting>(this.attach_ModSettings), new Action<ModSetting>(this.detach_ModSettings));
 			this._ModSubscriptions = new EntitySet<ModSubscription>(new Action<ModSubscription>(this.attach_ModSubscriptions), new Action<ModSubscription>(this.detach_ModSubscriptions));
 			this._UserCredits = new EntitySet<UserCredit>(new Action<UserCredit>(this.attach_UserCredits), new Action<UserCredit>(this.detach_UserCredits));
-			this._UserSubscriptions = new EntitySet<UserSubscription>(new Action<UserSubscription>(this.attach_UserSubscriptions), new Action<UserSubscription>(this.detach_UserSubscriptions));
 			this._UserNotices = new EntitySet<UserNotice>(new Action<UserNotice>(this.attach_UserNotices), new Action<UserNotice>(this.detach_UserNotices));
+			this._UserSubscriptions = new EntitySet<UserSubscription>(new Action<UserSubscription>(this.attach_UserSubscriptions), new Action<UserSubscription>(this.detach_UserSubscriptions));
 			OnCreated();
 		}
 		
@@ -3443,19 +3443,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_UserSubscriptions", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<UserSubscription> UserSubscriptions
-		{
-			get
-			{
-				return this._UserSubscriptions;
-			}
-			set
-			{
-				this._UserSubscriptions.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_UserNotices", ThisKey="Id", OtherKey="UserId")]
 		public EntitySet<UserNotice> UserNotices
 		{
@@ -3466,6 +3453,19 @@ namespace TALENTS
 			set
 			{
 				this._UserNotices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_UserSubscriptions", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<UserSubscription> UserSubscriptions
+		{
+			get
+			{
+				return this._UserSubscriptions;
+			}
+			set
+			{
+				this._UserSubscriptions.Assign(value);
 			}
 		}
 		
@@ -3705,18 +3705,6 @@ namespace TALENTS
 			entity.Model = null;
 		}
 		
-		private void attach_UserSubscriptions(UserSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_UserSubscriptions(UserSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
 		private void attach_UserNotices(UserNotice entity)
 		{
 			this.SendPropertyChanging();
@@ -3724,6 +3712,18 @@ namespace TALENTS
 		}
 		
 		private void detach_UserNotices(UserNotice entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_UserSubscriptions(UserSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserSubscriptions(UserSubscription entity)
 		{
 			this.SendPropertyChanging();
 			entity.Model = null;
@@ -9736,246 +9736,6 @@ namespace TALENTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserSubscription")]
-	public partial class UserSubscription : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _ModelId;
-		
-		private System.Nullable<int> _SubscriptionId;
-		
-		private System.Nullable<System.DateTime> _StartDate;
-		
-		private System.Nullable<System.DateTime> _EndDate;
-		
-		private EntityRef<Model> _Model;
-		
-		private EntityRef<SubscriptionU> _SubscriptionU;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnModelIdChanging(System.Nullable<int> value);
-    partial void OnModelIdChanged();
-    partial void OnSubscriptionIdChanging(System.Nullable<int> value);
-    partial void OnSubscriptionIdChanged();
-    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnStartDateChanged();
-    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnEndDateChanged();
-    #endregion
-		
-		public UserSubscription()
-		{
-			this._Model = default(EntityRef<Model>);
-			this._SubscriptionU = default(EntityRef<SubscriptionU>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int")]
-		public System.Nullable<int> ModelId
-		{
-			get
-			{
-				return this._ModelId;
-			}
-			set
-			{
-				if ((this._ModelId != value))
-				{
-					if (this._Model.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnModelIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModelId = value;
-					this.SendPropertyChanged("ModelId");
-					this.OnModelIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubscriptionId", DbType="Int")]
-		public System.Nullable<int> SubscriptionId
-		{
-			get
-			{
-				return this._SubscriptionId;
-			}
-			set
-			{
-				if ((this._SubscriptionId != value))
-				{
-					if (this._SubscriptionU.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSubscriptionIdChanging(value);
-					this.SendPropertyChanging();
-					this._SubscriptionId = value;
-					this.SendPropertyChanged("SubscriptionId");
-					this.OnSubscriptionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
-		public System.Nullable<System.DateTime> StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
-		public System.Nullable<System.DateTime> EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this.OnEndDateChanging(value);
-					this.SendPropertyChanging();
-					this._EndDate = value;
-					this.SendPropertyChanged("EndDate");
-					this.OnEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.UserSubscriptions.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.UserSubscriptions.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SubscriptionU_UserSubscription", Storage="_SubscriptionU", ThisKey="SubscriptionId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public SubscriptionU SubscriptionU
-		{
-			get
-			{
-				return this._SubscriptionU.Entity;
-			}
-			set
-			{
-				SubscriptionU previousValue = this._SubscriptionU.Entity;
-				if (((previousValue != value) 
-							|| (this._SubscriptionU.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SubscriptionU.Entity = null;
-						previousValue.UserSubscriptions.Remove(this);
-					}
-					this._SubscriptionU.Entity = value;
-					if ((value != null))
-					{
-						value.UserSubscriptions.Add(this);
-						this._SubscriptionId = value.Id;
-					}
-					else
-					{
-						this._SubscriptionId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("SubscriptionU");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserNotices")]
 	public partial class UserNotice : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -10222,6 +9982,294 @@ namespace TALENTS
 						this._UserId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserSubscription")]
+	public partial class UserSubscription : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _ModelId;
+		
+		private System.Nullable<int> _SubscriptionId;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<int> _Credits;
+		
+		private System.Nullable<double> _Amount;
+		
+		private EntityRef<Model> _Model;
+		
+		private EntityRef<SubscriptionU> _SubscriptionU;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnModelIdChanging(System.Nullable<int> value);
+    partial void OnModelIdChanged();
+    partial void OnSubscriptionIdChanging(System.Nullable<int> value);
+    partial void OnSubscriptionIdChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    partial void OnCreditsChanging(System.Nullable<int> value);
+    partial void OnCreditsChanged();
+    partial void OnAmountChanging(System.Nullable<double> value);
+    partial void OnAmountChanged();
+    #endregion
+		
+		public UserSubscription()
+		{
+			this._Model = default(EntityRef<Model>);
+			this._SubscriptionU = default(EntityRef<SubscriptionU>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModelId", DbType="Int")]
+		public System.Nullable<int> ModelId
+		{
+			get
+			{
+				return this._ModelId;
+			}
+			set
+			{
+				if ((this._ModelId != value))
+				{
+					if (this._Model.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnModelIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModelId = value;
+					this.SendPropertyChanged("ModelId");
+					this.OnModelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubscriptionId", DbType="Int")]
+		public System.Nullable<int> SubscriptionId
+		{
+			get
+			{
+				return this._SubscriptionId;
+			}
+			set
+			{
+				if ((this._SubscriptionId != value))
+				{
+					if (this._SubscriptionU.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSubscriptionIdChanging(value);
+					this.SendPropertyChanging();
+					this._SubscriptionId = value;
+					this.SendPropertyChanged("SubscriptionId");
+					this.OnSubscriptionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Date")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Credits", DbType="Int")]
+		public System.Nullable<int> Credits
+		{
+			get
+			{
+				return this._Credits;
+			}
+			set
+			{
+				if ((this._Credits != value))
+				{
+					this.OnCreditsChanging(value);
+					this.SendPropertyChanging();
+					this._Credits = value;
+					this.SendPropertyChanged("Credits");
+					this.OnCreditsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
+		public System.Nullable<double> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.UserSubscriptions.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.UserSubscriptions.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SubscriptionU_UserSubscription", Storage="_SubscriptionU", ThisKey="SubscriptionId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public SubscriptionU SubscriptionU
+		{
+			get
+			{
+				return this._SubscriptionU.Entity;
+			}
+			set
+			{
+				SubscriptionU previousValue = this._SubscriptionU.Entity;
+				if (((previousValue != value) 
+							|| (this._SubscriptionU.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SubscriptionU.Entity = null;
+						previousValue.UserSubscriptions.Remove(this);
+					}
+					this._SubscriptionU.Entity = value;
+					if ((value != null))
+					{
+						value.UserSubscriptions.Add(this);
+						this._SubscriptionId = value.Id;
+					}
+					else
+					{
+						this._SubscriptionId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("SubscriptionU");
 				}
 			}
 		}

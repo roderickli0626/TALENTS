@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ModelPage.Master" AutoEventWireup="true" CodeBehind="ModelSubscription.aspx.cs" Inherits="TALENTS.ModelSubscription" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserPage.Master" AutoEventWireup="true" CodeBehind="UserSubscription.aspx.cs" Inherits="TALENTS.UserSubscription1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <style>
         @charset "utf-8";
@@ -184,7 +183,7 @@
                                 <asp:HiddenField ID="HfGetAllow" runat="server" ClientIDMode="Static" />
                                 <asp:UpdatePanel runat="server" ID="UpdatePanel">
                                     <ContentTemplate>
-                                        <h2 class="mb-4 justify-content-center">PURCHASE SUBSCRIPTION</h2>
+                                        <h2 class="mb-4 justify-content-center">PURCHASE SUBSCRIPTION (<%= CurrentCredits %> CREDITS)</h2>
                                         <h4 class="text-success float-end" runat="server" id="ExpireDate" visible="false">duration</h4>
                                     </ContentTemplate>
                                     <Triggers>
@@ -198,16 +197,15 @@
                                     <div class="pricing-table-3 basic">
                                         <div class="pricing-table-header bg-transparent d-flex">
                                             <h1 class="text-left text-white"><strong>1</strong></h1>
-                                            <h3 class="text-white"><%= WEEKTITLE %></h3>
+                                            <h3 class="text-white"><%= DAYTITLE %></h3>
                                         </div>
-                                        <div class="price"><strong>€<%= WEEKPRICE %></strong> / WEEK</div>
+                                        <div class="price"><strong><%= DAYCREDIT %></strong> Credits</div>
                                         <div class="pricing-body">
                                             <ul class="pricing-table-ul mb-4">
-                                                <li><i class="fa fa-send"></i>Traffic light activation</li>
-                                                <li><i class="fa fa-send text-white"></i></li>
-                                                <li><i class="fa fa-cloud"></i>Showcase photo</li>
+                                                <li><i class="fa fa-send"></i>Live Chat With Active Model</li>
+                                                <li><i class="fa fa-database"></i>User Noticeboard</li>
                                             </ul>
-                                            <a href="#" id="btnWeek" data-id="<%= WEEKID %>"" class="view-more" style="border-radius: 5px;">PURCHASE</a>
+                                            <a href="#" id="btnWeek" data-id="<%= DAYID %>"" class="view-more" style="border-radius: 5px;">PURCHASE</a>
                                         </div>
                                     </div>
                                 </div>  
@@ -215,16 +213,15 @@
                                     <div class="pricing-table-3 premium">
                                         <div class="pricing-table-header bg-transparent d-flex">
                                             <h1 class="text-left text-white"><strong>1</strong></h1>
-                                            <h3 class="text-white"><%= MONTHTITLE %></h3>
+                                            <h3 class="text-white"><%= WEEKTITLE %></h3>
                                         </div>
-                                        <div class="price"><strong>€<%= MONTHPRICE %></strong> / MONTH</div>
+                                        <div class="price"><strong>€<%= WEEKPRICE %> / <%= WEEKCREDIT %></strong> Credits</div>
                                         <div class="pricing-body">
                                             <ul class="pricing-table-ul mb-4">
-                                                <li><i class="fa fa-send"></i>Traffic light activation</li>
-                                                <li><i class="fa fa-cloud"></i>Showcase photo</li>
-                                                <li><i class="fa fa-database"></i>Customer Noticeboard</li>
+                                                <li><i class="fa fa-send"></i>Live Chat With Active Model</li>
+                                                <li><i class="fa fa-database"></i>User Noticeboard</li>
                                             </ul>
-                                            <a href="#" id="btnMonth" data-id="<%= MONTHID %>" class="view-more" style="border-radius: 5px;">PURCHASE</a>
+                                            <a href="#" id="btnMonth" data-id="<%= WEEKID %>" class="view-more" style="border-radius: 5px;">PURCHASE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -232,16 +229,15 @@
                                     <div class="pricing-table-3 business">
                                         <div class="pricing-table-header bg-transparent d-flex">
                                             <h1 class="text-left text-white"><strong>1</strong></h1>
-                                            <h3 class="text-white"><%= QUARTERTITLE %></h3>
+                                            <h3 class="text-white"><%= MONTHTITLE %></h3>
                                         </div>
-                                        <div class="price"><strong>€<%= QUARTERPRICE %></strong> / QUARTER</div>
+                                        <div class="price"><strong>€<%= MONTHPRICE %> / <%= MONTHCREDIT %></strong> Credits</div>
                                         <div class="pricing-body">
                                             <ul class="pricing-table-ul mb-4">
-                                                <li><i class="fa fa-send"></i>Traffic light activation</li>
-                                                <li><i class="fa fa-cloud"></i>Showcase photo</li>
-                                                <li><i class="fa fa-database"></i>Customer Noticeboard</li>
+                                                <li><i class="fa fa-send"></i>Live Chat With Active Model</li>
+                                                <li><i class="fa fa-database"></i>User Noticeboard</li>
                                             </ul>
-                                            <a href="#" id="btnQuarter" data-id="<%= QUARTERID %>" class="view-more" style="border-radius: 5px;">PURCHASE</a>
+                                            <a href="#" id="btnQuarter" data-id="<%= MONTHID %>" class="view-more" style="border-radius: 5px;">PURCHASE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +245,7 @@
                             <div class="row justify-content-center mt-5 mb-4">
                                 <div class="col-6">
                                     <asp:Button runat="server" ID="btnPayment" ClientIDMode="Static" CssClass="btn btn-block btn-lg btn-dark text-white d-none" 
-                                        style="border-radius: 30px;" Text="PAYMENT WITH PAYPAL" OnClick="btnPayment_Click" />
+                                        style="border-radius: 30px;" Text="PAYMENT WITH PAYPAL / CREDITS" OnClick="btnPayment_Click" />
                                 </div>
                             </div>
                         </div>
