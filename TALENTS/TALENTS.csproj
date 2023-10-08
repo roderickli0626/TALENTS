@@ -200,6 +200,7 @@
     <Content Include="ModelNoticeBoard.aspx" />
     <Content Include="ModelSubscription.aspx" />
     <Content Include="PaymentCancel.aspx" />
+    <Content Include="PaymentCancelU.aspx" />
     <Content Include="PaymentComplete.aspx" />
     <Content Include="PaymentCompleteU.aspx" />
     <Content Include="Register.aspx" />
@@ -591,6 +592,13 @@
     </Compile>
     <Compile Include="PaymentCancel.aspx.designer.cs">
       <DependentUpon>PaymentCancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentCancelU.aspx.cs">
+      <DependentUpon>PaymentCancelU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentCancelU.aspx.designer.cs">
+      <DependentUpon>PaymentCancelU.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaymentComplete.aspx.cs">
       <DependentUpon>PaymentComplete.aspx</DependentUpon>
