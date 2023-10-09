@@ -23,6 +23,7 @@ namespace TALENTS.Models
             if (DateTime.Now < userNotice.FromDate) State = 1;
             else if (userNotice.ToDate < DateTime.Now) State = 2;
             else State = 3;
+            Allowed = userNotice.Allowed ?? false;
         }
         public int Id
         {
@@ -45,6 +46,10 @@ namespace TALENTS.Models
             get; set;
         }
         public int State
+        {
+            get; set;
+        }
+        public bool Allowed
         {
             get; set;
         }

@@ -19,6 +19,10 @@ namespace TALENTS.DAO
             IEnumerable<UserNotice> table = GetContext().UserNotices.Where(m => m.UserId == userId);
             return table.ToList();
         }
+        public UserNotice FindById(int Id)
+        {
+            return GetContext().UserNotices.Where(m => m.Id == Id).FirstOrDefault();
+        }
         public bool Insert(UserNotice userNotice)
         {
             GetContext().UserNotices.InsertOnSubmit(userNotice);

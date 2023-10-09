@@ -263,6 +263,7 @@
                 if (state == 1) {
                     $(".modal-ribbon").removeClass("red");
                     $(".modal-ribbon").removeClass("blue");
+                    $(".modal-ribbon").html("<span>NEW</span>");
                     $(".modal-badge").removeClass("badge-danger").removeClass("badge-primary").addClass("badge-success").text(badgeInfo);
 
                 }

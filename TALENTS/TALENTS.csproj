@@ -354,6 +354,7 @@
     <Content Include="UserHome.aspx" />
     <Content Include="UserHomeDetail.aspx" />
     <Content Include="UserInformation.aspx" />
+    <Content Include="UserNoticeBoard.aspx" />
     <Content Include="UserSubscription.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -660,6 +661,13 @@
     </Compile>
     <Compile Include="UserInformation.aspx.designer.cs">
       <DependentUpon>UserInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserNoticeBoard.aspx.cs">
+      <DependentUpon>UserNoticeBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserNoticeBoard.aspx.designer.cs">
+      <DependentUpon>UserNoticeBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.Master.cs">
       <DependentUpon>UserPage.Master</DependentUpon>
