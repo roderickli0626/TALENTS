@@ -15,9 +15,18 @@ namespace TALENTS
     {
         private int modelId;
         private Model model;
+        private Model user;
+        private LoginController loginSystem = new LoginController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = loginSystem.GetCurrentUserAccount();
+            if (user == null || !loginSystem.IsUserLoggedIn())
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+
             modelId = ParseUtil.TryParseInt(Request.Params["modelId"]) ?? 0;
             model = new ModelDAO().FindById(modelId);
             
@@ -144,6 +153,11 @@ namespace TALENTS
             List<ModVideo> videos = new ModVideoDAO().FindByModel(model.Id);
             RepeaterVideo.DataSource = videos;
             RepeaterVideo.DataBind();
+
+            // Review Tab
+            List<ModReviewCheck> modReviews = new ReviewController().FindByModel(model.Id);
+            RepeaterReview.DataSource = modReviews;
+            RepeaterReview.DataBind();
         }
     }
 }

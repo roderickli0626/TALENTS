@@ -144,6 +144,11 @@ namespace TALENTS
             List<ModVideo> videos = new ModVideoDAO().FindByModel(model.Id);
             RepeaterVideo.DataSource = videos;
             RepeaterVideo.DataBind();
+
+            // Review Tab
+            List<ModReviewCheck> modReviews = new ReviewController().FindByModel(model.Id);
+            RepeaterReview.DataSource = modReviews;
+            RepeaterReview.DataBind();
         }
     }
 }

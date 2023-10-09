@@ -432,6 +432,7 @@
     <Compile Include="Controller\ModelController.cs" />
     <Compile Include="Controller\NoticeController.cs" />
     <Compile Include="Controller\PhotoController.cs" />
+    <Compile Include="Controller\ReviewController.cs" />
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\SessionController.cs" />
     <Compile Include="Controller\SubscriptionMController.cs" />
@@ -573,6 +574,7 @@
     <Compile Include="Models\ModOutcallCheck.cs" />
     <Compile Include="Models\ModOutcallRateCheck.cs" />
     <Compile Include="Models\ModPhotoCheck.cs" />
+    <Compile Include="Models\ModReviewCheck.cs" />
     <Compile Include="Models\ModServiceCheck.cs" />
     <Compile Include="Models\ModTourCheck.cs" />
     <Compile Include="Models\ModWorkCityCheck.cs" />

@@ -474,6 +474,15 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.Repeater RepeaterTour;
 
         /// <summary>
+        /// RepeaterReview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterReview;
+
+        /// <summary>
         /// DefaultPhotoRepeater2 control.
         /// </summary>
         /// <remarks>

@@ -5,6 +5,34 @@
     <link rel="stylesheet" href="Content/CSS/scroll-tab.css">
     <%--<link rel="stylesheet" href="Content/CSS/custom-user-model-details.css">--%>
     <style>
+        .starrating > input {
+            display: none;
+        }
+        /* Remove radio buttons */
+
+        .starrating > label:before {
+            content: "\f005"; /* Star */
+            margin: 2px;
+            font-size: 1.5em;
+            font-family: FontAwesome;
+            display: inline-block;
+        }
+
+        .starrating > label {
+            color: #222222; /* Start color when not clicked */
+        }
+
+        .starrating > input:checked ~ label {
+            color: #ffca08;
+        }
+        /* Set yellow color when star checked */
+
+        .starrating > input:hover ~ label {
+            color: #ffca08;
+        }
+        /* Set yellow color when star hover */
+    </style>
+    <style>
         html,
         body {
             position: relative;
@@ -263,6 +291,7 @@
                                     <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Videos</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Natural Photos</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab14" role="tab" data-toggle="tab">Tour</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab15" role="tab" data-toggle="tab">Reviews</a></li>
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -777,6 +806,44 @@
                                             </asp:Repeater>
                                         </div>
                                     </div>
+                                    <div role="tabpanel" class="tab-pane fade show" id="tab15">
+                                        <div class="pt-3">
+                                            <div class="text-right pb-2">
+                                                <button class="btn btn-white bg-white" id="BtnAddReview">+ ADD REVIEW</button>
+                                            </div>
+                                            <asp:Repeater ID="RepeaterReview" runat="server" ClientIDMode="Static">
+                                                <HeaderTemplate>
+                                                    <div class="table-responsive ">
+                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Content</th>
+                                                                    <th>User</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td style="vertical-align: middle"><%# (Container.ItemIndex + 1).ToString() %></td>
+                                                        <td style="vertical-align: middle">
+                                                            <%# Eval("Content") %>
+                                                            <div class="text-white">
+                                                                <%# Eval("Comment")%>
+                                                            </div>
+                                                        </td>
+                                                        <td style="vertical-align: middle"><%# Eval("User")%></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    </tbody>
+                                                    </table>
+                                                    </div>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -792,9 +859,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </form>
             </div>
         </div>
