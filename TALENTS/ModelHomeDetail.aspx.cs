@@ -119,17 +119,7 @@ namespace TALENTS
             List<ModTourCheck> modTours = new TourController().FindByModel(model.Id);
             RepeaterTour.DataSource = modTours;
             RepeaterTour.DataBind();
-
-            // Contact Tab
-            ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
-            if (modContact == null) return;
-            ModelSocialChat.InnerText = modContact.SocialChat?.Description;
-            ModelInstructionChat.InnerText = modContact.InstructionChat?.Description;
-            ModelEmail.InnerText = modContact.Email;
-            ModelPhone.InnerText = modContact.MobilePhone;
-            ModelAddress.InnerText = modContact.Address;
-            ModelAddressCiv.InnerText = modContact.AddressCiv;
-
+                        
             // Natural Photo Tab
             List<ModNaturalPhoto> naturalPhotos = new ModNaturalPhotoDAO().FindByModel(model.Id);
             RepeaterNautralPhoto.DataSource = naturalPhotos;
@@ -149,6 +139,16 @@ namespace TALENTS
             List<ModReviewCheck> modReviews = new ReviewController().FindByModel(model.Id);
             RepeaterReview.DataSource = modReviews;
             RepeaterReview.DataBind();
+
+            // Contact Tab
+            ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
+            if (modContact == null) return;
+            ModelSocialChat.InnerText = modContact.SocialChat?.Description;
+            ModelInstructionChat.InnerText = modContact.InstructionChat?.Description;
+            ModelEmail.InnerText = modContact.Email;
+            ModelPhone.InnerText = modContact.MobilePhone;
+            ModelAddress.InnerText = modContact.Address;
+            ModelAddressCiv.InnerText = modContact.AddressCiv;
         }
     }
 }

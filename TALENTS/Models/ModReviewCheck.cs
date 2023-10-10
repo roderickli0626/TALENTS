@@ -14,12 +14,17 @@ namespace TALENTS.Models
             this.modReview = modReview;
             if (modReview == null) { return; }
             Id = modReview.Id;
+            UserId = modReview.UserId ?? 0;
             User = modReview.Model.Username;
             Comment = modReview.Comment;
             Rating = modReview.Rating ?? 0;
         }
 
         public int Id
+        {
+            get; set;
+        }
+        public int UserId
         {
             get; set;
         }

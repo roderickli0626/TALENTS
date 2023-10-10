@@ -820,9 +820,10 @@
                                                                     <th>No</th>
                                                                     <th>Content</th>
                                                                     <th>User</th>
+                                                                    <th class="d-none"></th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
+                                                            <tbody class="ReviewBody">
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
@@ -834,6 +835,7 @@
                                                             </div>
                                                         </td>
                                                         <td style="vertical-align: middle"><%# Eval("User")%></td>
+                                                        <td class="d-none"><%# Eval("UserId") %></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -859,6 +861,55 @@
                             </div>
                         </div>
                     </div>
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header pl-5">
+                                    <h2 class="modal-title">ADD REVIEW</h2>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body p-lg-5">
+                                    <asp:HiddenField ID="HfRating" runat="server" ClientIDMode="Static" />
+                                    <asp:HiddenField ID="HfUserID" runat="server" ClientIDMode="Static" />
+                                    <asp:ScriptManager runat="server" ID="ScriptManagerForModal"></asp:ScriptManager>
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelForModal">
+                                        <ContentTemplate>
+                                            <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-right text-danger" ClientIDMode="Static" />
+                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Failed" Display="None"></asp:CustomValidator>
+                                            <div class="container">
+                                                <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star" style="font-size:25px;"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star" style="font-size:25px;"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star" style="font-size:25px;"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star" style="font-size:25px;"></label>
+                                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star" style="font-size:25px;"></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-white mb-4">
+                                                <asp:TextBox runat="server" ID="TxtPhone" ClientIDMode="Static" placeholder="Phone Number" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+
+                                            <div class="form-white">
+                                                <asp:TextBox runat="server" ID="TxtComment" ClientIDMode="Static" placeholder="Comment" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            </div>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="BtnSaveReview" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer p-lg-5">
+                                    <asp:Button runat="server" ID="BtnSaveReview" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="OK" OnClientClick="SaveReview()" OnClick="BtnSaveReview_Click" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Cancel" CssClass="btn btn-lg btn-dark"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -867,6 +918,33 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script src="Scripts/swiper-bundle.min.js"></script>
     <script src="Scripts/scroll-tab.js"></script>
+    <script>
+        $("#BtnClose").click(function () {
+            $("#myModal").modal('hide');
+            return false;
+        });
+
+        $("#BtnAddReview").click(function () {
+            var reviews = $(".ReviewBody>tr>td");
+            var userID = $("#HfUserID").val();
+            for (var i = 0; i < reviews.length; i++) {
+                if (reviews[i].textContent == userID) {
+                    alert("You already left a review.");
+                    return false;
+                }
+            }
+            $("#TxtPhone").val("");
+            $("#TxtComment").val("");
+            $("input[name='rating'][value='1']")[0].checked = true;
+            $("#myModal").modal('show');
+            return false;
+        });
+
+        function SaveReview() {
+            $("#HfRating").val($("input[name='rating']:checked").val());
+            return true;
+        }
+    </script>
     <script>
         var galleryThumbs = new Swiper('.gallery-thumbs', {
             spaceBetween: 10,

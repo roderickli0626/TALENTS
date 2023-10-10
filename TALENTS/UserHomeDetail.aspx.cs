@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TALENTS.Controller;
@@ -29,6 +30,7 @@ namespace TALENTS
 
             modelId = ParseUtil.TryParseInt(Request.Params["modelId"]) ?? 0;
             model = new ModelDAO().FindById(modelId);
+            HfUserID.Value = user.Id.ToString();
             
             if (!IsPostBack)
             {
@@ -128,17 +130,7 @@ namespace TALENTS
             List<ModTourCheck> modTours = new TourController().FindByModel(model.Id);
             RepeaterTour.DataSource = modTours;
             RepeaterTour.DataBind();
-
-            // Contact Tab
-            ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
-            if (modContact == null) return;
-            ModelSocialChat.InnerText = modContact.SocialChat?.Description;
-            ModelInstructionChat.InnerText = modContact.InstructionChat?.Description;
-            ModelEmail.InnerText = modContact.Email;
-            ModelPhone.InnerText = modContact.MobilePhone;
-            ModelAddress.InnerText = modContact.Address;
-            ModelAddressCiv.InnerText = modContact.AddressCiv;
-
+                        
             // Natural Photo Tab
             List<ModNaturalPhoto> naturalPhotos = new ModNaturalPhotoDAO().FindByModel(model.Id);
             RepeaterNautralPhoto.DataSource = naturalPhotos;
@@ -158,6 +150,33 @@ namespace TALENTS
             List<ModReviewCheck> modReviews = new ReviewController().FindByModel(model.Id);
             RepeaterReview.DataSource = modReviews;
             RepeaterReview.DataBind();
+
+            // Contact Tab
+            ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
+            if (modContact == null) return;
+            ModelSocialChat.InnerText = modContact.SocialChat?.Description;
+            ModelInstructionChat.InnerText = modContact.InstructionChat?.Description;
+            ModelEmail.InnerText = modContact.Email;
+            ModelPhone.InnerText = modContact.MobilePhone;
+            ModelAddress.InnerText = modContact.Address;
+            ModelAddressCiv.InnerText = modContact.AddressCiv;
+        }
+
+        protected void BtnSaveReview_Click(object sender, EventArgs e)
+        {
+            int reviewRating = ParseUtil.TryParseInt(HfRating.Value) ?? 0;
+            string phone = TxtPhone.Text;
+            string comment = TxtComment.Text;
+
+            bool success = new ReviewController().SaveReview(phone, comment, reviewRating, model.Id, user.Id);
+
+            if (!success)
+            {
+                ServerValidator.IsValid = false;
+                return;
+            }
+
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }
