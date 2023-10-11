@@ -1287,13 +1287,26 @@
                                                 <asp:CustomValidator ID="ServerValidatorSetting" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row text-left">
+                                                <h5 class="text-primary text-bold text-left">Stato di approvazione del conto</h5>
+                                            </div>
+                                            <div class="row" style="width: 800px;">
+                                                <div class="col-12">
+                                                    <div class="mb-4">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" runat="server" id="switch0" clientIDMode="static">
+                                                            <label class="custom-control-label" for="switch0">Lo Stato del tuo conto: Attivo</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row text-left">
                                                 <h5 class="text-primary text-bold text-left">Stato del Profilo</h5>
                                             </div>
                                             <div class="row" style="width: 800px;">
                                                 <div class="col-12">
                                                     <div class="mb-4">
                                                         <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" id="switch1">
+                                                            <input type="checkbox" class="custom-control-input" runat="server" id="switch1" clientIDMode="static">
                                                             <label class="custom-control-label" for="switch1">Lo Stato del tuo Profilo: Attivo</label>
                                                         </div>
                                                     </div>
@@ -1305,19 +1318,19 @@
                                             <div class="row" style="width: 800px;">
                                                 <div class="col-6">
                                                     <div class="mb-4">
-                                                        <asp:TextBox runat="server" ID="TextBox5" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la password attuale" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="TxtOldPassword" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la password attuale" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row" style="width: 800px;">
                                                 <div class="col-6">
                                                     <div class="mb-4">
-                                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="TxtNewPassword" TextMode="Password" ClientIDMode="Static" PlaceHolder="Inserisci la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-4">
-                                                        <asp:TextBox runat="server" ID="TextBox2" TextMode="Password" ClientIDMode="Static" PlaceHolder="Conferma la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="TxtNewPWRepeat" TextMode="Password" ClientIDMode="Static" PlaceHolder="Conferma la nuova password" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1329,7 +1342,6 @@
                                             </div>
                                         </ContentTemplate>
                                         <Triggers>
-                                            <asp:AsyncPostBackTrigger ControlID="RepeaterTour" />
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>

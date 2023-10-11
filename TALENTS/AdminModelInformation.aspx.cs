@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -47,6 +48,7 @@ namespace TALENTS
                 LoadVideos();
                 LoadNaturalPhotos();
                 LoadTours();
+                LoadSettings();
             }
         }
         // Bio Tab
@@ -704,9 +706,50 @@ namespace TALENTS
 
         }
 
+        // Settings Tab
+        private void LoadSettings()
+        {
+            ModSetting modSetting = new ModSettingDAO().FindByModel(model.Id);
+            if (modSetting.IsGreen ?? false) switch1.Checked = true;
+            else switch1.Checked = false;
+
+            if (modSetting.IsAllowed ?? false) switch0.Checked = true;
+            else switch0.Checked = false;
+        }
         protected void BtnSetting_Click(object sender, EventArgs e)
         {
+            bool result1 = false;
+            bool result2 = false;
+            bool IsGreen = switch1.Checked;
+            bool IsAllowed = switch0.Checked;
+            ModSettingDAO modSettingDAO = new ModSettingDAO();
+            ModSetting modSetting = modSettingDAO.FindByModel(model.Id);
+            modSetting.IsGreen = IsGreen;
+            modSetting.IsAllowed = IsAllowed;
+            result1 = modSettingDAO.Update(modSetting);
 
+            // Reset Password
+            string oldPassword = TxtOldPassword.Text;
+            string newPassword = TxtNewPassword.Text;
+            string newPWRepeat = TxtNewPWRepeat.Text;
+            if (string.IsNullOrEmpty(newPWRepeat) && string.IsNullOrEmpty(oldPassword) && string.IsNullOrEmpty(newPassword))
+            {
+                result2 = true;
+            }
+            else
+            {
+                result2 = modelController.ResetPassword(model.Id, oldPassword, newPassword, newPWRepeat);
+            }
+
+            if (!result1 || !result2)
+            {
+                SuccessAlarmSetting.Visible = false;
+                ServerValidatorSetting.IsValid = false;
+                return;
+            }
+
+            SuccessAlarmSetting.Visible = true;
+            return;
         }
     }
 }
