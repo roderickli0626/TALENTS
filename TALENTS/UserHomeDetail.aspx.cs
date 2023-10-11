@@ -168,7 +168,7 @@ namespace TALENTS
             string phone = TxtPhone.Text;
             string comment = TxtComment.Text;
 
-            bool success = new ReviewController().SaveReview(phone, comment, reviewRating, model.Id, user.Id);
+            bool success = new ReviewController().SaveReview(phone, comment, reviewRating, model.Id, user.Id, false);
 
             if (!success)
             {

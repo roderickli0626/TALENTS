@@ -117,6 +117,7 @@
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminModelInformation.aspx" />
     <Content Include="AdminNotice.aspx" />
+    <Content Include="AdminReview.aspx" />
     <Content Include="AdminUser.aspx" />
     <Content Include="AdminUserInformation.aspx" />
     <Content Include="Contact.aspx" />
@@ -397,6 +398,13 @@
     </Compile>
     <Compile Include="AdminPage.Master.designer.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReview.aspx.cs">
+      <DependentUpon>AdminReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminReview.aspx.designer.cs">
+      <DependentUpon>AdminReview.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminUser.aspx.cs">
       <DependentUpon>AdminUser.aspx</DependentUpon>
