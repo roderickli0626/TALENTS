@@ -67,7 +67,21 @@
                                 <ul>
                                     <li><a href="AdminHome.aspx">Models</a></li>
                                     <li><a href="AdminUser.aspx">Users</a></li>
-                                    <li><a href="AdminAdmin.aspx" runat="server" id="liAdmins">Admins</a></li>
+                                    <li runat="server" id="liAdmins"><a href="AdminAdmin.aspx">Admins</a></li>
+                                    <li><a href="AdminNotice.aspx">Notices</a></li>
+                                    <li><a href="AdminReview.aspx">Reviews</a></li>
+                                    <li><a href="#">Subscriptions</a>
+                                        <ul class="drop-menu">
+                                            <li><a href="AdminModelSubscriptions.aspx">Model</a></li>
+                                            <li><a href="AdminUserSubscriptions.aspx">User</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Basic Info</a>
+                                        <ul class="drop-menu">
+                                            <li><a href="AdminModelBasicInfo.aspx">Model</a></li>
+                                            <li><a href="AdminUserBasicInfo.aspx">User</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="#"><i class="fa fa-user-circle"></i></a>
                                         <ul class="drop-menu">
                                             <li><a href="#" runat="server" id="username">UserName</a></li>

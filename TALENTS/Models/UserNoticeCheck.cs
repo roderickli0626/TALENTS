@@ -15,6 +15,7 @@ namespace TALENTS.Models
             if (userNotice == null) return;
             Id = userNotice.Id;
             Username = userNotice.Model.Username;
+            UserId = userNotice.UserId ?? 0;
             Title = userNotice.Title;
             Message = userNotice.Message;
             Contact = userNotice.Contact;
@@ -26,6 +27,10 @@ namespace TALENTS.Models
             Allowed = userNotice.Allowed ?? false;
         }
         public int Id
+        {
+            get; set;
+        }
+        public int UserId
         {
             get; set;
         }

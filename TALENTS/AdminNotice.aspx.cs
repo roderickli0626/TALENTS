@@ -5,42 +5,57 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TALENTS.Controller;
+using TALENTS.DAO;
 using TALENTS.Util;
 
 namespace TALENTS
 {
-    public partial class UserNoticeBoard : System.Web.UI.Page
+    public partial class AdminNotice : System.Web.UI.Page
     {
-        private Model user;
+        private Model admin;
         private LoginController loginSystem = new LoginController();
         NoticeController noticeController = new NoticeController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            user = loginSystem.GetCurrentUserAccount();
-            if (user == null || !loginSystem.IsUserLoggedIn())
+            admin = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn() && (admin == null || !loginSystem.IsAdminLoggedIn()))
             {
                 Response.Redirect("~/Login.aspx");
                 return;
             }
-            string result = new SubscriptionUController().SubscriptionExpireDate(user.Id);
-            if (result == null)
+
+            if (!IsPostBack)
             {
-                Response.Redirect("~/Login.aspx");
-                return;
+                LoadUsers();
             }
+        }
+
+        private void LoadUsers()
+        {
+            List<Model> users = new List<Model>();
+            users = new ModelDAO().FindAllUsers();
+            ComboUser.Items.Clear();
+            ControlUtil.DataBind(ComboUser, users, "Id", "Username", 0, "[unassigned]");
         }
 
         protected void BtnSaveNotice_Click(object sender, EventArgs e)
         {
             if (!IsValid) return;
 
+            int userId = ControlUtil.GetSelectedValue(ComboUser) ?? 0;
+            if (userId == 0)
+            {
+                ServerValidator1.IsValid = false;
+                return;
+            }
+            bool allowed = switch1.Checked;
             string title = TxtTitle.Text;
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
             DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
             DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
 
-            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, user.Id, null, false);
+            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, userId, null, allowed);
 
             if (!success)
             {
@@ -62,13 +77,15 @@ namespace TALENTS
                 return;
             }
 
+            int userId = ControlUtil.GetSelectedValue(ComboUser) ?? 0;
+            bool allowed = switch1.Checked;
             string title = TxtTitle.Text;
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
             DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
             DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
 
-            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, user.Id, noticeId,false);
+            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, userId, noticeId, allowed);
 
             if (!success)
             {

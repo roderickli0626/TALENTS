@@ -52,7 +52,25 @@ namespace TALENTS.Controller
             return result;
         }
 
-        public bool SaveNotice(string title, string message, string contact, DateTime? sdate, DateTime? edate, int userId, int? noticeId)
+        public SearchResult SearchAdminNotices(int start, int length, string search)
+        {
+            SearchResult result = new SearchResult();
+            IEnumerable<UserNotice> list = userNoticeDAO.FindAll().Where(n => n.Title.Contains(search));
+            result.TotalCount = list.Count();
+            list = list.Skip(start).Take(length);
+
+            List<object> checks = new List<object>();
+            foreach (UserNotice md in list)
+            {
+                UserNoticeCheck modelCheck = new UserNoticeCheck(md);
+                checks.Add(modelCheck);
+            }
+            result.ResultList = checks;
+
+            return result;
+        }
+
+        public bool SaveNotice(string title, string message, string contact, DateTime? sdate, DateTime? edate, int userId, int? noticeId, bool allowed)
         {
             if (noticeId == null)
             {
@@ -63,7 +81,7 @@ namespace TALENTS.Controller
                 userNotice.FromDate = sdate;
                 userNotice.ToDate = edate;
                 userNotice.UserId = userId;
-                userNotice.Allowed = false;
+                userNotice.Allowed = allowed;
 
                 return userNoticeDAO.Insert(userNotice);
             }
@@ -76,8 +94,8 @@ namespace TALENTS.Controller
                 userNotice.Contact = contact;
                 userNotice.FromDate = sdate;
                 userNotice.ToDate = edate;
-                userNotice.UserId = userId;
-                userNotice.Allowed = false;
+                //userNotice.UserId = userId;
+                userNotice.Allowed = allowed;
 
                 return userNoticeDAO.Update(userNotice);
             }

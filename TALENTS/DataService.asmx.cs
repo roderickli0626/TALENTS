@@ -485,6 +485,44 @@ namespace TALENTS
 
             ResponseProc(success, "");
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void FindAdminNotices(int draw, int start, int length, string searchVal)
+        {
+            Model admin = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn() && (admin == null || !loginSystem.IsAdminLoggedIn()))
+            {
+                return;
+            }
+
+            NoticeController noticeController = new NoticeController();
+            SearchResult searchResult = noticeController.SearchAdminNotices(start, length, searchVal);
+
+            JSDataTable result = new JSDataTable();
+            result.data = (IEnumerable<object>)searchResult.ResultList;
+            result.draw = draw;
+            result.recordsTotal = searchResult.TotalCount;
+            result.recordsFiltered = searchResult.TotalCount;
+
+            ResponseJson(result);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void AdminDeleteNotice(int id)
+        {
+            //Is Logged in?
+            Model admin = loginSystem.GetCurrentUserAccount();
+            if (!loginSystem.IsSuperAdminLoggedIn() && (admin == null || !loginSystem.IsAdminLoggedIn()))
+            {
+                return;
+            }
+
+            bool success = new UserNoticeDAO().Delete(id);
+
+            ResponseProc(success, "");
+        }
         protected void ResponseJson(Object result)
         {
             HttpResponse Response = Context.Response;
