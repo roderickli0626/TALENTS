@@ -76,12 +76,12 @@
                                             <li><a href="AdminUserSubscriptions.aspx">User</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Basic Info</a>
+                                    <%--<li><a href="#">Basic Info</a>
                                         <ul class="drop-menu">
                                             <li><a href="AdminModelBasicInfo.aspx">Model</a></li>
                                             <li><a href="AdminUserBasicInfo.aspx">User</a></li>
                                         </ul>
-                                    </li>
+                                    </li>--%>
                                     <li><a href="#"><i class="fa fa-user-circle"></i></a>
                                         <ul class="drop-menu">
                                             <li><a href="#" runat="server" id="username">UserName</a></li>

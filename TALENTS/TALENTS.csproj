@@ -115,11 +115,13 @@
     <Content Include="About.aspx" />
     <Content Include="AdminAdmin.aspx" />
     <Content Include="AdminHome.aspx" />
+    <Content Include="AdminModelBasicInfo.aspx" />
     <Content Include="AdminModelInformation.aspx" />
     <Content Include="AdminModelSubscriptions.aspx" />
     <Content Include="AdminNotice.aspx" />
     <Content Include="AdminReview.aspx" />
     <Content Include="AdminUser.aspx" />
+    <Content Include="AdminUserBasicInfo.aspx" />
     <Content Include="AdminUserInformation.aspx" />
     <Content Include="AdminUserSubscriptions.aspx" />
     <Content Include="Contact.aspx" />
@@ -380,6 +382,13 @@
     <Compile Include="AdminHome.aspx.designer.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminModelBasicInfo.aspx.cs">
+      <DependentUpon>AdminModelBasicInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModelBasicInfo.aspx.designer.cs">
+      <DependentUpon>AdminModelBasicInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminModelInformation.aspx.cs">
       <DependentUpon>AdminModelInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -421,6 +430,13 @@
     </Compile>
     <Compile Include="AdminUser.aspx.designer.cs">
       <DependentUpon>AdminUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUserBasicInfo.aspx.cs">
+      <DependentUpon>AdminUserBasicInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserBasicInfo.aspx.designer.cs">
+      <DependentUpon>AdminUserBasicInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminUserInformation.aspx.cs">
       <DependentUpon>AdminUserInformation.aspx</DependentUpon>
