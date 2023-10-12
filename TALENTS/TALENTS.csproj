@@ -116,10 +116,12 @@
     <Content Include="AdminAdmin.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminModelInformation.aspx" />
+    <Content Include="AdminModelSubscriptions.aspx" />
     <Content Include="AdminNotice.aspx" />
     <Content Include="AdminReview.aspx" />
     <Content Include="AdminUser.aspx" />
     <Content Include="AdminUserInformation.aspx" />
+    <Content Include="AdminUserSubscriptions.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -385,6 +387,13 @@
     <Compile Include="AdminModelInformation.aspx.designer.cs">
       <DependentUpon>AdminModelInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminModelSubscriptions.aspx.cs">
+      <DependentUpon>AdminModelSubscriptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModelSubscriptions.aspx.designer.cs">
+      <DependentUpon>AdminModelSubscriptions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminNotice.aspx.cs">
       <DependentUpon>AdminNotice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,6 +428,13 @@
     </Compile>
     <Compile Include="AdminUserInformation.aspx.designer.cs">
       <DependentUpon>AdminUserInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUserSubscriptions.aspx.cs">
+      <DependentUpon>AdminUserSubscriptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserSubscriptions.aspx.designer.cs">
+      <DependentUpon>AdminUserSubscriptions.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -592,12 +608,14 @@
     <Compile Include="Models\ModPhotoCheck.cs" />
     <Compile Include="Models\ModReviewCheck.cs" />
     <Compile Include="Models\ModServiceCheck.cs" />
+    <Compile Include="Models\ModSubscriptionCheck.cs" />
     <Compile Include="Models\ModTourCheck.cs" />
     <Compile Include="Models\ModWorkCityCheck.cs" />
     <Compile Include="Models\ModWorkDayHourCheck.cs" />
     <Compile Include="Models\ProcResult.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\UserNoticeCheck.cs" />
+    <Compile Include="Models\UserSubscriptionCheck.cs" />
     <Compile Include="Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

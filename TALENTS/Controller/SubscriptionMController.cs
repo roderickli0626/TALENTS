@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web;
 using TALENTS.Common;
 using TALENTS.DAO;
+using TALENTS.Models;
 
 namespace TALENTS.Controller
 {
@@ -69,6 +70,46 @@ namespace TALENTS.Controller
             modSubscription.EndDate = endDate;
 
             return modSubscriptionDAO.Insert(modSubscription);
+        }
+
+        public bool UpdateModSubscription(int subscriptionID, int modelSubId)
+        {
+            SubscriptionM subscription = new SubscriptionMDAO().FindAll().Where(s => s.Id == subscriptionID).FirstOrDefault();
+            if (subscription == null)
+            {
+                return false;
+            }
+            ModSubscription modSubscription = modSubscriptionDAO.FindAll().Where(s => s.Id == modelSubId).FirstOrDefault();
+            if (modSubscription == null ) { return false; }
+            modSubscription.SubscriptionMId = subscriptionID;
+            modSubscription.StartDate = DateTime.Now;
+
+            DateTime endDate = DateTime.Now;
+            if (subscription.Type == (int)ModSubscriptionType.Week) endDate = endDate.AddDays(7);
+            else if (subscription.Type == (int)ModSubscriptionType.Month) endDate = endDate.AddMonths(1);
+            else if (subscription.Type == (int)ModSubscriptionType.Quarter) endDate = endDate.AddMonths(3);
+
+            modSubscription.EndDate = endDate;
+
+            return modSubscriptionDAO.Update(modSubscription);
+        }
+
+        public SearchResult SearchAdminModelSubscriptions(int start, int length, string search)
+        {
+            SearchResult result = new SearchResult();
+            IEnumerable<ModSubscription> list = modSubscriptionDAO.FindAll().Where(n => n.Model.Username.Contains(search));
+            result.TotalCount = list.Count();
+            list = list.Skip(start).Take(length);
+
+            List<object> checks = new List<object>();
+            foreach (ModSubscription md in list)
+            {
+                ModSubscriptionCheck subMCheck = new ModSubscriptionCheck(md);
+                checks.Add(subMCheck);
+            }
+            result.ResultList = checks;
+
+            return result;
         }
 
     }
