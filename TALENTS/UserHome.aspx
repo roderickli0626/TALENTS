@@ -158,6 +158,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 180px;background-color:white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfPurchased" runat="server" ClientIDMode="Static" />
                     <div class="container" style="max-width: 1200px; padding-bottom: 50px;">
                         <div class="row mb-5" style="border: 1px solid; border-color: black; border-radius:4px; margin-left: auto; margin-right: auto; padding: 20px">
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
@@ -207,5 +208,25 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script>
         $("#ComboCity").select2({ theme: 'bootstrap' });
+    </script>
+    <!-- Add the Tawk.to chat widget code snippet here -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/YOUR_TAWK_TO_WIDGET_ID/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <script>
+        $(".live-chat").click(function () {
+            if ($(this).hasClass("red")) return;
+            if ($("#HfPurchased").val() == "False") return;
+            // Call the Tawk.to toggle function to start a new chat session
+            Tawk_API.toggle();
+        })
     </script>
 </asp:Content>

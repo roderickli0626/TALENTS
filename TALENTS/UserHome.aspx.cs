@@ -13,8 +13,20 @@ namespace TALENTS
 {
     public partial class UserHome : System.Web.UI.Page
     {
+        private Model user;
+        private LoginController loginSystem = new LoginController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = loginSystem.GetCurrentUserAccount();
+            if (user == null || !loginSystem.IsUserLoggedIn())
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+
+            string result = new SubscriptionUController().SubscriptionExpireDate(user.Id);
+            HfPurchased.Value = (result != null).ToString();
+
             if (!IsPostBack)
             {
                 LoadCity();
