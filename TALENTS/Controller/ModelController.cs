@@ -50,7 +50,7 @@ namespace TALENTS.Controller
                 //
                 modelChecks.Add(modelCheck);
             }
-            modelChecks = modelChecks.OrderByDescending(m => m.IsPurchased).OrderByDescending(m => m.IsActive).ToList();
+            modelChecks = modelChecks.OrderByDescending(m => m.IsPurchased).ThenByDescending(m => m.IsActive).ToList();
             return modelChecks;
         }
 
