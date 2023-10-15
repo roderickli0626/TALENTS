@@ -220,6 +220,14 @@
             padding: 20px;
         }
     </style>
+    <style>
+        .swiper-button-next::after {
+            font-size: 30px;
+        }
+        .swiper-button-prev::after {
+            font-size: 30px;
+        }
+    </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -260,7 +268,7 @@
                             <div class="swiper-wrapper">
                                 <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
                                     <ItemTemplate>
-                                        <div class="swiper-slide"
+                                        <div class="swiper-slide" data-swiper-autoplay="6000"
                                             style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
                                         </div>
                                     </ItemTemplate>
@@ -268,14 +276,6 @@
                             </div>
                         </div>
                         <div class="pl-2 pr-2 text-white" style="width: auto; position: absolute; bottom: 20%; right: 30px;">
-                            <div style="width: 120px;" class="mx-auto mb-3 text-center">
-                                <div class="swiper-button-next swiper-button-white text-white float-end"></div>
-                                <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
-                                    <i class="fa fa-pause"></i>
-                                </button>
-                                <div class="swiper-button-prev swiper-button-white text-white float-start"></div>
-                            </div>
-
                             <div class="" style="width: 600px;">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist" style="display: none">
@@ -300,109 +300,109 @@
                                         <div class="align-items-center pt-lg-5 ">
                                             <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Name: </h4>
+                                                    <h4 class="d-inline text-primary">Name: </h4>
                                                     <h4 runat="server" id="ModelName" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Slogan: </h4>
+                                                    <h4 class="d-inline text-primary">Slogan: </h4>
                                                     <h4 runat="server" id="ModelSlogan" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Age: </h4>
+                                                    <h4 class="d-inline text-primary">Age: </h4>
                                                     <h4 runat="server" id="ModelAge" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Sex: </h4>
+                                                    <h4 class="d-inline text-primary">Sex: </h4>
                                                     <h4 runat="server" id="ModelSex" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Ethnicity: </h4>
+                                                    <h4 class="d-inline text-primary">Ethnicity: </h4>
                                                     <h4 runat="server" id="ModelEthnicity" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Nationality: </h4>
+                                                    <h4 class="d-inline text-primary">Nationality: </h4>
                                                     <h4 runat="server" id="ModelNationality" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Residence: </h4>
+                                                    <h4 class="d-inline text-primary">Residence: </h4>
                                                     <h4 runat="server" id="ModelResidence" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Hair Color: </h4>
+                                                    <h4 class="d-inline text-primary">Hair Color: </h4>
                                                     <h4 runat="server" id="ModelHairColor" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Hair Length: </h4>
+                                                    <h4 class="d-inline text-primary">Hair Length: </h4>
                                                     <h4 runat="server" id="ModelHairLength" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Eye: </h4>
+                                                    <h4 class="d-inline text-primary">Eye: </h4>
                                                     <h4 runat="server" id="ModelEye" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Height: </h4>
+                                                    <h4 class="d-inline text-primary">Height: </h4>
                                                     <h4 runat="server" id="ModelHeight" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Weight: </h4>
+                                                    <h4 class="d-inline text-primary">Weight: </h4>
                                                     <h4 runat="server" id="ModelWeight" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Dress Size: </h4>
+                                                    <h4 class="d-inline text-primary">Dress Size: </h4>
                                                     <h4 runat="server" id="ModelDress" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Shoes: </h4>
+                                                    <h4 class="d-inline text-primary">Shoes: </h4>
                                                     <h4 runat="server" id="ModelShoes" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Bust: </h4>
+                                                    <h4 class="d-inline text-primary">Bust: </h4>
                                                     <h4 runat="server" id="ModelBust" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Waist: </h4>
+                                                    <h4 class="d-inline text-primary">Waist: </h4>
                                                     <h4 runat="server" id="ModelWaist" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Haunch: </h4>
+                                                    <h4 class="d-inline text-primary">Haunch: </h4>
                                                     <h4 runat="server" id="ModelHaunch" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Breast Size: </h4>
+                                                    <h4 class="d-inline text-primary">Breast Size: </h4>
                                                     <h4 runat="server" id="ModelBreast" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Smoker: </h4>
+                                                    <h4 class="d-inline text-primary">Smoker: </h4>
                                                     <h4 runat="server" id="ModelSmoker" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Tattoos: </h4>
+                                                    <h4 class="d-inline text-primary">Tattoos: </h4>
                                                     <h4 runat="server" id="ModelTattoos" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Drinker: </h4>
+                                                    <h4 class="d-inline text-primary">Drinker: </h4>
                                                     <h4 runat="server" id="ModelDrinker" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline">Piercing: </h4>
+                                                    <h4 class="d-inline text-primary">Piercing: </h4>
                                                     <h4 runat="server" id="ModelPiercing" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-8 pb-2 pl-0">
-                                                    <h4 class="d-inline">Peculiarities: </h4>
+                                                    <h4 class="d-inline text-primary">Peculiarities: </h4>
                                                     <h4 runat="server" id="ModelPeculiarities" class="d-inline"></h4>
                                                 </div>
                                             </div>
@@ -858,6 +858,13 @@
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>
+                                <div style="width: 120px; margin-top:14%; margin-left: 20%;" class="mb-3 text-center position-absolute d-block">
+                                    <div class="swiper-button-next swiper-button-white text-white float-end" style="margin-top:5px !important"></div>
+                                    <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
+                                        <i class="fa fa-pause"></i>
+                                    </button>
+                                    <div class="swiper-button-prev swiper-button-white text-white float-start" style="margin-top:5px !important;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

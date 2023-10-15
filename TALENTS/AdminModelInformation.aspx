@@ -156,7 +156,7 @@
                                 <div class="tab-pane fade show active bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-bio" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
                                         <h2 class="mb-4 text-left col-6">BIOGRAPHY</h2>
-                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarm" visible="false">Save Biography Successed.</p>
+                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarm" clientIDMode="static" visible="false">Save Biography Successed.</p>
                                     </div>
                                     <hr class="text-primary mb-4" />
                                     <%--<asp:ScriptManager ID="ScriptManagerBio" runat="server"></asp:ScriptManager>
@@ -376,7 +376,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">ABOUT ME</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmAbout" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmAbout" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -415,7 +415,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">LANGUAGE</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmLang" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmLang" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -491,7 +491,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">SERVICES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmService" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmService" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -576,7 +576,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">WORK CITIES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkCity" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkCity" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -752,7 +752,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">WORKING HOURS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkHours" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkHours" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -838,7 +838,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">RATES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmRate" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmRate" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -994,7 +994,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">CONTACTS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmContact" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmContact" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -1058,7 +1058,7 @@
                                 <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                     <div class="row">
                                         <h2 class="mb-4 text-left col-6">PHOTO GALLERY</h2>
-                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmPhoto" visible="false">Save Successed.</p>
+                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmPhoto" clientIDMode="static" visible="false">Save Successed.</p>
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <table class="table text-left" id="photo-table">
@@ -1072,7 +1072,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">VIDEOS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmVideo" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmVideo" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row" style="width: 800px;">
@@ -1123,7 +1123,7 @@
                                             <div class="row">
                                                 <asp:Button runat="server" ID="BtnReloadNatural" style="display:none" OnClick="BtnReloadNatural_Click" />
                                                 <h2 class="mb-4 text-left col-6">NATURAL PHOTOS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmNaturalPhoto" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmNaturalPhoto" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row" style="width: 800px;">
@@ -1169,7 +1169,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">TOURS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmTour" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmTour" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -1279,7 +1279,7 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <h2 class="mb-4 text-left col-6">SETTINGS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmSetting" visible="false">Save Successed.</p>
+                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmSetting" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -1685,6 +1685,22 @@
                 maximum.css('color', '#666');
                 theCount.css('font-weight', 'normal');
             }
+        });
+
+        $(document).click(function () {
+            $("#SuccessAlarm").addClass("d-none");
+            $("#SuccessAlarmAbout").addClass("d-none");
+            $("#SuccessAlarmLang").addClass("d-none");
+            $("#SuccessAlarmService").addClass("d-none");
+            $("#SuccessAlarmWorkCity").addClass("d-none");
+            $("#SuccessAlarmWorkHours").addClass("d-none");
+            $("#SuccessAlarmRate").addClass("d-none");
+            $("#SuccessAlarmContact").addClass("d-none");
+            $("#SuccessAlarmPhoto").addClass("d-none");
+            $("#SuccessAlarmVideo").addClass("d-none");
+            $("#SuccessAlarmNaturalPhoto").addClass("d-none");
+            $("#SuccessAlarmTour").addClass("d-none");
+            $("#SuccessAlarmSetting").addClass("d-none");
         });
     </script>
 </asp:Content>
