@@ -184,7 +184,7 @@
                 }
 
         .preview-image:hover > .image-zone {
-            cursor: move;
+            /*cursor: move;*/
             opacity: .5;
         }
 
@@ -704,7 +704,7 @@
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
                                                             <div class="preview-image" style="height: 130px; width: 130px;">
-                                                                <div class="image-zone">
+                                                                <div class="image-zone photo-div" data-id="<%# Eval("Id") %>">
                                                                     <img src="<%#"/Upload/Photos/" + Eval("Image")%>" />
                                                                 </div>
                                                             </div>
@@ -848,7 +848,7 @@
                             <div class="swiper-wrapper">
                                 <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
                                     <ItemTemplate>
-                                        <div class="swiper-slide img-thumb"
+                                        <div class="swiper-slide img-thumb" id="<%# Eval("Id") %>" data-index="<%# Container.ItemIndex %>"
                                             style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
                                         </div>
                                     </ItemTemplate>
@@ -909,6 +909,13 @@
                 stopButton.innerHTML = '<i class="fa fa-pause"></i>';
             }
             e.preventDefault();
+        });
+
+        $(document).on('click', '.photo-div', function (event) {
+            var photoID = $(this)[0].dataset.id;
+            var element = $("#" + photoID);
+            var index = element[0].dataset.index;
+            galleryTop.slideTo(index);
         });
     </script>
 </asp:Content>

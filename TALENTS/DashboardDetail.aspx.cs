@@ -126,8 +126,10 @@ namespace TALENTS
             RepeaterNautralPhoto.DataBind();
 
             // Photo Tab
-            List<ModPhoto> Photos = new ModPhotoDAO().FindByModel(model.Id);
-            RepeaterPhotos.DataSource = Photos;
+            //List<ModPhoto> Photos = new ModPhotoDAO().FindByModel(model.Id);
+            ModelCheck modelInfo = new ModelController().GetDashboardModelInfo(modelId);
+            //RepeaterPhotos.DataSource = Photos;
+            RepeaterPhotos.DataSource = modelInfo.ImageList;
             RepeaterPhotos.DataBind();
 
             // Video Tab

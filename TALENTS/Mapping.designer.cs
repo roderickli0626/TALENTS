@@ -87,9 +87,6 @@ namespace TALENTS
     partial void InsertWorkHour(WorkHour instance);
     partial void UpdateWorkHour(WorkHour instance);
     partial void DeleteWorkHour(WorkHour instance);
-    partial void InsertModel(Model instance);
-    partial void UpdateModel(Model instance);
-    partial void DeleteModel(Model instance);
     partial void InsertModIncallPlace(ModIncallPlace instance);
     partial void UpdateModIncallPlace(ModIncallPlace instance);
     partial void DeleteModIncallPlace(ModIncallPlace instance);
@@ -162,6 +159,9 @@ namespace TALENTS
     partial void InsertUserSubscription(UserSubscription instance);
     partial void UpdateUserSubscription(UserSubscription instance);
     partial void DeleteUserSubscription(UserSubscription instance);
+    partial void InsertModel(Model instance);
+    partial void UpdateModel(Model instance);
+    partial void DeleteModel(Model instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -337,14 +337,6 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<WorkHour>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Model> Models
-		{
-			get
-			{
-				return this.GetTable<Model>();
 			}
 		}
 		
@@ -537,6 +529,14 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<UserSubscription>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Model> Models
+		{
+			get
+			{
+				return this.GetTable<Model>();
 			}
 		}
 	}
@@ -2964,772 +2964,6 @@ namespace TALENTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Models")]
-	public partial class Model : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Username;
-		
-		private string _Email;
-		
-		private string _Password;
-		
-		private System.Nullable<bool> _IsModel;
-		
-		private System.Nullable<bool> _IsUser;
-		
-		private System.Nullable<bool> _IsAdmin;
-		
-		private EntitySet<ModIncallPlace> _ModIncallPlaces;
-		
-		private EntitySet<ModLanguageAlloc> _ModLanguageAllocs;
-		
-		private EntitySet<ModNaturalPhoto> _ModNaturalPhotos;
-		
-		private EntitySet<ModOutcallPlace> _ModOutcallPlaces;
-		
-		private EntitySet<ModPhoto> _ModPhotos;
-		
-		private EntitySet<ModService> _ModServices;
-		
-		private EntitySet<ModTour> _ModTours;
-		
-		private EntitySet<ModVideo> _ModVideos;
-		
-		private EntitySet<ModWorkDayHour> _ModWorkDayHours;
-		
-		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
-		
-		private EntitySet<ModBiography> _ModBiographies;
-		
-		private EntitySet<ModContact> _ModContacts;
-		
-		private EntitySet<UserInfo> _UserInfos;
-		
-		private EntitySet<ModReview> _ModReviews;
-		
-		private EntitySet<ModReview> _ModReviews1;
-		
-		private EntitySet<ModSetting> _ModSettings;
-		
-		private EntitySet<ModSubscription> _ModSubscriptions;
-		
-		private EntitySet<UserCredit> _UserCredits;
-		
-		private EntitySet<UserNotice> _UserNotices;
-		
-		private EntitySet<UserSubscription> _UserSubscriptions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnIsModelChanging(System.Nullable<bool> value);
-    partial void OnIsModelChanged();
-    partial void OnIsUserChanging(System.Nullable<bool> value);
-    partial void OnIsUserChanged();
-    partial void OnIsAdminChanging(System.Nullable<bool> value);
-    partial void OnIsAdminChanged();
-    #endregion
-		
-		public Model()
-		{
-			this._ModIncallPlaces = new EntitySet<ModIncallPlace>(new Action<ModIncallPlace>(this.attach_ModIncallPlaces), new Action<ModIncallPlace>(this.detach_ModIncallPlaces));
-			this._ModLanguageAllocs = new EntitySet<ModLanguageAlloc>(new Action<ModLanguageAlloc>(this.attach_ModLanguageAllocs), new Action<ModLanguageAlloc>(this.detach_ModLanguageAllocs));
-			this._ModNaturalPhotos = new EntitySet<ModNaturalPhoto>(new Action<ModNaturalPhoto>(this.attach_ModNaturalPhotos), new Action<ModNaturalPhoto>(this.detach_ModNaturalPhotos));
-			this._ModOutcallPlaces = new EntitySet<ModOutcallPlace>(new Action<ModOutcallPlace>(this.attach_ModOutcallPlaces), new Action<ModOutcallPlace>(this.detach_ModOutcallPlaces));
-			this._ModPhotos = new EntitySet<ModPhoto>(new Action<ModPhoto>(this.attach_ModPhotos), new Action<ModPhoto>(this.detach_ModPhotos));
-			this._ModServices = new EntitySet<ModService>(new Action<ModService>(this.attach_ModServices), new Action<ModService>(this.detach_ModServices));
-			this._ModTours = new EntitySet<ModTour>(new Action<ModTour>(this.attach_ModTours), new Action<ModTour>(this.detach_ModTours));
-			this._ModVideos = new EntitySet<ModVideo>(new Action<ModVideo>(this.attach_ModVideos), new Action<ModVideo>(this.detach_ModVideos));
-			this._ModWorkDayHours = new EntitySet<ModWorkDayHour>(new Action<ModWorkDayHour>(this.attach_ModWorkDayHours), new Action<ModWorkDayHour>(this.detach_ModWorkDayHours));
-			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
-			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
-			this._ModContacts = new EntitySet<ModContact>(new Action<ModContact>(this.attach_ModContacts), new Action<ModContact>(this.detach_ModContacts));
-			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
-			this._ModReviews = new EntitySet<ModReview>(new Action<ModReview>(this.attach_ModReviews), new Action<ModReview>(this.detach_ModReviews));
-			this._ModReviews1 = new EntitySet<ModReview>(new Action<ModReview>(this.attach_ModReviews1), new Action<ModReview>(this.detach_ModReviews1));
-			this._ModSettings = new EntitySet<ModSetting>(new Action<ModSetting>(this.attach_ModSettings), new Action<ModSetting>(this.detach_ModSettings));
-			this._ModSubscriptions = new EntitySet<ModSubscription>(new Action<ModSubscription>(this.attach_ModSubscriptions), new Action<ModSubscription>(this.detach_ModSubscriptions));
-			this._UserCredits = new EntitySet<UserCredit>(new Action<UserCredit>(this.attach_UserCredits), new Action<UserCredit>(this.detach_UserCredits));
-			this._UserNotices = new EntitySet<UserNotice>(new Action<UserNotice>(this.attach_UserNotices), new Action<UserNotice>(this.detach_UserNotices));
-			this._UserSubscriptions = new EntitySet<UserSubscription>(new Action<UserSubscription>(this.attach_UserSubscriptions), new Action<UserSubscription>(this.detach_UserSubscriptions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(MAX)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(MAX)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsModel", DbType="Bit")]
-		public System.Nullable<bool> IsModel
-		{
-			get
-			{
-				return this._IsModel;
-			}
-			set
-			{
-				if ((this._IsModel != value))
-				{
-					this.OnIsModelChanging(value);
-					this.SendPropertyChanging();
-					this._IsModel = value;
-					this.SendPropertyChanged("IsModel");
-					this.OnIsModelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsUser", DbType="Bit")]
-		public System.Nullable<bool> IsUser
-		{
-			get
-			{
-				return this._IsUser;
-			}
-			set
-			{
-				if ((this._IsUser != value))
-				{
-					this.OnIsUserChanging(value);
-					this.SendPropertyChanging();
-					this._IsUser = value;
-					this.SendPropertyChanged("IsUser");
-					this.OnIsUserChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAdmin", DbType="Bit")]
-		public System.Nullable<bool> IsAdmin
-		{
-			get
-			{
-				return this._IsAdmin;
-			}
-			set
-			{
-				if ((this._IsAdmin != value))
-				{
-					this.OnIsAdminChanging(value);
-					this.SendPropertyChanging();
-					this._IsAdmin = value;
-					this.SendPropertyChanged("IsAdmin");
-					this.OnIsAdminChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModIncallPlace", Storage="_ModIncallPlaces", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModIncallPlace> ModIncallPlaces
-		{
-			get
-			{
-				return this._ModIncallPlaces;
-			}
-			set
-			{
-				this._ModIncallPlaces.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModLanguageAlloc", Storage="_ModLanguageAllocs", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModLanguageAlloc> ModLanguageAllocs
-		{
-			get
-			{
-				return this._ModLanguageAllocs;
-			}
-			set
-			{
-				this._ModLanguageAllocs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModNaturalPhoto", Storage="_ModNaturalPhotos", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModNaturalPhoto> ModNaturalPhotos
-		{
-			get
-			{
-				return this._ModNaturalPhotos;
-			}
-			set
-			{
-				this._ModNaturalPhotos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModOutcallPlace", Storage="_ModOutcallPlaces", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModOutcallPlace> ModOutcallPlaces
-		{
-			get
-			{
-				return this._ModOutcallPlaces;
-			}
-			set
-			{
-				this._ModOutcallPlaces.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModPhoto", Storage="_ModPhotos", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModPhoto> ModPhotos
-		{
-			get
-			{
-				return this._ModPhotos;
-			}
-			set
-			{
-				this._ModPhotos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModService", Storage="_ModServices", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModService> ModServices
-		{
-			get
-			{
-				return this._ModServices;
-			}
-			set
-			{
-				this._ModServices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModTour", Storage="_ModTours", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModTour> ModTours
-		{
-			get
-			{
-				return this._ModTours;
-			}
-			set
-			{
-				this._ModTours.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModVideo", Storage="_ModVideos", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModVideo> ModVideos
-		{
-			get
-			{
-				return this._ModVideos;
-			}
-			set
-			{
-				this._ModVideos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkDayHour", Storage="_ModWorkDayHours", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModWorkDayHour> ModWorkDayHours
-		{
-			get
-			{
-				return this._ModWorkDayHours;
-			}
-			set
-			{
-				this._ModWorkDayHours.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkingCityAlloc", Storage="_ModWorkingCityAllocs", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModWorkingCityAlloc> ModWorkingCityAllocs
-		{
-			get
-			{
-				return this._ModWorkingCityAllocs;
-			}
-			set
-			{
-				this._ModWorkingCityAllocs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModBiography> ModBiographies
-		{
-			get
-			{
-				return this._ModBiographies;
-			}
-			set
-			{
-				this._ModBiographies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_ModContacts", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModContact> ModContacts
-		{
-			get
-			{
-				return this._ModContacts;
-			}
-			set
-			{
-				this._ModContacts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserInfo", Storage="_UserInfos", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<UserInfo> UserInfos
-		{
-			get
-			{
-				return this._UserInfos;
-			}
-			set
-			{
-				this._UserInfos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModReview", Storage="_ModReviews", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<ModReview> ModReviews
-		{
-			get
-			{
-				return this._ModReviews;
-			}
-			set
-			{
-				this._ModReviews.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModReview1", Storage="_ModReviews1", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModReview> ModReviews1
-		{
-			get
-			{
-				return this._ModReviews1;
-			}
-			set
-			{
-				this._ModReviews1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSetting", Storage="_ModSettings", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModSetting> ModSettings
-		{
-			get
-			{
-				return this._ModSettings;
-			}
-			set
-			{
-				this._ModSettings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSubscription", Storage="_ModSubscriptions", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<ModSubscription> ModSubscriptions
-		{
-			get
-			{
-				return this._ModSubscriptions;
-			}
-			set
-			{
-				this._ModSubscriptions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserCredit", Storage="_UserCredits", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<UserCredit> UserCredits
-		{
-			get
-			{
-				return this._UserCredits;
-			}
-			set
-			{
-				this._UserCredits.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_UserNotices", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<UserNotice> UserNotices
-		{
-			get
-			{
-				return this._UserNotices;
-			}
-			set
-			{
-				this._UserNotices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_UserSubscriptions", ThisKey="Id", OtherKey="ModelId")]
-		public EntitySet<UserSubscription> UserSubscriptions
-		{
-			get
-			{
-				return this._UserSubscriptions;
-			}
-			set
-			{
-				this._UserSubscriptions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ModIncallPlaces(ModIncallPlace entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModIncallPlaces(ModIncallPlace entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModLanguageAllocs(ModLanguageAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModLanguageAllocs(ModLanguageAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModNaturalPhotos(ModNaturalPhoto entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModNaturalPhotos(ModNaturalPhoto entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModOutcallPlaces(ModOutcallPlace entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModOutcallPlaces(ModOutcallPlace entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModPhotos(ModPhoto entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModPhotos(ModPhoto entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModServices(ModService entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModServices(ModService entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModTours(ModTour entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModTours(ModTour entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModVideos(ModVideo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModVideos(ModVideo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModWorkDayHours(ModWorkDayHour entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModWorkDayHours(ModWorkDayHour entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModContacts(ModContact entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModContacts(ModContact entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModReviews(ModReview entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModReviews(ModReview entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModReviews1(ModReview entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model1 = this;
-		}
-		
-		private void detach_ModReviews1(ModReview entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model1 = null;
-		}
-		
-		private void attach_ModSettings(ModSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModSettings(ModSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_ModSubscriptions(ModSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_ModSubscriptions(ModSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_UserCredits(UserCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_UserCredits(UserCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_UserNotices(UserNotice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_UserNotices(UserNotice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-		
-		private void attach_UserSubscriptions(UserSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = this;
-		}
-		
-		private void detach_UserSubscriptions(UserSubscription entity)
-		{
-			this.SendPropertyChanging();
-			entity.Model = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ModIncallPlace")]
 	public partial class ModIncallPlace : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4182,9 +3416,9 @@ namespace TALENTS
 		
 		private EntityRef<Language> _Language;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<SkillLevel> _SkillLevel;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4203,8 +3437,8 @@ namespace TALENTS
 		public ModLanguageAlloc()
 		{
 			this._Language = default(EntityRef<Language>);
-			this._Model = default(EntityRef<Model>);
 			this._SkillLevel = default(EntityRef<SkillLevel>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -4334,40 +3568,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModLanguageAlloc", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModLanguageAllocs.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModLanguageAllocs.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SkillLevel_ModLanguageAlloc", Storage="_SkillLevel", ThisKey="SkillId", OtherKey="Id", IsForeignKey=true)]
 		public SkillLevel SkillLevel
 		{
@@ -4398,6 +3598,40 @@ namespace TALENTS
 						this._SkillId = default(int);
 					}
 					this.SendPropertyChanged("SkillLevel");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModLanguageAlloc", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModLanguageAllocs.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModLanguageAllocs.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -4588,9 +3822,9 @@ namespace TALENTS
 		
 		private EntitySet<ModOutcallRate> _ModOutcallRates;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<OutcallPlace> _OutcallPlace;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4607,8 +3841,8 @@ namespace TALENTS
 		public ModOutcallPlace()
 		{
 			this._ModOutcallRates = new EntitySet<ModOutcallRate>(new Action<ModOutcallRate>(this.attach_ModOutcallRates), new Action<ModOutcallRate>(this.detach_ModOutcallRates));
-			this._Model = default(EntityRef<Model>);
 			this._OutcallPlace = default(EntityRef<OutcallPlace>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -4693,40 +3927,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModOutcallPlace", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModOutcallPlaces.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModOutcallPlaces.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OutcallPlace_ModOutcallPlace", Storage="_OutcallPlace", ThisKey="OutcallPlaceId", OtherKey="Id", IsForeignKey=true)]
 		public OutcallPlace OutcallPlace
 		{
@@ -4757,6 +3957,40 @@ namespace TALENTS
 						this._OutcallPlaceId = default(int);
 					}
 					this.SendPropertyChanged("OutcallPlace");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModOutcallPlace", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModOutcallPlaces.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModOutcallPlaces.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -5024,9 +4258,9 @@ namespace TALENTS
 		
 		private int _ModelId;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<PhotoGroup> _PhotoGroup;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5044,8 +4278,8 @@ namespace TALENTS
 		
 		public ModPhoto()
 		{
-			this._Model = default(EntityRef<Model>);
 			this._PhotoGroup = default(EntityRef<PhotoGroup>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -5137,40 +4371,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModPhoto", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModPhotos.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModPhotos.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhotoGroup_ModPhoto", Storage="_PhotoGroup", ThisKey="GroupId", OtherKey="Id", IsForeignKey=true)]
 		public PhotoGroup PhotoGroup
 		{
@@ -5201,6 +4401,40 @@ namespace TALENTS
 						this._GroupId = default(int);
 					}
 					this.SendPropertyChanged("PhotoGroup");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModPhoto", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModPhotos.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModPhotos.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -5240,9 +4474,9 @@ namespace TALENTS
 		
 		private System.Nullable<double> _Amount;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<Service> _Service;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5260,8 +4494,8 @@ namespace TALENTS
 		
 		public ModService()
 		{
-			this._Model = default(EntityRef<Model>);
 			this._Service = default(EntityRef<Service>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -5353,40 +4587,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModService", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModServices.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModServices.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_ModService", Storage="_Service", ThisKey="ServiceId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Service Service
 		{
@@ -5417,6 +4617,40 @@ namespace TALENTS
 						this._ServiceId = default(int);
 					}
 					this.SendPropertyChanged("Service");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModService", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModServices.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModServices.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -5921,13 +5155,13 @@ namespace TALENTS
 		
 		private int _EHourId;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<WorkDay> _WorkDay;
 		
 		private EntityRef<WorkHour> _WorkHour;
 		
 		private EntityRef<WorkHour> _WorkHour1;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5947,10 +5181,10 @@ namespace TALENTS
 		
 		public ModWorkDayHour()
 		{
-			this._Model = default(EntityRef<Model>);
 			this._WorkDay = default(EntityRef<WorkDay>);
 			this._WorkHour = default(EntityRef<WorkHour>);
 			this._WorkHour1 = default(EntityRef<WorkHour>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -6070,40 +5304,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkDayHour", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModWorkDayHours.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModWorkDayHours.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="WorkDay_ModWorkDayHour", Storage="_WorkDay", ThisKey="DayId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public WorkDay WorkDay
 		{
@@ -6202,6 +5402,40 @@ namespace TALENTS
 						this._EHourId = default(int);
 					}
 					this.SendPropertyChanged("WorkHour1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkDayHour", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModWorkDayHours.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModWorkDayHours.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -6607,9 +5841,9 @@ namespace TALENTS
 		
 		private EntityRef<City> _City;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<Nationality> _Nationality;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -6680,8 +5914,8 @@ namespace TALENTS
 			this._HairColor = default(EntityRef<HairColor>);
 			this._HairLength = default(EntityRef<HairLength>);
 			this._City = default(EntityRef<City>);
-			this._Model = default(EntityRef<Model>);
 			this._Nationality = default(EntityRef<Nationality>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -7499,40 +6733,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_ModBiography", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
 		public Nationality Nationality
 		{
@@ -7563,6 +6763,40 @@ namespace TALENTS
 						this._NationalityId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Nationality");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -7612,9 +6846,9 @@ namespace TALENTS
 		
 		private EntityRef<InstructionChat> _InstructionChat;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<SocialChat> _SocialChat;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -7641,8 +6875,8 @@ namespace TALENTS
 		public ModContact()
 		{
 			this._InstructionChat = default(EntityRef<InstructionChat>);
-			this._Model = default(EntityRef<Model>);
 			this._SocialChat = default(EntityRef<SocialChat>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -7852,40 +7086,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModContacts.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModContacts.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SocialChat_ModContact", Storage="_SocialChat", ThisKey="SocialChatId", OtherKey="Id", IsForeignKey=true)]
 		public SocialChat SocialChat
 		{
@@ -7916,6 +7116,40 @@ namespace TALENTS
 						this._SocialChatId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("SocialChat");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModContacts.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModContacts.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -7983,9 +7217,9 @@ namespace TALENTS
 		
 		private EntityRef<City> _City;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<Nationality> _Nationality;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -8030,8 +7264,8 @@ namespace TALENTS
 		public UserInfo()
 		{
 			this._City = default(EntityRef<City>);
-			this._Model = default(EntityRef<Model>);
 			this._Nationality = default(EntityRef<Nationality>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -8421,40 +7655,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserInfo", Storage="_Model", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.UserInfos.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.UserInfos.Add(this);
-						this._UserId = value.Id;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_UserInfo", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
 		public Nationality Nationality
 		{
@@ -8485,6 +7685,40 @@ namespace TALENTS
 						this._NationalityId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Nationality");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserInfo", Storage="_Model", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.UserInfos.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.UserInfos.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -9013,9 +8247,9 @@ namespace TALENTS
 		
 		private System.Nullable<System.DateTime> _StartDate;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<SubscriptionM> _SubscriptionM;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -9035,8 +8269,8 @@ namespace TALENTS
 		
 		public ModSubscription()
 		{
-			this._Model = default(EntityRef<Model>);
 			this._SubscriptionM = default(EntityRef<SubscriptionM>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -9148,40 +8382,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.ModSubscriptions.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.ModSubscriptions.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SubscriptionM_ModSubscription", Storage="_SubscriptionM", ThisKey="SubscriptionMId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
 		public SubscriptionM SubscriptionM
 		{
@@ -9212,6 +8412,40 @@ namespace TALENTS
 						this._SubscriptionMId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("SubscriptionM");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.ModSubscriptions.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.ModSubscriptions.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Model");
 				}
 			}
 		}
@@ -10027,9 +9261,9 @@ namespace TALENTS
 		
 		private System.Nullable<double> _Amount;
 		
-		private EntityRef<Model> _Model;
-		
 		private EntityRef<SubscriptionU> _SubscriptionU;
+		
+		private EntityRef<Model> _Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -10053,8 +9287,8 @@ namespace TALENTS
 		
 		public UserSubscription()
 		{
-			this._Model = default(EntityRef<Model>);
 			this._SubscriptionU = default(EntityRef<SubscriptionU>);
+			this._Model = default(EntityRef<Model>);
 			OnCreated();
 		}
 		
@@ -10206,40 +9440,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.UserSubscriptions.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.UserSubscriptions.Add(this);
-						this._ModelId = value.Id;
-					}
-					else
-					{
-						this._ModelId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SubscriptionU_UserSubscription", Storage="_SubscriptionU", ThisKey="SubscriptionId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
 		public SubscriptionU SubscriptionU
 		{
@@ -10274,6 +9474,40 @@ namespace TALENTS
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.UserSubscriptions.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.UserSubscriptions.Add(this);
+						this._ModelId = value.Id;
+					}
+					else
+					{
+						this._ModelId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -10292,6 +9526,820 @@ namespace TALENTS
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Models")]
+	public partial class Model : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Username;
+		
+		private string _Email;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _IsModel;
+		
+		private System.Nullable<bool> _IsUser;
+		
+		private System.Nullable<bool> _IsAdmin;
+		
+		private string _ResetToken;
+		
+		private System.Nullable<System.DateTime> _ResetTokenExpiry;
+		
+		private EntitySet<ModIncallPlace> _ModIncallPlaces;
+		
+		private EntitySet<ModLanguageAlloc> _ModLanguageAllocs;
+		
+		private EntitySet<ModNaturalPhoto> _ModNaturalPhotos;
+		
+		private EntitySet<ModOutcallPlace> _ModOutcallPlaces;
+		
+		private EntitySet<ModPhoto> _ModPhotos;
+		
+		private EntitySet<ModService> _ModServices;
+		
+		private EntitySet<ModTour> _ModTours;
+		
+		private EntitySet<ModVideo> _ModVideos;
+		
+		private EntitySet<ModWorkDayHour> _ModWorkDayHours;
+		
+		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
+		
+		private EntitySet<ModBiography> _ModBiographies;
+		
+		private EntitySet<ModContact> _ModContacts;
+		
+		private EntitySet<UserInfo> _UserInfos;
+		
+		private EntitySet<ModReview> _ModReviews;
+		
+		private EntitySet<ModReview> _ModReviews1;
+		
+		private EntitySet<ModSetting> _ModSettings;
+		
+		private EntitySet<ModSubscription> _ModSubscriptions;
+		
+		private EntitySet<UserCredit> _UserCredits;
+		
+		private EntitySet<UserNotice> _UserNotices;
+		
+		private EntitySet<UserSubscription> _UserSubscriptions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnIsModelChanging(System.Nullable<bool> value);
+    partial void OnIsModelChanged();
+    partial void OnIsUserChanging(System.Nullable<bool> value);
+    partial void OnIsUserChanged();
+    partial void OnIsAdminChanging(System.Nullable<bool> value);
+    partial void OnIsAdminChanged();
+    partial void OnResetTokenChanging(string value);
+    partial void OnResetTokenChanged();
+    partial void OnResetTokenExpiryChanging(System.Nullable<System.DateTime> value);
+    partial void OnResetTokenExpiryChanged();
+    #endregion
+		
+		public Model()
+		{
+			this._ModIncallPlaces = new EntitySet<ModIncallPlace>(new Action<ModIncallPlace>(this.attach_ModIncallPlaces), new Action<ModIncallPlace>(this.detach_ModIncallPlaces));
+			this._ModLanguageAllocs = new EntitySet<ModLanguageAlloc>(new Action<ModLanguageAlloc>(this.attach_ModLanguageAllocs), new Action<ModLanguageAlloc>(this.detach_ModLanguageAllocs));
+			this._ModNaturalPhotos = new EntitySet<ModNaturalPhoto>(new Action<ModNaturalPhoto>(this.attach_ModNaturalPhotos), new Action<ModNaturalPhoto>(this.detach_ModNaturalPhotos));
+			this._ModOutcallPlaces = new EntitySet<ModOutcallPlace>(new Action<ModOutcallPlace>(this.attach_ModOutcallPlaces), new Action<ModOutcallPlace>(this.detach_ModOutcallPlaces));
+			this._ModPhotos = new EntitySet<ModPhoto>(new Action<ModPhoto>(this.attach_ModPhotos), new Action<ModPhoto>(this.detach_ModPhotos));
+			this._ModServices = new EntitySet<ModService>(new Action<ModService>(this.attach_ModServices), new Action<ModService>(this.detach_ModServices));
+			this._ModTours = new EntitySet<ModTour>(new Action<ModTour>(this.attach_ModTours), new Action<ModTour>(this.detach_ModTours));
+			this._ModVideos = new EntitySet<ModVideo>(new Action<ModVideo>(this.attach_ModVideos), new Action<ModVideo>(this.detach_ModVideos));
+			this._ModWorkDayHours = new EntitySet<ModWorkDayHour>(new Action<ModWorkDayHour>(this.attach_ModWorkDayHours), new Action<ModWorkDayHour>(this.detach_ModWorkDayHours));
+			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
+			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
+			this._ModContacts = new EntitySet<ModContact>(new Action<ModContact>(this.attach_ModContacts), new Action<ModContact>(this.detach_ModContacts));
+			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
+			this._ModReviews = new EntitySet<ModReview>(new Action<ModReview>(this.attach_ModReviews), new Action<ModReview>(this.detach_ModReviews));
+			this._ModReviews1 = new EntitySet<ModReview>(new Action<ModReview>(this.attach_ModReviews1), new Action<ModReview>(this.detach_ModReviews1));
+			this._ModSettings = new EntitySet<ModSetting>(new Action<ModSetting>(this.attach_ModSettings), new Action<ModSetting>(this.detach_ModSettings));
+			this._ModSubscriptions = new EntitySet<ModSubscription>(new Action<ModSubscription>(this.attach_ModSubscriptions), new Action<ModSubscription>(this.detach_ModSubscriptions));
+			this._UserCredits = new EntitySet<UserCredit>(new Action<UserCredit>(this.attach_UserCredits), new Action<UserCredit>(this.detach_UserCredits));
+			this._UserNotices = new EntitySet<UserNotice>(new Action<UserNotice>(this.attach_UserNotices), new Action<UserNotice>(this.detach_UserNotices));
+			this._UserSubscriptions = new EntitySet<UserSubscription>(new Action<UserSubscription>(this.attach_UserSubscriptions), new Action<UserSubscription>(this.detach_UserSubscriptions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(MAX)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(MAX)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsModel", DbType="Bit")]
+		public System.Nullable<bool> IsModel
+		{
+			get
+			{
+				return this._IsModel;
+			}
+			set
+			{
+				if ((this._IsModel != value))
+				{
+					this.OnIsModelChanging(value);
+					this.SendPropertyChanging();
+					this._IsModel = value;
+					this.SendPropertyChanged("IsModel");
+					this.OnIsModelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsUser", DbType="Bit")]
+		public System.Nullable<bool> IsUser
+		{
+			get
+			{
+				return this._IsUser;
+			}
+			set
+			{
+				if ((this._IsUser != value))
+				{
+					this.OnIsUserChanging(value);
+					this.SendPropertyChanging();
+					this._IsUser = value;
+					this.SendPropertyChanged("IsUser");
+					this.OnIsUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAdmin", DbType="Bit")]
+		public System.Nullable<bool> IsAdmin
+		{
+			get
+			{
+				return this._IsAdmin;
+			}
+			set
+			{
+				if ((this._IsAdmin != value))
+				{
+					this.OnIsAdminChanging(value);
+					this.SendPropertyChanging();
+					this._IsAdmin = value;
+					this.SendPropertyChanged("IsAdmin");
+					this.OnIsAdminChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetToken", DbType="VarChar(MAX)")]
+		public string ResetToken
+		{
+			get
+			{
+				return this._ResetToken;
+			}
+			set
+			{
+				if ((this._ResetToken != value))
+				{
+					this.OnResetTokenChanging(value);
+					this.SendPropertyChanging();
+					this._ResetToken = value;
+					this.SendPropertyChanged("ResetToken");
+					this.OnResetTokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetTokenExpiry", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ResetTokenExpiry
+		{
+			get
+			{
+				return this._ResetTokenExpiry;
+			}
+			set
+			{
+				if ((this._ResetTokenExpiry != value))
+				{
+					this.OnResetTokenExpiryChanging(value);
+					this.SendPropertyChanging();
+					this._ResetTokenExpiry = value;
+					this.SendPropertyChanged("ResetTokenExpiry");
+					this.OnResetTokenExpiryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModIncallPlace", Storage="_ModIncallPlaces", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModIncallPlace> ModIncallPlaces
+		{
+			get
+			{
+				return this._ModIncallPlaces;
+			}
+			set
+			{
+				this._ModIncallPlaces.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModLanguageAlloc", Storage="_ModLanguageAllocs", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModLanguageAlloc> ModLanguageAllocs
+		{
+			get
+			{
+				return this._ModLanguageAllocs;
+			}
+			set
+			{
+				this._ModLanguageAllocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModNaturalPhoto", Storage="_ModNaturalPhotos", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModNaturalPhoto> ModNaturalPhotos
+		{
+			get
+			{
+				return this._ModNaturalPhotos;
+			}
+			set
+			{
+				this._ModNaturalPhotos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModOutcallPlace", Storage="_ModOutcallPlaces", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModOutcallPlace> ModOutcallPlaces
+		{
+			get
+			{
+				return this._ModOutcallPlaces;
+			}
+			set
+			{
+				this._ModOutcallPlaces.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModPhoto", Storage="_ModPhotos", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModPhoto> ModPhotos
+		{
+			get
+			{
+				return this._ModPhotos;
+			}
+			set
+			{
+				this._ModPhotos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModService", Storage="_ModServices", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModService> ModServices
+		{
+			get
+			{
+				return this._ModServices;
+			}
+			set
+			{
+				this._ModServices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModTour", Storage="_ModTours", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModTour> ModTours
+		{
+			get
+			{
+				return this._ModTours;
+			}
+			set
+			{
+				this._ModTours.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModVideo", Storage="_ModVideos", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModVideo> ModVideos
+		{
+			get
+			{
+				return this._ModVideos;
+			}
+			set
+			{
+				this._ModVideos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkDayHour", Storage="_ModWorkDayHours", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModWorkDayHour> ModWorkDayHours
+		{
+			get
+			{
+				return this._ModWorkDayHours;
+			}
+			set
+			{
+				this._ModWorkDayHours.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkingCityAlloc", Storage="_ModWorkingCityAllocs", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModWorkingCityAlloc> ModWorkingCityAllocs
+		{
+			get
+			{
+				return this._ModWorkingCityAllocs;
+			}
+			set
+			{
+				this._ModWorkingCityAllocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModBiography> ModBiographies
+		{
+			get
+			{
+				return this._ModBiographies;
+			}
+			set
+			{
+				this._ModBiographies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModContact", Storage="_ModContacts", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModContact> ModContacts
+		{
+			get
+			{
+				return this._ModContacts;
+			}
+			set
+			{
+				this._ModContacts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserInfo", Storage="_UserInfos", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<UserInfo> UserInfos
+		{
+			get
+			{
+				return this._UserInfos;
+			}
+			set
+			{
+				this._UserInfos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModReview", Storage="_ModReviews", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<ModReview> ModReviews
+		{
+			get
+			{
+				return this._ModReviews;
+			}
+			set
+			{
+				this._ModReviews.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModReview1", Storage="_ModReviews1", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModReview> ModReviews1
+		{
+			get
+			{
+				return this._ModReviews1;
+			}
+			set
+			{
+				this._ModReviews1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSetting", Storage="_ModSettings", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModSetting> ModSettings
+		{
+			get
+			{
+				return this._ModSettings;
+			}
+			set
+			{
+				this._ModSettings.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModSubscription", Storage="_ModSubscriptions", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<ModSubscription> ModSubscriptions
+		{
+			get
+			{
+				return this._ModSubscriptions;
+			}
+			set
+			{
+				this._ModSubscriptions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserCredit", Storage="_UserCredits", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<UserCredit> UserCredits
+		{
+			get
+			{
+				return this._UserCredits;
+			}
+			set
+			{
+				this._UserCredits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_UserNotices", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<UserNotice> UserNotices
+		{
+			get
+			{
+				return this._UserNotices;
+			}
+			set
+			{
+				this._UserNotices.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_UserSubscriptions", ThisKey="Id", OtherKey="ModelId")]
+		public EntitySet<UserSubscription> UserSubscriptions
+		{
+			get
+			{
+				return this._UserSubscriptions;
+			}
+			set
+			{
+				this._UserSubscriptions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ModIncallPlaces(ModIncallPlace entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModIncallPlaces(ModIncallPlace entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModLanguageAllocs(ModLanguageAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModLanguageAllocs(ModLanguageAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModNaturalPhotos(ModNaturalPhoto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModNaturalPhotos(ModNaturalPhoto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModOutcallPlaces(ModOutcallPlace entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModOutcallPlaces(ModOutcallPlace entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModPhotos(ModPhoto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModPhotos(ModPhoto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModServices(ModService entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModServices(ModService entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModTours(ModTour entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModTours(ModTour entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModVideos(ModVideo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModVideos(ModVideo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModWorkDayHours(ModWorkDayHour entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModWorkDayHours(ModWorkDayHour entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModContacts(ModContact entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModContacts(ModContact entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_UserInfos(UserInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserInfos(UserInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModReviews(ModReview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModReviews(ModReview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModReviews1(ModReview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model1 = this;
+		}
+		
+		private void detach_ModReviews1(ModReview entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model1 = null;
+		}
+		
+		private void attach_ModSettings(ModSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModSettings(ModSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_ModSubscriptions(ModSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_ModSubscriptions(ModSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_UserCredits(UserCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserCredits(UserCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_UserNotices(UserNotice entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserNotices(UserNotice entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
+		private void attach_UserSubscriptions(UserSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserSubscriptions(UserSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
 		}
 	}
 }

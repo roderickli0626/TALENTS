@@ -45,6 +45,7 @@ namespace TALENTS
         private void LoadModelInfo1()
         {
             ModelCheck modelInfo = new ModelController().GetDashboardModelInfo(modelId);
+            List<ModPhoto> Photos = new ModPhotoDAO().FindByModel(model.Id);
 
             ModelSurname.InnerText = modelInfo.Name;
             ModelHeight.InnerText = modelInfo.Height.ToString();
@@ -54,9 +55,11 @@ namespace TALENTS
             ModelEye.InnerText = modelInfo.Eye;
             ModelHairColor.InnerText = modelInfo.HairColor;
 
-            DefaultPhotoRepeater1.DataSource = modelInfo.ImageList;
+            //DefaultPhotoRepeater1.DataSource = modelInfo.ImageList;
+            DefaultPhotoRepeater1.DataSource = Photos;
             DefaultPhotoRepeater1.DataBind();
-            DefaultPhotoRepeater2.DataSource = modelInfo.ImageList;
+            //DefaultPhotoRepeater2.DataSource = modelInfo.ImageList;
+            DefaultPhotoRepeater2.DataSource = Photos;
             DefaultPhotoRepeater2.DataBind();
         }
         private void LoadModelInfo2()
