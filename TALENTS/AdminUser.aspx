@@ -146,6 +146,7 @@
             $("#TxtEmail").val("");
             $("#TxtPassword").val("");
             $("#TxtPasswordRepeat").val("");
+            $("#ValSummary").addClass("d-none");
             $(".modal-title").text("ADD USER");
 
             $("#myModal").modal('hide');

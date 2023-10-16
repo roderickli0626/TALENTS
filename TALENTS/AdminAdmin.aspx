@@ -147,6 +147,7 @@
             $("#TxtPassword").val("");
             $("#TxtPasswordRepeat").val("");
             $(".modal-title").text("ADD ADMIN");
+            $("#ValSummary").addClass("d-none");
 
             $("#myModal").modal('hide');
             return false;
