@@ -83,6 +83,7 @@
                                             <th>No</th>
                                             <th>Model</th>
                                             <th>Content</th>
+                                            <th>Date</th>
                                             <th>User</th>
                                             <th>Azione</th>
                                             <th class="d-none"></th>
@@ -268,6 +269,8 @@
                     "render": function (data, type, row, meta) {
                         return data + '<div>' + row.Comment + '</div>';
                     }
+                }, {
+                    "data": "ReviewDate",
                 }, {
                     "data": "User",
                 }, {
