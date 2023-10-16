@@ -231,7 +231,7 @@
                             var badge = 'badge-primary';
                         }
                         return '<div class="col-12 mb-4 pl-5 pr-5 noticeDiv">' + 
-                                    '<div class="p-4 bg-gradient box notice" style = "border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" >' + 
+                                    '<div class="p-4 bg-gradient box notice" style = "border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);width:100%;" >' + 
                                         ribbon +
                                         '<div class="d-flex pl-3 pr-3">' + 
                                             '<image src="Upload/Photos/user-default.jpg" style="height:60px;width:60px;border-radius:30px;"></image>' + 
@@ -239,7 +239,7 @@
                                         '</div>' + 
                                         '<p class="text-left p-3 mb-0">' + row.Message + 
                                         '</p>' + 
-                                        '<span class="badge badge-pill ' + badge + '" style="float:right;font-size:15px;">' + row.Username + ', ' + row.From + ' - ' + row.To + '</span>' + 
+                                        '<span class="badge badge-pill ' + badge + '" style="float:right;font-size:15px;">' + row.Username + ', ' + row.From + ' - ' + row.To + ', ' + row.City + '</span>' + 
                                     '</div>' + 
                                 '</div> ';
                     }
@@ -259,7 +259,7 @@
 
                 var row = datatable.fnGetData($(this).closest('tr'));
                 var state = row.State;
-                var badgeInfo = row.Username + ', ' + row.From + ' - ' + row.To;
+                var badgeInfo = row.Username + ', ' + row.From + ' - ' + row.To + ', ' + row.City;
                 if (state == 1) {
                     $(".modal-ribbon").removeClass("red");
                     $(".modal-ribbon").removeClass("blue");

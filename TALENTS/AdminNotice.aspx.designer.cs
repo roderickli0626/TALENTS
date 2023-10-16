@@ -159,6 +159,15 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.TextBox TxtEndDate;
 
         /// <summary>
+        /// TxtCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCity;
+
+        /// <summary>
         /// TxtContact control.
         /// </summary>
         /// <remarks>

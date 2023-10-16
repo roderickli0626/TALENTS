@@ -664,31 +664,31 @@
                                         <div class="pt-lg-5">
                                             <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Social Chat: </h4>
+                                                    <h4 class="d-inline text-primary">Social Chat: </h4>
                                                     <h4 runat="server" id="ModelSocialChat" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Instruction Chat: </h4>
+                                                    <h4 class="d-inline text-primary">Instruction Chat: </h4>
                                                     <h4 runat="server" id="ModelInstructionChat" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Email: </h4>
+                                                    <h4 class="d-inline text-primary">Email: </h4>
                                                     <h4 runat="server" id="ModelEmail" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Mobile Phone: </h4>
+                                                    <h4 class="d-inline text-primary">Mobile Phone: </h4>
                                                     <h4 runat="server" id="ModelPhone" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Address: </h4>
+                                                    <h4 class="d-inline text-primary">Address: </h4>
                                                     <h4 runat="server" id="ModelAddress" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline">Address Civ: </h4>
+                                                    <h4 class="d-inline text-primary">Address Civ: </h4>
                                                     <h4 runat="server" id="ModelAddressCiv" class="d-inline"></h4>
                                                 </div>
                                             </div>
@@ -816,6 +816,7 @@
                                                                 <tr>
                                                                     <th>No</th>
                                                                     <th>Content</th>
+                                                                    <th>Date</th>
                                                                     <th>User</th>
                                                                 </tr>
                                                             </thead>
@@ -830,6 +831,7 @@
                                                                 <%# Eval("Comment")%>
                                                             </div>
                                                         </td>
+                                                        <td style="vertical-align: middle"><%# Eval("ReviewDate")%></td>
                                                         <td style="vertical-align: middle"><%# Eval("User")%></td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -853,7 +855,7 @@
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>
-                                <div style="width: 120px; margin-top:14%; margin-left: 20%;" class="mb-3 text-center position-absolute d-block">
+                                <div style="width: 120px; margin-top:130px; margin-left: 3%;" class="mb-3 text-center position-absolute d-block">
                                     <div class="swiper-button-next swiper-button-white text-white float-end" style="margin-top:5px !important"></div>
                                     <button id="BtnSwaperPause" class="btn btn-lg bg-gradient text-white">
                                         <i class="fa fa-pause"></i>

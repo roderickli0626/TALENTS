@@ -25,6 +25,7 @@ namespace TALENTS.Models
             else if (userNotice.ToDate < DateTime.Now) State = 2;
             else State = 3;
             Allowed = userNotice.Allowed ?? false;
+            City = userNotice.City;
         }
         public int Id
         {
@@ -60,5 +61,6 @@ namespace TALENTS.Models
         }
         public string From { get; set; }
         public string To { get; set; }
+        public string City { get; set; }
     }
 }

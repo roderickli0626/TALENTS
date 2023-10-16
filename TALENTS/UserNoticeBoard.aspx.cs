@@ -37,10 +37,11 @@ namespace TALENTS
             string title = TxtTitle.Text;
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
+            string city = TxtCity.Text;
             DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
             DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
 
-            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, user.Id, null, false);
+            bool success = noticeController.SaveNotice(title, message, contact, city, sdate, edate, user.Id, null, false);
 
             if (!success)
             {
@@ -65,10 +66,11 @@ namespace TALENTS
             string title = TxtTitle.Text;
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
+            string city = TxtCity.Text;
             DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
             DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
 
-            bool success = noticeController.SaveNotice(title, message, contact, sdate, edate, user.Id, noticeId,false);
+            bool success = noticeController.SaveNotice(title, message, contact, city, sdate, edate, user.Id, noticeId,false);
 
             if (!success)
             {

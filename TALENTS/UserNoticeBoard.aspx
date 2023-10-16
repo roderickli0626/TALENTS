@@ -210,6 +210,10 @@
                                                     <asp:TextBox runat="server" ID="TxtEndDate" ClientIDMode="Static" PlaceHolder="End Date/Time" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                 </div>
                                             </div>
+
+                                            <div class="form-white mb-4">
+                                                <asp:TextBox runat="server" ID="TxtCity" ClientIDMode="Static" placeholder="City" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
                                             
                                             <div class="form-white">
                                                 <asp:TextBox runat="server" ID="TxtContact" ClientIDMode="Static" placeholder="Contact Info" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="2"></asp:TextBox>
@@ -263,6 +267,7 @@
             $("#TxtTitle").val("");
             $("#TxtMessage").val("");
             $("#TxtContact").val("");
+            $("#TxtCity").val("");
             $("#TxtStartDate").val("");
             $("#TxtEndDate").val("");
             $("#BtnSaveNotice").removeClass('d-none');
@@ -295,9 +300,11 @@
                         var allowed = row.Allowed;
                         if (allowed) {
                             var ribbon = '<div class="ribbon blue"><span>ALLOWED</span></div>';
+                            var badge = 'badge-primary';
                         }
                         else {
                             var ribbon = '<div class="ribbon red"><span>UNALLOWED</span></div>';
+                            var badge = 'badge-danger';
                         }
                         return '<div class="mb-4 noticeDiv">' + 
                                     '<div class="p-4 box notice bg-transparent" style="width: 100%;">' + 
@@ -308,6 +315,7 @@
                                         '</div>' + 
                                         '<p class="text-left p-3 mb-0">' + row.Message + 
                                         '</p>' + 
+                                        '<span class="badge badge-pill ' + badge + '" style="float:right;font-size:15px;">' + row.From + ' - ' + row.To + ', ' + row.City + '</span>' + 
                                     '</div>' + 
                                 '</div> ';
                     }
@@ -352,6 +360,7 @@
                 $("#TxtTitle").val(row.Title);
                 $("#TxtMessage").val(row.Message);
                 $("#TxtContact").val(row.Contact);
+                $("#TxtCity").val(row.City);
                 $("#TxtStartDate").val(row.From);
                 $("#TxtEndDate").val(row.To);
 

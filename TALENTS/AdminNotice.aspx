@@ -239,6 +239,10 @@
                                                 </div>
                                             </div>
                                             
+                                            <div class="form-white mb-4">
+                                                <asp:TextBox runat="server" ID="TxtCity" ClientIDMode="Static" placeholder="City" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+
                                             <div class="form-white">
                                                 <asp:TextBox runat="server" ID="TxtContact" ClientIDMode="Static" placeholder="Contact Info" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="2"></asp:TextBox>
                                             </div>
@@ -312,6 +316,7 @@
             $("#TxtTitle").val("");
             $("#TxtMessage").val("");
             $("#TxtContact").val("");
+            $("#TxtCity").val("");
             $("#TxtStartDate").val("");
             $("#TxtEndDate").val("");
             $("#ComboUser").val(0).trigger("change");
@@ -363,7 +368,7 @@
                                         '</div>' + 
                                         '<p class="text-left p-3 mb-0">' + row.Message + 
                                         '</p>' + 
-                                        '<span class="badge badge-pill ' + badge + '" style="float:right;font-size:15px;">' + row.Username + ', ' + row.From + ' - ' + row.To + '</span>' + 
+                                        '<span class="badge badge-pill ' + badge + '" style="float:right;font-size:15px;">' + row.Username + ', ' + row.From + ' - ' + row.To + ', ' + row.City + '</span>' + 
                                     '</div>' + 
                                 '</div> ';
                     }
@@ -408,6 +413,7 @@
                 $("#TxtTitle").val(row.Title);
                 $("#TxtMessage").val(row.Message);
                 $("#TxtContact").val(row.Contact);
+                $("#TxtCity").val(row.City);
                 $("#TxtStartDate").val(row.From);
                 $("#TxtEndDate").val(row.To);
                 $("#ComboUser").val(row.UserId).trigger("change");

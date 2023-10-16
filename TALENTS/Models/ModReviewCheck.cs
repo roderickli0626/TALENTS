@@ -22,6 +22,7 @@ namespace TALENTS.Models
             Phone = modReview.PhoneNumber;
             Rating = modReview.Rating ?? 0;
             Allowed = modReview.Allowed ?? false;
+            ReviewDate = modReview.DateCreated?.ToString("dd/MM/yyyy");
         }
 
         public int Id
@@ -57,6 +58,10 @@ namespace TALENTS.Models
             get; set;
         }
         public bool Allowed
+        {
+            get; set;
+        }
+        public string ReviewDate
         {
             get; set;
         }

@@ -70,7 +70,7 @@ namespace TALENTS.Controller
             return result;
         }
 
-        public bool SaveNotice(string title, string message, string contact, DateTime? sdate, DateTime? edate, int userId, int? noticeId, bool allowed)
+        public bool SaveNotice(string title, string message, string contact, string city, DateTime? sdate, DateTime? edate, int userId, int? noticeId, bool allowed)
         {
             if (noticeId == null)
             {
@@ -78,6 +78,7 @@ namespace TALENTS.Controller
                 userNotice.Title = title;
                 userNotice.Message = message;
                 userNotice.Contact = contact;
+                userNotice.City = city;
                 userNotice.FromDate = sdate;
                 userNotice.ToDate = edate;
                 userNotice.UserId = userId;
@@ -92,6 +93,7 @@ namespace TALENTS.Controller
                 userNotice.Title = title;
                 userNotice.Message= message;
                 userNotice.Contact = contact;
+                userNotice.City = city;
                 userNotice.FromDate = sdate;
                 userNotice.ToDate = edate;
                 //userNotice.UserId = userId;

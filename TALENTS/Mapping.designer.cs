@@ -153,15 +153,15 @@ namespace TALENTS
     partial void InsertUserCredit(UserCredit instance);
     partial void UpdateUserCredit(UserCredit instance);
     partial void DeleteUserCredit(UserCredit instance);
-    partial void InsertUserNotice(UserNotice instance);
-    partial void UpdateUserNotice(UserNotice instance);
-    partial void DeleteUserNotice(UserNotice instance);
     partial void InsertUserSubscription(UserSubscription instance);
     partial void UpdateUserSubscription(UserSubscription instance);
     partial void DeleteUserSubscription(UserSubscription instance);
     partial void InsertModel(Model instance);
     partial void UpdateModel(Model instance);
     partial void DeleteModel(Model instance);
+    partial void InsertUserNotice(UserNotice instance);
+    partial void UpdateUserNotice(UserNotice instance);
+    partial void DeleteUserNotice(UserNotice instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -516,14 +516,6 @@ namespace TALENTS
 			}
 		}
 		
-		public System.Data.Linq.Table<UserNotice> UserNotices
-		{
-			get
-			{
-				return this.GetTable<UserNotice>();
-			}
-		}
-		
 		public System.Data.Linq.Table<UserSubscription> UserSubscriptions
 		{
 			get
@@ -537,6 +529,14 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<Model>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserNotice> UserNotices
+		{
+			get
+			{
+				return this.GetTable<UserNotice>();
 			}
 		}
 	}
@@ -8970,277 +8970,6 @@ namespace TALENTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserNotices")]
-	public partial class UserNotice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _UserId;
-		
-		private string _Message;
-		
-		private string _Contact;
-		
-		private System.Nullable<System.DateTime> _FromDate;
-		
-		private System.Nullable<System.DateTime> _ToDate;
-		
-		private System.Nullable<bool> _Allowed;
-		
-		private string _Title;
-		
-		private EntityRef<Model> _Model;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnUserIdChanging(System.Nullable<int> value);
-    partial void OnUserIdChanged();
-    partial void OnMessageChanging(string value);
-    partial void OnMessageChanged();
-    partial void OnContactChanging(string value);
-    partial void OnContactChanged();
-    partial void OnFromDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnFromDateChanged();
-    partial void OnToDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnToDateChanged();
-    partial void OnAllowedChanging(System.Nullable<bool> value);
-    partial void OnAllowedChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    #endregion
-		
-		public UserNotice()
-		{
-			this._Model = default(EntityRef<Model>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._Model.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(MAX)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this.OnMessageChanging(value);
-					this.SendPropertyChanging();
-					this._Message = value;
-					this.SendPropertyChanged("Message");
-					this.OnMessageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contact", DbType="VarChar(MAX)")]
-		public string Contact
-		{
-			get
-			{
-				return this._Contact;
-			}
-			set
-			{
-				if ((this._Contact != value))
-				{
-					this.OnContactChanging(value);
-					this.SendPropertyChanging();
-					this._Contact = value;
-					this.SendPropertyChanged("Contact");
-					this.OnContactChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FromDate
-		{
-			get
-			{
-				return this._FromDate;
-			}
-			set
-			{
-				if ((this._FromDate != value))
-				{
-					this.OnFromDateChanging(value);
-					this.SendPropertyChanging();
-					this._FromDate = value;
-					this.SendPropertyChanged("FromDate");
-					this.OnFromDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ToDate
-		{
-			get
-			{
-				return this._ToDate;
-			}
-			set
-			{
-				if ((this._ToDate != value))
-				{
-					this.OnToDateChanging(value);
-					this.SendPropertyChanging();
-					this._ToDate = value;
-					this.SendPropertyChanged("ToDate");
-					this.OnToDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Allowed", DbType="Bit")]
-		public System.Nullable<bool> Allowed
-		{
-			get
-			{
-				return this._Allowed;
-			}
-			set
-			{
-				if ((this._Allowed != value))
-				{
-					this.OnAllowedChanging(value);
-					this.SendPropertyChanging();
-					this._Allowed = value;
-					this.SendPropertyChanged("Allowed");
-					this.OnAllowedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(MAX)")]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_Model", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Model Model
-		{
-			get
-			{
-				return this._Model.Entity;
-			}
-			set
-			{
-				Model previousValue = this._Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Model.Entity = null;
-						previousValue.UserNotices.Remove(this);
-					}
-					this._Model.Entity = value;
-					if ((value != null))
-					{
-						value.UserNotices.Add(this);
-						this._UserId = value.Id;
-					}
-					else
-					{
-						this._UserId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Model");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserSubscription")]
 	public partial class UserSubscription : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9589,9 +9318,9 @@ namespace TALENTS
 		
 		private EntitySet<UserCredit> _UserCredits;
 		
-		private EntitySet<UserNotice> _UserNotices;
-		
 		private EntitySet<UserSubscription> _UserSubscriptions;
+		
+		private EntitySet<UserNotice> _UserNotices;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -9637,8 +9366,8 @@ namespace TALENTS
 			this._ModSettings = new EntitySet<ModSetting>(new Action<ModSetting>(this.attach_ModSettings), new Action<ModSetting>(this.detach_ModSettings));
 			this._ModSubscriptions = new EntitySet<ModSubscription>(new Action<ModSubscription>(this.attach_ModSubscriptions), new Action<ModSubscription>(this.detach_ModSubscriptions));
 			this._UserCredits = new EntitySet<UserCredit>(new Action<UserCredit>(this.attach_UserCredits), new Action<UserCredit>(this.detach_UserCredits));
-			this._UserNotices = new EntitySet<UserNotice>(new Action<UserNotice>(this.attach_UserNotices), new Action<UserNotice>(this.detach_UserNotices));
 			this._UserSubscriptions = new EntitySet<UserSubscription>(new Action<UserSubscription>(this.attach_UserSubscriptions), new Action<UserSubscription>(this.detach_UserSubscriptions));
+			this._UserNotices = new EntitySet<UserNotice>(new Action<UserNotice>(this.attach_UserNotices), new Action<UserNotice>(this.detach_UserNotices));
 			OnCreated();
 		}
 		
@@ -10056,19 +9785,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_UserNotices", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<UserNotice> UserNotices
-		{
-			get
-			{
-				return this._UserNotices;
-			}
-			set
-			{
-				this._UserNotices.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserSubscription", Storage="_UserSubscriptions", ThisKey="Id", OtherKey="ModelId")]
 		public EntitySet<UserSubscription> UserSubscriptions
 		{
@@ -10079,6 +9795,19 @@ namespace TALENTS
 			set
 			{
 				this._UserSubscriptions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_UserNotices", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<UserNotice> UserNotices
+		{
+			get
+			{
+				return this._UserNotices;
+			}
+			set
+			{
+				this._UserNotices.Assign(value);
 			}
 		}
 		
@@ -10318,6 +10047,18 @@ namespace TALENTS
 			entity.Model = null;
 		}
 		
+		private void attach_UserSubscriptions(UserSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = this;
+		}
+		
+		private void detach_UserSubscriptions(UserSubscription entity)
+		{
+			this.SendPropertyChanging();
+			entity.Model = null;
+		}
+		
 		private void attach_UserNotices(UserNotice entity)
 		{
 			this.SendPropertyChanging();
@@ -10329,17 +10070,300 @@ namespace TALENTS
 			this.SendPropertyChanging();
 			entity.Model = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserNotices")]
+	public partial class UserNotice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_UserSubscriptions(UserSubscription entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _UserId;
+		
+		private string _Message;
+		
+		private string _Contact;
+		
+		private System.Nullable<System.DateTime> _FromDate;
+		
+		private System.Nullable<System.DateTime> _ToDate;
+		
+		private System.Nullable<bool> _Allowed;
+		
+		private string _Title;
+		
+		private string _City;
+		
+		private EntityRef<Model> _Model;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnMessageChanging(string value);
+    partial void OnMessageChanged();
+    partial void OnContactChanging(string value);
+    partial void OnContactChanged();
+    partial void OnFromDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFromDateChanged();
+    partial void OnToDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnToDateChanged();
+    partial void OnAllowedChanging(System.Nullable<bool> value);
+    partial void OnAllowedChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    #endregion
+		
+		public UserNotice()
 		{
-			this.SendPropertyChanging();
-			entity.Model = this;
+			this._Model = default(EntityRef<Model>);
+			OnCreated();
 		}
 		
-		private void detach_UserSubscriptions(UserSubscription entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
-			this.SendPropertyChanging();
-			entity.Model = null;
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._Model.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(MAX)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this.OnMessageChanging(value);
+					this.SendPropertyChanging();
+					this._Message = value;
+					this.SendPropertyChanged("Message");
+					this.OnMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contact", DbType="VarChar(MAX)")]
+		public string Contact
+		{
+			get
+			{
+				return this._Contact;
+			}
+			set
+			{
+				if ((this._Contact != value))
+				{
+					this.OnContactChanging(value);
+					this.SendPropertyChanging();
+					this._Contact = value;
+					this.SendPropertyChanged("Contact");
+					this.OnContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FromDate
+		{
+			get
+			{
+				return this._FromDate;
+			}
+			set
+			{
+				if ((this._FromDate != value))
+				{
+					this.OnFromDateChanging(value);
+					this.SendPropertyChanging();
+					this._FromDate = value;
+					this.SendPropertyChanged("FromDate");
+					this.OnFromDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ToDate
+		{
+			get
+			{
+				return this._ToDate;
+			}
+			set
+			{
+				if ((this._ToDate != value))
+				{
+					this.OnToDateChanging(value);
+					this.SendPropertyChanging();
+					this._ToDate = value;
+					this.SendPropertyChanged("ToDate");
+					this.OnToDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Allowed", DbType="Bit")]
+		public System.Nullable<bool> Allowed
+		{
+			get
+			{
+				return this._Allowed;
+			}
+			set
+			{
+				if ((this._Allowed != value))
+				{
+					this.OnAllowedChanging(value);
+					this.SendPropertyChanging();
+					this._Allowed = value;
+					this.SendPropertyChanged("Allowed");
+					this.OnAllowedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(MAX)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(MAX)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_UserNotice", Storage="_Model", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Model Model
+		{
+			get
+			{
+				return this._Model.Entity;
+			}
+			set
+			{
+				Model previousValue = this._Model.Entity;
+				if (((previousValue != value) 
+							|| (this._Model.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Model.Entity = null;
+						previousValue.UserNotices.Remove(this);
+					}
+					this._Model.Entity = value;
+					if ((value != null))
+					{
+						value.UserNotices.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
