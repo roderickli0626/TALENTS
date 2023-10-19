@@ -103,7 +103,7 @@ namespace TALENTS
         private string GetAccessToken()
         {
             var client = new RestClient("https://zoom.us/oauth/token");
-            var request = new RestRequest();
+            var request = new RestRequest("", Method.Post);
 
             request.AddParameter("grant_type", "client_credentials");
             request.AddParameter("client_id", ClientId);
@@ -123,7 +123,7 @@ namespace TALENTS
         private string CreateZoomMeeting(string accessToken, string userId)
         {
             var client = new RestClient($"{ZoomApiBaseUrl}/users/{userId}/meetings");
-            var request = new RestRequest();
+            var request = new RestRequest("", Method.Post);
 
             request.AddHeader("Authorization", $"Bearer {accessToken}");
 
@@ -147,7 +147,7 @@ namespace TALENTS
         private string GetUserId(string accessToken)
         {
             var client = new RestClient($"{ZoomApiBaseUrl}/users");
-            var request = new RestRequest();
+            var request = new RestRequest("", Method.Get);
 
             request.AddHeader("Authorization", $"Bearer {accessToken}");
 
