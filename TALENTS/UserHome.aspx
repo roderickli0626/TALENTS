@@ -159,6 +159,7 @@
             <div class="set-bg" style="padding-top: 180px;background-color:white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <asp:HiddenField ID="HfPurchased" runat="server" ClientIDMode="Static" />
+                    <asp:HiddenField ID="HfModelID" runat="server" ClientIDMode="Static" />
                     <div class="container" style="max-width: 1200px; padding-bottom: 50px;">
                         <div class="row mb-5" style="border: 1px solid; border-color: black; border-radius:4px; margin-left: auto; margin-right: auto; padding: 20px">
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
@@ -199,6 +200,45 @@
                             </asp:Repeater>
                         </div>
                     </div>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content text-white" style="background-color: #353535;">
+                                <!-- Modal Header -->
+                                <div class="modal-header pl-5">
+                                    <h2 class="modal-title">LIVE CHAT</h2>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body p-lg-5">
+                                    <asp:ScriptManager runat="server" ID="ScriptManagerForModal"></asp:ScriptManager>
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanelForModal">
+                                        <ContentTemplate>
+                                            <asp:HiddenField ID="HfMeetingLink" runat="server" ClientIDMode="Static" />
+                                            <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-3 text-left bg-gradient text-danger" ClientIDMode="Static" />
+                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Create Link Failed" Display="None"></asp:CustomValidator>
+                                            <asp:RadioButtonList ID="LinkType" CssClass="mx-auto" style="font-size: 22px;" runat="server">
+                                                <asp:ListItem Text="Only Chat" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="Video Call" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="Chat & Video Call" Value="3"></asp:ListItem>
+                                            </asp:RadioButtonList>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="BtnCreateLink" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer p-lg-5 justify-content-around">
+                                    <asp:Button runat="server" ID="BtnCreateLink" ClientIDMode="Static" CssClass="btn btn-lg btn-success mr-5" Text="CREAT LINK" OnClick="BtnCreateLink_Click" />
+                                    <asp:Button runat="server" ID="BtnCreateLinkHidden" ClientIDMode="Static" CssClass="btn btn-lg btn-success mr-5 d-none" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="CANCEL" CssClass="btn btn-lg bg-white"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -208,25 +248,47 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script>
         $("#ComboCity").select2({ theme: 'bootstrap' });
+
+        $("#BtnClose").click(function () {
+            $("#myModal").modal('hide');
+            return false;
+        });
+
     </script>
     <!-- Add the Tawk.to chat widget code snippet here -->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/YOUR_TAWK_TO_WIDGET_ID/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
     <script>
         $(".live-chat").click(function () {
+            // Only Possible between Purchased User and Model with Green Light
             if ($(this).hasClass("red")) return;
             if ($("#HfPurchased").val() == "False") return;
-            // Call the Tawk.to toggle function to start a new chat session
-            Tawk_API.toggle();
+            // Open Creat Link Modal
+            $("#HfModelID").val($(this)[0].dataset.id);
+            $("#myModal").modal('show');
+            $("#ValSummary").addClass("d-none");
+            return false;
         })
+    </script>
+
+
+
+    <script src="Scripts/jquery.signalR-2.4.3.js"></script>
+    <script src="signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            var proxy = $.connection.notificationHub;
+
+            $("#BtnCreateLinkHidden").click(function () {
+                var modelID = $("#HfModelID").val();
+                var meetingLink = $("#HfMeetingLink").val();
+
+                proxy.server.sendNotifications("MODELID-" + modelID + "," + meetingLink);
+
+                $("#myModal").modal('hide');
+                window.open(meetingLink, "_blank");
+                return false;
+            });
+
+            $.connection.hub.start();
+        });
     </script>
 </asp:Content>

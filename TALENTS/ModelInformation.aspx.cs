@@ -30,6 +30,8 @@ namespace TALENTS
                 Response.Redirect("~/Login.aspx");
                 return;
             }
+            HfSignedModelID.Value = model.Id.ToString();
+
             if (!IsPostBack)
             {
                 ModelName.InnerText = model.Username;

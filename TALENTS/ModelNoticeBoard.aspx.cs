@@ -20,6 +20,8 @@ namespace TALENTS
                 Response.Redirect("~/Login.aspx");
                 return;
             }
+            HfSignedModelID.Value = model.Id.ToString();
+
             bool result = new SubscriptionMController().AllowUserNoticeBoard(model.Id);
             if (!result) 
             {

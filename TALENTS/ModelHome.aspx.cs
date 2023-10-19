@@ -13,8 +13,18 @@ namespace TALENTS
 {
     public partial class ModelHome : System.Web.UI.Page
     {
+        private Model model;
+        private LoginController loginSystem = new LoginController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            model = loginSystem.GetCurrentUserAccount();
+            if (model == null || !loginSystem.IsModelLoggedIn())
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            HfSignedModelID.Value = model.Id.ToString();
+
             if (!IsPostBack)
             {
                 LoadCity();

@@ -16,8 +16,19 @@ namespace TALENTS
     {
         private int modelId;
         private Model model;
+
+        private Model model1;
+        private LoginController loginSystem = new LoginController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            model1 = loginSystem.GetCurrentUserAccount();
+            if (model1 == null || !loginSystem.IsModelLoggedIn())
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            HfSignedModelID.Value = model1.Id.ToString();
+
             modelId = ParseUtil.TryParseInt(Request.Params["modelId"]) ?? 0;
             model = new ModelDAO().FindById(modelId);
 

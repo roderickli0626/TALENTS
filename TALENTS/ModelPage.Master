@@ -101,6 +101,35 @@
 
     <script src="Scripts/select2.js"></script>
 
+    
+
+
+    <script src="Scripts/jquery.signalR-2.4.3.js"></script>
+    <script src="signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            var proxy = $.connection.notificationHub;
+
+            proxy.client.receiveNotification = function (message) {
+                var modelID = $("#HfSignedModelID").val();
+                var splitList = message.split(",");
+                if (splitList.indexOf("MODELID-" + modelID) > -1) {
+                    alert("Video Meeting is coming. Please move to " + splitList[1]);
+                    window.open(splitList[1], "_blank");
+                }
+                else return false;
+            };
+
+            $.connection.hub.start();
+        });
+    </script>
+
+
+
+
+
+
+
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">

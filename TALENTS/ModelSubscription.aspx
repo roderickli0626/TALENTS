@@ -176,6 +176,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfSignedModelID" runat="server" ClientIDMode="Static" />
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row justify-content-center" style="background-color: gray">
                         <div class="col-8 mx-auto text-center bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">

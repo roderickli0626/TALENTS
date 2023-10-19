@@ -158,6 +158,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 180px;background-color:white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfSignedModelID" runat="server" ClientIDMode="Static" />
                     <div class="container" style="max-width: 1200px; padding-bottom: 50px;">
                         <div class="row mb-5" style="border: 1px solid; border-color: black; border-radius:4px; margin-left: auto; margin-right: auto; padding: 20px">
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
