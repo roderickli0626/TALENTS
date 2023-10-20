@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminUser.aspx.cs" Inherits="TALENTS.AdminUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
-    <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
     <style>
         
         h2 {
@@ -34,7 +33,7 @@
             <div class="set-bg" style="padding-top: 110px; background-color: white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <asp:HiddenField ID="HfUserID" runat="server" ClientIDMode="Static" />
-                    <div class="row" style="background-color: gray">
+                    <%--<div class="row" style="background-color: gray">
                         <div class="col-12 bg-gray text-center">
                             <div class="d-flex justify-content-center">
                                 <div class="bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-language" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -68,6 +67,40 @@
                                         </table>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>--%>
+
+                    <div class="row justify-content-center" style="background-color: gray">
+                        <div class="col-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
+                            <div class="row justify-content-center">
+                                <h2 class="mb-4 justify-content-center">USERS</h2>
+                            </div>
+                            <hr class="text-primary mb-4" />
+                            <div class="row pl-5 pr-5">
+                                <div class="col-2">
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD USER</button>
+                                </div>
+                                <div class="col-6 ml-auto">
+                                    <div class="mb-4">
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center pl-5 pr-5">
+                                <table class="table table-bordered table-striped text-center" id="user-table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>State</th>
+                                            <th>Azione</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -119,7 +152,7 @@
                                 <div class="modal-footer">
                                     <asp:Button runat="server" ID="BtnSaveUser" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveUser_Click" />
                                     <asp:Button runat="server" ID="BtnUpdateUser" ClientIDMode="Static" CssClass="btn btn-lg btn-success d-none" Text="Update" OnClick="BtnUpdateUser_Click" />
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-white"/>
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg bg-white"/>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +163,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
     <script>
@@ -180,12 +212,17 @@
                 }, {
                     "data": null,
                     "render": function (data, type, row, meta) {
-                        return '<a href="#" class="btn-delete me-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit me-4"><i class="fa fa-edit" style="font-size:25px"></i></a>' + '<a href="AdminUserInformation.aspx?id=' + row.Id + '"><i class="fa fa-address-card" style="font-size:25px"></i></a>';
+                        return '<a href="#" class="btn-delete mr-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit mr-4"><i class="fa fa-edit" style="font-size:25px"></i></a>' + '<a href="AdminUserInformation.aspx?id=' + row.Id + '"><i class="fa fa-address-card" style="font-size:25px"></i></a>';
                     }
                 }],
 
                 "fnServerParams": function (aoData) {
                     aoData.searchVal = $('#TxtSearch').val();
+                },
+
+                "rowCallback": function (row, data, index) {
+                    $(row).find('td').css({ 'vertical-align': 'middle' });
+                    $("#user-table_wrapper").css('width', '100%');
                 }
             });
 

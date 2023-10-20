@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminUserInformation.aspx.cs" Inherits="TALENTS.AdminUserInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
-    <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
     <link rel="stylesheet" href="Content/CSS/bootstrap-datepicker3.css" type="text/css">
     <style>
         .nav-link.active {
@@ -58,30 +57,42 @@
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtName" PlaceHolder="Name" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtName" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtName">Name <span class="text-danger">*</span></label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtSurname" PlaceHolder="Surname" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtSurname" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtSurname">Surname</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtAddress" PlaceHolder="Address" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtAddress" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtAddress">Address</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtCAP" PlaceHolder="CAP" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtCAP" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtCAP">CAP</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
@@ -110,60 +121,84 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtSociety" PlaceHolder="Society" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtSociety" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtSociety">Society</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtVat" PlaceHolder="Vat_Number" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtVat" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtVat">Vat_Number</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtLicenze" PlaceHolder="Licenze_Number" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtLicenze" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtLicenze">Licenze_Number</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtWebSite" PlaceHolder="WebSite" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtWebSite" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtWebSite">WebSite</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtEmail">Email</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtMobile" PlaceHolder="Mobile" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtMobile" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtMobile">Mobile</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-6">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtPhone" PlaceHolder="Phone" CssClass="form-control form-control-lg"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtPhone" CssClass="form-control form-control-lg"></asp:TextBox>
                                             <label class="form-label" for="TxtPhone">Phone</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row" style="width: 800px;">
                                     <div class="col-12">
-                                        <div class="form-outline mb-4">
+                                        <div class="mb-4">
+                                            <asp:TextBox runat="server" ID="TxtNote" PlaceHolder="Note" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                        </div>
+                                        <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtNote" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
                                             <label class="form-label" for="TxtNote">Note</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -183,7 +218,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
     <script src="Scripts/bootstrap-datepicker.min.js"></script>
     <script>
         $("#ComboSex").select2({ theme: 'bootstrap' });

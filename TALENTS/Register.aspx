@@ -20,24 +20,20 @@
                                                 <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                                                 <p class="text-white-50 mb-5">Please enter your register information!</p>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtUsername" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtUsername">Name</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtUsername" PlaceHolder="Name" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtEmail">Email</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtPassword" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtPassword">Password</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtPassword" PlaceHolder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <div class="form-outline form-white mb-5">
-                                                    <asp:TextBox runat="server" ID="TxtPasswordRepeat" CssClass="form-control form-control-lg" TextMode="Password"></asp:TextBox>
-                                                    <label class="form-label" for="TxtPasswordRepeat">Confirm Password</label>
+                                                <div class="mb-5">
+                                                    <asp:TextBox runat="server" ID="TxtPasswordRepeat" PlaceHolder="Confirm Password" CssClass="form-control form-control-lg" TextMode="Password"></asp:TextBox>
                                                 </div>
 
                                                 <div class="form-outline form-white mb-5">
@@ -80,5 +76,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
 </asp:Content>

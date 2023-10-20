@@ -411,7 +411,6 @@
     <Content Include="Scripts\application.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\click-scroll.js" />
-    <Content Include="Scripts\core.min.js" />
     <Content Include="Scripts\crypto-js.min.js" />
     <Content Include="Scripts\custom-photo-admin.js" />
     <Content Include="Scripts\custom-photo.js" />

@@ -20,14 +20,12 @@
                                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtEmail">Email</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtPassword" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtPassword">Password</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtPassword" PlaceHolder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
                                                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="ForgotPassword.aspx">Forgot password?</a></p>
@@ -59,5 +57,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
 </asp:Content>

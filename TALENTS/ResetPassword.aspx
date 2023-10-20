@@ -18,14 +18,12 @@
 
                                                 <h2 class="fw-bold mb-5 text-uppercase">Reset Password</h2>
 
-                                                <div class="form-outline form-white mb-4">
-                                                    <asp:TextBox runat="server" ID="TxtPassword" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtPassword">Password</label>
+                                                <div class="mb-4">
+                                                    <asp:TextBox runat="server" ID="TxtPassword" PlaceHolder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <div class="form-outline form-white mb-5">
-                                                    <asp:TextBox runat="server" ID="TxtRepeatPW" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtRepeatPW">Repeat Password</label>
+                                                <div class="mb-5">
+                                                    <asp:TextBox runat="server" ID="TxtRepeatPW" PlaceHolder="Repeat Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
                                                 <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left bg-gradient" ClientIDMode="Static" />
@@ -48,5 +46,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
 </asp:Content>

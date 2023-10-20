@@ -18,9 +18,8 @@
 
                                                 <h2 class="fw-bold mb-2 text-uppercase mb-5">Recupero Password</h2>
 
-                                                <div class="form-outline form-white mb-5">
-                                                    <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
-                                                    <label class="form-label" for="TxtEmail">Email</label>
+                                                <div class="mb-5">
+                                                    <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
                                                 <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left bg-gradient" ClientIDMode="Static" />
@@ -43,5 +42,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
 </asp:Content>

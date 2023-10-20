@@ -112,16 +112,18 @@ namespace TALENTS.Controller
             registerModel.IsModel = IsModel;
             registerModel.IsUser = IsUser;
 
+            bool result = modelDao.Insert(registerModel);
+
             if (IsModel)
             {
                 ModSetting modSetting = new ModSetting();
-                modSetting.ModelId = model.Id;
+                modSetting.ModelId = registerModel.Id;
                 modSetting.IsGreen = false;
                 modSetting.IsAllowed = false;
                 modSettingDAO.Insert(modSetting);
             }
 
-            return modelDao.Insert(registerModel);
+            return result;
         }
     }
 }

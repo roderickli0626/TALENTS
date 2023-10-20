@@ -160,14 +160,6 @@
                                         <p class="text-success col-6 text-right" runat="server" id="SuccessAlarm" clientIDMode="static" visible="false">Save Biography Successed.</p>
                                     </div>
                                     <hr class="text-primary mb-4" />
-                                    <%--<asp:ScriptManager ID="ScriptManagerBio" runat="server"></asp:ScriptManager>
-                                    <asp:UpdatePanel runat="server" ID="UpdatePanelBio" ClientIDMode="Static">
-                                        <ContentTemplate>
-                                        </ContentTemplate>
-                                        <Triggers>
-                                            <asp:AsyncPostBackTrigger ControlID="BtnBio" />
-                                        </Triggers>
-                                    </asp:UpdatePanel>--%>
                                     <div class="row m-xs">
                                         <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
                                         <%--<asp:RequiredFieldValidator ID="ReqValName" runat="server" ErrorMessage="Please insert Name" ControlToValidate="TxtName" Display="None" Enabled="True"></asp:RequiredFieldValidator>--%>
@@ -176,24 +168,33 @@
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <div class="col-6">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtName" PlaceHolder="Name" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtName" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtName">Name <span class="text-danger">*</span></label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-6">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtSlogan" PlaceHolder="Slogan" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtSlogan" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtSlogan">Slogan</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <div class="col-6">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtAge" PlaceHolder="Age" CssClass="form-control form-control-lg" TextMode="Number"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtAge" CssClass="form-control form-control-lg" TextMode="Number"></asp:TextBox>
                                                 <label class="form-label" for="TxtAge">Age</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-4">
@@ -265,16 +266,22 @@
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtHeight" PlaceHolder="Altezza" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtHeight" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtHeight">Altezza</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtWeight" PlaceHolder="Peso" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtWeight" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtWeight">Peso</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-3">
                                             <div class="mb-4">
@@ -285,30 +292,42 @@
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtShoes" PlaceHolder="Scarpe" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtShoes" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtShoes">Scarpe</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtBust" PlaceHolder="Busto" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtBust" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtBust">Busto</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtWaist" PlaceHolder="Vita" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtWaist" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtWaist">Vita</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-3">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtHaunch" PlaceHolder="Fianchi" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtHaunch" CssClass="form-control form-control-lg"></asp:TextBox>
                                                 <label class="form-label" for="TxtHaunch">Fianchi</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="col-3">
                                             <div class="mb-4">
@@ -360,10 +379,13 @@
                                     </div>
                                     <div class="row" style="width: 800px;">
                                         <div class="col-12">
-                                            <div class="form-outline mb-4">
+                                            <div class="mb-4">
+                                                <asp:TextBox runat="server" ID="TxtPeculiarities" PlaceHolder="Particolarita" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            </div>
+                                            <%--<div class="form-outline mb-4">
                                                 <asp:TextBox runat="server" ID="TxtPeculiarities" CssClass="form-control form-control-lg" TextMode="MultiLine"></asp:TextBox>
                                                 <label class="form-label" for="TxtPeculiarities">Particolarita</label>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -1342,7 +1364,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
-    <script src="Scripts/core.min.js"></script>
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
     <script src="Scripts/gijgo.min.js"></script>
