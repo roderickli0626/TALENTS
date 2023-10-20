@@ -16,6 +16,7 @@ using TALENTS.Models;
 using TALENTS.Util;
 using System.Threading.Tasks;
 using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace TALENTS
 {
@@ -39,7 +40,7 @@ namespace TALENTS
                 Response.Redirect("~/Login.aspx");
                 return;
             }
-
+            
             string result = new SubscriptionUController().SubscriptionExpireDate(user.Id);
             HfPurchased.Value = (result != null).ToString();
 
@@ -83,50 +84,22 @@ namespace TALENTS
             }
             Model model = new ModelDAO().FindById(modelID);
 
+            //// Create Zoom Link
+            ////Task.Run(async () => meetingLink = await CreateMeetingLink()).Wait();
 
-            // Create Zoom Link
-            //Task.Run(async () => meetingLink = await CreateMeetingLink()).Wait();
-            ScriptManager.RegisterStartupScript(this, GetType(), "JitsiMeetAPI", @"
-                        $('#myModal').modal('hide');
-                        $('#mettingMoal').modal('show');
-                        // Generate a JWT token with the moderator role claim
-                        function generateToken(username) {
-                          const payload = {
-                            username: username,
-                            role: 'moderator',
-                          };
-                          const secretKey = 'your-secret-key'; // Replace with your own secret key
+            var client = new RestClient("https://api.daily.co/v1");
+            var request = new RestRequest("/rooms", Method.Post);
+            request.AddHeader("Authorization", $"Bearer {"baf0f87f25d4a695784a1df4d4ab125e8fc799ebc4ccf9eb5beecd8fe3bee433"}");
 
-                          // Hash the secret key using SHA256 algorithm
-                          const hashedKey = CryptoJS.SHA256(secretKey).toString(CryptoJS.enc.Base64);
+            string type = LinkType.SelectedValue;
+            if (type == "1") request.AddJsonBody(new { properties = new { enable_screenshare = false } });
+            else request.AddJsonBody(new { properties = new { enable_screenshare = true } });
+            var response = client.Execute(request);
+            var json = JObject.Parse(response.Content);
+            var meetingUrl = json["url"].ToString();
 
-                          // Generate the JWT token
-                          const token = jwt.sign(payload, hashedKey);
-                          return token;
-                        }
+            HfMeetingLink.Value = meetingUrl;
 
-                        // Example usage
-                        const username = 'USER'; // Replace with the authenticated user's username
-                        //const token = generateToken(username);
-                        const api = new JitsiMeetExternalAPI('meet.jit.si', {
-                                    roomName: 'Video-Meeting',
-                                    parentNode: document.querySelector('#jitsi-container'),
-                                    //jwt: token,
-                                    configOverwrite: {
-                                        startWithAudioMuted: true,
-                                        startWithVideoMuted: true,
-                                        enableWelcomePage: false,
-                                        disableRemoteMute: true,
-                                        disableRemoteControl: true,
-                                        disableP2P: true
-                                    }
-                        });", true);
-
-            // Retrieve the meeting URL from the Jitsi Meet API
-            string meetingUrl = ClientScript.GetWebResourceUrl(GetType(), "JitsiMeetAPI") + "&roomName=Video-Meeting";
-
-
-            HfMeetingLink.Value = "https://meet.jit.si" + meetingUrl;
             // Send Zoom Link to the Model
             ScriptManager.RegisterStartupScript(this, GetType(), "SendMeetingLink", "document.getElementById('" + BtnCreateLinkHidden.ClientID + "').click();", true);
         }

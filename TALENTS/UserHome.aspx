@@ -219,9 +219,8 @@
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-3 text-left bg-gradient text-danger" ClientIDMode="Static" />
                                             <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Create Link Failed" Display="None"></asp:CustomValidator>
                                             <asp:RadioButtonList ID="LinkType" CssClass="mx-auto" style="font-size: 22px;" runat="server">
-                                                <asp:ListItem Text="Only Chat" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="Video Call" Value="2"></asp:ListItem>
-                                                <asp:ListItem Text="Chat & Video Call" Value="3"></asp:ListItem>
+                                                <asp:ListItem Text="Voice Call" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="Video Call" Value="2" Selected="True"></asp:ListItem>
                                             </asp:RadioButtonList>
                                         </ContentTemplate>
                                         <Triggers>
@@ -251,7 +250,7 @@
 
                                 <!-- Modal body -->
                                 <div class="modal-body p-lg-5">
-                                    <div id="jitsi-container" style="height: 600px;"></div>
+                                    <iframe id="meetingFrame" style="height: 600px;width:100%;"></iframe>
                                 </div>
 
                                 <!-- Modal footer -->
@@ -291,8 +290,7 @@
         })
     </script>
 
-
-    <script src="https://meet.jit.si/external_api.js"></script>
+    <script src="https://unpkg.com/@daily-co/daily-js"></script>
     <script src="Scripts/crypto-js.min.js"></script>
     <script src="Scripts/jquery.signalR-2.4.3.js"></script>
     <script src="signalr/hubs"></script>
@@ -306,7 +304,10 @@
 
                 proxy.server.sendNotifications("MODELID-" + modelID + "," + meetingLink);
 
-                //$("#myModal").modal('hide');
+                $("#myModal").modal('hide');
+                $("#mettingMoal").modal('show');
+
+                $("#meetingFrame").attr('src', meetingLink);
                 //window.open(meetingLink, "_blank");
                 return false;
             });
