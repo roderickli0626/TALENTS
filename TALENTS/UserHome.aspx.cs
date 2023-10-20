@@ -91,9 +91,13 @@ namespace TALENTS
             var request = new RestRequest("/rooms", Method.Post);
             request.AddHeader("Authorization", $"Bearer {"baf0f87f25d4a695784a1df4d4ab125e8fc799ebc4ccf9eb5beecd8fe3bee433"}");
 
+            var epochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var expTime = DateTime.UtcNow.AddHours(1);
+            var expSeconds = (long)(expTime - epochTime).TotalSeconds;
+
             string type = LinkType.SelectedValue;
             if (type == "1") request.AddJsonBody(new { properties = new { enable_screenshare = false } });
-            else request.AddJsonBody(new { properties = new { enable_screenshare = true } });
+            else request.AddJsonBody(new { properties = new { enable_screenshare = true, exp = expSeconds } });
             var response = client.Execute(request);
             var json = JObject.Parse(response.Content);
             var meetingUrl = json["url"].ToString();
