@@ -239,6 +239,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Video Meeting Modal -->
+                    <div class="modal" id="mettingMoal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content text-white" style="background-color: #353535;">
+                                <!-- Modal Header -->
+                                <div class="modal-header pl-5">
+                                    <h2 class="modal-title">VIDEO METTING</h2>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body p-lg-5">
+                                    <div id="jitsi-container" style="height: 600px;"></div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer p-lg-5 justify-content-around">
+                                    <asp:Button runat="server" ID="BtnMeetingClose" ClientIDMode="Static" Text="CLOSE" CssClass="btn btn-lg bg-white"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -270,7 +292,8 @@
     </script>
 
 
-
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script src="Scripts/crypto-js.min.js"></script>
     <script src="Scripts/jquery.signalR-2.4.3.js"></script>
     <script src="signalr/hubs"></script>
     <script type="text/javascript">
@@ -283,8 +306,8 @@
 
                 proxy.server.sendNotifications("MODELID-" + modelID + "," + meetingLink);
 
-                $("#myModal").modal('hide');
-                window.open(meetingLink, "_blank");
+                //$("#myModal").modal('hide');
+                //window.open(meetingLink, "_blank");
                 return false;
             });
 

@@ -26,8 +26,10 @@ namespace TALENTS
 
         //
         private const string ZoomApiBaseUrl = "https://api.zoom.us/v2";
-        private const string ClientId = "YOUR_CLIENT_ID";
-        private const string ClientSecret = "YOUR_CLIENT_SECRET";
+        //private const string ClientId = "YOUR_CLIENT_ID";
+        private const string ClientId = "2wP9l2ObRvWQHqEVfMdnaA";
+        //private const string ClientSecret = "YOUR_CLIENT_SECRET";
+        private const string ClientSecret = "QbOj4txGLLX3l54SNasULOvPYsrlmQT3";
         //
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,6 +47,7 @@ namespace TALENTS
             {
                 LoadCity();
                 LoadModelPhotos();
+                           
             }
         }
 
@@ -83,84 +86,49 @@ namespace TALENTS
 
             // Create Zoom Link
             //Task.Run(async () => meetingLink = await CreateMeetingLink()).Wait();
-            string accessToken = GetAccessToken();
-            string meetingId = CreateMeeting(accessToken);
-            string zoomLink = $"https://zoom.us/j/{meetingId}";
+            ScriptManager.RegisterStartupScript(this, GetType(), "JitsiMeetAPI", @"
+                        $('#myModal').modal('hide');
+                        $('#mettingMoal').modal('show');
+                        // Generate a JWT token with the moderator role claim
+                        function generateToken(username) {
+                          const payload = {
+                            username: username,
+                            role: 'moderator',
+                          };
+                          const secretKey = 'your-secret-key'; // Replace with your own secret key
 
-            HfMeetingLink.Value = zoomLink;
+                          // Hash the secret key using SHA256 algorithm
+                          const hashedKey = CryptoJS.SHA256(secretKey).toString(CryptoJS.enc.Base64);
+
+                          // Generate the JWT token
+                          const token = jwt.sign(payload, hashedKey);
+                          return token;
+                        }
+
+                        // Example usage
+                        const username = 'USER'; // Replace with the authenticated user's username
+                        //const token = generateToken(username);
+                        const api = new JitsiMeetExternalAPI('meet.jit.si', {
+                                    roomName: 'Video-Meeting',
+                                    parentNode: document.querySelector('#jitsi-container'),
+                                    //jwt: token,
+                                    configOverwrite: {
+                                        startWithAudioMuted: true,
+                                        startWithVideoMuted: true,
+                                        enableWelcomePage: false,
+                                        disableRemoteMute: true,
+                                        disableRemoteControl: true,
+                                        disableP2P: true
+                                    }
+                        });", true);
+
+            // Retrieve the meeting URL from the Jitsi Meet API
+            string meetingUrl = ClientScript.GetWebResourceUrl(GetType(), "JitsiMeetAPI") + "&roomName=Video-Meeting";
+
+
+            HfMeetingLink.Value = "https://meet.jit.si" + meetingUrl;
             // Send Zoom Link to the Model
             ScriptManager.RegisterStartupScript(this, GetType(), "SendMeetingLink", "document.getElementById('" + BtnCreateLinkHidden.ClientID + "').click();", true);
         }
-
-        private string CreateMeeting(string accessToken)
-        {
-            string userId = GetUserId(accessToken);
-            string meetingId = CreateZoomMeeting(accessToken, userId);
-
-            return meetingId;
-        }
-
-        private string GetAccessToken()
-        {
-            var client = new RestClient("https://zoom.us/oauth/token");
-            var request = new RestRequest("", Method.Post);
-
-            request.AddParameter("grant_type", "client_credentials");
-            request.AddParameter("client_id", ClientId);
-            request.AddParameter("client_secret", ClientSecret);
-
-            var response = client.Execute(request);
-            var content = response.Content;
-
-            // Parse the response to get the access token
-            // You can use a JSON parsing library like Newtonsoft.Json
-            // Here's a simple example without using a library
-            string accessToken = content.Split(':')[1].Split(',')[0].Trim('"');
-
-            return accessToken;
-        }
-
-        private string CreateZoomMeeting(string accessToken, string userId)
-        {
-            var client = new RestClient($"{ZoomApiBaseUrl}/users/{userId}/meetings");
-            var request = new RestRequest("", Method.Post);
-
-            request.AddHeader("Authorization", $"Bearer {accessToken}");
-
-            // Set the meeting details
-            request.AddParameter("topic", "My Zoom Meeting");
-            request.AddParameter("type", 2); // Scheduled meeting
-            request.AddParameter("start_time", DateTime.UtcNow.AddMinutes(10).ToString("yyyy-MM-ddTHH:mm:ssZ"));
-            request.AddParameter("duration", 30); // 30 minutes
-
-            var response = client.Execute(request);
-            var content = response.Content;
-
-            // Parse the response to get the meeting ID
-            // You can use a JSON parsing library like Newtonsoft.Json
-            // Here's a simple example without using a library
-            string meetingId = content.Split(':')[1].Split(',')[0].Trim('"');
-
-            return meetingId;
-        }
-
-        private string GetUserId(string accessToken)
-        {
-            var client = new RestClient($"{ZoomApiBaseUrl}/users");
-            var request = new RestRequest("", Method.Get);
-
-            request.AddHeader("Authorization", $"Bearer {accessToken}");
-
-            var response = client.Execute(request);
-            var content = response.Content;
-
-            // Parse the response to get the user ID
-            // You can use a JSON parsing library like Newtonsoft.Json
-            // Here's a simple example without using a library
-            string userId = content.Split(':')[1].Split(',')[0].Trim('"');
-
-            return userId;
-        }
-
     }
 }
