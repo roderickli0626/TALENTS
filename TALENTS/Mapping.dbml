@@ -66,13 +66,6 @@
       <Association Name="IncallPlace_ModIncallPlace" Member="ModIncallPlaces" ThisKey="Id" OtherKey="IncallPlaceId" Type="ModIncallPlace" />
     </Type>
   </Table>
-  <Table Name="dbo.InstructionChat" Member="InstructionChats">
-    <Type Name="InstructionChat">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="InstructionChat_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="InstructionChatId" Type="ModContact" />
-    </Type>
-  </Table>
   <Table Name="dbo.Language" Member="Languages">
     <Type Name="Language">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -321,9 +314,9 @@
       <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="AddressCiv" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="InstructionChat_ModContact" Member="InstructionChat" ThisKey="InstructionChatId" OtherKey="Id" Type="InstructionChat" IsForeignKey="true" />
       <Association Name="SocialChat_ModContact" Member="SocialChat" ThisKey="SocialChatId" OtherKey="Id" Type="SocialChat" IsForeignKey="true" />
       <Association Name="Model_ModContact" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="InstructionChat_ModContact" Member="InstructionChat" ThisKey="InstructionChatId" OtherKey="Id" Type="InstructionChat" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserInfo" Member="UserInfos">
@@ -469,6 +462,14 @@
       <Column Name="Title" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Model_UserNotice" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstructionChat" Member="InstructionChats">
+    <Type Name="InstructionChat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="InstructionChat_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="InstructionChatId" Type="ModContact" />
     </Type>
   </Table>
 </Database>

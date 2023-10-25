@@ -18,6 +18,7 @@ namespace TALENTS.Controller
         ModelBiographyDAO biographyDao;
         ModPhotoDAO modPhotoDao;
         ModSettingDAO modSettingDao;
+        ModContactDAO modContactDao;
         SubscriptionMController subscriptionMController;
 
         public ModelController()
@@ -26,6 +27,7 @@ namespace TALENTS.Controller
             biographyDao = new ModelBiographyDAO();
             modPhotoDao = new ModPhotoDAO();
             modSettingDao = new ModSettingDAO();
+            modContactDao = new ModContactDAO();
             subscriptionMController = new SubscriptionMController();
         }
 
@@ -48,6 +50,8 @@ namespace TALENTS.Controller
                 else if (modelCheck.IsPurchased && !modelCheck.IsActive) modelCheck.Mark = "<div class=\"ribbon red live-chat\"><span>OFFLINE</span></div>";
                 else modelCheck.Mark = "";
                 //
+                ModContact contact = modContactDao.FindByModel(modBiography.ModelId).FirstOrDefault();
+                if (contact != null) modelCheck.Type = contact.InstructionChat.Type ?? 0;
                 modelChecks.Add(modelCheck);
             }
             modelChecks = modelChecks.OrderByDescending(m => m.IsPurchased).ThenByDescending(m => m.IsActive).ToList();

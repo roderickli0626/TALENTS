@@ -96,7 +96,7 @@ namespace TALENTS
             var expSeconds = (long)(expTime - epochTime).TotalSeconds;
 
             string type = LinkType.SelectedValue;
-            if (type == "1") request.AddJsonBody(new { properties = new { enable_screenshare = false } });
+            if (type == "1") request.AddJsonBody(new { properties = new { enable_screenshare = false, exp = expSeconds } });
             else request.AddJsonBody(new { properties = new { enable_screenshare = true, exp = expSeconds } });
             var response = client.Execute(request);
             var json = JObject.Parse(response.Content);

@@ -180,7 +180,7 @@
                                 <ItemTemplate>
                                     <div class="col-lg-4 col-12 text-center p-3">
                                         <div class="row">
-                                            <div class="col-12" style="height:426px; overflow:hidden;padding:10px;">
+                                            <div class="col-12" data-type="<%# Eval("Type") %>" style="height:426px; overflow:hidden;padding:10px;">
                                                 <%# Eval("Mark") %>
                                                 <a href="UserHomeDetail.aspx?modelId=<%#Eval("Id") %>" class="img-title">
                                                     <image src="Upload/Photos/<%#Eval("Image") %>"></image>
@@ -219,8 +219,8 @@
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-3 text-left bg-gradient text-danger" ClientIDMode="Static" />
                                             <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Create Link Failed" Display="None"></asp:CustomValidator>
                                             <asp:RadioButtonList ID="LinkType" CssClass="mx-auto" style="font-size: 22px;" runat="server">
-                                                <asp:ListItem Text="Voice Call" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="Video Call" Value="2" Selected="True"></asp:ListItem>
+                                                <asp:ListItem Text="Voice Call" id="Voice" ClientIDMode="static" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="Video Call" id="Video" ClientIDMode="static" Value="2" Selected="True"></asp:ListItem>
                                             </asp:RadioButtonList>
                                         </ContentTemplate>
                                         <Triggers>
@@ -286,6 +286,21 @@
             $("#HfModelID").val($(this)[0].dataset.id);
             $("#myModal").modal('show');
             $("#ValSummary").addClass("d-none");
+            if ($(this).parent()[0].dataset.type == "1") {
+                $("#Video").addClass("d-none");
+                $("#Voice").removeClass("d-none");
+                $($("#Voice").children()[0]).prop('checked', true);
+            }
+            else if ($(this).parent()[0].dataset.type == "2") {
+                $("#Video").removeClass("d-none");
+                $("#Voice").addClass("d-none");
+                $($("#Video").children()[0]).prop('checked', true);
+            }
+            else {
+                $("#Video").removeClass("d-none");
+                $("#Voice").removeClass("d-none");
+                $($("#Video").children()[0]).prop('checked', true);
+            }
             return false;
         })
     </script>

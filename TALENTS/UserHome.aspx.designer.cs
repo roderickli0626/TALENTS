@@ -123,6 +123,24 @@ namespace TALENTS
         protected global::System.Web.UI.WebControls.RadioButtonList LinkType;
 
         /// <summary>
+        /// Voice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListItem Voice;
+
+        /// <summary>
+        /// Video control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListItem Video;
+
+        /// <summary>
         /// BtnCreateLink control.
         /// </summary>
         /// <remarks>
