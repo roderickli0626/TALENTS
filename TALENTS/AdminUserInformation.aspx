@@ -27,6 +27,12 @@
             border: none;
         }
 
+        .textField {
+            box-shadow: none !important;
+            border: none;
+            text-align: center;
+        }
+
         #select2-ComboCity-container {
             text-align: center
         }
@@ -58,7 +64,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtName" PlaceHolder="Name" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtName">Name</label>
+                                                <asp:TextBox runat="server" ID="TxtName" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtName" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -67,7 +76,10 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtSurname" PlaceHolder="Surname" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtSurname">Surname</label>
+                                                <asp:TextBox runat="server" ID="TxtSurname" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtSurname" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -78,7 +90,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtAddress" PlaceHolder="Address" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtAddress">Address</label>
+                                                <asp:TextBox runat="server" ID="TxtAddress" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtAddress" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -87,7 +102,10 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtCAP" PlaceHolder="CAP" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtCAP">CAP</label>
+                                                <asp:TextBox runat="server" ID="TxtCAP" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtCAP" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -116,13 +134,19 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtBirthDay" placeholder="BirthDay" CssClass="form-control form-control-lg" ClientIDMode="Static"
-                                                data-plugin-datepicker="" data-plugin-options='{ "format": "dd/mm/yyyy", "todayHighlight": "true" }'></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtCAP">BirthDay</label>
+                                                <asp:TextBox runat="server" ID="TxtBirthDay" CssClass="form-control textField" ClientIDMode="Static"
+                                                    data-plugin-datepicker="" data-plugin-options='{ "format": "dd/mm/yyyy", "todayHighlight": "true" }'></asp:TextBox>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtSociety" PlaceHolder="Society" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtSociety">Society</label>
+                                                <asp:TextBox runat="server" ID="TxtSociety" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtSociety" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -133,7 +157,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtVat" PlaceHolder="Vat_Number" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtVat">Vat_Number</label>
+                                                <asp:TextBox runat="server" ID="TxtVat" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtVat" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -142,7 +169,10 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtLicenze" PlaceHolder="Licenze_Number" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtLicenze">Licenze_Number</label>
+                                                <asp:TextBox runat="server" ID="TxtLicenze" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtLicenze" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -153,7 +183,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtWebSite" PlaceHolder="WebSite" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtWebSite">WebSite</label>
+                                                <asp:TextBox runat="server" ID="TxtWebSite" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtWebSite" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -162,7 +195,10 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtEmail">Email</label>
+                                                <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtEmail" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -173,7 +209,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtMobile" PlaceHolder="Mobile" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtMobile">Mobile</label>
+                                                <asp:TextBox runat="server" ID="TxtMobile" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtMobile" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -182,7 +221,10 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtPhone" PlaceHolder="Phone" CssClass="form-control form-control-lg"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtPhone">Phone</label>
+                                                <asp:TextBox runat="server" ID="TxtPhone" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtPhone" CssClass="form-control form-control-lg"></asp:TextBox>
@@ -193,7 +235,10 @@
                                 <div class="row" style="width: 800px;">
                                     <div class="col-12">
                                         <div class="mb-4">
-                                            <asp:TextBox runat="server" ID="TxtNote" PlaceHolder="Note" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
+                                                <label class="form-label" for="TxtNote">Note</label>
+                                                <asp:TextBox runat="server" ID="TxtNote" CssClass="form-control textField"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <%--<div class="form-outline mb-4">
                                             <asp:TextBox runat="server" ID="TxtNote" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>

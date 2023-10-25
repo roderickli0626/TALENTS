@@ -422,10 +422,9 @@
                                             <asp:Repeater ID="LanguageRepeater" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive ">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
                                                                     <th>Language</th>
                                                                     <th>Level</th>
                                                                 </tr>
@@ -434,9 +433,9 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("Language")%></td>
-                                                        <td><%# Eval("Level")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Language")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Level")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -453,10 +452,10 @@
                                             <asp:Repeater ID="RepeaterModServices" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive ">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Group Name</th>
                                                                     <th>Service</th>
                                                                     <th>Amount (/h)</th>
@@ -466,10 +465,10 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("Group")%></td>
-                                                        <td><%# Eval("Service")%></td>
-                                                        <td><%# Eval("Amount")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Group")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Service")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Amount")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -487,10 +486,10 @@
                                             <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Work City</th>
                                                                 </tr>
                                                             </thead>
@@ -498,8 +497,8 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("WorkCity")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("WorkCity")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -513,10 +512,10 @@
                                             <asp:Repeater ID="RepeaterModIncall" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Incall Place</th>
                                                                 </tr>
                                                             </thead>
@@ -524,8 +523,8 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("IncallPlace")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("IncallPlace")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -539,10 +538,10 @@
                                             <asp:Repeater ID="RepeaterModOutcall" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Outcall Place</th>
                                                                 </tr>
                                                             </thead>
@@ -550,8 +549,8 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("OutcallPlace")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("OutcallPlace")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -568,10 +567,10 @@
                                             <asp:Repeater ID="RepeaterModWorkHour" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive ">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Work Day</th>
                                                                     <th>Work Start Time</th>
                                                                     <th>Work End Time</th>
@@ -581,10 +580,10 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("WorkDay")%></td>
-                                                        <td><%# Eval("WorkSHour")%></td>
-                                                        <td><%# Eval("WorkEHour")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("WorkDay")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("WorkSHour")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("WorkEHour")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -602,10 +601,10 @@
                                             <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Incall Place</th>
                                                                     <th>Duration</th>
                                                                     <th>Rate</th>
@@ -615,10 +614,10 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("IncallPlace")%></td>
-                                                        <td><%# Eval("Duration")%></td>
-                                                        <td><%# Eval("Rate")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("IncallPlace")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Duration")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Rate")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -632,10 +631,10 @@
                                             <asp:Repeater ID="RepeaterModOutcallRate" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Outcall Place</th>
                                                                     <th>Duration</th>
                                                                     <th>Rate</th>
@@ -645,10 +644,10 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("OutcallPlace")%></td>
-                                                        <td><%# Eval("Duration")%></td>
-                                                        <td><%# Eval("Rate")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("OutcallPlace")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Duration")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Rate")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -774,10 +773,10 @@
                                             <asp:Repeater ID="RepeaterTour" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive ">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>City</th>
                                                                     <th>From</th>
                                                                     <th>To</th>
@@ -789,12 +788,12 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td><%# Eval("City")%></td>
-                                                        <td><%# Eval("From")%></td>
-                                                        <td><%# Eval("To")%></td>
-                                                        <td><%# Eval("Phone")%></td>
-                                                        <td><%# Eval("Email")%></td>
+                                                        <%--<td><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("City")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("From")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("To")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Phone")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Email")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -811,10 +810,10 @@
                                             <asp:Repeater ID="RepeaterReview" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive ">
-                                                        <table class="table table-bordered table-striped text-center" style="font-size: 18px;">
+                                                        <table class="table table-striped text-center" style="font-size: 18px;">
                                                             <thead class="thead-dark">
                                                                 <tr>
-                                                                    <th>No</th>
+                                                                    <%--<th>No</th>--%>
                                                                     <th>Content</th>
                                                                     <th>Date</th>
                                                                     <th>User</th>
@@ -824,15 +823,15 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td style="vertical-align: middle"><%# (Container.ItemIndex + 1).ToString() %></td>
-                                                        <td style="vertical-align: middle">
+                                                        <%--<td style="vertical-align: middle"><%# (Container.ItemIndex + 1).ToString() %></td>--%>
+                                                        <td style="vertical-align: middle; border-bottom: 1px solid #dee2e6">
                                                             <%# Eval("Content") %>
                                                             <div class="text-white">
                                                                 <%# Eval("Comment")%>
                                                             </div>
                                                         </td>
-                                                        <td style="vertical-align: middle"><%# Eval("ReviewDate")%></td>
-                                                        <td style="vertical-align: middle"><%# Eval("User")%></td>
+                                                        <td style="vertical-align: middle; border-bottom: 1px solid #dee2e6"><%# Eval("ReviewDate")%></td>
+                                                        <td style="vertical-align: middle; border-bottom: 1px solid #dee2e6"><%# Eval("User")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>

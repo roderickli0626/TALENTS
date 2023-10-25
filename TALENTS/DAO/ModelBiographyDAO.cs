@@ -38,8 +38,8 @@ namespace TALENTS.DAO
 
         public List<ModBiography> FindByCity (int cityId)
         {
-            if (cityId == 0) return GetContext().ModBiographies.ToList();
-            return GetContext().ModBiographies.Where(m => m.CityResidenceId == cityId).ToList();
+            if (cityId == 0) return GetContext().ModBiographies.Where(m => m.Model.ModSettings.FirstOrDefault().IsAllowed ?? false).ToList();
+            return GetContext().ModBiographies.Where(m => m.CityResidenceId == cityId && (m.Model.ModSettings.FirstOrDefault().IsAllowed ?? false)).ToList();
         }
 
         public ModBiography FindByModelId(int modelId)
