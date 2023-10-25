@@ -178,8 +178,8 @@
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
                 <div class="privacy-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Photo Requests</a>
+                    <a href="AdminPolicy.aspx">Privacy Policy</a>
+                    <a href="AdminRequests.aspx">Photo Requests</a>
                 </div>
             </div>
         </div>

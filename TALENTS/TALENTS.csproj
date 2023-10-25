@@ -258,6 +258,8 @@
     <Content Include="AdminModelInformation.aspx" />
     <Content Include="AdminModelSubscriptions.aspx" />
     <Content Include="AdminNotice.aspx" />
+    <Content Include="AdminPolicy.aspx" />
+    <Content Include="AdminRequests.aspx" />
     <Content Include="AdminReview.aspx" />
     <Content Include="AdminUser.aspx" />
     <Content Include="AdminUserBasicInfo.aspx" />
@@ -344,12 +346,16 @@
     <Content Include="ModelHomeDetail.aspx" />
     <Content Include="ModelInformation.aspx" />
     <Content Include="ModelNoticeBoard.aspx" />
+    <Content Include="ModelPolicy.aspx" />
+    <Content Include="ModelRequests.aspx" />
     <Content Include="ModelSubscription.aspx" />
     <Content Include="PaymentCancel.aspx" />
     <Content Include="PaymentCancelU.aspx" />
     <Content Include="PaymentComplete.aspx" />
     <Content Include="PaymentCompleteU.aspx" />
+    <Content Include="Policy.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Requests.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\baguetteBox.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -504,6 +510,8 @@
     <Content Include="UserHomeDetail.aspx" />
     <Content Include="UserInformation.aspx" />
     <Content Include="UserNoticeBoard.aspx" />
+    <Content Include="UserPolicy.aspx" />
+    <Content Include="UserRequests.aspx" />
     <Content Include="UserSubscription.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -559,6 +567,20 @@
     </Compile>
     <Compile Include="AdminPage.Master.designer.cs">
       <DependentUpon>AdminPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPolicy.aspx.cs">
+      <DependentUpon>AdminPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPolicy.aspx.designer.cs">
+      <DependentUpon>AdminPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRequests.aspx.cs">
+      <DependentUpon>AdminRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminRequests.aspx.designer.cs">
+      <DependentUpon>AdminRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminReview.aspx.cs">
       <DependentUpon>AdminReview.aspx</DependentUpon>
@@ -758,6 +780,20 @@
     <Compile Include="ModelPage.Master.designer.cs">
       <DependentUpon>ModelPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="ModelPolicy.aspx.cs">
+      <DependentUpon>ModelPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModelPolicy.aspx.designer.cs">
+      <DependentUpon>ModelPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelRequests.aspx.cs">
+      <DependentUpon>ModelRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModelRequests.aspx.designer.cs">
+      <DependentUpon>ModelRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModelSubscription.aspx.cs">
       <DependentUpon>ModelSubscription.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -823,6 +859,13 @@
     <Compile Include="Payment\Paypal\PaymentConfiguration.cs" />
     <Compile Include="Payment\Paypal\PaymentDetails.cs" />
     <Compile Include="Payment\Paypal\PaymentPrepare.cs" />
+    <Compile Include="Policy.aspx.cs">
+      <DependentUpon>Policy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Policy.aspx.designer.cs">
+      <DependentUpon>Policy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -830,6 +873,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Requests.aspx.cs">
+      <DependentUpon>Requests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Requests.aspx.designer.cs">
+      <DependentUpon>Requests.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
@@ -886,6 +936,20 @@
     </Compile>
     <Compile Include="UserPage.Master.designer.cs">
       <DependentUpon>UserPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserPolicy.aspx.cs">
+      <DependentUpon>UserPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPolicy.aspx.designer.cs">
+      <DependentUpon>UserPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserRequests.aspx.cs">
+      <DependentUpon>UserRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserRequests.aspx.designer.cs">
+      <DependentUpon>UserRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserSubscription.aspx.cs">
       <DependentUpon>UserSubscription.aspx</DependentUpon>
