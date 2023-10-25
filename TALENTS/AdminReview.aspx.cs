@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -36,14 +37,14 @@ namespace TALENTS
             List<Model> users = new List<Model>();
             users = new ModelDAO().FindAllUsers();
             ComboUser.Items.Clear();
-            ControlUtil.DataBind(ComboUser, users, "Id", "Username", 0, "[unassigned]");
+            ControlUtil.DataBind(ComboUser, users, "Id", "Username", 0, "[Select User]");
         }
         private void LoadModels()
         {
             List<Model> models = new List<Model>();
             models = new ModelDAO().FindAllModels();
             ComboModel.Items.Clear();
-            ControlUtil.DataBind(ComboModel, models, "Id", "Username", 0, "[unassigned]");
+            ControlUtil.DataBind(ComboModel, models, "Id", "Username", 0, "[Select Model]");
         }
 
         protected void BtnSaveReview_Click(object sender, EventArgs e)
@@ -74,7 +75,12 @@ namespace TALENTS
                 ServerValidator.IsValid = false;
                 return;
             }
-
+            if (allowed)
+            {
+                // Send Email to Model
+                Model model = new ModelDAO().FindById(modelId);
+                SendEmail(model.Email);
+            }
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
@@ -90,6 +96,7 @@ namespace TALENTS
             }
 
             int userId = ControlUtil.GetSelectedValue(ComboUser) ?? 0;
+            int modelId = ControlUtil.GetSelectedValue(ComboModel) ?? 0;
             bool allowed = switch1.Checked;
             string phone = TxtPhone.Text;
             string comment = TxtComment.Text;
@@ -102,7 +109,39 @@ namespace TALENTS
                 return;
             }
 
+            if (allowed)
+            {
+                // Send Email to Model
+                ModReview modReview = new ModReviewDAO().FindByID(reviewId ?? 0);
+                Model model = new ModelDAO().FindById(modelId);
+                if (!(modReview.Allowed ?? false))
+                {
+                    SendEmail(model.Email);
+                }
+            }
+
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        private void SendEmail(string email)
+        {
+            //Send Email
+            MailMessage Msg = new MailMessage();
+            Msg.From = new MailAddress("Krandall2005@gmail.com", "TALENTS");// Sender details here, replace with valid value
+            Msg.Subject = "A new review added!"; // subject of email
+            Msg.To.Add(email); //Add Email id, to which we will send email
+            Msg.Body = "Added a new review.";
+            Msg.IsBodyHtml = true;
+            Msg.Priority = MailPriority.High;
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false; // to get rid of error "SMTP server requires a secure connection"
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+
+            smtp.Credentials = new System.Net.NetworkCredential("krandall2005@gmail.com", "fyjlmiowttdaovfi");// replace with valid value
+            smtp.EnableSsl = true;
+
+            smtp.Send(Msg);
         }
     }
 }

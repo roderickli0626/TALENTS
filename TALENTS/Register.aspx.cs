@@ -54,7 +54,7 @@ namespace TALENTS
             if (success)
             {
                 //Send Email to Admin
-                //SendEmail(email);
+                SendEmail(email);
                 Response.Redirect("~/Login.aspx");
             }
             else

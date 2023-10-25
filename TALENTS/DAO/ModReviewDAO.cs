@@ -20,6 +20,11 @@ namespace TALENTS.DAO
             IEnumerable<ModReview> table = GetContext().ModReviews.Where(m => m.ModelId == modelId);
             return table.ToList();
         }
+        public ModReview FindByID(int id)
+        {
+            IEnumerable<ModReview> table = GetContext().ModReviews.Where(m => m.Id == id);
+            return table.FirstOrDefault();
+        }
         public bool Insert(ModReview modReview)
         {
             GetContext().ModReviews.InsertOnSubmit(modReview);

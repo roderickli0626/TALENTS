@@ -76,7 +76,7 @@ namespace TALENTS
         {
             //Send Email
             MailMessage Msg = new MailMessage();
-            Msg.From = new MailAddress("Krandall2005@gmail.com", "BnB Host");// Sender details here, replace with valid value
+            Msg.From = new MailAddress("Krandall2005@gmail.com", "TALENTS");// Sender details here, replace with valid value
             Msg.Subject = "Pagamento Paypal Confermato!"; // subject of email
             Msg.To.Add(Session["CurrentUserEmail"].ToString()); //Add Email id, to which we will send email
             Msg.Body = "Tu hai pagato";

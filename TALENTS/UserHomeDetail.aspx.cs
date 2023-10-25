@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
@@ -178,8 +179,30 @@ namespace TALENTS
                 ServerValidator.IsValid = false;
                 return;
             }
-
+            // Send Email to Admin
+            SendEmail(user.Email);
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        private void SendEmail(string email)
+        {
+            //Send Email
+            MailMessage Msg = new MailMessage();
+            Msg.From = new MailAddress("Krandall2005@gmail.com", "TALENTS");// Sender details here, replace with valid value
+            Msg.Subject = "A new review added!"; // subject of email
+            Msg.To.Add("krandall2005@gmail.com"); //Add Email id, to which we will send email
+            Msg.Body = email + " added a new review.";
+            Msg.IsBodyHtml = true;
+            Msg.Priority = MailPriority.High;
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false; // to get rid of error "SMTP server requires a secure connection"
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+
+            smtp.Credentials = new System.Net.NetworkCredential("krandall2005@gmail.com", "fyjlmiowttdaovfi");// replace with valid value
+            smtp.EnableSsl = true;
+
+            smtp.Send(Msg);
         }
     }
 }
