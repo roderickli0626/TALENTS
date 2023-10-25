@@ -94,6 +94,8 @@ namespace TALENTS
                 ServerValidator.IsValid = false;
                 return;
             }
+            ModReview modReview = new ModReviewDAO().FindByID(reviewId ?? 0);
+            bool oldStatus = modReview.Allowed ?? false;
 
             int userId = ControlUtil.GetSelectedValue(ComboUser) ?? 0;
             int modelId = ControlUtil.GetSelectedValue(ComboModel) ?? 0;
@@ -112,9 +114,8 @@ namespace TALENTS
             if (allowed)
             {
                 // Send Email to Model
-                ModReview modReview = new ModReviewDAO().FindByID(reviewId ?? 0);
                 Model model = new ModelDAO().FindById(modelId);
-                if (!(modReview.Allowed ?? false))
+                if (!oldStatus)
                 {
                     SendEmail(model.Email);
                 }

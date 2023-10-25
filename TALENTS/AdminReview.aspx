@@ -267,21 +267,29 @@
                     "width": "60%",
                     "data": "Content",
                     "render": function (data, type, row, meta) {
-                        return data + '<div>' + row.Comment + '</div>';
+                        var allowed = row.Allowed;
+                        if (allowed) {
+                            var badge = '<span class="badge badge-pill badge-primary" style="float:right;font-size:12px;">ALLOWED</span>'
+                        }
+                        else {
+                            var badge = '<span class="badge badge-pill badge-danger" style="float:right;font-size:12px;">UNALLOWED</span>'
+                        }
+                        return data + '<div>' + row.Comment + '</div>' + badge;
                     }
                 }, {
                     "data": "ReviewDate",
                 }, {
                     "data": "User",
                 }, {
+                    "width": "10%",
                     "render": function (data, type, row, meta) {
                         return '<a href="#" class="btn-delete mr-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit"><i class="fa fa-edit" style="font-size:25px"></i></a>';
                     }
-                    }, {
-                    "class": "d-none",
-                    "render": function (data, type, row, meta) {
-                        return "UM" + row.UserId + row.ModelId;
-                    }
+                }, {
+                "class": "d-none",
+                "render": function (data, type, row, meta) {
+                    return "UM" + row.UserId + row.ModelId;
+                }
                 }],
 
                 "fnServerParams": function (aoData) {
@@ -289,7 +297,7 @@
                 },
 
                 "rowCallback": function (row, data, index) {
-                    $(row).find('td').css({ 'vertical-align': 'middle', 'padding': 0 });
+                    $(row).find('td').css({ 'vertical-align': 'middle' });
                     $("#review-table_wrapper").css('width', '100%');
                 }
             });
