@@ -249,19 +249,19 @@
                             </div>
                             <div class="col-12 pb-2 pl-0">
                                 <h4 class="d-inline">Altezza: </h4>
-                                <h4 runat="server" id="H1" class="d-inline"></h4>
+                                <h4 runat="server" id="ModelHeight0" class="d-inline"></h4>
                             </div>
                             <div class="col-12 pb-2 pl-0">
-                                <h4 class="d-inline">Taglia: </h4>
-                                <h4 runat="server" id="H2" class="d-inline"></h4>
+                                <h4 class="d-inline">Peso: </h4>
+                                <h4 runat="server" id="ModelWeight0" class="d-inline"></h4>
                             </div>
                             <div class="col-12 pb-2 pl-0">
                                 <h4 class="d-inline">Occhi: </h4>
-                                <h4 runat="server" id="H3" class="d-inline"></h4>
+                                <h4 runat="server" id="ModelEye0" class="d-inline"></h4>
                             </div>
                             <div class="col-12 pb-2 pl-0">
                                 <h4 class="d-inline">Capelli: </h4>
-                                <h4 runat="server" id="H4" class="d-inline"></h4>
+                                <h4 runat="server" id="ModelHairColor0" class="d-inline"></h4>
                             </div>
                         </div>
                         <div class="swiper-container gallery-top" style="padding-right: 200px;">
