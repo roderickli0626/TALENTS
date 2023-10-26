@@ -275,7 +275,8 @@ ol {
 
 .header-section {
 	background: #353535;
-	padding: 38px 0;
+/*	padding: 38px 0;	*/
+	padding: 8px 0;
 	position: absolute;
 	left: 0;
 	width: 100%;

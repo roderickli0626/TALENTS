@@ -81,7 +81,7 @@
 
             .gallery-thumbs .swiper-slide {
                 width: 25%;
-                height: 100%;
+                height: 150%;
                 opacity: 0.4;
             }
 
@@ -214,7 +214,7 @@
         }
 
         .tab-content {
-            background-color: rgb(0,0,0,0.6);
+            background-color: rgb(0,0,0,0.5);
             border-radius: 5px;
             color: white;
             padding: 20px;
@@ -233,13 +233,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="hero-slider">
         <div class="slider-item">
-            <div class="set-bg" style="padding-top: 110px; background-color: gray;">
+            <div class="set-bg" style="padding-top: 50px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
 
                     <div class="site-wrap" style="position: relative; height: 1000px; overflow: hidden">
                         <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
-                            <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
-                            <div class="col-12 pl-0">
+                            <h1 runat="server" id="ModelSurname" class="pb-3" style="color: #ff9e22;"></h1>
+                            <div class="col-12 pb-2 pl-0">
                                 <h4 class="d-inline">Citta: </h4>
                                 <h4 runat="server" id="ModelResid" class="d-inline"></h4>
                             </div>
@@ -278,29 +278,30 @@
                         <div class="pl-2 pr-2 text-white" style="width: auto; position: absolute; bottom: 20%; right: 30px;">
                             <div class="" style="width: 600px;">
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist" style="display: none">
-                                    <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
+                                <!-- Per ingrandire i caratteri sulle tabs <ul class="nav nav-tabs" role="tablist" style="display: none;"> -->
+                                <ul class="nav nav-tabs" role="tablist" style="font-size: 18px;">
+                                    <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biografia</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab2" role="tab" data-toggle="tab">About Me</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Language</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Services</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Work City</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Work Hours</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Rates</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contacts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Photos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Videos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Natural Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Lingue</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Servizi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Residenza</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Orari</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Tariffe</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contatti</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Fotos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Video</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Foto Nat.</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab14" role="tab" data-toggle="tab">Tour</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab15" role="tab" data-toggle="tab">Reviews</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab15" role="tab" data-toggle="tab">Feedback</a></li>
                                 </ul>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content" style="display: none; height: 300px; overflow: auto;">
+                                <div class="tab-content" style="display: none; height: 450px; overflow: auto;">
                                     <div role="tabpanel" class="tab-pane fade show active" id="tab1">
                                         <div class="align-items-center pt-lg-5 ">
                                             <div class="row pl-lg-5 pb-3 ">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Name: </h4>
+                                                    <h4 class="d-inline text-primary">Nome: </h4>
                                                     <h4 runat="server" id="ModelName" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
@@ -308,91 +309,91 @@
                                                     <h4 runat="server" id="ModelSlogan" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Age: </h4>
+                                                    <h4 class="d-inline text-primary">Età: </h4>
                                                     <h4 runat="server" id="ModelAge" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Sex: </h4>
+                                                    <h4 class="d-inline text-primary">Sesso: </h4>
                                                     <h4 runat="server" id="ModelSex" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Ethnicity: </h4>
+                                                    <h4 class="d-inline text-primary">Etnia: </h4>
                                                     <h4 runat="server" id="ModelEthnicity" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Nationality: </h4>
+                                                    <h4 class="d-inline text-primary">Nazionalità: </h4>
                                                     <h4 runat="server" id="ModelNationality" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Residence: </h4>
+                                                    <h4 class="d-inline text-primary">Citta: </h4>
                                                     <h4 runat="server" id="ModelResidence" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Hair Color: </h4>
+                                                    <h4 class="d-inline text-primary">Colore Capelli: </h4>
                                                     <h4 runat="server" id="ModelHairColor" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Hair Length: </h4>
+                                                    <h4 class="d-inline text-primary">Lungh. Capelli: </h4>
                                                     <h4 runat="server" id="ModelHairLength" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Eye: </h4>
+                                                    <h4 class="d-inline text-primary">Occhi: </h4>
                                                     <h4 runat="server" id="ModelEye" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Height: </h4>
+                                                    <h4 class="d-inline text-primary">Altezza: </h4>
                                                     <h4 runat="server" id="ModelHeight" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Weight: </h4>
+                                                    <h4 class="d-inline text-primary">Peso: </h4>
                                                     <h4 runat="server" id="ModelWeight" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Dress Size: </h4>
+                                                    <h4 class="d-inline text-primary">Taglia: </h4>
                                                     <h4 runat="server" id="ModelDress" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Shoes: </h4>
+                                                    <h4 class="d-inline text-primary">Scarpe: </h4>
                                                     <h4 runat="server" id="ModelShoes" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Bust: </h4>
+                                                    <h4 class="d-inline text-primary">Busto: </h4>
                                                     <h4 runat="server" id="ModelBust" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Waist: </h4>
+                                                    <h4 class="d-inline text-primary">Fianchi: </h4>
                                                     <h4 runat="server" id="ModelWaist" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Haunch: </h4>
+                                                    <h4 class="d-inline text-primary">Vita: </h4>
                                                     <h4 runat="server" id="ModelHaunch" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Breast Size: </h4>
+                                                    <h4 class="d-inline text-primary">Taglia Seno: </h4>
                                                     <h4 runat="server" id="ModelBreast" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                             <div class="row pl-lg-5 pb-3">
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Smoker: </h4>
+                                                    <h4 class="d-inline text-primary">Fumo: </h4>
                                                     <h4 runat="server" id="ModelSmoker" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Tattoos: </h4>
+                                                    <h4 class="d-inline text-primary">Tatuaggi: </h4>
                                                     <h4 runat="server" id="ModelTattoos" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-4 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Drinker: </h4>
+                                                    <h4 class="d-inline text-primary">Bere: </h4>
                                                     <h4 runat="server" id="ModelDrinker" class="d-inline"></h4>
                                                 </div>
                                             </div>
@@ -402,7 +403,7 @@
                                                     <h4 runat="server" id="ModelPiercing" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-8 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Peculiarities: </h4>
+                                                    <h4 class="d-inline text-primary">Particolarità: </h4>
                                                     <h4 runat="server" id="ModelPeculiarities" class="d-inline"></h4>
                                                 </div>
                                             </div>
@@ -426,8 +427,8 @@
                                                             <thead class="thead-dark">
                                                                 <tr>
                                                                     <%--<th>No</th>--%>
-                                                                    <th>Language</th>
-                                                                    <th>Level</th>
+                                                                    <th>Lingua</th>
+                                                                    <th>Livello</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -457,9 +458,9 @@
                                                             <thead class="thead-dark">
                                                                 <tr>
                                                                     <%--<th>No</th>--%>
-                                                                    <th>Group Name</th>
-                                                                    <th>Service</th>
-                                                                    <th>Amount (/h)</th>
+                                                                    <th>Categoria</th>
+                                                                    <th>Servizio</th>
+                                                                    <th>Importo</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -483,7 +484,7 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade show" id="tab6">
                                         <div class="d-flex pt-lg-5 flex-column ">
-                                            <h4 class="mb-3">Work Cities: </h4>
+                                            <h4 class="mb-3">Città di lavoro: </h4>
                                             <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
@@ -491,7 +492,7 @@
                                                             <thead class="thead-dark">
                                                                 <tr>
                                                                     <%--<th>No</th>--%>
-                                                                    <th>Work City</th>
+                                                                    <th>Città</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -509,7 +510,7 @@
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
-                                            <h4 class="mb-3">Incall Places: </h4>
+                                            <h4 class="mb-3">Incall: </h4>
                                             <asp:Repeater ID="RepeaterModIncall" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
@@ -535,7 +536,7 @@
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
-                                            <h4 class="mb-3">Outcall Places: </h4>
+                                            <h4 class="mb-3">Outcall: </h4>
                                             <asp:Repeater ID="RepeaterModOutcall" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
