@@ -32,7 +32,9 @@ namespace TALENTS
             modelId = ParseUtil.TryParseInt(Request.Params["modelId"]) ?? 0;
             model = new ModelDAO().FindById(modelId);
             HfUserID.Value = user.Id.ToString();
-            
+            string expireDate = new SubscriptionUController().SubscriptionExpireDate(user.Id);
+            HfPurchased.Value = (expireDate != null).ToString();
+
             if (!IsPostBack)
             {
                 LoadModelInfo1();

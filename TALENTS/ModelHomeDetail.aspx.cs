@@ -28,6 +28,8 @@ namespace TALENTS
                 return;
             }
             HfSignedModelID.Value = model1.Id.ToString();
+            string expireDate = new SubscriptionMController().SubscriptionExpireDate(model1.Id);
+            HfPurchased.Value = (expireDate != null).ToString();
 
             modelId = ParseUtil.TryParseInt(Request.Params["modelId"]) ?? 0;
             model = new ModelDAO().FindById(modelId);

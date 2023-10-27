@@ -235,7 +235,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 110px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
-
+                    <asp:HiddenField ID="HfPurchased" runat="server" ClientIDMode="Static" />
                     <div class="site-wrap" style="position: relative; height: 1000px; overflow: hidden">
                         <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
                             <h1 runat="server" id="ModelSurname" class="pb-3"></h1>
@@ -281,17 +281,17 @@
                                 <ul class="nav nav-tabs" role="tablist" style="display: none">
                                     <li class="nav-item"><a class="nav-link active" href="#tab1" role="tab" data-toggle="tab">Biography</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab2" role="tab" data-toggle="tab">About Me</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Language</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Services</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Work City</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Work Hours</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Rates</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contacts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Photos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Videos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Natural Photos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab4" role="tab" data-toggle="tab">Lingue</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab5" role="tab" data-toggle="tab">Servizi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab6" role="tab" data-toggle="tab">Residenza</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab7" role="tab" data-toggle="tab">Orari</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab8" role="tab" data-toggle="tab">Tariffe</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab10" role="tab" data-toggle="tab">Contatti</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab11" role="tab" data-toggle="tab">Fotos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab12" role="tab" data-toggle="tab">Video</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab13" role="tab" data-toggle="tab">Foto Nat.</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tab14" role="tab" data-toggle="tab">Tour</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#tab15" role="tab" data-toggle="tab">Reviews</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tab15" role="tab" data-toggle="tab">Feedback</a></li>
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -672,7 +672,7 @@
                                                     <h4 runat="server" id="ModelInstructionChat" class="d-inline"></h4>
                                                 </div>
                                             </div>
-                                            <div class="row pl-lg-5 pb-3">
+                                            <div class="row pl-lg-5 pb-3 purchasedDiv">
                                                 <div class="col-6 pb-2 pl-0">
                                                     <h4 class="d-inline text-primary">Email: </h4>
                                                     <h4 runat="server" id="ModelEmail" class="d-inline"></h4>
@@ -682,7 +682,7 @@
                                                     <h4 runat="server" id="ModelPhone" class="d-inline"></h4>
                                                 </div>
                                             </div>
-                                            <div class="row pl-lg-5 pb-3">
+                                            <div class="row pl-lg-5 pb-3 purchasedDiv">
                                                 <div class="col-6 pb-2 pl-0">
                                                     <h4 class="d-inline text-primary">Address: </h4>
                                                     <h4 runat="server" id="ModelAddress" class="d-inline"></h4>
@@ -781,8 +781,8 @@
                                                                     <th>City</th>
                                                                     <th>From</th>
                                                                     <th>To</th>
-                                                                    <th>Phone</th>
-                                                                    <th>Email</th>
+                                                                    <th class="purchasedDiv">Phone</th>
+                                                                    <th class="purchasedDiv">Email</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -793,8 +793,8 @@
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("City")%></td>
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("From")%></td>
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("To")%></td>
-                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Phone")%></td>
-                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Email")%></td>
+                                                        <td class="purchasedDiv" style="border-bottom: 1px solid #dee2e6"><%# Eval("Phone")%></td>
+                                                        <td class="purchasedDiv" style="border-bottom: 1px solid #dee2e6"><%# Eval("Email")%></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -952,7 +952,14 @@
         function SaveReview() {
             $("#HfRating").val($("input[name='rating']:checked").val());
             return true;
-        }
+        };
+
+        function SetVisible() {
+            if ($("#HfPurchased").val() != "True") {
+                $(".purchasedDiv").addClass('d-none');
+            }
+        };
+        SetVisible();
     </script>
     <script>
         var galleryThumbs = new Swiper('.gallery-thumbs', {

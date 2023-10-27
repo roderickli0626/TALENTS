@@ -91,7 +91,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = model.Id + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/Photos/") + fileName;
                     file.SaveAs(filePath);
 
@@ -133,7 +133,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = modelId + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/Photos/") + fileName;
                     file.SaveAs(filePath);
 
@@ -193,7 +193,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = model.Id + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/Videos/") + fileName;
                     file.SaveAs(filePath);
 
@@ -235,7 +235,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = modelId + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/Videos/") + fileName;
                     file.SaveAs(filePath);
 
@@ -276,7 +276,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = model.Id + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/NaturalPhotos/") + fileName;
                     file.SaveAs(filePath);
 
@@ -318,7 +318,7 @@ namespace TALENTS
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = modelId + "_" + Path.GetFileName(file.FileName);
                     string filePath = Server.MapPath("~/Upload/NaturalPhotos/") + fileName;
                     file.SaveAs(filePath);
 
