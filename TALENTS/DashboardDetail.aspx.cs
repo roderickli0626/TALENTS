@@ -147,10 +147,6 @@ namespace TALENTS
             if (modContact == null) return;
             ModelSocialChat.InnerText = modContact.SocialChat?.Description;
             ModelInstructionChat.InnerText = modContact.InstructionChat?.Description;
-            ModelEmail.InnerText = modContact.Email;
-            ModelPhone.InnerText = modContact.MobilePhone;
-            ModelAddress.InnerText = modContact.Address;
-            ModelAddressCiv.InnerText = modContact.AddressCiv;
         }
     }
 }

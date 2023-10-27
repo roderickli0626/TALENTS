@@ -310,6 +310,7 @@ namespace TALENTS
                 return;
             }
             SuccessAlarmService.Visible = true;
+            TxtServiceAmount.Text = "";
             LoadService();
         }
         // WorkCity Tab / work_city

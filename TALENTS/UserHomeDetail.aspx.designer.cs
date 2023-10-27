@@ -51,40 +51,40 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEth;
 
         /// <summary>
-        /// H1 control.
+        /// ModelHeight0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelHeight0;
 
         /// <summary>
-        /// H2 control.
+        /// ModelWeight0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelWeight0;
 
         /// <summary>
-        /// H3 control.
+        /// ModelEye0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEye0;
 
         /// <summary>
-        /// H4 control.
+        /// ModelHairColor0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelHairColor0;
 
         /// <summary>
         /// DefaultPhotoRepeater1 control.

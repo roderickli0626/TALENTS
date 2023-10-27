@@ -81,7 +81,7 @@
 
             .gallery-thumbs .swiper-slide {
                 width: 25%;
-                height: 150%;
+                height: 100%;
                 opacity: 0.4;
             }
 
@@ -91,7 +91,7 @@
 
         .img-thumb {
             width: 126px !important;
-            height: 126px !important;
+            height: auto !important;
             margin-right: 0px !important;
         }
 
@@ -663,7 +663,7 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade show" id="tab10">
                                         <div class="pt-lg-5">
-                                            <div class="row pl-lg-5 pb-3 ">
+                                            <div class="row pl-lg-5 pb-3 pt-5">
                                                 <div class="col-6 pb-2 pl-0">
                                                     <h4 class="d-inline text-primary">Social Chat: </h4>
                                                     <h4 runat="server" id="ModelSocialChat" class="d-inline"></h4>
@@ -671,26 +671,6 @@
                                                 <div class="col-6 pb-2 pl-0">
                                                     <h4 class="d-inline text-primary">Instruction Chat: </h4>
                                                     <h4 runat="server" id="ModelInstructionChat" class="d-inline"></h4>
-                                                </div>
-                                            </div>
-                                            <div class="row pl-lg-5 pb-3">
-                                                <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Email: </h4>
-                                                    <h4 runat="server" id="ModelEmail" class="d-inline"></h4>
-                                                </div>
-                                                <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Mobile Phone: </h4>
-                                                    <h4 runat="server" id="ModelPhone" class="d-inline"></h4>
-                                                </div>
-                                            </div>
-                                            <div class="row pl-lg-5 pb-3">
-                                                <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Address: </h4>
-                                                    <h4 runat="server" id="ModelAddress" class="d-inline"></h4>
-                                                </div>
-                                                <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Address Civ: </h4>
-                                                    <h4 runat="server" id="ModelAddressCiv" class="d-inline"></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -782,8 +762,8 @@
                                                                     <th>City</th>
                                                                     <th>From</th>
                                                                     <th>To</th>
-                                                                    <th>Phone</th>
-                                                                    <th>Email</th>
+                                                                    <%--<th>Phone</th>
+                                                                    <th>Email</th>--%>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -794,8 +774,8 @@
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("City")%></td>
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("From")%></td>
                                                         <td style="border-bottom: 1px solid #dee2e6"><%# Eval("To")%></td>
-                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Phone")%></td>
-                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Email")%></td>
+                                                        <%--<td style="border-bottom: 1px solid #dee2e6"><%# Eval("Phone")%></td>
+                                                        <td style="border-bottom: 1px solid #dee2e6"><%# Eval("Email")%></td>--%>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -847,7 +827,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-container gallery-thumbs" style="width: 50%; float: left">
+                        <div class="swiper-container gallery-thumbs" style="width: 100%; float: left">
                             <div class="swiper-wrapper">
                                 <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
                                     <ItemTemplate>

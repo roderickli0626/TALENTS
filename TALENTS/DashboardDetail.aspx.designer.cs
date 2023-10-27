@@ -402,42 +402,6 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelInstructionChat;
 
         /// <summary>
-        /// ModelEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelEmail;
-
-        /// <summary>
-        /// ModelPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelPhone;
-
-        /// <summary>
-        /// ModelAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelAddress;
-
-        /// <summary>
-        /// ModelAddressCiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelAddressCiv;
-
-        /// <summary>
         /// RepeaterPhotos control.
         /// </summary>
         /// <remarks>

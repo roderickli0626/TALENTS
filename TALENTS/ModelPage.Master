@@ -58,7 +58,7 @@
         <div class="container-fluid">
             <div class="inner-header">
                 <div class="logo">
-                    <a href="Dashboard.aspx">
+                    <a href="ModelHome.aspx">
                         <h2 class="text-white">TALENTS</h2>
                     </a>
                 </div>
