@@ -38,8 +38,8 @@ namespace TALENTS
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
             string city = TxtCity.Text;
-            DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
-            DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
+            DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH.mm");
+            DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH.mm");
 
             bool success = noticeController.SaveNotice(title, message, contact, city, sdate, edate, user.Id, null, false);
 
@@ -67,8 +67,8 @@ namespace TALENTS
             string message = TxtMessage.Text;
             string contact = TxtContact.Text;
             string city = TxtCity.Text;
-            DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH:mm");
-            DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH:mm");
+            DateTime? sdate = ParseUtil.TryParseDate(TxtStartDate.Text, "dd/MM/yyyy HH.mm");
+            DateTime? edate = ParseUtil.TryParseDate(TxtEndDate.Text, "dd/MM/yyyy HH.mm");
 
             bool success = noticeController.SaveNotice(title, message, contact, city, sdate, edate, user.Id, noticeId,false);
 

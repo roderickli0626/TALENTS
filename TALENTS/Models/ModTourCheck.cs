@@ -17,8 +17,8 @@ namespace TALENTS.Models
             City = modTour.City.Description;
             Email = modTour.Email;
             Phone = modTour.Phone;
-            From = modTour.DateFrom?.ToString("dd/MM/yyyy HH:mm");
-            To = modTour.DateTo?.ToString("dd/MM/yyyy HH:mm");
+            From = modTour.DateFrom?.ToString("dd/MM/yyyy HH.mm");
+            To = modTour.DateTo?.ToString("dd/MM/yyyy HH.mm");
         }
         public int Id
         {

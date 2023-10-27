@@ -19,8 +19,8 @@ namespace TALENTS.Models
             Title = userNotice.Title;
             Message = userNotice.Message;
             Contact = userNotice.Contact;
-            From = userNotice.FromDate?.ToString("dd/MM/yyyy HH:mm");
-            To = userNotice.ToDate?.ToString("dd/MM/yyyy HH:mm");
+            From = userNotice.FromDate?.ToString("dd/MM/yyyy HH.mm");
+            To = userNotice.ToDate?.ToString("dd/MM/yyyy HH.mm");
             if (DateTime.Now < userNotice.FromDate) State = 1;
             else if (userNotice.ToDate < DateTime.Now) State = 2;
             else State = 3;

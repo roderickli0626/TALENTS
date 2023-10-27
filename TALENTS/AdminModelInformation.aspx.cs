@@ -676,8 +676,8 @@ namespace TALENTS
         {
             bool success = true;
             int? cityId = ControlUtil.GetSelectedValue(ComboTourCity);
-            DateTime? sdate = ParseUtil.TryParseDate(TxtSDate.Text, "dd/MM/yyyy HH:mm");
-            DateTime? edate = ParseUtil.TryParseDate(TxtEDate.Text, "dd/MM/yyyy HH:mm");
+            DateTime? sdate = ParseUtil.TryParseDate(TxtSDate.Text, "dd/MM/yyyy HH.mm");
+            DateTime? edate = ParseUtil.TryParseDate(TxtEDate.Text, "dd/MM/yyyy HH.mm");
             if (cityId == null)
             {
                 SuccessAlarmTour.Visible = false;

@@ -298,14 +298,14 @@
             uiLibrary: 'bootstrap4',
             modal: false,
             footer: true,
-            format: "dd/mm/yyyy HH:MM"
+            format: "dd/mm/yyyy HH.MM"
         });
 
         $("#TxtEndDate").datetimepicker({
             uiLibrary: 'bootstrap4',
             modal: false,
             footer: true,
-            format: "dd/mm/yyyy HH:MM"
+            format: "dd/mm/yyyy HH.MM"
         });
 
         $("#BtnAdd").click(function () {

@@ -1635,14 +1635,15 @@
                 uiLibrary: 'bootstrap4',
                 modal: false,
                 footer: true,
-                format: "dd/mm/yyyy HH:MM"
+                language: 'it',
+                format: "dd/mm/yyyy HH.MM"
             });
 
             $("#TxtEDate").datetimepicker({
                 uiLibrary: 'bootstrap4',
                 modal: false,
                 footer: true,
-                format: "dd/mm/yyyy HH:MM"
+                format: "dd/mm/yyyy HH.MM"
             });
         }
     </script>
