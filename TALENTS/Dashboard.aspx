@@ -164,7 +164,7 @@
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
                             <div class="input-group mb-4 input-group-lg col-6 offset-2 text-right">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">CITTA</span>
+                                    <span class="input-group-text">CITTA'</span>
                                 </div>
                                 <div class="form-control pt-0 pb-0 pr-0">
                                     <asp:DropDownList runat="server" ID="ComboCity" CssClass="custom-select" ClientIDMode="Static"></asp:DropDownList>

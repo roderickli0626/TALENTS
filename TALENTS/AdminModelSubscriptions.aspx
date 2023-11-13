@@ -35,16 +35,16 @@
                     <div class="row justify-content-center" style="background-color: gray">
                         <div class="col-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
                             <div class="row justify-content-center">
-                                <h2 class="mb-4 justify-content-center">MODEL SUBSCRIPTIONS</h2>
+                                <h2 class="mb-4 justify-content-center">ABBONAMENTI MODELLE</h2>
                             </div>
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-4">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD SUBSCRIPTION</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ Agg. ABBONAMENTO</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
-                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -53,11 +53,11 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Model</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
+                                            <th>Modella</th>
+                                            <th>Tipo</th>
+                                            <th>Importo</th>
+                                            <th>Dal</th>
+                                            <th>Al</th>
                                             <th>Azione</th>
                                         </tr>
                                     </thead>
@@ -74,7 +74,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header pl-5">
-                                    <h2 class="modal-title">ADD SUBSCRIPTION</h2>
+                                    <h2 class="modal-title">AGG. ABBONAMENTO</h2>
                                 </div>
 
                                 <!-- Modal body -->
@@ -84,8 +84,8 @@
                                         <ContentTemplate>
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left text-danger bg-gradient" ClientIDMode="Static" />
                                             <asp:CustomValidator ID="ServerValidator1" runat="server" ErrorMessage="Inserire una Model." Display="None"></asp:CustomValidator>
-                                            <asp:CustomValidator ID="ServerValidator2" runat="server" ErrorMessage="Inserire una Subscription Type." Display="None"></asp:CustomValidator>
-                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Failed" Display="None"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="ServerValidator2" runat="server" ErrorMessage="Inserire un Periodo." Display="None"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Fallito" Display="None"></asp:CustomValidator>
 
                                             <div class="row mb-4" style="padding-left: 15px;padding-right: 15px;">
                                                 <div class="col-12 form-control pt-0 pb-0 pr-0 form-control-lg ComboUser">
@@ -108,9 +108,9 @@
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer p-lg-5">
-                                    <asp:Button runat="server" ID="BtnSaveSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveSubscription_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Update" OnClick="BtnUpdateSubscription_Click" />
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-dark"/>
+                                    <asp:Button runat="server" ID="BtnSaveSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Salva" OnClick="BtnSaveSubscription_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Aggiorna" OnClick="BtnUpdateSubscription_Click" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Chiudi" CssClass="btn btn-lg btn-dark"/>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
         
         $("#BtnAdd").click(function () {
             
-            $(".modal-title").text("ADD SUBSCRIPTION");
+            $(".modal-title").text("AGG. ABBONAMENTO");
             
             $("#ComboUser").val(0).trigger("change");
             $(".ComboUser").removeClass("disabled");
@@ -221,7 +221,7 @@
                 $(".ComboUser").addClass("disabled");
                 $("#ComboType").val(row.SubMId).trigger("change");
                 $("#ValSummary").addClass("d-none");
-                $(".modal-title").text("UPDATE SUBSCRIPTION");
+                $(".modal-title").text("AGGIORNA ABBONAMENTO");
 
                 $("#HfSubID").val(row.Id);
             });

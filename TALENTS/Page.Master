@@ -58,7 +58,7 @@
             <div class="inner-header">
                 <div class="logo">
                     <a href="Dashboard.aspx">
-                        <h2 class="text-white">TALENTS</h2>
+                        <h2 class="text-white">MODELLE</h2>
                     </a>
                 </div>
                 <div class="container">
@@ -67,8 +67,8 @@
                             <nav class="main-menu mobile-menu" style="float: right; margin-right: 15px">
                                 <ul>
                                     <li><a href="Dashboard.aspx">Home</a></li>
-                                    <li><a href="Login.aspx">LogIn</a></li>
-                                    <li><a href="Register.aspx">Register</a></li>
+                                    <li><a href="Login.aspx">Entra</a></li>
+                                    <li><a href="Register.aspx">Registrati</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -108,7 +108,7 @@
                 <div class="col-lg-12">
                     <div class="footer-logo">
                         <a href="#">
-                            <h2 class="text-white">TALENTS</h2>
+                            <h2 class="text-white">MODELLE</h2>
                         </a>
                     </div>
                 </div>
@@ -116,12 +116,12 @@
             <div class="row pb-50">
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-footer-widget">
-                        <h5>Location</h5>
+                        <h5>Sede</h5>
                         <div class="widget-text">
                             <i class="lnr lnr-map-marker"></i>
-                            <p>1525 Boring Lane,
+                            <p>Aprouerstrasse, 125
                                 <br />
-                                Los Angeles, CA</p>
+                                Rupperstarw, Svizzera</p>
                         </div>
                     </div>
                 </div>
@@ -130,25 +130,25 @@
                         <h5>Reception</h5>
                         <div class="widget-text">
                             <i class="lnr lnr-phone-handset"></i>
-                            <p>+1 (603)535-4592</p>
+                            <p>+38 (268)335-4592</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-footer-widget">
-                        <h5>Shuttle Service</h5>
+                        <h5>Servizio mobile</h5>
                         <div class="widget-text">
                             <i class="lnr lnr-phone-handset"></i>
-                            <p>+1 (603)535-4592</p>
+                            <p>+1 (33)995-4592</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-footer-widget">
-                        <h5>Restaurant</h5>
+                        <h5>Staff</h5>
                         <div class="widget-text">
                             <i class="lnr lnr-phone-handset"></i>
-                            <p>+1 (603)535-4592</p>
+                            <p>+1 (380)535-4592</p>
                         </div>
                     </div>
                 </div>
@@ -157,14 +157,14 @@
         <div class="copyright-area">
             <div class="container">
                 <div class="copyright-text">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>-->
+                    All rights reserved | by <a href="https://www.softforbet.com" target="_blank">SFB</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
                 <div class="privacy-links">
                     <a href="Policy.aspx">Privacy Policy</a>
-                    <a href="Requests.aspx">Photo Requests</a>
+                    <a href="Requests.aspx">Richieste</a>
                 </div>
             </div>
         </div>

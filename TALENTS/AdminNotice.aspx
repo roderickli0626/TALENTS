@@ -166,11 +166,11 @@
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-2">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD NOTICE</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ Agg. Annuncio</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
-                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Notice</th>
+                                            <th>Annuncio</th>
                                             <th>Azione</th>
                                         </tr>
                                     </thead>
@@ -193,11 +193,11 @@
                     <!-- The Modal -->
                     <div class="modal" id="myModal" data-backdrop="static">
                         <div class="modal-dialog modal-lg">
-                            <div class="ribbon modal-ribbon"><span>NEW</span></div>
+                            <div class="ribbon modal-ribbon"><span>NUOVO</span></div>
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header pl-5">
-                                    <h2 class="modal-title">ADD NOTICE</h2>
+                                    <h2 class="modal-title">Agg. Annuncio</h2>
                                 </div>
 
                                 <!-- Modal body -->
@@ -207,11 +207,11 @@
                                         <ContentTemplate>
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left text-danger bg-gradient" ClientIDMode="Static" />
                                             <asp:RequiredFieldValidator ID="ReqValTitle" runat="server" ErrorMessage="Inserire un indirizzo Title." CssClass="text-bg-danger" ControlToValidate="TxtTitle" Display="None"></asp:RequiredFieldValidator>
-                                            <asp:RequiredFieldValidator ID="ReqValContact" runat="server" ErrorMessage="Inserire una Contact." CssClass="text-black" ControlToValidate="TxtContact" Display="None"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="ReqValContact" runat="server" ErrorMessage="Inserire un Contatto." CssClass="text-black" ControlToValidate="TxtContact" Display="None"></asp:RequiredFieldValidator>
                                             <asp:CustomValidator ID="ServerValidator1" runat="server" ErrorMessage="Inserire una User." Display="None"></asp:CustomValidator>
-                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Failed" Display="None"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Fallito" Display="None"></asp:CustomValidator>
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtTitle" ClientIDMode="Static" placeholder="Title" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtTitle" ClientIDMode="Static" placeholder="Titolo" CssClass="form-control form-control-lg" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
                                             <div class="row mb-4" style="padding-left: 15px;">
@@ -221,26 +221,26 @@
 
                                                 <div class="col-6 custom-control custom-switch text-center" style="padding-top: 10px;">
                                                     <input type="checkbox" class="custom-control-input" runat="server" id="switch1" clientidmode="static">
-                                                    <label class="custom-control-label" for="switch1">Allow Notice</label>
+                                                    <label class="custom-control-label" for="switch1">Approva Annuncio</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtMessage" ClientIDMode="Static" placeholder="Message" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="4" AutoCompleteType="Disabled"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtMessage" ClientIDMode="Static" placeholder="Messaggio" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="4" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
                                             <div class="row mb-4">
                                                 <div class="col-6 form-white">
-                                                    <asp:TextBox runat="server" ID="TxtStartDate" ClientIDMode="Static" PlaceHolder="Start Date/Time" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="TxtStartDate" ClientIDMode="Static" PlaceHolder="Dal" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                 </div>
 
                                                 <div class="col-6 form-white">
-                                                    <asp:TextBox runat="server" ID="TxtEndDate" ClientIDMode="Static" PlaceHolder="End Date/Time" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="TxtEndDate" ClientIDMode="Static" PlaceHolder="Al" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                 </div>
                                             </div>
                                             
                                             <div class="form-white mb-4">
-                                                <asp:TextBox runat="server" ID="TxtCity" ClientIDMode="Static" placeholder="City" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtCity" ClientIDMode="Static" placeholder="Città" CssClass="form-control form-control-lg"></asp:TextBox>
                                             </div>
 
                                             <div class="form-white">
@@ -256,9 +256,9 @@
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer p-lg-5">
-                                    <asp:Button runat="server" ID="BtnSaveNotice" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveNotice_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateNotice" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Update" OnClick="BtnUpdateNotice_Click" />
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-dark"/>
+                                    <asp:Button runat="server" ID="BtnSaveNotice" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Salva" OnClick="BtnSaveNotice_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateNotice" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Aggiorna" OnClick="BtnUpdateNotice_Click" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Chiudi" CssClass="btn btn-lg btn-dark"/>
                                 </div>
                             </div>
                         </div>
@@ -312,7 +312,7 @@
             $(".modal-ribbon").removeClass("red");
             $(".modal-ribbon").removeClass("blue");
             $(".modal-ribbon").html("<span>NEW</span>");
-            $(".modal-title").text("ADD NOTICE");
+            $(".modal-title").text("Agg. ANNUNCIO");
             $("#TxtTitle").val("");
             $("#TxtMessage").val("");
             $("#TxtContact").val("");
@@ -352,11 +352,11 @@
                     "render": function (data, type, row, meta) {
                         var allowed = row.Allowed;
                         if (allowed) {
-                            var ribbon = '<div class="ribbon blue"><span>ALLOWED</span></div>';
+                            var ribbon = '<div class="ribbon blue"><span>APPROVATO</span></div>';
                             var badge = 'badge-primary';
                         }
                         else {
-                            var ribbon = '<div class="ribbon red"><span>UNALLOWED</span></div>';
+                            var ribbon = '<div class="ribbon red"><span>NON APPROVATO</span></div>';
                             var badge = 'badge-danger';
                         }
                         return '<div class="mb-4 noticeDiv">' + 
@@ -400,11 +400,11 @@
                 var badgeInfo = row.From + ' - ' + row.To;
                 if (allowed) {
                     $(".modal-ribbon").removeClass("red");
-                    $(".modal-ribbon").addClass("blue").html("<span>ALLOWED</span>");
+                    $(".modal-ribbon").addClass("blue").html("<span>APPROVATO</span>");
                 }
                 else {
                     $(".modal-ribbon").removeClass("blue");
-                    $(".modal-ribbon").addClass("red").html("<span>UNALLOWED</span>");
+                    $(".modal-ribbon").addClass("red").html("<span>NON APPROVATO</span>");
                 }
 
                 $("#myModal").modal('show');
@@ -420,7 +420,7 @@
                 $(".ComboUser").addClass("disabled");
                 $("#switch1").prop("checked", row.Allowed);
                 $("#ValSummary").addClass("d-none");
-                $(".modal-title").text("UPDATE NOTICE");
+                $(".modal-title").text("AGGIORNA ANNUNCIO");
 
                 $("#HfNoticeID").val(row.Id);
             });

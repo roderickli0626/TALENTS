@@ -41,11 +41,11 @@
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-2">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD MODEL</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ Agg. MODELLE</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
-                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -54,10 +54,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Photo</th>
-                                            <th>Name</th>
+                                            <th>Foto</th>
+                                            <th>Nome</th>
                                             <th>Email</th>
-                                            <th>State</th>
+                                            <th>Stato</th>
                                             <th>Azione</th>
                                         </tr>
                                     </thead>
@@ -74,7 +74,7 @@
                             <div class="modal-content text-white" style="background-color: #353535;">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h2 class="modal-title">ADD MODEL</h2>
+                                    <h2 class="modal-title">Agg. MODELLA</h2>
                                 </div>
 
                                 <!-- Modal body -->

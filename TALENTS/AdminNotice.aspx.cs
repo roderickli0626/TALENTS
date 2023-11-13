@@ -35,7 +35,7 @@ namespace TALENTS
             List<Model> users = new List<Model>();
             users = new ModelDAO().FindAllUsers();
             ComboUser.Items.Clear();
-            ControlUtil.DataBind(ComboUser, users, "Id", "Username", 0, "[unassigned]");
+            ControlUtil.DataBind(ComboUser, users, "Id", "Username", 0, "[tutti]");
         }
 
         protected void BtnSaveNotice_Click(object sender, EventArgs e)

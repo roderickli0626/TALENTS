@@ -41,7 +41,7 @@
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-2">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD ADMIN</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ Agg. ADMIN</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
@@ -54,9 +54,9 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Name</th>
+                                            <th>Nome</th>
                                             <th>Email</th>
-                                            <th>State</th>
+                                            <th>Stato</th>
                                             <th>Azione</th>
                                         </tr>
                                     </thead>
@@ -73,7 +73,7 @@
                             <div class="modal-content text-white" style="background-color: #353535;">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h2 class="modal-title">ADD ADMIN</h2>
+                                    <h2 class="modal-title">Agg. ADMIN</h2>
                                 </div>
 
                                 <!-- Modal body -->
@@ -112,9 +112,9 @@
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="BtnSaveAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveAdmin_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success d-none" Text="Update" OnClick="BtnUpdateAdmin_Click"/>
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg bg-white"/>
+                                    <asp:Button runat="server" ID="BtnSaveAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Salva" OnClick="BtnSaveAdmin_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateAdmin" ClientIDMode="Static" CssClass="btn btn-lg btn-success d-none" Text="Aggiorna" OnClick="BtnUpdateAdmin_Click"/>
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Chiudi" CssClass="btn btn-lg bg-white"/>
                                 </div>
                             </div>
                         </div>

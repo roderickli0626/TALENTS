@@ -35,16 +35,16 @@
                     <div class="row justify-content-center" style="background-color: gray">
                         <div class="col-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
                             <div class="row justify-content-center">
-                                <h2 class="mb-4 justify-content-center">USER SUBSCRIPTIONS</h2>
+                                <h2 class="mb-4 justify-content-center">ABBONAMENTO UTENTI </h2>
                             </div>
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-4">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD SUBSCRIPTION</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ AGG. ABBONAMENTO</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
-                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -54,12 +54,12 @@
                                         <tr>
                                             <th>No</th>
                                             <th>User</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th>Credits</th>
-                                            <th>Money</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
+                                            <th>Tipo</th>
+                                            <th>Importo</th>
+                                            <th>Crediti</th>
+                                            <th>Cash</th>
+                                            <th>Dal</th>
+                                            <th>Al</th>
                                             <th>Azione</th>
                                         </tr>
                                     </thead>
@@ -76,7 +76,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header pl-5">
-                                    <h2 class="modal-title">ADD SUBSCRIPTION</h2>
+                                    <h2 class="modal-title">AGG ABBONAMENTO</h2>
                                 </div>
 
                                 <!-- Modal body -->
@@ -110,9 +110,9 @@
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer p-lg-5">
-                                    <asp:Button runat="server" ID="BtnSaveSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClick="BtnSaveSubscription_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Update" OnClick="BtnUpdateSubscription_Click" />
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-dark"/>
+                                    <asp:Button runat="server" ID="BtnSaveSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Salva" OnClick="BtnSaveSubscription_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateSubscription" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Aggiorna" OnClick="BtnUpdateSubscription_Click" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Chiudi" CssClass="btn btn-lg btn-dark"/>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
         
         $("#BtnAdd").click(function () {
             
-            $(".modal-title").text("ADD SUBSCRIPTION");
+            $(".modal-title").text("Agg. ABBONAMENTO");
             
             $("#ComboUser").val(0).trigger("change");
             $(".ComboUser").removeClass("disabled");

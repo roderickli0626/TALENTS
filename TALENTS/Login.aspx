@@ -18,7 +18,7 @@
                                             <div class="mb-md-5 mt-md-4 pb-5">
 
                                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                                <p class="text-white-50 mb-5">Entra la tua login e password!</p>
 
                                                 <div class="mb-4">
                                                     <asp:TextBox runat="server" ID="TxtEmail" PlaceHolder="Email" CssClass="form-control form-control-lg" TextMode="Email" AutoCompleteType="Disabled"></asp:TextBox>
@@ -28,7 +28,7 @@
                                                     <asp:TextBox runat="server" ID="TxtPassword" PlaceHolder="Password" CssClass="form-control form-control-lg" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
                                                 </div>
 
-                                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="ForgotPassword.aspx">Forgot password?</a></p>
+                                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="ForgotPassword.aspx">Password Dimenticata?</a></p>
 
                                                 <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left bg-gradient" ClientIDMode="Static" />
                                                 <asp:RequiredFieldValidator ID="ReqValEmail" runat="server" ErrorMessage="Inserire l'email." CssClass="text-bg-danger" ControlToValidate="TxtEmail" Display="None"></asp:RequiredFieldValidator>
@@ -41,7 +41,7 @@
                                             
                                             <div>
                                                 <p class="mb-0">
-                                                    Don't have an account? <a href="Register.aspx" class="text-white-50 fw-bold">Register</a>
+                                                    Non hai un account? <a href="Register.aspx" class="text-white-50 fw-bold">Registrati</a>
                                                 </p>
                                             </div>
                                             

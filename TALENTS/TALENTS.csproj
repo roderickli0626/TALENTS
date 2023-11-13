@@ -486,26 +486,26 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="Upload\Photos\1.jpg" />
-    <Content Include="Upload\Photos\20.jpg" />
-    <Content Include="Upload\Photos\19.jpg" />
-    <Content Include="Upload\Photos\18.jpg" />
-    <Content Include="Upload\Photos\17.jpg" />
-    <Content Include="Upload\Photos\16.jpg" />
-    <Content Include="Upload\Photos\15.jpg" />
-    <Content Include="Upload\Photos\14.jpg" />
-    <Content Include="Upload\Photos\13.jpg" />
-    <Content Include="Upload\Photos\12.jpg" />
-    <Content Include="Upload\Photos\11.jpg" />
-    <Content Include="Upload\Photos\10.jpg" />
-    <Content Include="Upload\Photos\2.jpg" />
-    <Content Include="Upload\Photos\3.jpg" />
-    <Content Include="Upload\Photos\4.jpg" />
-    <Content Include="Upload\Photos\5.jpg" />
-    <Content Include="Upload\Photos\6.jpg" />
-    <Content Include="Upload\Photos\7.jpg" />
-    <Content Include="Upload\Photos\8.jpg" />
-    <Content Include="Upload\Photos\9.jpg" />
+    <Content Include="Upload\Photos\1_e %2810%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2811%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2812%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2813%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2814%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2815%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2816%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2817%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2818%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2819%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2820%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2821%29.jpg" />
+    <Content Include="Upload\Photos\1_e %2822%29.jpg" />
+    <Content Include="Upload\Photos\1_e %284%29.jpg" />
+    <Content Include="Upload\Photos\1_e %285%29.jpg" />
+    <Content Include="Upload\Photos\1_e %286%29.jpg" />
+    <Content Include="Upload\Photos\1_e %287%29.jpg" />
+    <Content Include="Upload\Photos\1_e %288%29.jpg" />
+    <Content Include="Upload\Photos\1_e %289%29.jpg" />
+    <Content Include="Upload\Photos\Default.jpg" />
     <Content Include="UserHome.aspx" />
     <Content Include="UserHomeDetail.aspx" />
     <Content Include="UserInformation.aspx" />
@@ -1012,7 +1012,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59373</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59373/</IISUrl>
+          <IISUrl>http://localhost:59378/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

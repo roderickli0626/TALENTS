@@ -56,27 +56,27 @@ namespace TALENTS
         {
             //Load Sex
             ComboSex.Items.Clear();
-            ComboSex.Items.Add(new ListItem("[Unassigned]", "0"));
-            ComboSex.Items.Add(new ListItem("Male", "M"));
-            ComboSex.Items.Add(new ListItem("Female", "F"));
+            ComboSex.Items.Add(new ListItem("[tutti]", "0"));
+            ComboSex.Items.Add(new ListItem("Uomo", "M"));
+            ComboSex.Items.Add(new ListItem("Donna", "F"));
             //Load Ethnicity
             List<Ethnicity> EthList = new EthnicityDAO().FindAll();
-            ControlUtil.DataBind(ComboEth, EthList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboEth, EthList, "Id", "Description", "0", "[tutti]");
             //Load Nationality
             List<Nationality> NationList = new NationalityDAO().FindAll();
-            ControlUtil.DataBind(ComboNation, NationList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboNation, NationList, "Id", "Description", "0", "[tutti]");
             //Load Residence
             List<City> CityList = new CityDAO().FindAll();
-            ControlUtil.DataBind(ComboRes, CityList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboRes, CityList, "Id", "Description", "0", "[tutti]");
             //Load HairColor
             List<HairColor> HColorList = new HairColorDAO().FindAll();
-            ControlUtil.DataBind(ComboHairColor, HColorList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboHairColor, HColorList, "Id", "Description", "0", "[tutti]");
             //Load HairLength
             List<HairLength> HLengList = new HairLengthDAO().FindAll();
-            ControlUtil.DataBind(ComboHairLeng, HLengList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboHairLeng, HLengList, "Id", "Description", "0", "[tutti]");
             //Load Eye
             List<Eye> EyeList = new EyeDAO().FindAll();
-            ControlUtil.DataBind(ComboEye, EyeList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboEye, EyeList, "Id", "Description", "0", "[tutti]");
             //Load Dress Size
             List<DressSize> DressList = new DressSizeDAO().FindAll();
             ControlUtil.DataBind(ComboDress, DressList, "Id", "Description", "0", "");
@@ -85,25 +85,25 @@ namespace TALENTS
             ControlUtil.DataBind(ComboBreast, BreastList, "Id", "Description", "0", "");
             //Load Smoker
             ComboSmoker.Items.Clear();
-            ComboSmoker.Items.Add(new ListItem("[Unassigned]", "0"));
-            ComboSmoker.Items.Add(new ListItem("Yes", "Y"));
-            ComboSmoker.Items.Add(new ListItem("Not", "N"));
-            ComboSmoker.Items.Add(new ListItem("Sometimes", "S"));
+            ComboSmoker.Items.Add(new ListItem("[tutti]", "0"));
+            ComboSmoker.Items.Add(new ListItem("Si", "Y"));
+            ComboSmoker.Items.Add(new ListItem("No", "N"));
+            ComboSmoker.Items.Add(new ListItem("A volte", "S"));
             //Load Drinker
             ComboDrink.Items.Clear();
-            ComboDrink.Items.Add(new ListItem("[Unassigned]", "0"));
-            ComboDrink.Items.Add(new ListItem("Yes", "Y"));
-            ComboDrink.Items.Add(new ListItem("Not", "N"));
-            ComboDrink.Items.Add(new ListItem("Sometimes", "S"));
+            ComboDrink.Items.Add(new ListItem("[tutti]", "0"));
+            ComboDrink.Items.Add(new ListItem("Si", "Y"));
+            ComboDrink.Items.Add(new ListItem("No", "N"));
+            ComboDrink.Items.Add(new ListItem("A volte", "S"));
             //Load Tattoos
             ComboTattoos.Items.Clear();
-            ComboTattoos.Items.Add(new ListItem("[Unassigned]", "0"));
-            ComboTattoos.Items.Add(new ListItem("Yes", "Y"));
+            ComboTattoos.Items.Add(new ListItem("[tutti]", "0"));
+            ComboTattoos.Items.Add(new ListItem("Si", "Y"));
             ComboTattoos.Items.Add(new ListItem("No", "N"));
             //Load Piercing
             ComboPiercing.Items.Clear();
-            ComboPiercing.Items.Add(new ListItem("[Unassigned]", "0"));
-            ComboPiercing.Items.Add(new ListItem("Yes", "Y"));
+            ComboPiercing.Items.Add(new ListItem("[tutti]", "0"));
+            ComboPiercing.Items.Add(new ListItem("Si", "Y"));
             ComboPiercing.Items.Add(new ListItem("No", "N"));
 
             //Load Model Info
@@ -208,10 +208,10 @@ namespace TALENTS
         {
             // Load Language
             List<Language> languages = new LanguageDAO().FindAll();
-            ControlUtil.DataBind(ComboLang, languages, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboLang, languages, "Id", "Description", "0", "[tutti]");
             // Load Level
             List<SkillLevel> levels = new SkillLevelDAO().FindAll();
-            ControlUtil.DataBind(ComboLevel, levels, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboLevel, levels, "Id", "Description", "0", "[tutti]");
             // Load Model Languages
             List<ModLanguageCheck> modLanguages = new LanguageController().FindByModel(model.Id);
             LanguageRepeater.DataSource = modLanguages;
@@ -262,7 +262,7 @@ namespace TALENTS
         {
             // Load Service Group
             List<ServiceGroup> serviceGroups = new ServiceGroupDAO().FindAll();
-            ControlUtil.DataBind(ComboServiceGroup, serviceGroups, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboServiceGroup, serviceGroups, "Id", "Description", "0", "[tutti]");
             // Load Model Services
             List<ModServiceCheck> modServiceChecks = new ServiceController().FindByModel(model.Id);
             RepeaterModServices.DataSource = modServiceChecks;
@@ -291,7 +291,7 @@ namespace TALENTS
             // Load Serivces
             int groupId = ControlUtil.GetSelectedValue(ComboServiceGroup) ?? 0;
             List<Service> services = new ServiceDAO().FindByGroup(groupId);
-            ControlUtil.DataBind(ComboService, services, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboService, services, "Id", "Description", "0", "[tutti]");
         }
         protected void BtnService_Click(object sender, EventArgs e)
         {
@@ -320,16 +320,16 @@ namespace TALENTS
         {
             // Load Work Cities
             List<City> cities = new CityDAO().FindAll();
-            ControlUtil.DataBind(ComboWorkCity, cities, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboWorkCity, cities, "Id", "Description", "0", "[tutti]");
             // Load Model Work Cities
             List<ModWorkCityCheck> modWorkCityChecks = new CityController().FindByModel(model.Id);
             RepeaterModWorkCity.DataSource = modWorkCityChecks;
             RepeaterModWorkCity.DataBind();
             // Load Incall / Outcall Places
             List<IncallPlace> incallPlaces = new IncallPlaceDAO().FindAll();
-            ControlUtil.DataBind(ComboIncall, incallPlaces, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboIncall, incallPlaces, "Id", "Description", "0", "[tutti]");
             List<OutcallPlace> outcallPlaces = new OutcallPlaceDAO().FindAll();
-            ControlUtil.DataBind(ComboOutcall, outcallPlaces, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboOutcall, outcallPlaces, "Id", "Description", "0", "[tutti]");
             // Load Model Incall / Outcall Places
             List<ModIncallCheck> modIncallChecks = new InOutCallPlaceController().FindIncallPlaceByModel(model.Id);
             List<ModOutcallCheck> modOutcallChecks = new InOutCallPlaceController().FindOutcallPlaceByModel(model.Id);
@@ -445,7 +445,7 @@ namespace TALENTS
         {
             // Load Work Day/Hours
             List<WorkDay> workDays = new WorkDayDAO().FindAll();
-            ControlUtil.DataBind(ComboWorkDay, workDays, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboWorkDay, workDays, "Id", "Description", "0", "[tutti]");
             List<WorkHour> workHours = new WorkHourDAO().FindAll();
             ControlUtil.DataBind(ComboSHour, workHours, "Id", "Description", "0", "");
             ControlUtil.DataBind(ComboEHour, workHours, "Id", "Description", "0", "");
@@ -491,10 +491,10 @@ namespace TALENTS
         {
             // Load Mod IncallPlace
             List<ModIncallCheck> modIncallChecks = new InOutCallPlaceController().FindIncallPlaceByModel(model.Id);
-            ControlUtil.DataBind(ComboModIncallPlace, modIncallChecks, "Id", "IncallPlace", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboModIncallPlace, modIncallChecks, "Id", "IncallPlace", "0", "[tutti]");
             // Load Mod OutcallPlace
             List<ModOutcallCheck> modOutcallChecks = new InOutCallPlaceController().FindOutcallPlaceByModel(model.Id);
-            ControlUtil.DataBind(ComboModOutcallPlace, modOutcallChecks, "Id", "OutcallPlace", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboModOutcallPlace, modOutcallChecks, "Id", "OutcallPlace", "0", "[Ututti]");
             // Load Duration
             List<Duration> durations = new DurationDAO().FindAll();
             ControlUtil.DataBind(ComboDuration, durations, "Id", "Description", "0", "");
@@ -578,8 +578,8 @@ namespace TALENTS
         {
             List<SocialChat> chatList = new SocialChatDAO().FindAll();
             List<InstructionChat> instructionsList = new InstructionChatDAO().FindAll();
-            ControlUtil.DataBind(ComboSocialChat, chatList, "Id", "Description", "0", "[Unassigned]");
-            ControlUtil.DataBind(ComboInstructionChat, instructionsList, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboSocialChat, chatList, "Id", "Description", "0", "[tutti]");
+            ControlUtil.DataBind(ComboInstructionChat, instructionsList, "Id", "Description", "0", "[tutti]");
             ModContact modContact = new ModContactDAO().FindByModel(model.Id).FirstOrDefault();
             if (modContact == null) return;
             ControlUtil.SelectValue(ComboSocialChat, modContact.SocialChatId);
@@ -656,7 +656,7 @@ namespace TALENTS
         private void LoadTours()
         {
             List<City> cities = new CityDAO().FindAll();
-            ControlUtil.DataBind(ComboTourCity, cities, "Id", "Description", "0", "[Unassigned]");
+            ControlUtil.DataBind(ComboTourCity, cities, "Id", "Description", "0", "[tutti]");
 
             List<ModTourCheck> modTours = new TourController().FindByModel(model.Id);
             RepeaterTour.DataSource = modTours;

@@ -599,7 +599,7 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade show" id="tab8">
                                         <div class="d-flex pt-lg-5 flex-column ">
-                                            <h4 class="mb-3">Incall Rates: </h4>
+                                            <h4 class="mb-3">Incall Tariffe: </h4>
                                             <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
@@ -629,7 +629,7 @@
                                                
                                                 </FooterTemplate>
                                             </asp:Repeater>
-                                            <h4 class="mb-3">Outcall Rates: </h4>
+                                            <h4 class="mb-3">Outcall Tariffe: </h4>
                                             <asp:Repeater ID="RepeaterModOutcallRate" runat="server" ClientIDMode="Static">
                                                 <HeaderTemplate>
                                                     <div class="table-responsive">
@@ -638,8 +638,8 @@
                                                                 <tr>
                                                                     <%--<th>No</th>--%>
                                                                     <th>Outcall Place</th>
-                                                                    <th>Duration</th>
-                                                                    <th>Rate</th>
+                                                                    <th>Durata</th>
+                                                                    <th>Tariffa</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -669,7 +669,7 @@
                                                     <h4 runat="server" id="ModelSocialChat" class="d-inline"></h4>
                                                 </div>
                                                 <div class="col-6 pb-2 pl-0">
-                                                    <h4 class="d-inline text-primary">Instruction Chat: </h4>
+                                                    <h4 class="d-inline text-primary">Istruzioni Chat: </h4>
                                                     <h4 runat="server" id="ModelInstructionChat" class="d-inline"></h4>
                                                 </div>
                                             </div>

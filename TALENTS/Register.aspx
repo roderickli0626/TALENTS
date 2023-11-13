@@ -17,7 +17,7 @@
 
                                             <div class="mb-md-5 mt-md-4 pb-5">
 
-                                                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                                                <h2 class="fw-bold mb-2 text-uppercase">Registrati</h2>
                                                 <p class="text-white-50 mb-5">Please enter your register information!</p>
 
                                                 <div class="mb-4">
@@ -39,12 +39,12 @@
                                                 <div class="form-outline form-white mb-5">
                                                     <div class="custom-control custom-radio custom-control-inline mr-5">
                                                         <input type="radio" runat="server" clientidmode="static" class="custom-control-input" id="RadioModel" name="example" value="model" checked="true">
-                                                        <label class="custom-control-label" for="RadioModel">Model</label>
+                                                        <label class="custom-control-label" for="RadioModel">Modella</label>
                                                     </div>
 
                                                     <div class="custom-control custom-radio custom-control-inline ml-5">
                                                         <input type="radio" runat="server" clientidmode="static" class="custom-control-input" id="RadioUser" name="example" value="user">
-                                                        <label class="custom-control-label" for="RadioUser">User</label>
+                                                        <label class="custom-control-label" for="RadioUser">Utente</label>
                                                     </div>
                                                 </div>
 
@@ -55,12 +55,12 @@
                                                 <asp:CustomValidator ID="EmailValidator" runat="server" ErrorMessage="Email non è corretta." Display="None"></asp:CustomValidator>
                                                 <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Questo indirizzo Email è già registrato." Display="None"></asp:CustomValidator>
 
-                                                <asp:Button runat="server" ID="BtnRegister" Text="Register" OnClick="BtnRegister_Click" CssClass="btn btn-outline-light btn-lg px-5" />
+                                                <asp:Button runat="server" ID="BtnRegister" Text="CONFERMA" OnClick="BtnRegister_Click" CssClass="btn btn-outline-light btn-lg px-5" />
                                             </div>
 
                                             <div>
                                                 <p class="mb-0">
-                                                    Do you have an account? <a href="Login.aspx" class="text-white-50 fw-bold">LogIn</a>
+                                                    Hai già un account ? <a href="Login.aspx" class="text-white-50 fw-bold">LogIn</a>
                                                 </p>
                                             </div>
 

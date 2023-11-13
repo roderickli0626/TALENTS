@@ -63,16 +63,16 @@
                     <div class="row justify-content-center" style="background-color: gray">
                         <div class="col-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
                             <div class="row justify-content-center">
-                                <h2 class="mb-4 justify-content-center">REVIEWS</h2>
+                                <h2 class="mb-4 justify-content-center">FEEDBACK</h2>
                             </div>
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
                                 <div class="col-2">
-                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ ADD REVIEW</button>
+                                    <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ AGG. FEEDBACK</button>
                                 </div>
                                 <div class="col-6 ml-auto">
                                     <div class="mb-4">
-                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Search..." CssClass="form-control form-control-lg"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +81,9 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Model</th>
-                                            <th>Content</th>
-                                            <th>Date</th>
+                                            <th>Modella</th>
+                                            <th>Commento</th>
+                                            <th>Data</th>
                                             <th>User</th>
                                             <th>Azione</th>
                                             <th class="d-none"></th>
@@ -102,7 +102,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header pl-5">
-                                    <h2 class="modal-title">ADD REVIEW</h2>
+                                    <h2 class="modal-title">Agg. FEEDBACK</h2>
                                 </div>
 
                                 <!-- Modal body -->
@@ -113,8 +113,8 @@
                                         <ContentTemplate>
                                             <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="mt-lg mb-lg text-left text-danger bg-gradient" ClientIDMode="Static" />
                                             <asp:CustomValidator ID="ServerValidator1" runat="server" ErrorMessage="Inserire una User." Display="None"></asp:CustomValidator>
-                                            <asp:CustomValidator ID="ServerValidator2" runat="server" ErrorMessage="Inserire una Model." Display="None"></asp:CustomValidator>
-                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Failed" Display="None"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="ServerValidator2" runat="server" ErrorMessage="Inserire una Modella" Display="None"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="ServerValidator" runat="server" ErrorMessage="Save Fallito" Display="None"></asp:CustomValidator>
 
                                             <div class="row mb-4" style="padding-left: 15px; padding-right: 15px;">
                                                 <div class="col-5 form-control pt-0 pb-0 pr-0 form-control-lg ComboUser">
@@ -145,12 +145,12 @@
 
                                                 <div class="col-6 custom-control custom-switch text-center" style="padding-top: 10px;">
                                                     <input type="checkbox" class="custom-control-input" runat="server" id="switch1" clientidmode="static">
-                                                    <label class="custom-control-label" for="switch1">Allow Review</label>
+                                                    <label class="custom-control-label" for="switch1">Approva Feedback</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-white">
-                                                <asp:TextBox runat="server" ID="TxtComment" ClientIDMode="Static" placeholder="Comment" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="TxtComment" ClientIDMode="Static" placeholder="Commento" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="3"></asp:TextBox>
                                             </div>
                                             
                                         </ContentTemplate>
@@ -163,9 +163,9 @@
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer p-lg-5">
-                                    <asp:Button runat="server" ID="BtnSaveReview" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Save" OnClientClick="SaveReview()" OnClick="BtnSaveReview_Click" />
-                                    <asp:Button runat="server" ID="BtnUpdateReview" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Update" OnClick="BtnUpdateReview_Click" />
-                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Close" CssClass="btn btn-lg btn-dark"/>
+                                    <asp:Button runat="server" ID="BtnSaveReview" ClientIDMode="Static" CssClass="btn btn-lg btn-success" Text="Salva" OnClientClick="SaveReview()" OnClick="BtnSaveReview_Click" />
+                                    <asp:Button runat="server" ID="BtnUpdateReview" ClientIDMode="Static" CssClass="btn btn-lg btn-primary d-none" Text="Aggiorna" OnClick="BtnUpdateReview_Click" />
+                                    <asp:Button runat="server" ID="BtnClose" ClientIDMode="Static" Text="Chiudi" CssClass="btn btn-lg btn-dark"/>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
         }
         
         $("#BtnAdd").click(function () {
-            $(".modal-title").text("ADD REVIEW");
+            $(".modal-title").text("AGG. FEEDBACK");
             $("#TxtPhone").val("");
             $("#TxtComment").val("");
             var rating = '<div class="container">' + 
@@ -269,10 +269,10 @@
                     "render": function (data, type, row, meta) {
                         var allowed = row.Allowed;
                         if (allowed) {
-                            var badge = '<span class="badge badge-pill badge-primary" style="float:right;font-size:12px;">ALLOWED</span>'
+                            var badge = '<span class="badge badge-pill badge-primary" style="float:right;font-size:12px;">APPROVATO</span>'
                         }
                         else {
-                            var badge = '<span class="badge badge-pill badge-danger" style="float:right;font-size:12px;">UNALLOWED</span>'
+                            var badge = '<span class="badge badge-pill badge-danger" style="float:right;font-size:12px;">NON APPROVATO</span>'
                         }
                         return data + '<div>' + row.Comment + '</div>' + badge;
                     }
@@ -323,7 +323,7 @@
                 $(".ComboModel").addClass("disabled");
                 $("#switch1").prop("checked", row.Allowed);
                 $("#ValSummary").addClass("d-none");
-                $(".modal-title").text("UPDATE REVIEW");
+                $(".modal-title").text("AGGIORNA FEEDBACK");
 
                 $("#HfReviewID").val(row.Id);
             });

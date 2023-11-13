@@ -27,7 +27,7 @@ namespace TALENTS
             List<City> cities = new List<City>();
             cities = new CityDAO().FindAll();
             ComboCity.Items.Clear();
-            ControlUtil.DataBind(ComboCity, cities, "Id", "Description", 0, "[unassigned]");
+            ControlUtil.DataBind(ComboCity, cities, "Id", "Description", 0, "[tutte]");
         }
 
         private void LoadModelPhotos()

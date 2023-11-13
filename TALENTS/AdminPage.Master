@@ -59,7 +59,7 @@
             <div class="inner-header">
                 <div class="logo">
                     <a href="AdminHome.aspx">
-                        <h2 class="text-white">TALENTS</h2>
+                        <h2 class="text-white">MODELLE</h2>
                     </a>
                 </div>
                 <div class="container">
@@ -67,15 +67,15 @@
                         <div class="col-xl-12">
                             <nav class="main-menu mobile-menu" style="float: right; margin-right: 15px">
                                 <ul>
-                                    <li><a href="AdminHome.aspx">Models</a></li>
-                                    <li><a href="AdminUser.aspx">Users</a></li>
+                                    <li><a href="AdminHome.aspx">Modelle</a></li>
+                                    <li><a href="AdminUser.aspx">Utenti</a></li>
                                     <li runat="server" id="liAdmins"><a href="AdminAdmin.aspx">Admins</a></li>
-                                    <li><a href="AdminNotice.aspx">Notices</a></li>
-                                    <li><a href="AdminReview.aspx">Reviews</a></li>
-                                    <li><a href="#">Subscriptions</a>
+                                    <li><a href="AdminNotice.aspx">Board Utenti</a></li>
+                                    <li><a href="AdminReview.aspx">Recensioni</a></li>
+                                    <li><a href="#">Abbonamenti</a>
                                         <ul class="drop-menu">
-                                            <li><a href="AdminModelSubscriptions.aspx">Model</a></li>
-                                            <li><a href="AdminUserSubscriptions.aspx">User</a></li>
+                                            <li><a href="AdminModelSubscriptions.aspx">Modelle</a></li>
+                                            <li><a href="AdminUserSubscriptions.aspx">Utenti</a></li>
                                         </ul>
                                     </li>
                                     <%--<li><a href="#">Basic Info</a>
@@ -121,7 +121,7 @@
                 <div class="col-lg-12">
                     <div class="footer-logo">
                         <a href="#">
-                            <h2 class="text-white">TALENTS</h2>
+                            <h2 class="text-white">MODELLE</h2>
                         </a>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                             <p>
                                 1525 Boring Lane,
                                 <br />
-                                Los Angeles, CA
+                                Svizzera
                             </p>
                         </div>
                     </div>
@@ -172,9 +172,9 @@
         <div class="copyright-area">
             <div class="container">
                 <div class="copyright-text">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>-->
+                    All rights reserved | by <a href="https://www.softforbet.com" target="_blank">SFB</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
                 <div class="privacy-links">
