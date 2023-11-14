@@ -44,6 +44,9 @@ namespace TALENTS
             string result = new SubscriptionUController().SubscriptionExpireDate(user.Id);
             HfPurchased.Value = (result != null).ToString();
 
+            ModelController modelController = new ModelController();
+            HfModelInfo.Value = JsonConvert.SerializeObject(modelController.SearchDashboardModels(0));
+
             if (!IsPostBack)
             {
                 LoadCity();

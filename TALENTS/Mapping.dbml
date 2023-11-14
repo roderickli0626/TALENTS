@@ -6,16 +6,6 @@
       <Association Name="BreastSize_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="BreastSizeId" Type="ModBiography" />
     </Type>
   </Table>
-  <Table Name="dbo.City" Member="Cities">
-    <Type Name="City">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="City_ModTour" Member="ModTours" ThisKey="Id" OtherKey="CityId" Type="ModTour" />
-      <Association Name="City_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="CityId" Type="ModWorkingCityAlloc" />
-      <Association Name="City_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="CityResidenceId" Type="ModBiography" />
-      <Association Name="City_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="CityResidenceId" Type="UserInfo" />
-    </Type>
-  </Table>
   <Table Name="dbo.DressSize" Member="DressSizes">
     <Type Name="DressSize">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -222,8 +212,8 @@
       <Column Name="DateTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="City_ModTour" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Model_ModTour" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="City_ModTour" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.ModVideos" Member="ModVideos">
@@ -253,8 +243,8 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ModelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="City_ModWorkingCityAlloc" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Model_ModWorkingCityAlloc" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="City_ModWorkingCityAlloc" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
@@ -299,9 +289,9 @@
       <Association Name="Eye_ModBiography" Member="Eye" ThisKey="EyeId" OtherKey="Id" Type="Eye" IsForeignKey="true" />
       <Association Name="HairColor_ModBiography" Member="HairColor" ThisKey="HairColorId" OtherKey="Id" Type="HairColor" IsForeignKey="true" />
       <Association Name="HairLength_ModBiography" Member="HairLength" ThisKey="HairLenghId" OtherKey="Id" Type="HairLength" IsForeignKey="true" />
-      <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
       <Association Name="Nationality_ModBiography" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
       <Association Name="Model_ModBiography" Member="Model" ThisKey="ModelId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="City_ModBiography" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ModContacts" Member="ModContacts">
@@ -338,9 +328,9 @@
       <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="City_UserInfo" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
       <Association Name="Nationality_UserInfo" Member="Nationality" ThisKey="NationalityId" OtherKey="Id" Type="Nationality" IsForeignKey="true" />
       <Association Name="Model_UserInfo" Member="Model" ThisKey="UserId" OtherKey="Id" Type="Model" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="City_UserInfo" Member="City" ThisKey="CityResidenceId" OtherKey="Id" Type="City" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ModReview" Member="ModReviews">
@@ -470,6 +460,18 @@
       <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="InstructionChat_ModContact" Member="ModContacts" ThisKey="Id" OtherKey="InstructionChatId" Type="ModContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="Cities">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Lat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Lng" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="City_ModTour" Member="ModTours" ThisKey="Id" OtherKey="CityId" Type="ModTour" />
+      <Association Name="City_ModWorkingCityAlloc" Member="ModWorkingCityAllocs" ThisKey="Id" OtherKey="CityId" Type="ModWorkingCityAlloc" />
+      <Association Name="City_ModBiography" Member="ModBiographies" ThisKey="Id" OtherKey="CityResidenceId" Type="ModBiography" />
+      <Association Name="City_UserInfo" Member="UserInfos" ThisKey="Id" OtherKey="CityResidenceId" Type="UserInfo" />
     </Type>
   </Table>
 </Database>

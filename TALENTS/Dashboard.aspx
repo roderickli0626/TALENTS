@@ -159,6 +159,7 @@
         <div class="slider-item">
             <div class="set-bg" style="padding-top: 180px;background-color:white">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
+                    <asp:HiddenField ID="HfModelInfo" runat="server" ClientIDMode="Static" />
                     <div class="container" style="max-width: 1200px; padding-bottom: 50px;">
                         <div class="row mb-5" style="border: 1px solid; border-color: black; border-radius:4px; margin-left: auto; margin-right: auto; padding: 20px">
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
@@ -173,6 +174,9 @@
                             <div class="col-2 text-right">
                                 <asp:Button runat="server" ID="BtnSearch" Text="RICERCA" CssClass="btn btn-block btn-dark btn-lg text-white" OnClick="BtnSearch_Click" />
                             </div>
+                        </div>
+                        <div>
+                            <div id="map" style="width: 100%; height: 400px;"></div>
                         </div>
                         <div class="row">
                             <asp:Repeater runat="server" ID="ModelPhotoRepeater">
@@ -206,6 +210,112 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZW9nB5fEUjXz15U9s6sRZkMPU_SrV3P0"></script>
+    <script>
+        // Initialize the map
+        var allMarkers = [];
+        var allContent = [];
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.8518, lng: 14.2681 },
+                zoom: 5
+            });
+
+            // Try HTML5 geolocation to get the user's current position
+            //if (navigator.geolocation) {
+            //    navigator.geolocation.getCurrentPosition(function (position) {
+            //        var pos = {
+            //            lat: position.coords.latitude,
+            //            lng: position.coords.longitude
+            //        };
+
+            //        // Add a marker for the user's current position
+            //        var marker = new google.maps.Marker({
+            //            position: pos,
+            //            map: map,
+            //            title: 'Your Location'
+            //        });
+
+            //        // Center the map on the user's current position
+            //        map.setCenter(pos);
+            //    }, function () {
+            //        // Handle errors with geolocation
+            //        console.log('Error: The Geolocation service failed.');
+            //    });
+            //} else {
+            //    // Browser doesn't support Geolocation
+            //    console.log('Error: Your browser doesn\'t support geolocation.');
+            //}
+
+            var modelInfo = JSON.parse($("#HfModelInfo").val());
+            
+            for (let i = 0; i < modelInfo.length; i++) {
+                var model = modelInfo[i];
+                var info = '<div class="d-flex p-1">' +
+                    '<div class="pr-2">' + '<image src="Upload/Photos/' + model.Image + '" width="50px"></image>' + '</div>' +
+                    '<div><h5>' + model.Name + '</h5><p class="mb-0">' + model.CityResidence + '</p>' + '<div class="text-right"><a href="DashboardDetail.aspx?modelId=' + model.Id + '">Detail</a></div>' + 
+                    '</div>' + '</div>';
+
+                var pos = {
+                    lat: model.Lat,
+                    lng: model.Lng,
+                };
+
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map, 
+                });
+
+                var infowindow;
+                if (searchSameMarker(marker) != null) {
+                    infowindow = new google.maps.InfoWindow({
+                        content: info + allContent[searchSameMarker(marker)].getContent(),
+                    });
+                }
+                else {
+                    infowindow = new google.maps.InfoWindow({
+                        content: info,
+                    });
+                }  
+
+                allMarkers.push(marker);
+                allContent.push(infowindow);
+
+                marker.addListener('click', function () {
+                    var markerIndex = allMarkers.indexOf(this);
+                    allContent[markerIndex].open(map, this);
+                });
+            }
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                placeCenter(event.latLng);
+            });
+
+            function placeCenter(location) {
+                map.setCenter(location);
+            }
+        }
+
+        function searchSameMarker(marker) {
+            // Loop through existing markers
+            var result = null;
+            for (var i = 0; i < allMarkers.length; i++) {
+                var existingMarker = allMarkers[i];
+                var existingMarkerLat = existingMarker.getPosition().lat();
+                var existingMarkerLng = existingMarker.getPosition().lng();
+
+                // Compare coordinates
+                if (existingMarkerLat === marker.getPosition().lat() && existingMarkerLng === marker.getPosition().lng()) {
+                    // The new marker has the same coordinates as an existing marker
+                    result = i;
+                }
+            }
+            return result;
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
     <script>
         $("#ComboCity").select2({ theme: 'bootstrap' }); 
     </script>

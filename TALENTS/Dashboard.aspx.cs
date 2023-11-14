@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +17,9 @@ namespace TALENTS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ModelController modelController = new ModelController();
+            HfModelInfo.Value = JsonConvert.SerializeObject(modelController.SearchDashboardModels(0));
+
             if (!IsPostBack)
             {
                 LoadCity();

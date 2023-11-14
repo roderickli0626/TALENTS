@@ -25,6 +25,8 @@ namespace TALENTS.Models
             Nationality = biography.Nationality?.Description ?? "";
             Eye = biography.Eye?.Description ?? "";
             HairColor = biography.HairColor?.Description ?? "";
+            Lat = biography.City?.Lat ?? 0;
+            Lng = biography.City?.Lng ?? 0;
         }
 
         public int Id
@@ -87,6 +89,14 @@ namespace TALENTS.Models
             get; set;
         }
         public int Type
+        {
+            get; set;
+        }
+        public double Lat
+        {
+            get; set;
+        }
+        public double Lng
         {
             get; set;
         }

@@ -33,9 +33,6 @@ namespace TALENTS
     partial void InsertBreastSize(BreastSize instance);
     partial void UpdateBreastSize(BreastSize instance);
     partial void DeleteBreastSize(BreastSize instance);
-    partial void InsertCity(City instance);
-    partial void UpdateCity(City instance);
-    partial void DeleteCity(City instance);
     partial void InsertDressSize(DressSize instance);
     partial void UpdateDressSize(DressSize instance);
     partial void DeleteDressSize(DressSize instance);
@@ -162,6 +159,9 @@ namespace TALENTS
     partial void InsertInstructionChat(InstructionChat instance);
     partial void UpdateInstructionChat(InstructionChat instance);
     partial void DeleteInstructionChat(InstructionChat instance);
+    partial void InsertCity(City instance);
+    partial void UpdateCity(City instance);
+    partial void DeleteCity(City instance);
     #endregion
 		
 		public MappingDataContext(string connection) : 
@@ -193,14 +193,6 @@ namespace TALENTS
 			get
 			{
 				return this.GetTable<BreastSize>();
-			}
-		}
-		
-		public System.Data.Linq.Table<City> Cities
-		{
-			get
-			{
-				return this.GetTable<City>();
 			}
 		}
 		
@@ -539,6 +531,14 @@ namespace TALENTS
 				return this.GetTable<InstructionChat>();
 			}
 		}
+		
+		public System.Data.Linq.Table<City> Cities
+		{
+			get
+			{
+				return this.GetTable<City>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BreastSize")]
@@ -652,204 +652,6 @@ namespace TALENTS
 		{
 			this.SendPropertyChanging();
 			entity.BreastSize = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.City")]
-	public partial class City : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Description;
-		
-		private EntitySet<ModTour> _ModTours;
-		
-		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
-		
-		private EntitySet<ModBiography> _ModBiographies;
-		
-		private EntitySet<UserInfo> _UserInfos;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public City()
-		{
-			this._ModTours = new EntitySet<ModTour>(new Action<ModTour>(this.attach_ModTours), new Action<ModTour>(this.detach_ModTours));
-			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
-			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
-			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModTour", Storage="_ModTours", ThisKey="Id", OtherKey="CityId")]
-		public EntitySet<ModTour> ModTours
-		{
-			get
-			{
-				return this._ModTours;
-			}
-			set
-			{
-				this._ModTours.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModWorkingCityAlloc", Storage="_ModWorkingCityAllocs", ThisKey="Id", OtherKey="CityId")]
-		public EntitySet<ModWorkingCityAlloc> ModWorkingCityAllocs
-		{
-			get
-			{
-				return this._ModWorkingCityAllocs;
-			}
-			set
-			{
-				this._ModWorkingCityAllocs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="CityResidenceId")]
-		public EntitySet<ModBiography> ModBiographies
-		{
-			get
-			{
-				return this._ModBiographies;
-			}
-			set
-			{
-				this._ModBiographies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_UserInfo", Storage="_UserInfos", ThisKey="Id", OtherKey="CityResidenceId")]
-		public EntitySet<UserInfo> UserInfos
-		{
-			get
-			{
-				return this._UserInfos;
-			}
-			set
-			{
-				this._UserInfos.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ModTours(ModTour entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = this;
-		}
-		
-		private void detach_ModTours(ModTour entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = null;
-		}
-		
-		private void attach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = this;
-		}
-		
-		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = null;
-		}
-		
-		private void attach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = this;
-		}
-		
-		private void detach_ModBiographies(ModBiography entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = null;
-		}
-		
-		private void attach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = this;
-		}
-		
-		private void detach_UserInfos(UserInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.City = null;
 		}
 	}
 	
@@ -4582,9 +4384,9 @@ namespace TALENTS
 		
 		private string _Email;
 		
-		private EntityRef<City> _City;
-		
 		private EntityRef<Model> _Model;
+		
+		private EntityRef<City> _City;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4608,8 +4410,8 @@ namespace TALENTS
 		
 		public ModTour()
 		{
-			this._City = default(EntityRef<City>);
 			this._Model = default(EntityRef<Model>);
+			this._City = default(EntityRef<City>);
 			OnCreated();
 		}
 		
@@ -4761,40 +4563,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModTour", Storage="_City", ThisKey="CityId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public City City
-		{
-			get
-			{
-				return this._City.Entity;
-			}
-			set
-			{
-				City previousValue = this._City.Entity;
-				if (((previousValue != value) 
-							|| (this._City.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._City.Entity = null;
-						previousValue.ModTours.Remove(this);
-					}
-					this._City.Entity = value;
-					if ((value != null))
-					{
-						value.ModTours.Add(this);
-						this._CityId = value.Id;
-					}
-					else
-					{
-						this._CityId = default(int);
-					}
-					this.SendPropertyChanged("City");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModTour", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Model Model
 		{
@@ -4825,6 +4593,40 @@ namespace TALENTS
 						this._ModelId = default(int);
 					}
 					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModTour", Storage="_City", ThisKey="CityId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public City City
+		{
+			get
+			{
+				return this._City.Entity;
+			}
+			set
+			{
+				City previousValue = this._City.Entity;
+				if (((previousValue != value) 
+							|| (this._City.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._City.Entity = null;
+						previousValue.ModTours.Remove(this);
+					}
+					this._City.Entity = value;
+					if ((value != null))
+					{
+						value.ModTours.Add(this);
+						this._CityId = value.Id;
+					}
+					else
+					{
+						this._CityId = default(int);
+					}
+					this.SendPropertyChanged("City");
 				}
 			}
 		}
@@ -5359,9 +5161,9 @@ namespace TALENTS
 		
 		private int _ModelId;
 		
-		private EntityRef<City> _City;
-		
 		private EntityRef<Model> _Model;
+		
+		private EntityRef<City> _City;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5377,8 +5179,8 @@ namespace TALENTS
 		
 		public ModWorkingCityAlloc()
 		{
-			this._City = default(EntityRef<City>);
 			this._Model = default(EntityRef<Model>);
+			this._City = default(EntityRef<City>);
 			OnCreated();
 		}
 		
@@ -5450,40 +5252,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModWorkingCityAlloc", Storage="_City", ThisKey="CityId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public City City
-		{
-			get
-			{
-				return this._City.Entity;
-			}
-			set
-			{
-				City previousValue = this._City.Entity;
-				if (((previousValue != value) 
-							|| (this._City.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._City.Entity = null;
-						previousValue.ModWorkingCityAllocs.Remove(this);
-					}
-					this._City.Entity = value;
-					if ((value != null))
-					{
-						value.ModWorkingCityAllocs.Add(this);
-						this._CityId = value.Id;
-					}
-					else
-					{
-						this._CityId = default(int);
-					}
-					this.SendPropertyChanged("City");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Model_ModWorkingCityAlloc", Storage="_Model", ThisKey="ModelId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Model Model
 		{
@@ -5514,6 +5282,40 @@ namespace TALENTS
 						this._ModelId = default(int);
 					}
 					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModWorkingCityAlloc", Storage="_City", ThisKey="CityId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public City City
+		{
+			get
+			{
+				return this._City.Entity;
+			}
+			set
+			{
+				City previousValue = this._City.Entity;
+				if (((previousValue != value) 
+							|| (this._City.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._City.Entity = null;
+						previousValue.ModWorkingCityAllocs.Remove(this);
+					}
+					this._City.Entity = value;
+					if ((value != null))
+					{
+						value.ModWorkingCityAllocs.Add(this);
+						this._CityId = value.Id;
+					}
+					else
+					{
+						this._CityId = default(int);
+					}
+					this.SendPropertyChanged("City");
 				}
 			}
 		}
@@ -5725,11 +5527,11 @@ namespace TALENTS
 		
 		private EntityRef<HairLength> _HairLength;
 		
-		private EntityRef<City> _City;
-		
 		private EntityRef<Nationality> _Nationality;
 		
 		private EntityRef<Model> _Model;
+		
+		private EntityRef<City> _City;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5799,9 +5601,9 @@ namespace TALENTS
 			this._Eye = default(EntityRef<Eye>);
 			this._HairColor = default(EntityRef<HairColor>);
 			this._HairLength = default(EntityRef<HairLength>);
-			this._City = default(EntityRef<City>);
 			this._Nationality = default(EntityRef<Nationality>);
 			this._Model = default(EntityRef<Model>);
+			this._City = default(EntityRef<City>);
 			OnCreated();
 		}
 		
@@ -6585,40 +6387,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
-		public City City
-		{
-			get
-			{
-				return this._City.Entity;
-			}
-			set
-			{
-				City previousValue = this._City.Entity;
-				if (((previousValue != value) 
-							|| (this._City.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._City.Entity = null;
-						previousValue.ModBiographies.Remove(this);
-					}
-					this._City.Entity = value;
-					if ((value != null))
-					{
-						value.ModBiographies.Add(this);
-						this._CityResidenceId = value.Id;
-					}
-					else
-					{
-						this._CityResidenceId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("City");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_ModBiography", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
 		public Nationality Nationality
 		{
@@ -6683,6 +6451,40 @@ namespace TALENTS
 						this._ModelId = default(int);
 					}
 					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
+		public City City
+		{
+			get
+			{
+				return this._City.Entity;
+			}
+			set
+			{
+				City previousValue = this._City.Entity;
+				if (((previousValue != value) 
+							|| (this._City.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._City.Entity = null;
+						previousValue.ModBiographies.Remove(this);
+					}
+					this._City.Entity = value;
+					if ((value != null))
+					{
+						value.ModBiographies.Add(this);
+						this._CityResidenceId = value.Id;
+					}
+					else
+					{
+						this._CityResidenceId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("City");
 				}
 			}
 		}
@@ -7101,11 +6903,11 @@ namespace TALENTS
 		
 		private int _UserId;
 		
-		private EntityRef<City> _City;
-		
 		private EntityRef<Nationality> _Nationality;
 		
 		private EntityRef<Model> _Model;
+		
+		private EntityRef<City> _City;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -7149,9 +6951,9 @@ namespace TALENTS
 		
 		public UserInfo()
 		{
-			this._City = default(EntityRef<City>);
 			this._Nationality = default(EntityRef<Nationality>);
 			this._Model = default(EntityRef<Model>);
+			this._City = default(EntityRef<City>);
 			OnCreated();
 		}
 		
@@ -7507,40 +7309,6 @@ namespace TALENTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_UserInfo", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
-		public City City
-		{
-			get
-			{
-				return this._City.Entity;
-			}
-			set
-			{
-				City previousValue = this._City.Entity;
-				if (((previousValue != value) 
-							|| (this._City.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._City.Entity = null;
-						previousValue.UserInfos.Remove(this);
-					}
-					this._City.Entity = value;
-					if ((value != null))
-					{
-						value.UserInfos.Add(this);
-						this._CityResidenceId = value.Id;
-					}
-					else
-					{
-						this._CityResidenceId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("City");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Nationality_UserInfo", Storage="_Nationality", ThisKey="NationalityId", OtherKey="Id", IsForeignKey=true)]
 		public Nationality Nationality
 		{
@@ -7605,6 +7373,40 @@ namespace TALENTS
 						this._UserId = default(int);
 					}
 					this.SendPropertyChanged("Model");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_UserInfo", Storage="_City", ThisKey="CityResidenceId", OtherKey="Id", IsForeignKey=true)]
+		public City City
+		{
+			get
+			{
+				return this._City.Entity;
+			}
+			set
+			{
+				City previousValue = this._City.Entity;
+				if (((previousValue != value) 
+							|| (this._City.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._City.Entity = null;
+						previousValue.UserInfos.Remove(this);
+					}
+					this._City.Entity = value;
+					if ((value != null))
+					{
+						value.UserInfos.Add(this);
+						this._CityResidenceId = value.Id;
+					}
+					else
+					{
+						this._CityResidenceId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("City");
 				}
 			}
 		}
@@ -10388,6 +10190,252 @@ namespace TALENTS
 		{
 			this.SendPropertyChanging();
 			entity.InstructionChat = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.City")]
+	public partial class City : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Description;
+		
+		private System.Nullable<double> _Lat;
+		
+		private System.Nullable<double> _Lng;
+		
+		private EntitySet<ModTour> _ModTours;
+		
+		private EntitySet<ModWorkingCityAlloc> _ModWorkingCityAllocs;
+		
+		private EntitySet<ModBiography> _ModBiographies;
+		
+		private EntitySet<UserInfo> _UserInfos;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnLatChanging(System.Nullable<double> value);
+    partial void OnLatChanged();
+    partial void OnLngChanging(System.Nullable<double> value);
+    partial void OnLngChanged();
+    #endregion
+		
+		public City()
+		{
+			this._ModTours = new EntitySet<ModTour>(new Action<ModTour>(this.attach_ModTours), new Action<ModTour>(this.detach_ModTours));
+			this._ModWorkingCityAllocs = new EntitySet<ModWorkingCityAlloc>(new Action<ModWorkingCityAlloc>(this.attach_ModWorkingCityAllocs), new Action<ModWorkingCityAlloc>(this.detach_ModWorkingCityAllocs));
+			this._ModBiographies = new EntitySet<ModBiography>(new Action<ModBiography>(this.attach_ModBiographies), new Action<ModBiography>(this.detach_ModBiographies));
+			this._UserInfos = new EntitySet<UserInfo>(new Action<UserInfo>(this.attach_UserInfos), new Action<UserInfo>(this.detach_UserInfos));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lat", DbType="Float")]
+		public System.Nullable<double> Lat
+		{
+			get
+			{
+				return this._Lat;
+			}
+			set
+			{
+				if ((this._Lat != value))
+				{
+					this.OnLatChanging(value);
+					this.SendPropertyChanging();
+					this._Lat = value;
+					this.SendPropertyChanged("Lat");
+					this.OnLatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lng", DbType="Float")]
+		public System.Nullable<double> Lng
+		{
+			get
+			{
+				return this._Lng;
+			}
+			set
+			{
+				if ((this._Lng != value))
+				{
+					this.OnLngChanging(value);
+					this.SendPropertyChanging();
+					this._Lng = value;
+					this.SendPropertyChanged("Lng");
+					this.OnLngChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModTour", Storage="_ModTours", ThisKey="Id", OtherKey="CityId")]
+		public EntitySet<ModTour> ModTours
+		{
+			get
+			{
+				return this._ModTours;
+			}
+			set
+			{
+				this._ModTours.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModWorkingCityAlloc", Storage="_ModWorkingCityAllocs", ThisKey="Id", OtherKey="CityId")]
+		public EntitySet<ModWorkingCityAlloc> ModWorkingCityAllocs
+		{
+			get
+			{
+				return this._ModWorkingCityAllocs;
+			}
+			set
+			{
+				this._ModWorkingCityAllocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_ModBiography", Storage="_ModBiographies", ThisKey="Id", OtherKey="CityResidenceId")]
+		public EntitySet<ModBiography> ModBiographies
+		{
+			get
+			{
+				return this._ModBiographies;
+			}
+			set
+			{
+				this._ModBiographies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="City_UserInfo", Storage="_UserInfos", ThisKey="Id", OtherKey="CityResidenceId")]
+		public EntitySet<UserInfo> UserInfos
+		{
+			get
+			{
+				return this._UserInfos;
+			}
+			set
+			{
+				this._UserInfos.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ModTours(ModTour entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = this;
+		}
+		
+		private void detach_ModTours(ModTour entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = null;
+		}
+		
+		private void attach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = this;
+		}
+		
+		private void detach_ModWorkingCityAllocs(ModWorkingCityAlloc entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = null;
+		}
+		
+		private void attach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = this;
+		}
+		
+		private void detach_ModBiographies(ModBiography entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = null;
+		}
+		
+		private void attach_UserInfos(UserInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = this;
+		}
+		
+		private void detach_UserInfos(UserInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.City = null;
 		}
 	}
 }
