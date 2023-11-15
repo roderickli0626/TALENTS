@@ -283,30 +283,38 @@
             });
 
             // Try HTML5 geolocation to get the user's current position
-            //if (navigator.geolocation) {
-            //    navigator.geolocation.getCurrentPosition(function (position) {
-            //        var pos = {
-            //            lat: position.coords.latitude,
-            //            lng: position.coords.longitude
-            //        };
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
 
-            //        // Add a marker for the user's current position
-            //        var marker = new google.maps.Marker({
-            //            position: pos,
-            //            map: map,
-            //            title: 'Your Location'
-            //        });
+                    // Add a marker for the user's current position
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: 'My Location'
+                    });
 
-            //        // Center the map on the user's current position
-            //        map.setCenter(pos);
-            //    }, function () {
-            //        // Handle errors with geolocation
-            //        console.log('Error: The Geolocation service failed.');
-            //    });
-            //} else {
-            //    // Browser doesn't support Geolocation
-            //    console.log('Error: Your browser doesn\'t support geolocation.');
-            //}
+                    // Center the map on the user's current position
+                    map.setCenter(pos);
+
+                    marker.addListener('click', function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: '<h5>My Location</h5>Latitude: ' + this.getPosition().lat() +
+                                '<br>Longitude: ' + this.getPosition().lng(),
+                        });
+                        infowindow.open(map, this);
+                    });
+                }, function () {
+                    // Handle errors with geolocation
+                    console.log('Error: The Geolocation service failed.');
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                console.log('Error: Your browser doesn\'t support geolocation.');
+            }
 
             var modelInfo = JSON.parse($("#HfModelInfo").val());
 
@@ -373,7 +381,7 @@
             }
             return result;
         }
-    </script>
+                        </script>
     <script>
         document.addEventListener('DOMContentLoaded', initMap);
     </script>
