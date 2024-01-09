@@ -177,7 +177,7 @@
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row justify-content-center" style="background-color: gray">
-                        <div class="col-8 mx-auto text-center bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
+                        <div class="col-md-8 mx-auto text-center bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
                             <div class="row justify-content-center">
                                 <asp:HiddenField ID="HfSubscriptionID" runat="server" ClientIDMode="Static" />
                                 <asp:HiddenField ID="HfGetAllow" runat="server" ClientIDMode="Static" />
@@ -193,7 +193,7 @@
                             </div>
                             <hr class="text-primary mb-4" />
                             <div class="row">
-                                <div class="col-md-4 col-sm-6">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="pricing-table-3 basic">
                                         <div class="pricing-table-header bg-transparent d-flex">
                                             <h1 class="text-left text-white"><strong>1</strong></h1>
@@ -209,7 +209,7 @@
                                         </div>
                                     </div>
                                 </div>  
-                                <div class="col-md-4 col-sm-6">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="pricing-table-3 premium">
                                         <div class="pricing-table-header bg-transparent d-flex">
                                             <h1 class="text-left text-white"><strong>1</strong></h1>
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center mt-5 mb-4">
-                                <div class="col-6">
+                                <div class="col-md-6">
                                     <asp:Button runat="server" ID="btnPayment" ClientIDMode="Static" CssClass="btn btn-block btn-lg btn-dark text-white d-none" 
                                         style="border-radius: 30px;" Text="PAYMENT WITH PAYPAL / CREDITS" OnClick="btnPayment_Click" />
                                 </div>

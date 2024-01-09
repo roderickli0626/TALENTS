@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPage.Master" AutoEventWireup="true" CodeBehind="AdminNotice.aspx.cs" Inherits="TALENTS.AdminNotice" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
+    <link rel="stylesheet" href="Content/CSS/responsive.dataTables.min.css" />
     <link rel="stylesheet" href="Content/CSS/gijgo.min.css" />
      <style>
         .notice:hover {
@@ -157,16 +158,16 @@
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <asp:HiddenField ID="HfNoticeID" runat="server" ClientIDMode="Static" />
                     <div class="row justify-content-center" style="background-color: gray">
-                        <div class="col-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
+                        <div class="col-md-8 mx-auto bg-white m-lg-5 p-lg-5" style="height: auto; border-radius: 5px">
                             <div class="row justify-content-center">
                                 <h2 class="mb-4 justify-content-center">BACHECA ANNUNCI</h2>
                             </div>
                             <hr class="text-primary mb-4" />
                             <div class="row pl-5 pr-5">
-                                <div class="col-2">
+                                <div class="col-md-2 mb-2">
                                     <button id="BtnAdd" class="btn btn-success btn-block btn-lg">+ Agg. Annuncio</button>
                                 </div>
-                                <div class="col-6 ml-auto">
+                                <div class="col-md-6 ml-auto">
                                     <div class="mb-4">
                                         <asp:TextBox runat="server" ID="TxtSearch" ClientIDMode="Static" PlaceHolder="Cerca..." CssClass="form-control form-control-lg"></asp:TextBox>
                                     </div>
@@ -227,12 +228,12 @@
                                                 <asp:TextBox runat="server" ID="TxtMessage" ClientIDMode="Static" placeholder="Messaggio" CssClass="form-control form-control-lg" TextMode="MultiLine" Rows="4" AutoCompleteType="Disabled"></asp:TextBox>
                                             </div>
 
-                                            <div class="row mb-4">
-                                                <div class="col-6 form-white">
+                                            <div class="row">
+                                                <div class="col-md-6 form-white mb-4">
                                                     <asp:TextBox runat="server" ID="TxtStartDate" ClientIDMode="Static" PlaceHolder="Dal" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                 </div>
 
-                                                <div class="col-6 form-white">
+                                                <div class="col-md-6 form-white mb-4">
                                                     <asp:TextBox runat="server" ID="TxtEndDate" ClientIDMode="Static" PlaceHolder="Al" CssClass="form-control form-control-lg" style="height: 50px;"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -269,6 +270,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterPlaceHolder" runat="server">
     <script src="Scripts/jquery.dataTables.js"></script>
     <script src="Scripts/datatables.js"></script>
+    <script src="Scripts/dataTables.responsive.min.js"></script>
     <script src="Scripts/gijgo.min.js"></script>
     <script>
         Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(pageLoadedHandler);
@@ -341,11 +343,14 @@
                 "pageLength": 10,
                 "processing": true,
                 "ordering": false,
+                "responsive": true,
                 "columns": [{
+                    "data": "Id",
                     "render": function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 }, {
+                    "data": null,
                     "width": "80%",
                     "render": function (data, type, row, meta) {
                         var allowed = row.Allowed;
@@ -371,6 +376,7 @@
                                 '</div> ';
                     }
                 }, {
+                    "data": null,
                     "render": function (data, type, row, meta) {
                         return '<a href="#" class="btn-delete mr-4"><i class="fa fa-trash" style="font-size:25px"></i></a>' + '<a href="#" class="btn-edit"><i class="fa fa-edit" style="font-size:25px"></i></a>';
                     }
@@ -394,6 +400,8 @@
                 e.preventDefault();
 
                 var row = datatable.fnGetData($(this).closest('tr'));
+                if (row == null) row = datatable.fnGetData($(this));
+
                 var allowed = row.Allowed;
                 var badgeInfo = row.From + ' - ' + row.To;
                 if (allowed) {
@@ -427,6 +435,7 @@
                 e.preventDefault();
 
                 var row = datatable.fnGetData($(this).closest('tr'));
+                if (row == null) row = datatable.fnGetData($(this));
 
                 if (!confirm("Click OK per cancellare."))
                     return;

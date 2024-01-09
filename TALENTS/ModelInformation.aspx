@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderPlaceHolder" runat="server">
     <link rel="stylesheet" href="Content/CSS/core.min.css" type="text/css">
     <link rel="stylesheet" href="Content/CSS/datatables.css" />
+    <link rel="stylesheet" href="Content/CSS/responsive.dataTables.min.css" />
     <link rel="stylesheet" href="Content/CSS/gijgo.min.css" />
     <style>
         .nav-link.active {
@@ -130,7 +131,20 @@
             padding-left: 0px !important;
             padding-right: 0px !important;
         }
-        
+        @media screen and (max-width:480px) {
+            #hideMenu {
+                display: none;
+            }
+            .tab-pane {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+        @media screen and (min-width:480px) {
+            .wd-800 {
+                width: 800px;
+            }
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -141,11 +155,11 @@
                     <asp:HiddenField ID="HfSignedModelID" runat="server" ClientIDMode="Static" />
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row" style="background-color: gray">
-                        <div class="col-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 80px;">
+                        <div class="col-md-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 20px;">
                             <div class="text-right me-2">
                                 <a href="#" id="hideMenu" class="ms-auto"><i class="fa fa-bars text-white" style="font-size:22px;"></i></a>
                             </div>
-                            <h2 runat="server" id="ModelName" clientIDMode="static" class="text-white text-center pb-5">Model Information</h2>
+                            <h2 runat="server" id="ModelName" clientIDMode="static" class="text-white text-center pb-5 pt-3">Model Information</h2>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active text-white" id="v-pills-bio-tab" data-toggle="pill" href="#v-pills-bio" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class ="fa fa-book"></i><span class="ps-2 menu-subitem">Biografia</span></a>
                                 <a class="nav-link text-white" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class ="fa fa-user"></i><span class="ps-2 menu-subitem">About Me</span></a>
@@ -162,25 +176,25 @@
                                 <a class="nav-link text-white" id="v-pills-setting-tab" data-toggle="pill" href="#v-pills-setting" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class ="fa fa-search"></i><span class="ps-2 menu-subitem">Setting</span></a>
                             </div>
                         </div>
-                        <div class="col-9 bg-gray text-center mx-auto">
+                        <div class="col-md-9 bg-gray text-center mx-auto">
                             <div class="tab-content d-flex justify-content-center" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-bio" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
-                                        <h2 class="mb-4 text-left col-6">BIOGRAPHY</h2>
-                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarm" clientIDMode="static" visible="false">Save Biography Successed.</p>
+                                        <h2 class="mb-4 text-left col-md-6">BIOGRAFIA</h2>
+                                        <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarm" clientIDMode="static" visible="false">Biografia salvata con successo.</p>
                                     </div>
                                     <hr class="text-primary mb-4" />
                                     <div class="row m-xs">
                                         <asp:ValidationSummary ID="ValSummary" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                        <%--<asp:RequiredFieldValidator ID="ReqValName" runat="server" ErrorMessage="Please insert Name" ControlToValidate="TxtName" Display="None" Enabled="True"></asp:RequiredFieldValidator>--%>
-                                        <asp:CustomValidator ID="ServerValidatorBio1" runat="server" ErrorMessage="Please insert Name." Display="None"></asp:CustomValidator>
-                                        <asp:CustomValidator ID="ServerValidatorBio2" runat="server" ErrorMessage="Save Biography is failed." Display="None"></asp:CustomValidator>
+                                        <%--<asp:RequiredFieldValidator ID="ReqValName" runat="server" ErrorMessage="Inserire il nome" ControlToValidate="TxtName" Display="None" Enabled="True"></asp:RequiredFieldValidator>--%>
+                                        <asp:CustomValidator ID="ServerValidatorBio1" runat="server" ErrorMessage="Inserire il nome." Display="None"></asp:CustomValidator>
+                                        <asp:CustomValidator ID="ServerValidatorBio2" runat="server" ErrorMessage="Salvataggio fallito." Display="None"></asp:CustomValidator>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="TxtName">Name</label>
+                                                    <label class="form-label" for="TxtName">Nome</label>
                                                     <asp:TextBox runat="server" ID="TxtName" CssClass="form-control textField"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -189,7 +203,7 @@
                                                 <label class="form-label" for="TxtName">Name <span class="text-danger">*</span></label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtSlogan">Slogan</label>
@@ -202,11 +216,11 @@
                                             </div>--%>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="TxtAge">Age</label>
+                                                    <label class="form-label" for="TxtAge">Età</label>
                                                     <asp:TextBox runat="server" ID="TxtAge" CssClass="form-control textField" TextMode="Number"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -215,38 +229,38 @@
                                                 <label class="form-label" for="TxtAge">Age</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboSex">Sex</label>
+                                                    <label class="form-label" for="ComboSex">Sesso</label>
                                                     <asp:DropDownList runat="server" ID="ComboSex" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboEth">Ethnicity</label>
+                                                    <label class="form-label" for="ComboEth">Etnia</label>
                                                     <asp:DropDownList runat="server" ID="ComboEth" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboNation">Nationality</label>
+                                                    <label class="form-label" for="ComboNation">Nazionalità</label>
                                                     <asp:DropDownList runat="server" ID="ComboNation" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboRes">Residence</label>
+                                                    <label class="form-label" for="ComboRes">Residenza</label>
                                                     <asp:DropDownList runat="server" ID="ComboRes" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
@@ -255,8 +269,8 @@
                                     <div class="row text-left">
                                         <h5 class="text-primary text-bold text-left">Caratteristiche Fisiche</h5>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboHairColor">Colore_Capelli</label>
@@ -264,7 +278,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboHairLeng">Lunghezza_Capelli</label>
@@ -273,18 +287,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboEye">Colore_Occhi</label>
+                                                    <label class="form-label" for="ComboEye">Occhi</label>
                                                     <asp:DropDownList runat="server" ID="ComboEye" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-3">
+                                    <div class="row wd-800">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtHeight">Altezza</label>
@@ -296,7 +310,7 @@
                                                 <label class="form-label" for="TxtHeight">Altezza</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtWeight">Peso</label>
@@ -308,7 +322,7 @@
                                                 <label class="form-label" for="TxtWeight">Peso</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboDress">Taglia_Vestito</label>
@@ -316,7 +330,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtShoes">Scarpe</label>
@@ -329,8 +343,8 @@
                                             </div>--%>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-3">
+                                    <div class="row wd-800">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtBust">Busto</label>
@@ -342,7 +356,7 @@
                                                 <label class="form-label" for="TxtBust">Busto</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtWaist">Vita</label>
@@ -354,7 +368,7 @@
                                                 <label class="form-label" for="TxtWaist">Vita</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="TxtHaunch">Fianchi</label>
@@ -366,7 +380,7 @@
                                                 <label class="form-label" for="TxtHaunch">Fianchi</label>
                                             </div>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboBreast">Seno</label>
@@ -378,8 +392,8 @@
                                     <div class="row text-left">
                                         <h5 class="text-primary text-bold text-left">Informazioni Aggiuntive</h5>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboSmoker">Fumatrice</label>
@@ -387,7 +401,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboDrink">Bevitrice</label>
@@ -396,8 +410,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
-                                        <div class="col-6">
+                                    <div class="row wd-800">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboTattoos">Tatuaggi</label>
@@ -405,7 +419,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                     <label class="form-label" for="ComboPiercing">Piercing</label>
@@ -414,11 +428,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="width: 800px;">
+                                    <div class="row wd-800">
                                         <div class="col-12">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="TxtPeculiarities">Particolarita</label>
+                                                    <label class="form-label" for="TxtPeculiarities">Particolarità</label>
                                                     <asp:TextBox runat="server" ID="TxtPeculiarities" CssClass="form-control textField"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -430,7 +444,7 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-12">
-                                            <asp:Button runat="server" ID="BtnBio" Text="SAVE BIOGRAPHY" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnBio_Click" />
+                                            <asp:Button runat="server" ID="BtnBio" Text="SALVA BIOGRAFIA" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnBio_Click" />
                                         </div>
                                     </div>
                                 </div>
@@ -438,17 +452,17 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelAbout" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">ABOUT ME</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmAbout" clientIDMode="static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">ABOUT ME</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmAbout" clientIDMode="static" visible="false">Salvataggio confermato.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
                                                 <%--<asp:RequiredFieldValidator ID="ReqValName" runat="server" ErrorMessage="Please insert Name" ControlToValidate="TxtName" Display="None" Enabled="True"></asp:RequiredFieldValidator>--%>
-                                                <asp:CustomValidator ID="ServerValidatorAbout1" runat="server" ErrorMessage="Please insert About Me." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorAbout2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorAbout1" runat="server" ErrorMessage="Inserire il testo." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorAbout2" runat="server" ErrorMessage="Save Fallito." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-12">
                                                     <div class="mb-5">
                                                         <div class="wrapper">
@@ -477,38 +491,38 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelLang" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">LANGUAGE</h2>
-                                                <p class="text-success col-6 text-right" runat="server" ClientIDMode="Static" id="SuccessAlarmLang" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">LINGUA</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmLang" clientIDMode="static" visible="false">Save Confermato.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                                <asp:CustomValidator ID="ServerValidatorLang1" runat="server" ErrorMessage="Please select Language and Level." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorLang2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorLang1" runat="server" ErrorMessage="Prego selezionare la Lingua e livello." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorLang2" runat="server" ErrorMessage="Salvataggio fallito." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-5">
+                                            <div class="row wd-800">
+                                                <div class="col-md-5 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboLang">Language</label>
+                                                            <label class="form-label" for="ComboLang">Lingua</label>
                                                             <asp:DropDownList runat="server" ID="ComboLang" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
+                                                <div class="col-md-5 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboLevel">Level</label>
+                                                            <label class="form-label" for="ComboLevel">Livello</label>
                                                             <asp:DropDownList runat="server" ID="ComboLevel" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-md-2">
                                                     <asp:Button runat="server" ID="BtnLang" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnLang_Click"/>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <asp:Repeater ID="LanguageRepeater" runat="server" ClientIDMode="Static" OnItemCreated="LanguageRepeater_ItemCreated">
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
@@ -516,8 +530,8 @@
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Language</th>
-                                                                        <th>Level</th>
+                                                                        <th>Lingua</th>
+                                                                        <th>Livello</th>
                                                                         <th>Azioni</th>
                                                                     </tr>
                                                                 </thead>
@@ -553,8 +567,8 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelService" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">SERVICES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmService" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">SERVIZI</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmService" ClientIDMode="Static" visible="false">Salvataggio confermato.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -562,38 +576,38 @@
                                                 <asp:CustomValidator ID="servervalidatorService1" runat="server" ErrorMessage="Please select Service." Display="None"></asp:CustomValidator>
                                                 <asp:CustomValidator ID="servervalidatorService2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-4">
+                                            <div class="row wd-800">
+                                                <div class="col-md-4 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboServiceGroup">Groups</label>
+                                                            <label class="form-label" for="ComboServiceGroup">Categoria</label>
                                                             <asp:DropDownList runat="server" ID="ComboServiceGroup" ClientIDMode="Static" CssClass="custom-select" style="width:100%" AutoPostBack="true" 
                                                                 OnSelectedIndexChanged="ComboServiceGroup_SelectedIndexChanged"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-md-4 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboService">Services</label>
+                                                            <label class="form-label" for="ComboService">Servizi</label>
                                                             <asp:DropDownList runat="server" ID="ComboService" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-md-2 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtServiceAmount">Amount</label>
+                                                            <label class="form-label" for="TxtServiceAmount">Importo</label>
                                                             <asp:TextBox runat="server" ID="TxtServiceAmount" CssClass="form-control textField p-0"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-md-2 col-6">
                                                     <asp:Button runat="server" ID="BtnService" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnService_Click"/>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <asp:Repeater ID="RepeaterModServices" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModServices_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
@@ -601,9 +615,9 @@
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Group Name</th>
-                                                                        <th>Service</th>
-                                                                        <th>Amount (/h)</th>
+                                                                        <th>Categoria</th>
+                                                                        <th>Servizi</th>
+                                                                        <th>Importo</th>
                                                                         <th>Azioni</th>
                                                                     </tr>
                                                                 </thead>
@@ -641,34 +655,34 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelWorkCity" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">WORK CITIES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkCity" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">CITTA'</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmWorkCity" clientIDMode="static" visible="false">Save Confermato.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary4" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                                <asp:CustomValidator ID="ServerValidatorWorkCity1" runat="server" ErrorMessage="Please select Work City." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorWorkCity3" runat="server" ErrorMessage="Please select Incall Place." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorWorkCity4" runat="server" ErrorMessage="Please select Outcall Place." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorWorkCity2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity1" runat="server" ErrorMessage="Selezionare la Città." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity3" runat="server" ErrorMessage="Selezionare luogo Incall." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity4" runat="server" ErrorMessage="Selezionare luogo Outcall." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkCity2" runat="server" ErrorMessage="Save fallito." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row text-left">
-                                                <h5 class="text-primary text-bold text-left">Work Cities</h5>
+                                                <h5 class="text-primary text-bold text-left">Città</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-8">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboWorkCity">Work_City</label>
+                                                            <label class="form-label" for="ComboWorkCity">Città</label>
                                                             <asp:DropDownList runat="server" ID="ComboWorkCity" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <asp:Button runat="server" ID="BtnWorkCity" Text="+ Add Work City" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkCity_Click"/>
+                                                    <asp:Button runat="server" ID="BtnWorkCity" Text="+ Agg. Città" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkCity_Click"/>
                                                 </div>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <asp:Repeater ID="RepeaterModWorkCity" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModWorkCity_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
@@ -676,7 +690,7 @@
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Work City</th>
+                                                                        <th>Città</th>
                                                                         <th>Azioni</th>
                                                                     </tr>
                                                                 </thead>
@@ -703,10 +717,10 @@
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
                                             <div class="row text-left">
-                                                <h5 class="text-primary text-bold text-left">Incall/Outcall Places</h5>
+                                                <h5 class="text-primary text-bold text-left">Incall/Outcall</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-6" style="border-right: 1px solid lightblue;">
+                                            <div class="row wd-800">
+                                                <div class="col-md-6" style="border-right: 1px solid lightblue;">
                                                     <div class="row">
                                                         <div class="col-8">
                                                             <div class="mb-4">
@@ -728,7 +742,7 @@
                                                                         <thead class="thead-dark">
                                                                             <tr>
                                                                                 <th>No</th>
-                                                                                <th>Incall Place</th>
+                                                                                <th>Incall</th>
                                                                                 <th>Azioni</th>
                                                                             </tr>
                                                                         </thead>
@@ -754,7 +768,7 @@
                                                         </asp:Repeater>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-8">
                                                             <div class="mb-4">
@@ -776,7 +790,7 @@
                                                                         <thead class="thead-dark">
                                                                             <tr>
                                                                                 <th>No</th>
-                                                                                <th>Outcall Place</th>
+                                                                                <th>Outcall</th>
                                                                                 <th>Azioni</th>
                                                                             </tr>
                                                                         </thead>
@@ -817,46 +831,46 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelWorkDayHours" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">WORKING HOURS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmWorkHours" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">ORARIO</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmWorkHours" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary5" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                                <asp:CustomValidator ID="ServerValidatorWorkHours1" runat="server" ErrorMessage="Please select Work Day and Hours." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorWorkHours1" runat="server" ErrorMessage="Selezionare Giorno e Orario Hours." Display="None"></asp:CustomValidator>
                                                 <asp:CustomValidator ID="ServerValidatorWorkHours2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-4">
+                                            <div class="row wd-800">
+                                                <div class="col-md-4 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboWorkDay">Work_Day</label>
+                                                            <label class="form-label" for="ComboWorkDay">Giorno</label>
                                                             <asp:DropDownList runat="server" ID="ComboWorkDay" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-md-3 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboSHour">Start_Time</label>
+                                                            <label class="form-label" for="ComboSHour">Dalle</label>
                                                             <asp:DropDownList runat="server" ID="ComboSHour" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-md-3 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboEHour">End_Time</label>
+                                                            <label class="form-label" for="ComboEHour">Alle</label>
                                                             <asp:DropDownList runat="server" ID="ComboEHour" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <asp:Button runat="server" ID="BtnWorkHour" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkHour_Click"/>
+                                                <div class="col-md-2 col-6">
+                                                    <asp:Button runat="server" ID="BtnWorkHour" Text="+ Agg." CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkHour_Click"/>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <asp:Repeater ID="RepeaterModWorkHour" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModWorkHour_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
@@ -864,9 +878,9 @@
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>Work Day</th>
-                                                                        <th>Work Start Time</th>
-                                                                        <th>Work End Time</th>
+                                                                        <th>Giorno</th>
+                                                                        <th>Dalle ore</th>
+                                                                        <th>Alle ore</th>
                                                                         <th>Azioni</th>
                                                                     </tr>
                                                                 </thead>
@@ -903,77 +917,77 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelRates" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">RATES</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmRate" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">TARIFFE</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmRate" ClientIDMode="Static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary6" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                                <asp:CustomValidator ID="ServerValidatorRate1" runat="server" ErrorMessage="Please select Incall Rate." Display="None"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="ServerValidatorRate2" runat="server" ErrorMessage="Please select Outcall Rate." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorRate1" runat="server" ErrorMessage="Selezionare Tariffa Incall." Display="None"></asp:CustomValidator>
+                                                <asp:CustomValidator ID="ServerValidatorRate2" runat="server" ErrorMessage="Selezionare Tariffa Outcall." Display="None"></asp:CustomValidator>
                                                 <asp:CustomValidator ID="ServerValidatorRate3" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-5">
+                                            <div class="row wd-800">
+                                                <div class="col-md-5 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboModIncallPlace">Incall_Place</label>
+                                                            <label class="form-label" for="ComboModIncallPlace">Incall</label>
                                                             <asp:DropDownList runat="server" ID="ComboModIncallPlace" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-md-3 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboDuration">Duration</label>
+                                                            <label class="form-label" for="ComboDuration">Durata</label>
                                                             <asp:DropDownList runat="server" ID="ComboDuration" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-md-2 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtIncallRate">Rate</label>
+                                                            <label class="form-label" for="TxtIncallRate">Tariffa</label>
                                                             <asp:TextBox runat="server" ID="TxtIncallRate" CssClass="form-control textField p-0"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <asp:Button runat="server" ID="BtnIncallRate" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnIncallRate_Click"/>
+                                                <div class="col-md-2 col-6">
+                                                    <asp:Button runat="server" ID="BtnIncallRate" Text="+ Agg." CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnIncallRate_Click"/>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" style="width: 800px;">
-                                                <div class="col-5">
+                                            <div class="row mt-3 wd-800">
+                                                <div class="col-md-5 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboModOutcallPlace">Outcall_Place</label>
+                                                            <label class="form-label" for="ComboModOutcallPlace">Outcall</label>
                                                             <asp:DropDownList runat="server" ID="ComboModOutcallPlace" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-md-3 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboDuration1">Duration</label>
+                                                            <label class="form-label" for="ComboDuration1">Durata</label>
                                                             <asp:DropDownList runat="server" ID="ComboDuration1" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-md-2 col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtOutcallRate">Rate</label>
+                                                            <label class="form-label" for="TxtOutcallRate">Tariffa</label>
                                                             <asp:TextBox runat="server" ID="TxtOutcallRate" CssClass="form-control textField p-0"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <asp:Button runat="server" ID="BtnOutcallRate" Text="+ Add" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnOutcallRate_Click"/>
+                                                <div class="col-md-2 col-6">
+                                                    <asp:Button runat="server" ID="BtnOutcallRate" Text="+ Agg." CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnOutcallRate_Click"/>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-6" style="border-right: 1px solid lightblue;">
+                                            <div class="row wd-800">
+                                                <div class="col-md-6" style="border-right: 1px solid lightblue;">
                                                     <asp:Repeater ID="RepeaterModIncallRate" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModIncallRate_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                         <HeaderTemplate>
                                                             <div class="table-responsive">
@@ -981,9 +995,9 @@
                                                                     <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>No</th>
-                                                                            <th>Incall Place</th>
-                                                                            <th>Duration</th>
-                                                                            <th>Rate</th>
+                                                                            <th>Incall</th>
+                                                                            <th>Durata</th>
+                                                                            <th>Tariffa</th>
                                                                             <th>Azioni</th>
                                                                         </tr>
                                                                     </thead>
@@ -1011,7 +1025,7 @@
                                                         </FooterTemplate>
                                                     </asp:Repeater>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <asp:Repeater ID="RepeaterModOutcallRate" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterModOutcallRate_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                         <HeaderTemplate>
                                                             <div class="table-responsive">
@@ -1019,9 +1033,9 @@
                                                                     <thead class="thead-dark">
                                                                         <tr>
                                                                             <th>No</th>
-                                                                            <th>Outcall Place</th>
-                                                                            <th>Duration</th>
-                                                                            <th>Rate</th>
+                                                                            <th>Outcall</th>
+                                                                            <th>Durata</th>
+                                                                            <th>Tariffa</th>
                                                                             <th>Azioni</th>
                                                                         </tr>
                                                                     </thead>
@@ -1065,16 +1079,16 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelContact" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">CONTACTS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmContact" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">CONTATTI</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmContact" ClientIDMode="Static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
                                                 <asp:ValidationSummary ID="ValidationSummary7" runat="server" CssClass="col-sm-12 text-left text-danger asp-validation-message" />
-                                                <%--<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select Language and Level." Display="None"></asp:CustomValidator>--%>
+                                                <%--<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Selezionare lingua e livello." Display="None"></asp:CustomValidator>--%>
                                                 <asp:CustomValidator ID="ServerValidatorContact" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
@@ -1086,13 +1100,13 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboInstructionChat">Instruction_Chat</label>
+                                                            <label class="form-label" for="ComboInstructionChat">Istruzioni</label>
                                                             <asp:DropDownList runat="server" ID="ComboInstructionChat" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
@@ -1104,17 +1118,17 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtMobilePhone">Mobile_Phone</label>
+                                                            <label class="form-label" for="TxtMobilePhone">Cellulare</label>
                                                             <asp:TextBox runat="server" ID="TxtMobilePhone" CssClass="form-control textField" TextMode="Phone"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtAddress">Address</label>
+                                                            <label class="form-label" for="TxtAddress">Indirizzo</label>
                                                             <asp:TextBox runat="server" ID="TxtAddress" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1122,16 +1136,16 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtAddressCiv">AddressCiv</label>
+                                                            <label class="form-label" for="TxtAddressCiv">CAP</label>
                                                             <asp:TextBox runat="server" ID="TxtAddressCiv" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-12">
-                                                    <asp:Button runat="server" ID="BtnContact" Text="SAVE CONTACT INFORMATION" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnContact_Click"/>
+                                                    <asp:Button runat="server" ID="BtnContact" Text="SALVA INFORMAZIONI DI CONTATTO" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnContact_Click"/>
                                                 </div>
                                             </div>
                                         </ContentTemplate>
@@ -1141,10 +1155,10 @@
                                 </div>
                                 <div class="tab-pane fade bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                     <div class="row">
-                                        <h2 class="mb-4 text-left col-6">PHOTO GALLERY</h2>
-                                        <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmPhoto" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                        <h2 class="mb-4 text-left col-md-6">FOTO GALLERY</h2>
+                                        <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmPhoto" clientIDMode="static" visible="false">Save Successed.</p>
                                     </div>
-                                    <div class="row" style="width: 800px;">
+                                    <div class="row wd-800">
                                         <table class="table text-left" id="photo-table">
                                             <tbody>
                                             </tbody>
@@ -1155,16 +1169,16 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelVideos" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">VIDEOS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmVideo" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">VIDEO</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmVideo" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="card-body">
                                                     <div class="container">
                                                         <fieldset class="form-group text-center">
                                                             <%--<asp:Button runat="server" ID="BtnUploadVideo" CssClass="btn btn-success" Text="<i class='fa fa-upload'></i>Upload Video" OnClick="BtnUploadVideo_Click" OnClientClick="$('#FileUpload').click();"></asp:Button>--%>
-                                                            <button id="BtnUploadVideo" class="btn btn-success"><i class='fa fa-upload'></i> Upload Video</button>
+                                                            <button id="BtnUploadVideo" class="btn btn-success"><i class='fa fa-upload'></i> Carica Video</button>
                                                             <%--<asp:FileUpload runat="server" ID="FileUpload" ClientIDMode="Static" CssClass="form-control" style="display: none;" />--%>
                                                             <input type="file" id="fileUpload" style="display: none;" class="form-control" multiple>
                                                             <asp:Button runat="server" ID="BtnReload" ClientIDMode="Static" style="display:none;" OnClick="BtnReload_Click" />
@@ -1206,16 +1220,16 @@
                                         <ContentTemplate>
                                             <div class="row">
                                                 <asp:Button runat="server" ID="BtnReloadNatural" style="display:none" OnClick="BtnReloadNatural_Click" />
-                                                <h2 class="mb-4 text-left col-6">NATURAL PHOTOS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmNaturalPhoto" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">NATURAL PHOTOS</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmNaturalPhoto" clientIDMode="static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="card-body">
                                                     <div class="container">
                                                         <fieldset class="form-group text-center">
                                                             <%--<asp:Button runat="server" ID="BtnUploadVideo" CssClass="btn btn-success" Text="<i class='fa fa-upload'></i>Upload Video" OnClick="BtnUploadVideo_Click" OnClientClick="$('#FileUpload').click();"></asp:Button>--%>
-                                                            <button id="BtnUploadNaturalPhoto" class="btn btn-success"><i class='fa fa-upload'></i> Upload Natural Photo</button>
+                                                            <button id="BtnUploadNaturalPhoto" class="btn btn-success"><i class='fa fa-upload'></i> Carica Natural Photo</button>
                                                             <%--<asp:FileUpload runat="server" ID="FileUpload" ClientIDMode="Static" CssClass="form-control" style="display: none;" />--%>
                                                             <input type="file" id="fileUploadNatural" style="display: none;" class="form-control" multiple>
                                                         </fieldset>
@@ -1252,8 +1266,8 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelTour" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">TOURS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmTour" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">TOURS</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmTour" ClientIDMode="Static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -1263,9 +1277,9 @@
                                                 <asp:CustomValidator ID="ServerValidatorTour3" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row text-left">
-                                                <h5 class="text-primary text-bold text-left">Visita Citta</h5>
+                                                <h5 class="text-primary text-bold text-left">Città</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
@@ -1278,11 +1292,11 @@
                                             <div class="row text-left">
                                                 <h5 class="text-primary text-bold text-left">Periodo<span class="text-danger">*</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtSDate">Start_Date/Time</label>
+                                                            <label class="form-label" for="TxtSDate">Dal</label>
                                                             <asp:TextBox runat="server" ID="TxtSDate" ClientIDMode="Static" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1290,7 +1304,7 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtEDate">End_Date/Time</label>
+                                                            <label class="form-label" for="TxtEDate">Al</label>
                                                             <asp:TextBox runat="server" ID="TxtEDate" ClientIDMode="Static" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1299,11 +1313,11 @@
                                             <div class="row text-left">
                                                 <h5 class="text-primary text-bold text-left">Contatti</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtTourPhone">Numero_di_Telefono</label>
+                                                            <label class="form-label" for="TxtTourPhone">Cellulare</label>
                                                             <asp:TextBox runat="server" ID="TxtTourPhone" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1311,14 +1325,14 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtTourEmail">Indirizzo_email</label>
+                                                            <label class="form-label" for="TxtTourEmail">Email</label>
                                                             <asp:TextBox runat="server" ID="TxtTourEmail" CssClass="form-control textField"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr class="text-primary mb-4 mt-0" />
-                                            <div class="row" style="width: 800px;">
+                                            <div class="row wd-800">
                                                 <asp:Repeater ID="RepeaterTour" runat="server" ClientIDMode="Static" OnItemCommand="RepeaterTour_ItemCommand" OnItemDataBound="RepeaterModServices_ItemDataBound">
                                                     <HeaderTemplate>
                                                         <div class="table-responsive">
@@ -1326,10 +1340,10 @@
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>No</th>
-                                                                        <th>City</th>
-                                                                        <th>From</th>
-                                                                        <th>To</th>
-                                                                        <th>Phone</th>
+                                                                        <th>Città</th>
+                                                                        <th>Dal</th>
+                                                                        <th>Al</th>
+                                                                        <th>Cellulare</th>
                                                                         <th>Email</th>
                                                                         <th>Azioni</th>
                                                                     </tr>
@@ -1361,7 +1375,7 @@
                                             </div>
                                             <div class="row mb-3 mt-3">
                                                 <div class="col-12">
-                                                    <asp:Button runat="server" ID="BtnTour" Text="SAVE TOUR" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnTour_Click" />
+                                                    <asp:Button runat="server" ID="BtnTour" Text="SALVA TOUR" CssClass="btn btn-success btn-block btn-lg" OnClick="BtnTour_Click" />
                                                 </div>
                                             </div>
                                         </ContentTemplate>
@@ -1374,8 +1388,8 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanelSetting" ClientIDMode="Static" UpdateMode="Conditional">
                                         <ContentTemplate>
                                             <div class="row">
-                                                <h2 class="mb-4 text-left col-6">SETTINGS</h2>
-                                                <p class="text-success col-6 text-right" runat="server" id="SuccessAlarmSetting" ClientIDMode="Static" visible="false">Save Successed.</p>
+                                                <h2 class="mb-4 text-left col-md-6">SETTINGS</h2>
+                                                <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarmSetting" ClientIDMode="Static" visible="false">Save Successed.</p>
                                             </div>
                                             <hr class="text-primary mb-4" />
                                             <div class="row m-xs">
@@ -1385,7 +1399,7 @@
                                             <div class="row text-left" runat="server" id="ModActiveTitle">
                                                 <h5 class="text-primary text-bold text-left">Stato del Profilo</h5>
                                             </div>
-                                            <div class="row" style="width: 800px;" runat="server" id="ModActive">
+                                            <div class="row wd-800" runat="server" id="ModActive">
                                                 <div class="col-12">
                                                     <div class="mb-4">
                                                         <div class="custom-control custom-switch">
@@ -1398,8 +1412,8 @@
                                             <div class="row text-left">
                                                 <h5 class="text-primary text-bold text-left">Cambia Password <span class="text-danger">*</span></h5>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-6">
+                                            <div class="row wd-800">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="TxtOldPassword">Inserisci_la_password_attuale</label>
@@ -1408,8 +1422,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row" style="width: 800px;">
-                                                <div class="col-6">
+                                            <div class="row wd-800">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="TxtNewPassword">Inserisci_la_nuova_password</label>
@@ -1417,7 +1431,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="TxtNewPWRepeat">Conferma_la_nuova_password</label>

@@ -41,6 +41,15 @@
             border-color: #14a44d;
             background-color: #14a44d;
         }
+
+        @media screen and (min-width:480px) {
+            .wd-800 {
+                width: 800px;
+            }
+            .wd-870 {
+                width: 870px;
+            }
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
@@ -50,10 +59,10 @@
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
                     <div class="row" style="background-color: gray; justify-content: center;">
                         <div class="bg-gray text-center">
-                            <div class="bg-white m-lg-5 p-lg-5 mx-auto" style="border-radius: 5px;width: 870px;margin-left:auto !important; margin-right:auto !important;">
+                            <div class="bg-white m-lg-5 p-lg-5 mx-auto wd-870" style="border-radius: 5px; margin-left:auto !important; margin-right:auto !important; padding: 20px;">
                                 <div class="row">
-                                    <h2 class="mb-4 text-left col-6">USER INFORMATION</h2>
-                                    <p class="text-success col-6 text-right" runat="server" id="SuccessAlarm" visible="false">Save Successed.</p>
+                                    <h2 class="mb-4 text-left col-md-6">USER INFORMATION</h2>
+                                    <p class="text-success col-md-6 text-right" runat="server" id="SuccessAlarm" visible="false">Save Successed.</p>
                                 </div>
                                 <hr class="text-primary mb-4" />
                                 <div class="row m-xs">
@@ -61,8 +70,8 @@
                                     <asp:CustomValidator ID="ServerValidatorInfo1" runat="server" ErrorMessage="Please insert Name." Display="None"></asp:CustomValidator>
                                     <asp:CustomValidator ID="ServerValidatorInfo2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtName">Name</label>
@@ -74,7 +83,7 @@
                                             <label class="form-label" for="TxtName">Name <span class="text-danger">*</span></label>
                                         </div>--%>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtSurname">Surname</label>
@@ -87,8 +96,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtAddress">Address</label>
@@ -100,7 +109,7 @@
                                             <label class="form-label" for="TxtAddress">Address</label>
                                         </div>--%>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtCAP">CAP</label>
@@ -113,8 +122,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="ComboRes">Residence</label>
@@ -122,7 +131,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="ComboNation">Nationality</label>
@@ -131,8 +140,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtCAP">BirthDay</label>
@@ -141,7 +150,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtSociety">Society</label>
@@ -154,8 +163,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtVat">Vat_Number</label>
@@ -167,7 +176,7 @@
                                             <label class="form-label" for="TxtVat">Vat_Number</label>
                                         </div>--%>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtLicenze">Licenze_Number</label>
@@ -180,8 +189,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtWebSite">WebSite</label>
@@ -193,7 +202,7 @@
                                             <label class="form-label" for="TxtWebSite">WebSite</label>
                                         </div>--%>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtEmail">Email</label>
@@ -206,8 +215,8 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
-                                    <div class="col-6">
+                                <div class="row wd-800">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtMobile">Mobile</label>
@@ -219,7 +228,7 @@
                                             <label class="form-label" for="TxtMobile">Mobile</label>
                                         </div>--%>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                 <label class="form-label" for="TxtPhone">Phone</label>
@@ -232,7 +241,7 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="row" style="width: 800px;">
+                                <div class="row wd-800">
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
