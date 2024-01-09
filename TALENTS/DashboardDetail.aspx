@@ -65,17 +65,15 @@
         }
 
         .gallery-top {
-            height: 100%;
             width: 45%;
         }
 
         .gallery-thumbs {
-            height: 20%;
+            height: 200px;
             box-sizing: border-box;
             padding: 10px 0;
             width: 200px;
             float: left;
-            position: absolute;
             bottom: 0;
         }
 
@@ -227,6 +225,25 @@
         .swiper-button-prev::after {
             font-size: 30px;
         }
+
+        @media screen and (min-width: 480px) {
+            .p-ab {
+                position: absolute;
+            }
+            .wd-600 {
+                width: 600px;
+            }
+            .pd-200 {
+                padding-right: 200px;
+                height: 100%;
+            }
+            .gallery-thumbs {
+                height: 20%;
+            }
+            .site-wrap {
+                height: 1000px; 
+            }
+        }
     </style>
 
 </asp:Content>
@@ -236,8 +253,8 @@
             <div class="set-bg" style="padding-top: 50px; background-color: gray;">
                 <form class="custom-form hero-form" id="form1" runat="server" autocomplete="off">
 
-                    <div class="site-wrap" style="position: relative; height: 1000px; overflow: hidden">
-                        <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto" style="background-color: rgb(0,0,0,.5); width: auto; position: absolute; bottom: 20%; left: 30px;">
+                    <div class="site-wrap" style="position: relative; overflow: hidden">
+                        <div class="p-4 pl-2 pr-2 rounded rounded-5 text-white mx-auto p-ab" style="background-color: rgb(0,0,0,.5); margin-bottom: 20px; width: auto; bottom: 20%; left: 30px;">
                             <h1 runat="server" id="ModelSurname" class="pb-3" style="color: #ff9e22;"></h1>
                             <div class="col-12 pb-2 pl-0">
                                 <h4 class="d-inline">Citta: </h4>
@@ -264,19 +281,8 @@
                                 <h4 runat="server" id="ModelHairColor0" class="d-inline"></h4>
                             </div>
                         </div>
-                        <div class="swiper-container gallery-top" style="padding-right: 200px;">
-                            <div class="swiper-wrapper">
-                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
-                                    <ItemTemplate>
-                                        <div class="swiper-slide" data-swiper-autoplay="6000"
-                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </div>
-                        </div>
-                        <div class="pl-2 pr-2 text-white" style="width: auto; position: absolute; bottom: 20%; right: 30px;">
-                            <div class="" style="width: 600px;">
+                        <div class="pl-2 pr-2 text-white p-ab" style="width: auto; margin-bottom: 20px; bottom: 20%; right: 30px;">
+                            <div class="wd-600">
                                 <!-- Nav tabs -->
                                 <!-- Per ingrandire i caratteri sulle tabs <ul class="nav nav-tabs" role="tablist" style="display: none;"> -->
                                 <ul class="nav nav-tabs" role="tablist" style="font-size: 18px;">
@@ -827,7 +833,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-container gallery-thumbs" style="width: 100%; float: left">
+                        <div class="swiper-container gallery-top pd-200">
+                            <div class="swiper-wrapper">
+                                <asp:Repeater runat="server" ID="DefaultPhotoRepeater1">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide" data-swiper-autoplay="6000"
+                                            style="background-image: url(&quot;Upload/Photos/<%#Eval("Image") %>&quot; );">
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                        <div class="swiper-container gallery-thumbs p-ab" style="width: 100%; float: left">
                             <div class="swiper-wrapper">
                                 <asp:Repeater runat="server" ID="DefaultPhotoRepeater2">
                                     <ItemTemplate>
@@ -846,10 +863,7 @@
                             </div>
                             
                         </div>
-                        
                     </div>
-
-
 
                 </form>
             </div>

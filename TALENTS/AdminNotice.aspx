@@ -62,8 +62,6 @@
             box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
             position: absolute;
             top: 17px;
-            // change this, if no border right: -29px;
-            // change this, if no border
         }
 
         .ribbon span::before {

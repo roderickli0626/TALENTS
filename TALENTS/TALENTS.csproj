@@ -314,6 +314,7 @@
     <Content Include="Content\CSS\owl.carousel.min.css" />
     <Content Include="Content\CSS\owl.theme.default.min.css" />
     <Content Include="Content\CSS\pnotify.custom.css" />
+    <Content Include="Content\CSS\responsive.dataTables.min.css" />
     <Content Include="Content\CSS\scroll-tab.css" />
     <Content Include="Content\CSS\select2-bootstrap.css" />
     <Content Include="Content\CSS\select2.css" />
@@ -425,6 +426,7 @@
     <Content Include="Scripts\custom-photo.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\dataTables.responsive.min.js" />
     <Content Include="Scripts\gijgo.min.js" />
     <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

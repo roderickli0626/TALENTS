@@ -105,15 +105,6 @@ namespace TALENTS
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModelHairColor0;
 
         /// <summary>
-        /// DefaultPhotoRepeater1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater DefaultPhotoRepeater1;
-
-        /// <summary>
         /// ModelName control.
         /// </summary>
         /// <remarks>
@@ -499,6 +490,15 @@ namespace TALENTS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterReview;
+
+        /// <summary>
+        /// DefaultPhotoRepeater1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater DefaultPhotoRepeater1;
 
         /// <summary>
         /// DefaultPhotoRepeater2 control.

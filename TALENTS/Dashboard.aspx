@@ -10,10 +10,15 @@
         .select2-selection.select2-selection--single {
             box-shadow: none !important;
             border: none;
+            height: 45px !important;
         }
 
         #select2-ComboCity-container {
             text-align: center
+        }
+
+        .select2.select2-container.select2-container--bootstrap {
+            width: 100% !important;
         }
         
     </style>
@@ -50,8 +55,6 @@
             box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
             position: absolute;
             top: 17px;
-            // change this, if no border right: -29px;
-            // change this, if no border
         }
 
         .ribbon span::before {
@@ -163,15 +166,15 @@
                     <div class="container" style="max-width: 1200px; padding-bottom: 50px;">
                         <div class="row mb-5" style="border: 1px solid; border-color: black; border-radius:4px; margin-left: auto; margin-right: auto; padding: 20px">
                             <h2 class="text-black pt-3 pb-5 d-block text-center col-12">RICERCA</h2>
-                            <div class="input-group mb-4 input-group-lg col-6 offset-2 text-right">
+                            <div class="input-group mb-4 input-group-lg col-12 col-md-6 ml-auto text-right">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">CITTA'</span>
+                                    <span class="input-group-text">CITTA</span>
                                 </div>
                                 <div class="form-control pt-0 pb-0 pr-0">
                                     <asp:DropDownList runat="server" ID="ComboCity" CssClass="custom-select" ClientIDMode="Static"></asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="col-2 text-right">
+                            <div class="col-12 col-md-2 text-right mr-auto">
                                 <asp:Button runat="server" ID="BtnSearch" Text="RICERCA" CssClass="btn btn-block btn-dark btn-lg text-white" OnClick="BtnSearch_Click" />
                             </div>
                         </div>
