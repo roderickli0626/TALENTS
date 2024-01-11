@@ -167,7 +167,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                <label class="form-label" for="TxtVat">Vat_Number</label>
+                                                <label class="form-label text-nowrap" for="TxtVat">Vat Number</label>
                                                 <asp:TextBox runat="server" ID="TxtVat" CssClass="form-control textField"></asp:TextBox>
                                             </div>
                                         </div>
@@ -179,7 +179,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-4">
                                             <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                <label class="form-label" for="TxtLicenze">Licenze_Number</label>
+                                                <label class="form-label text-nowrap" for="TxtLicenze">Licenze Number</label>
                                                 <asp:TextBox runat="server" ID="TxtLicenze" CssClass="form-control textField"></asp:TextBox>
                                             </div>
                                         </div>

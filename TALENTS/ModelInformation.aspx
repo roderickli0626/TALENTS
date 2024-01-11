@@ -273,7 +273,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboHairColor">Colore_Capelli</label>
+                                                    <label class="form-label text-nowrap" for="ComboHairColor">Colore Capelli</label>
                                                     <asp:DropDownList runat="server" ID="ComboHairColor" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
@@ -281,7 +281,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboHairLeng">Lunghezza_Capelli</label>
+                                                    <label class="form-label text-nowrap" for="ComboHairLeng">Lunghezza Capelli</label>
                                                     <asp:DropDownList runat="server" ID="ComboHairLeng" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
@@ -325,7 +325,7 @@
                                         <div class="col-md-3 col-6">
                                             <div class="mb-4">
                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                    <label class="form-label" for="ComboDress">Taglia_Vestito</label>
+                                                    <label class="form-label text-nowrap" for="ComboDress">Taglia Vestito</label>
                                                     <asp:DropDownList runat="server" ID="ComboDress" ClientIDMode="Static" CssClass="custom-select"></asp:DropDownList>
                                                 </div>
                                             </div>
@@ -1092,7 +1092,7 @@
                                                 <div class="col-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboSocialChat">Social_Chat</label>
+                                                            <label class="form-label text-nowrap" for="ComboSocialChat">Social Chat</label>
                                                             <asp:DropDownList runat="server" ID="ComboSocialChat" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
@@ -1280,10 +1280,10 @@
                                                 <h5 class="text-primary text-bold text-left">Città</h5>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="ComboTourCity">Scegli_Citta<span class="text-danger">*</span></label>
+                                                            <label class="form-label text-nowrap" for="ComboTourCity">Scegli Citta<span class="text-danger">*</span></label>
                                                             <asp:DropDownList runat="server" ID="ComboTourCity" ClientIDMode="Static" CssClass="custom-select" style="width:100%"></asp:DropDownList>
                                                         </div>
                                                     </div>
@@ -1416,7 +1416,7 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtOldPassword">Inserisci_la_password_attuale</label>
+                                                            <label class="form-label text-nowrap" for="TxtOldPassword">Inserisci la password attuale</label>
                                                             <asp:TextBox runat="server" ID="TxtOldPassword" CssClass="form-control textField" TextMode="Password" ClientIDMode="Static"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1426,7 +1426,7 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtNewPassword">Inserisci_la_nuova_password</label>
+                                                            <label class="form-label text-nowrap" for="TxtNewPassword">Inserisci la nuova password</label>
                                                             <asp:TextBox runat="server" ID="TxtNewPassword" CssClass="form-control textField" TextMode="Password" ClientIDMode="Static"></asp:TextBox>
                                                         </div>
                                                     </div>
@@ -1434,7 +1434,7 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
-                                                            <label class="form-label" for="TxtNewPWRepeat">Conferma_la_nuova_password</label>
+                                                            <label class="form-label text-nowrap" for="TxtNewPWRepeat">Conferma la nuova password</label>
                                                             <asp:TextBox runat="server" ID="TxtNewPWRepeat" CssClass="form-control textField" TextMode="Password" ClientIDMode="Static"></asp:TextBox>
                                                         </div>
                                                     </div>

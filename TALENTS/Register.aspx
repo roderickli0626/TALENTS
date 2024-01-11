@@ -42,7 +42,7 @@
                                                         <label class="custom-control-label" for="RadioModel">Modella</label>
                                                     </div>
 
-                                                    <div class="custom-control custom-radio custom-control-inline ml-5">
+                                                    <div class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" runat="server" clientidmode="static" class="custom-control-input" id="RadioUser" name="example" value="user">
                                                         <label class="custom-control-label" for="RadioUser">Utente</label>
                                                     </div>
