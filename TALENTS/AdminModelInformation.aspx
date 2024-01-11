@@ -138,6 +138,29 @@
                 width: 100%;
                 padding: 10px;
             }
+            .menu-content {
+                padding-left: 0;
+                margin-left: 0 !important;
+                padding-right: 0;
+                margin-right: 0 !important;
+            }
+            .menu{
+                width: 50px;
+            }
+
+            #ModelName {
+                display: none;
+            }
+
+            .nav-link {
+                width: 0px;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+
+            .menu-subitem {
+                display: none;
+            }
         }
         @media screen and (min-width:480px) {
             .wd-800 {
@@ -154,7 +177,7 @@
                     <asp:HiddenField ID="HfModelID" runat="server" ClientIDMode="Static" />
                     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                     <div class="row" style="background-color: gray">
-                        <div class="col-md-3 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 20px;">
+                        <div class="col-md-3 col-2 p-lg-5 menu" style="background-color: rgb(0,0,0,.5); padding-left: 20px;">
                             <div class="text-right me-2">
                                 <a href="#" id="hideMenu" class="ms-auto"><i class="fa fa-bars text-white" style="font-size:22px;"></i></a>
                             </div>
@@ -175,7 +198,7 @@
                                 <a class="nav-link text-white" id="v-pills-setting-tab" data-toggle="pill" href="#v-pills-setting" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class ="fa fa-search"></i><span class="ps-2 menu-subitem">Impostazioni</span></a>
                             </div>
                         </div>
-                        <div class="col-md-9 bg-gray text-center mx-auto">
+                        <div class="col-md-9 col-10 bg-gray text-center mx-auto menu-content">
                             <div class="tab-content d-flex justify-content-center" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active bg-white m-lg-5 p-lg-5" style="border-radius: 5px;" id="v-pills-bio" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <div class="row">
@@ -500,7 +523,7 @@
                                                 <asp:CustomValidator ID="ServerValidatorLang2" runat="server" ErrorMessage="Salvataggio fallito." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-md-5 col-6">
+                                                <div class="col-md-5">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboLang">Lingua</label>
@@ -508,7 +531,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5 col-6">
+                                                <div class="col-md-5">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboLevel">Livello</label>
@@ -576,7 +599,7 @@
                                                 <asp:CustomValidator ID="servervalidatorService2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-md-4 col-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboServiceGroup">Categoria</label>
@@ -585,7 +608,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 col-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboService">Servizi</label>
@@ -669,7 +692,7 @@
                                                 <h5 class="text-primary text-bold text-left">Città</h5>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-8">
+                                                <div class="col-md-8">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboWorkCity">Città</label>
@@ -677,7 +700,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-md-4 mb-2">
                                                     <asp:Button runat="server" ID="BtnWorkCity" Text="+ Agg. Città" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnWorkCity_Click"/>
                                                 </div>
                                             </div>
@@ -721,7 +744,7 @@
                                             <div class="row wd-800">
                                                 <div class="col-md-6" style="border-right: 1px solid lightblue;">
                                                     <div class="row">
-                                                        <div class="col-8">
+                                                        <div class="col-md-8">
                                                             <div class="mb-4">
                                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                                     <label class="form-label" for="ComboIncall">Incall</label>
@@ -729,7 +752,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-4">
+                                                        <div class="col-md-4 mb-2">
                                                             <asp:Button runat="server" ID="BtnIncall" Text="+ Incall" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnIncall_Click"/>
                                                         </div>
                                                     </div>
@@ -769,7 +792,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="row">
-                                                        <div class="col-8">
+                                                        <div class="col-md-8">
                                                             <div class="mb-4">
                                                                 <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                                     <label class="form-label" for="ComboOutcall">Outcall</label>
@@ -777,7 +800,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-4">
+                                                        <div class="col-md-4 mb-2">
                                                             <asp:Button runat="server" ID="BtnOutcall" Text="+ Outcall" CssClass="btn btn-success btn-block btn-lg btn-rounded" OnClick="BtnOutcall_Click" />
                                                         </div>
                                                     </div>
@@ -840,7 +863,7 @@
                                                 <asp:CustomValidator ID="ServerValidatorWorkHours2" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-md-4 col-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboWorkDay">Giorno</label>
@@ -848,7 +871,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 col-6">
+                                                <div class="col-md-3">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboSHour">Dalle</label>
@@ -927,7 +950,7 @@
                                                 <asp:CustomValidator ID="ServerValidatorRate3" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-md-5 col-6">
+                                                <div class="col-md-5">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboModIncallPlace">Incall</label>
@@ -935,7 +958,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 col-6">
+                                                <div class="col-md-3">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboDuration">Durata</label>
@@ -956,7 +979,7 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-3 wd-800">
-                                                <div class="col-md-5 col-6">
+                                                <div class="col-md-5">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboModOutcallPlace">Outcall</label>
@@ -964,7 +987,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 col-6">
+                                                <div class="col-md-3">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboDuration1">Durata</label>
@@ -1088,7 +1111,7 @@
                                                 <asp:CustomValidator ID="ServerValidatorContact" runat="server" ErrorMessage="Save failed." Display="None"></asp:CustomValidator>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label text-nowrap" for="ComboSocialChat">Social Chat</label>
@@ -1096,7 +1119,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label" for="ComboInstructionChat">Istruzioni</label>
@@ -1279,7 +1302,7 @@
                                                 <h5 class="text-primary text-bold text-left">Città</h5>
                                             </div>
                                             <div class="row wd-800">
-                                                <div class="col-6">
+                                                <div class="col-md-6">
                                                     <div class="mb-4">
                                                         <div class="form-control form-control-lg d-flex" style="outline-color: darkgray; outline-style: solid; outline-width: 0px;">
                                                             <label class="form-label text-nowrap" for="ComboTourCity">Scegli Citta<span class="text-danger">*</span></label>
